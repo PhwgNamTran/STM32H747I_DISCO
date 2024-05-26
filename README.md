@@ -1,1 +1,7 @@
 # STM32H747XI_GPIO
+
+Purpose: Self-learning STM32 from bare metal.
+
+Hardware: STM32H747I_DISC0 Kit
+
+Scope: Change User_LED_1 status when WK_Button is pressed.
