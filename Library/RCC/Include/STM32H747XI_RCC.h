@@ -1,4 +1,248 @@
 #ifndef __STM32H747XI_RCC_H__
 #define __STM32H747XI_RCC_H__
 
+/* Refer to RM0399 Reference Manual from http://www.st.com */
+
+/* RCC Base Address */
+#define RCC_BASE                    0x58024400U
+
+#define RCC_CR_OFFSET               0x000U
+#define RCC_HSICFGR_OFFSET          0x004U
+#define RCC_CRRCR_OFFSET            0x008U
+#define RCC_CSICFGR_OFFSET          0x00CU     
+#define RCC_CFGR_OFFSET             0x010U
+
+#define RCC_D1CFGR_OFFSET           0x018U
+#define RCC_D2CFGR_OFFSET           0x01CU
+#define RCC_D3CFGR_OFFSET           0x020U
+
+#define RCC_PLLCKSELR_OFFSET        0x028U
+#define RCC_PLLCFGR_OFFSET          0x02CU
+#define RCC_PLL1DIVR_OFFSET         0x030U
+#define RCC_PLL1FRACR_OFFSET        0x034U
+#define RCC_PLL2DIVR_OFFSET         0x038U
+#define RCC_PLL2FRACR_OFFSET        0x03CU
+#define RCC_PLL3DIVR_OFFSET         0x040U
+#define RCC_PLL3FRACR_OFFSET        0x044U
+
+#define RCC_D1CCIPR_OFFSET          0x04CU
+#define RCC_D2CCIP1R_OFFSET         0x050U
+#define RCC_D2CCIP2R_OFFSET         0x054U
+#define RCC_D3CCIPR_OFFSET          0x058U
+
+#define RCC_CIER_OFFSET             0x060U
+#define RCC_CIFR_OFFSET             0x064U
+#define RCC_CICR_OFFSET             0x068U
+#define RCC_BDCR_OFFSET             0x070U
+#define RCC_CSR_OFFSET              0x074U
+
+#define RCC_AHB3RSTR_OFFSET         0x07CU
+#define RCC_AHB1RSTR_OFFSET         0x080U
+#define RCC_AHB2RSTR_OFFSET         0x084U
+#define RCC_AHB4RSTR_OFFSET         0x088U
+#define RCC_APB3RSTR_OFFSET         0x08CU
+#define RCC_APB1LRSTR_OFFSET        0x090U
+#define RCC_APB1HRSTR_OFFSET        0x094U
+#define RCC_APB2RSTR_OFFSET         0x098U
+#define RCC_APB4RSTR_OFFSET         0x09CU
+
+#define RCC_GCR_OFFSET              0x0A0U
+#define RCC_D3AMR_OFFSET            0x0A8U
+
+#define RCC_RSR_OFFSET              0x0D0U
+#define RCC_C1_RSR_OFFSET           0x130U
+#define RCC_C2_RSR_OFFSET           0x190U
+
+#define RCC_AHB3ENR_OFFSET          0x0D4U
+#define RCC_C1_AHB3ENR_OFFSET       0x134U
+#define RCC_C2_AHB3ENR_OFFSET       0x194U
+
+#define RCC_AHB1ENR_OFFSET          0x0D8U
+#define RCC_C1_AHB1ENR_OFFSET       0x138U
+#define RCC_C2_AHB1ENR_OFFSET       0x198U
+
+#define RCC_AHB2ENR_OFFSET          0x0DCU
+#define RCC_C1_AHB2ENR_OFFSET       0x13CU
+#define RCC_C2_AHB2ENR_OFFSET       0x19CU
+
+#define RCC_AHB4ENR_OFFSET          0x0E0U
+#define RCC_C1_AHB4ENR_OFFSET       0x140U
+#define RCC_C2_AHB4ENR_OFFSET       0x1A0U
+
+#define RCC_APB3ENR_OFFSET          0x0E4U
+#define RCC_C1_APB3ENR_OFFSET       0x144U
+#define RCC_C2_APB3ENR_OFFSET       0x1A4U
+
+#define RCC_APB1LENR_OFFSET         0x0E8U
+#define RCC_C1_APB1LENR_OFFSET      0x148U
+#define RCC_C2_APB1LENR_OFFSET      0x1A8U
+
+#define RCC_APB1HENR_OFFSET         0x0ECU
+#define RCC_C1_APB1HENR_OFFSET      0x14CU
+#define RCC_C2_APB1HENR_OFFSET      0x1ACU
+
+#define RCC_APB2ENR_OFFSET          0x0F0U
+#define RCC_C1_APB2ENR_OFFSET       0x150U
+#define RCC_C2_APB2ENR_OFFSET       0x1B0U
+
+#define RCC_APB4ENR_OFFSET          0x0F4U
+#define RCC_C1_APB4ENR_OFFSET       0x154U
+#define RCC_C2_APB4ENR_OFFSET       0x1B4U
+
+#define RCC_AHB3LPENR_OFFSET        0x0FCU
+#define RCC_C1_AHB3LPENR_OFFSET     0x15CU
+#define RCC_C2_AHB3LPENR_OFFSET     0x1BCU
+
+#define RCC_AHB1LPENR_OFFSET        0x100U
+#define RCC_C1_AHB1LPENR_OFFSET     0x160U
+#define RCC_C2_AHB1LPENR_OFFSET     0x1C0U
+
+#define RCC_AHB2LPENR_OFFSET        0x104U
+#define RCC_C1_AHB2LPENR_OFFSET     0x164U
+#define RCC_C2_AHB2LPENR_OFFSET     0x1C4U
+
+#define RCC_AHB4LPENR_OFFSET        0x108U
+#define RCC_C1_AHB4LPENR_OFFSET     0x168U
+#define RCC_C2_AHB4LPENR_OFFSET     0x1C8U
+
+#define RCC_APB3LPENR_OFFSET        0x10CU
+#define RCC_C1_APB3LPENR_OFFSET     0x16CU
+#define RCC_C2_APB3LPENR_OFFSET     0x1CCU
+
+#define RCC_APB1LLPENR_OFFSET       0x110U
+#define RCC_C1_APB1LLPENR_OFFSET    0x170U
+#define RCC_C2_APB1LLPENR_OFFSET    0x1D0U
+
+#define RCC_APB1HLPENR_OFFSET       0x114U
+#define RCC_C1_APB1HLPENR_OFFSET    0x174U
+#define RCC_C2_APB1HLPENR_OFFSET    0x1D4U
+
+#define RCC_APB2LPENR_OFFSET        0x118U
+#define RCC_C1_APB2LPENR_OFFSET     0x178U
+#define RCC_C2_APB2LPENR_OFFSET     0x1D8U
+
+#define RCC_APB4LPENR_OFFSET        0x11CU
+#define RCC_C1_APB4LPENR_OFFSET     0x17CU
+#define RCC_C2_APB4LPENR_OFFSET     0x1DCU
+
+
+#define RCC_CR                      (RCC_BASE + RCC_CR_OFFSET)
+#define RCC_HSICFGR                 (RCC_BASE + RCC_HSICFGR_OFFSET)
+#define RCC_CRRCR                   (RCC_BASE + RCC_CRRCR_OFFSET)
+#define RCC_CSICFGR                 (RCC_BASE + RCC_CSICFGR_OFFSET)
+#define RCC_CFGR                    (RCC_BASE + RCC_CFGR_OFFSET)
+
+#define RCC_D1CFGR                  (RCC_BASE + RCC_D1CFGR_OFFSET)
+#define RCC_D2CFGR                  (RCC_BASE + RCC_D2CFGR_OFFSET)
+#define RCC_D3CFGR                  (RCC_BASE + RCC_D3CFGR_OFFSET)
+
+#define RCC_PLLCKSELR               (RCC_BASE + RCC_PLLCKSELR_OFFSET)
+#define RCC_PLLCFGR                 (RCC_BASE + RCC_PLLCFGR_OFFSET)
+#define RCC_PLL1DIVR                (RCC_BASE + RCC_PLL1DIVR_OFFSET)
+#define RCC_PLL1FRACR               (RCC_BASE + RCC_PLL1FRACR_OFFSET)
+#define RCC_PLL2DIVR                (RCC_BASE + RCC_PLL2DIVR_OFFSET)
+#define RCC_PLL2FRACR               (RCC_BASE + RCC_PLL2FRACR_OFFSET)
+#define RCC_PLL3DIVR                (RCC_BASE + RCC_PLL3DIVR_OFFSET)
+#define RCC_PLL3FRACR               (RCC_BASE + RCC_PLL3FRACR_OFFSET)
+
+#define RCC_D1CCIPR                 (RCC_BASE + RCC_D1CCIPR_OFFSET)
+#define RCC_D2CCIP1R                (RCC_BASE + RCC_D2CCIP1R_OFFSET)
+#define RCC_D2CCIP2R                (RCC_BASE + RCC_D2CCIP2R_OFFSET)
+#define RCC_D3CCIPR                 (RCC_BASE + RCC_D3CCIPR_OFFSET)
+
+#define RCC_CIER                    (RCC_BASE + RCC_CIER_OFFSET)
+#define RCC_CIFR                    (RCC_BASE + RCC_CIFR_OFFSET)
+#define RCC_CICR                    (RCC_BASE + RCC_CICR_OFFSET)
+#define RCC_BDCR                    (RCC_BASE + RCC_BDCR_OFFSET)
+#define RCC_CSR                     (RCC_BASE + RCC_CSR_OFFSET)
+
+#define RCC_AHB3RSTR                (RCC_BASE + RCC_AHB3RSTR_OFFSET)
+#define RCC_AHB1RSTR                (RCC_BASE + RCC_AHB1RSTR_OFFSET)
+#define RCC_AHB2RSTR                (RCC_BASE + RCC_AHB2RSTR_OFFSET)
+#define RCC_AHB4RSTR                (RCC_BASE + RCC_AHB4RSTR_OFFSET)
+#define RCC_APB3RSTR                (RCC_BASE + RCC_APB3RSTR_OFFSET)
+#define RCC_APB1LRSTR               (RCC_BASE + RCC_APB1LRSTR_OFFSET)
+#define RCC_APB1HRSTR               (RCC_BASE + RCC_APB1HRSTR_OFFSET)
+#define RCC_APB2RSTR                (RCC_BASE + RCC_APB2RSTR_OFFSET)
+#define RCC_APB4RSTR                (RCC_BASE + RCC_APB4RSTR_OFFSET)
+
+#define RCC_GCR                     (RCC_BASE + RCC_GCR_OFFSET)
+#define RCC_D3AMR                   (RCC_BASE + RCC_D3AMR_OFFSET)
+
+#define RCC_RSR                     (RCC_BASE + RCC_RSR_OFFSET)
+#define RCC_C1_RSR                  (RCC_BASE + RCC_C1_RSR_OFFSET)
+#define RCC_C2_RSR                  (RCC_BASE + RCC_C2_RSR_OFFSET)
+
+#define RCC_AHB3ENR                 (RCC_BASE + RCC_AHB3ENR_OFFSET)
+#define RCC_C1_AHB3ENR              (RCC_BASE + RCC_C1_AHB3ENR_OFFSET)
+#define RCC_C2_AHB3ENR              (RCC_BASE + RCC_C2_AHB3ENR_OFFSET)
+
+#define RCC_AHB1ENR                 (RCC_BASE + RCC_AHB1ENR_OFFSET)
+#define RCC_C1_AHB1ENR              (RCC_BASE + RCC_C1_AHB1ENR_OFFSET)
+#define RCC_C2_AHB1ENR              (RCC_BASE + RCC_C2_AHB1ENR_OFFSET)
+
+#define RCC_AHB2ENR                 (RCC_BASE + RCC_AHB2ENR_OFFSET)
+#define RCC_C1_AHB2ENR              (RCC_BASE + RCC_C1_AHB2ENR_OFFSET)
+#define RCC_C2_AHB2ENR              (RCC_BASE + RCC_C2_AHB2ENR_OFFSET)
+
+#define RCC_AHB4ENR                 (RCC_BASE + RCC_AHB4ENR_OFFSET)
+#define RCC_C1_AHB4ENR              (RCC_BASE + RCC_C1_AHB4ENR_OFFSET)
+#define RCC_C2_AHB4ENR              (RCC_BASE + RCC_C2_AHB4ENR_OFFSET)
+
+#define RCC_APB3ENR                 (RCC_BASE + RCC_APB3ENR_OFFSET)
+#define RCC_C1_APB3ENR              (RCC_BASE + RCC_C1_APB3ENR_OFFSET)
+#define RCC_C2_APB3ENR              (RCC_BASE + RCC_C2_APB3ENR_OFFSET)
+
+#define RCC_APB1LENR                (RCC_BASE + RCC_APB1LENR_OFFSET)
+#define RCC_C1_APB1LENR             (RCC_BASE + RCC_C1_APB1LENR_OFFSET)
+#define RCC_C2_APB1LENR             (RCC_BASE + RCC_C2_APB1LENR_OFFSET)
+
+#define RCC_APB1HENR                (RCC_BASE + RCC_APB1HENR_OFFSET)
+#define RCC_C1_APB1HENR             (RCC_BASE + RCC_C1_APB1HENR_OFFSET)
+#define RCC_C2_APB1HENR             (RCC_BASE + RCC_C2_APB1HENR_OFFSET)
+
+#define RCC_APB2ENR                 (RCC_BASE + RCC_APB2ENR_OFFSET)
+#define RCC_C1_APB2ENR              (RCC_BASE + RCC_C1_APB2ENR_OFFSET)
+#define RCC_C2_APB2ENR              (RCC_BASE + RCC_C2_APB2ENR_OFFSET)
+
+#define RCC_APB4ENR                 (RCC_BASE + RCC_APB4ENR_OFFSET)
+#define RCC_C1_APB4ENR              (RCC_BASE + RCC_C1_APB4ENR_OFFSET)
+#define RCC_C2_APB4ENR              (RCC_BASE + RCC_C2_APB4ENR_OFFSET)
+
+#define RCC_AHB3LPENR               (RCC_BASE + RCC_AHB3LPENR_OFFSET)
+#define RCC_C1_AHB3LPENR            (RCC_BASE + RCC_C1_AHB3LPENR_OFFSET)
+#define RCC_C2_AHB3LPENR            (RCC_BASE + RCC_C2_AHB3LPENR_OFFSET)
+
+#define RCC_AHB1LPENR               (RCC_BASE + RCC_AHB1LPENR_OFFSET)
+#define RCC_C1_AHB1LPENR            (RCC_BASE + RCC_C1_AHB1LPENR_OFFSET)
+#define RCC_C2_AHB1LPENR            (RCC_BASE + RCC_C2_AHB1LPENR_OFFSET)
+
+#define RCC_AHB2LPENR               (RCC_BASE + RCC_AHB2LPENR_OFFSET)
+#define RCC_C1_AHB2LPENR            (RCC_BASE + RCC_C1_AHB2LPENR_OFFSET)
+#define RCC_C2_AHB2LPENR            (RCC_BASE + RCC_C2_AHB2LPENR_OFFSET)
+
+#define RCC_AHB4LPENR               (RCC_BASE + RCC_AHB4LPENR_OFFSET)
+#define RCC_C1_AHB4LPENR            (RCC_BASE + RCC_C1_AHB4LPENR_OFFSET)
+#define RCC_C2_AHB4LPENR            (RCC_BASE + RCC_C2_AHB4LPENR_OFFSET)
+
+#define RCC_APB3LPENR               (RCC_BASE + RCC_APB3LPENR_OFFSET)
+#define RCC_C1_APB3LPENR            (RCC_BASE + RCC_C1_APB3LPENR_OFFSET)
+#define RCC_C2_APB3LPENR            (RCC_BASE + RCC_C2_APB3LPENR_OFFSET)
+
+#define RCC_APB1LLPENR              (RCC_BASE + RCC_APB1LLPENR_OFFSET)
+#define RCC_C1_APB1LLPENR           (RCC_BASE + RCC_C1_APB1LLPENR_OFFSET)
+#define RCC_C2_APB1LLPENR           (RCC_BASE + RCC_C2_APB1LLPENR_OFFSET)
+
+#define RCC_APB1HLPENR              (RCC_BASE + RCC_APB1HLPENR_OFFSET)
+#define RCC_C1_APB1HLPENR           (RCC_BASE + RCC_C1_APB1HLPENR_OFFSET)
+#define RCC_C2_APB1HLPENR           (RCC_BASE + RCC_C2_APB1HLPENR_OFFSET)
+
+#define RCC_APB2LPENR               (RCC_BASE + RCC_APB2LPENR_OFFSET)
+#define RCC_C1_APB2LPENR            (RCC_BASE + RCC_C1_APB2LPENR_OFFSET)
+#define RCC_C2_APB2LPENR            (RCC_BASE + RCC_C2_APB2LPENR_OFFSET)
+
+#define RCC_APB4LPENR               (RCC_BASE + RCC_APB4LPENR_OFFSET)
+#define RCC_C1_APB4LPENR            (RCC_BASE + RCC_C1_APB4LPENR_OFFSET)
+#define RCC_C2_APB4LPENR            (RCC_BASE + RCC_C2_APB4LPENR_OFFSET)
+
 #endif
