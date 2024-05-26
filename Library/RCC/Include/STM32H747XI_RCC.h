@@ -1,5 +1,5 @@
-#ifndef __STM32H747XI_RCC_H__
-#define __STM32H747XI_RCC_H__
+#ifndef STM32H747XI_RCC_H
+#define STM32H747XI_RCC_H
 
 /* Refer to RM0399 Reference Manual from http://www.st.com */
 
