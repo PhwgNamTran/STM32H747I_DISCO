@@ -47,7 +47,7 @@ typedef BOOL ReturnType;
 
 extern void SET_BIT(UINT32 addr, UINT32 bitmask);
 extern void CLEAR_BIT(UINT32 addr, UINT32 bitmask);
-
+extern BOOL CHECK_BIT(UINT32 addr, UINT32 bitmask);
 /********************************************************/
 /* END OF FUNCTION DECLARATION FOR COMMON USE           */
 /********************************************************/
