@@ -5,7 +5,7 @@
 int main(void)
 {
     /* Enable clock for GPIO_C */
-    SET_BIT(RCC_AHB4ENR, (1 << 2));
+    GPIO_Enable_ClockSource(GPIO_C);
 
     /* Set GPIO_C_PIN13 mode as Input Mode */
     CLEAR_BIT(GPIO_C_MODER, (3 << 26));
@@ -13,11 +13,11 @@ int main(void)
     /* Reset GPIO_C_PIN13 pull up/down register*/
     CLEAR_BIT(GPIO_C_PUPDR, (3 << 26));
 
-    /* Reset GPIO_C_PIN13 register pull-down*/
+    /* Set GPIO_C_PIN13 register pull-down*/
     SET_BIT(GPIO_C_PUPDR, (2 << 26));
 
     /* Enable clock for GPIO_I */
-    SET_BIT(RCC_AHB4ENR, (1 << 8));
+    GPIO_Enable_ClockSource(GPIO_I);
 
     /* Reset Mode for GPIO_I_PIN12 */
     CLEAR_BIT(GPIO_I_MODER, (3 << 24));

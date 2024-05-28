@@ -160,4 +160,22 @@
 #define GPIO_K_AFRL          (GPIO_K_BASE + GPIO_x_AFRL_OFFSET)
 #define GPIO_K_AFRH          (GPIO_K_BASE + GPIO_x_AFRH_OFFSET)
 
+typedef enum
+{
+    GPIO_A,
+    GPIO_B,
+    GPIO_C,
+    GPIO_D,
+    GPIO_E,
+    GPIO_F,
+    GPIO_G,
+    GPIO_H,
+    GPIO_I,
+    GPIO_J,
+    GPIO_K
+} GPIO_Port;
+
+extern void GPIO_Enable_ClockSource(GPIO_Port GPIO_Port_Name);
+extern void GPIO_Disable_ClockSource(GPIO_Port GPIO_Port_Name);
+
 #endif

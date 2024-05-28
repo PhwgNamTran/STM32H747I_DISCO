@@ -26,7 +26,6 @@ typedef BOOL ReturnType;
 /* END OF TYPEDEF FOR COMMON USE                        */
 /********************************************************/
 
-
 /********************************************************/
 /* START OF MACRO DEFINITION FOR COMMON USE             */
 /********************************************************/
@@ -38,8 +37,6 @@ typedef BOOL ReturnType;
 /********************************************************/
 /* END OF OF MACRO DEFINITION FOR COMMON USE            */
 /********************************************************/
-
-
 
 /********************************************************/
 /* START OF FUNCTION DECLARATION FOR COMMON USE         */
