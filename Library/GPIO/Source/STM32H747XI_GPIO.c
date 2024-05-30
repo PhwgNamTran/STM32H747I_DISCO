@@ -1,15 +1,13 @@
 #include "STM32H747XI_GPIO.h"
-#include "STM32H747XI_RCC.h"
-#include "Common.h"
 
 /*
 Function description: Enable Clock Source of GPIO Port
 Input: GPIO Port A, B, C, ...K.
 Return value: N/A
 */
-void GPIO_Enable_ClockSource(GPIO_Port GPIO_Port_Name)
+void GPIO_Enable_ClockSource(UINT16 GPIOx_CLKSRC)
 {
-    SET_BIT(RCC_AHB4ENR, (1 << GPIO_Port_Name));
+    SET_BIT(RCC->AHB4ENR, GPIOx_CLKSRC);
 }
 
 /*
@@ -17,7 +15,17 @@ Function description: Disable Clock Source of GPIO Port
 Input: GPIO Port A, B, C, ...K.
 Return value: N/A
 */
-void GPIO_Disable_ClockSource(GPIO_Port GPIO_Port_Name)
+void GPIO_Disable_ClockSource(UINT16 GPIOx_CLKSRC)
 {
-    CLEAR_BIT(RCC_AHB4ENR, (1 << GPIO_Port_Name));
+    CLEAR_BIT(RCC->AHB4ENR, GPIOx_CLKSRC);
+}
+
+/*
+Function description: 
+Input:
+Return value: N/A
+*/
+void GPIO_PinConfig(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Mode)
+{
+    CLEAR_BIT(GPIOx->MODER, (3 << Pin*2));
 }

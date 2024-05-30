@@ -1,181 +1,90 @@
 #ifndef STM32H747XI_GPIO_H
 #define STM32H747XI_GPIO_H
 
+#include "Common.h"
+#include "STM32H747XI_RCC.h"
+
 /* Refer to RM0399 Reference Manual from http://www.st.com */
 
-/* Base Address of GPIO Ports */
-#define GPIO_A_BASE  0x58020000U
-#define GPIO_B_BASE  0x58020400U
-#define GPIO_C_BASE  0x58020800U
-#define GPIO_D_BASE  0x58020C00U
-#define GPIO_E_BASE  0x58021000U
-#define GPIO_F_BASE  0x58021400U
-#define GPIO_G_BASE  0x58021800U
-#define GPIO_H_BASE  0x58021C00U
-#define GPIO_I_BASE  0x58022000U
-#define GPIO_J_BASE  0x58022400U
-#define GPIO_K_BASE  0x58022800U
-
-/* GPIO's Registers offset */
-#define GPIO_x_MODER_OFFSET         0x00U
-#define GPIO_x_OTYPER_OFFSET        0x04U
-#define GPIO_x_OSPEEDR_OFFSET       0x08U
-#define GPIO_x_PUPDR_OFFSET         0x0CU
-#define GPIO_x_IDR_OFFSET           0x10U
-#define GPIO_x_ODR_OFFSET           0x14U
-#define GPIO_x_BSRR_OFFSET          0x18U 
-#define GPIO_x_LCKR_OFFSET          0x1CU
-#define GPIO_x_AFRL_OFFSET          0x20U
-#define GPIO_x_AFRH_OFFSET          0x24U
-
-/* GPIO Port A */
-#define GPIO_A_MODER         (GPIO_A_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_A_OTYPER        (GPIO_A_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_A_OSPEEDR       (GPIO_A_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_A_PUPDR         (GPIO_A_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_A_IDR           (GPIO_A_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_A_ODR           (GPIO_A_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_A_BSRR          (GPIO_A_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_A_LCKR          (GPIO_A_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_A_AFRL          (GPIO_A_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_A_AFRH          (GPIO_A_BASE + GPIO_x_AFRH_OFFSET)
-
-/* GPIO Port B */
-#define GPIO_B_MODER         (GPIO_B_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_B_OTYPER        (GPIO_B_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_B_OSPEEDR       (GPIO_B_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_B_PUPDR         (GPIO_B_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_B_IDR           (GPIO_B_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_B_ODR           (GPIO_B_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_B_BSRR          (GPIO_B_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_B_LCKR          (GPIO_B_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_B_AFRL          (GPIO_B_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_B_AFRH          (GPIO_B_BASE + GPIO_x_AFRH_OFFSET)
-
-/* GPIO Port C */
-#define GPIO_C_MODER         (GPIO_C_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_C_OTYPER        (GPIO_C_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_C_OSPEEDR       (GPIO_C_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_C_PUPDR         (GPIO_C_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_C_IDR           (GPIO_C_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_C_ODR           (GPIO_C_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_C_BSRR          (GPIO_C_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_C_LCKR          (GPIO_C_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_C_AFRL          (GPIO_C_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_C_AFRH          (GPIO_C_BASE + GPIO_x_AFRH_OFFSET)
-
-/* GPIO Port D */
-#define GPIO_D_MODER         (GPIO_D_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_D_OTYPER        (GPIO_D_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_D_OSPEEDR       (GPIO_D_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_D_PUPDR         (GPIO_D_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_D_IDR           (GPIO_D_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_D_ODR           (GPIO_D_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_D_BSRR          (GPIO_D_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_D_LCKR          (GPIO_D_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_D_AFRL          (GPIO_D_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_D_AFRH          (GPIO_D_BASE + GPIO_x_AFRH_OFFSET)
-
-/* GPIO Port E */
-#define GPIO_E_MODER         (GPIO_E_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_E_OTYPER        (GPIO_E_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_E_OSPEEDR       (GPIO_E_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_E_PUPDR         (GPIO_E_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_E_IDR           (GPIO_E_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_E_ODR           (GPIO_E_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_E_BSRR          (GPIO_E_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_E_LCKR          (GPIO_E_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_E_AFRL          (GPIO_E_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_E_AFRH          (GPIO_E_BASE + GPIO_x_AFRH_OFFSET)
-
-/* GPIO Port F */
-#define GPIO_F_MODER         (GPIO_F_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_F_OTYPER        (GPIO_F_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_F_OSPEEDR       (GPIO_F_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_F_PUPDR         (GPIO_F_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_F_IDR           (GPIO_F_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_F_ODR           (GPIO_F_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_F_BSRR          (GPIO_F_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_F_LCKR          (GPIO_F_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_F_AFRL          (GPIO_F_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_F_AFRH          (GPIO_F_BASE + GPIO_x_AFRH_OFFSET)
-
-/* GPIO Port G */
-#define GPIO_G_MODER         (GPIO_G_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_G_OTYPER        (GPIO_G_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_G_OSPEEDR       (GPIO_G_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_G_PUPDR         (GPIO_G_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_G_IDR           (GPIO_G_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_G_ODR           (GPIO_G_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_G_BSRR          (GPIO_G_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_G_LCKR          (GPIO_G_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_G_AFRL          (GPIO_G_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_G_AFRH          (GPIO_G_BASE + GPIO_x_AFRH_OFFSET)
-
-/* GPIO Port H */
-#define GPIO_H_MODER         (GPIO_H_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_H_OTYPER        (GPIO_H_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_H_OSPEEDR       (GPIO_H_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_H_PUPDR         (GPIO_H_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_H_IDR           (GPIO_H_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_H_ODR           (GPIO_H_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_H_BSRR          (GPIO_H_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_H_LCKR          (GPIO_H_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_H_AFRL          (GPIO_H_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_H_AFRH          (GPIO_H_BASE + GPIO_x_AFRH_OFFSET)
-
-/* GPIO Port I */
-#define GPIO_I_MODER         (GPIO_I_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_I_OTYPER        (GPIO_I_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_I_OSPEEDR       (GPIO_I_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_I_PUPDR         (GPIO_I_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_I_IDR           (GPIO_I_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_I_ODR           (GPIO_I_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_I_BSRR          (GPIO_I_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_I_LCKR          (GPIO_I_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_I_AFRL          (GPIO_I_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_I_AFRH          (GPIO_I_BASE + GPIO_x_AFRH_OFFSET)
-
-/* GPIO Port J */
-#define GPIO_J_MODER         (GPIO_J_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_J_OTYPER        (GPIO_J_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_J_OSPEEDR       (GPIO_J_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_J_PUPDR         (GPIO_J_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_J_IDR           (GPIO_J_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_J_ODR           (GPIO_J_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_J_BSRR          (GPIO_J_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_J_LCKR          (GPIO_J_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_J_AFRL          (GPIO_J_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_J_AFRH          (GPIO_J_BASE + GPIO_x_AFRH_OFFSET)
-
-/* GPIO Port K */
-#define GPIO_K_MODER         (GPIO_K_BASE + GPIO_x_MODER_OFFSET)
-#define GPIO_K_OTYPER        (GPIO_K_BASE + GPIO_x_OTYPER_OFFSET)
-#define GPIO_K_OSPEEDR       (GPIO_K_BASE + GPIO_x_OSPEEDR_OFFSET)
-#define GPIO_K_PUPDR         (GPIO_K_BASE + GPIO_x_PUPDR_OFFSET)
-#define GPIO_K_IDR           (GPIO_K_BASE + GPIO_x_IDR_OFFSET)
-#define GPIO_K_ODR           (GPIO_K_BASE + GPIO_x_ODR_OFFSET)
-#define GPIO_K_BSRR          (GPIO_K_BASE + GPIO_x_BSRR_OFFSET) 
-#define GPIO_K_LCKR          (GPIO_K_BASE + GPIO_x_LCKR_OFFSET)
-#define GPIO_K_AFRL          (GPIO_K_BASE + GPIO_x_AFRL_OFFSET)
-#define GPIO_K_AFRH          (GPIO_K_BASE + GPIO_x_AFRH_OFFSET)
-
-typedef enum
+/* GPIO Register - Refer to CMSIS Library */
+typedef struct
 {
-    GPIO_A,
-    GPIO_B,
-    GPIO_C,
-    GPIO_D,
-    GPIO_E,
-    GPIO_F,
-    GPIO_G,
-    GPIO_H,
-    GPIO_I,
-    GPIO_J,
-    GPIO_K
-} GPIO_Port;
+    UINT32 MODER;    /* GPIO port mode register,                  Address offset: 0x00      */
+    UINT32 OTYPER;   /* GPIO port output type register,           Address offset: 0x04      */
+    UINT32 OSPEEDR;  /* GPIO port output speed register,          Address offset: 0x08      */
+    UINT32 PUPDR;    /* GPIO port pull-up/pull-down register,     Address offset: 0x0C      */
+    UINT32 IDR;      /* GPIO port input data register,            Address offset: 0x10      */
+    UINT32 ODR;      /* GPIO port output data register,           Address offset: 0x14      */
+    UINT32 BSRR;     /* GPIO port bit set/reset,                  Address offset: 0x18      */
+    UINT32 LCKR;     /* GPIO port configuration lock register,    Address offset: 0x1C      */
+    UINT32 AFR[2];   /* GPIO alternate function registers,        Address offset: 0x20-0x24 */
+} GPIO_ST;
 
-extern void GPIO_Enable_ClockSource(GPIO_Port GPIO_Port_Name);
-extern void GPIO_Disable_ClockSource(GPIO_Port GPIO_Port_Name);
+/* Base Address of GPIO Ports */
+#define GPIO_A_BASE 0x58020000U
+#define GPIO_B_BASE 0x58020400U
+#define GPIO_C_BASE 0x58020800U
+#define GPIO_D_BASE 0x58020C00U
+#define GPIO_E_BASE 0x58021000U
+#define GPIO_F_BASE 0x58021400U
+#define GPIO_G_BASE 0x58021800U
+#define GPIO_H_BASE 0x58021C00U
+#define GPIO_I_BASE 0x58022000U
+#define GPIO_J_BASE 0x58022400U
+#define GPIO_K_BASE 0x58022800U
+
+/* GPIO Declaration */
+#define GPIO_A ((GPIO_ST *) GPIO_A_BASE)
+#define GPIO_B ((GPIO_ST *) GPIO_B_BASE)
+#define GPIO_C ((GPIO_ST *) GPIO_C_BASE)
+#define GPIO_D ((GPIO_ST *) GPIO_D_BASE)
+#define GPIO_E ((GPIO_ST *) GPIO_E_BASE)
+#define GPIO_F ((GPIO_ST *) GPIO_F_BASE)
+#define GPIO_G ((GPIO_ST *) GPIO_G_BASE)
+#define GPIO_H ((GPIO_ST *) GPIO_H_BASE)
+#define GPIO_I ((GPIO_ST *) GPIO_I_BASE)
+#define GPIO_J ((GPIO_ST *) GPIO_J_BASE)
+#define GPIO_K ((GPIO_ST *) GPIO_K_BASE)
+
+/* GPIO Clocksoure bit in AHB4ENR Register */
+#define GPIO_A_CLKSRC (1 << 0)
+#define GPIO_B_CLKSRC (1 << 1)
+#define GPIO_C_CLKSRC (1 << 2)
+#define GPIO_D_CLKSRC (1 << 3)
+#define GPIO_E_CLKSRC (1 << 4)
+#define GPIO_F_CLKSRC (1 << 5)
+#define GPIO_G_CLKSRC (1 << 6)
+#define GPIO_H_CLKSRC (1 << 7)
+#define GPIO_I_CLKSRC (1 << 8)
+#define GPIO_J_CLKSRC (1 << 9)
+#define GPIO_K_CLKSRC (1 << 10)
+
+/* GPIO Pin number definition */
+#define GPIO_PIN_0     0U
+#define GPIO_PIN_1     1U
+#define GPIO_PIN_2     2U
+#define GPIO_PIN_3     3U
+#define GPIO_PIN_4     4U
+#define GPIO_PIN_5     5U
+#define GPIO_PIN_6     6U
+#define GPIO_PIN_7     7U
+#define GPIO_PIN_8     8U
+#define GPIO_PIN_9     9U
+#define GPIO_PIN_10    10U
+#define GPIO_PIN_11    11U
+#define GPIO_PIN_12    12U
+#define GPIO_PIN_13    13U
+#define GPIO_PIN_14    14U
+#define GPIO_PIN_15    15U
+
+/* GPIO Mode Value */
+#define GPIO_Mode_Input                     0U
+#define GPIO_Mode_General_Purpose_Output    1U
+#define GPIO_Mode_Alternate_Funtion         2U
+#define GPIO_Mode_Analog                    3U
+
+extern void GPIO_Enable_ClockSource(UINT16 GPIOx_CLKSRC);
+extern void GPIO_Disable_ClockSource(UINT16 GPIOx_CLKSRC);
+extern void GPIO_PinConfig(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Mode);
 
 #endif

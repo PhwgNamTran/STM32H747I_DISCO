@@ -1,10 +1,6 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-/*******************************************************/
-/* START OF TYPEDEF FOR COMMON USE                     */
-/*******************************************************/
-
 typedef enum
 {
     FALSE,
@@ -22,31 +18,20 @@ typedef signed      long int       SINT32;
 
 typedef BOOL ReturnType;
 
-/********************************************************/
-/* END OF TYPEDEF FOR COMMON USE                        */
-/********************************************************/
+#define SET_BIT(REG, BIT)     ((REG) |= (BIT))
 
-/********************************************************/
-/* START OF MACRO DEFINITION FOR COMMON USE             */
-/********************************************************/
-#define REG(x) (*(UINT32 *)x)
+#define CLEAR_BIT(REG, BIT)   ((REG) &= ~(BIT))
 
-#define E_OK        FALSE
-#define E_NOT_OK    TRUE
+#define READ_BIT(REG, BIT)    ((REG) & (BIT))
 
-/********************************************************/
-/* END OF OF MACRO DEFINITION FOR COMMON USE            */
-/********************************************************/
+#define CHECK_BIT(REG, BIT)   ((READ_BIT(REG, BIT)==(BIT))?TRUE:FALSE)
 
-/********************************************************/
-/* START OF FUNCTION DECLARATION FOR COMMON USE         */
-/********************************************************/
+#define CLEAR_REG(REG)        ((REG) = (0x0))
 
-extern void SET_BIT(UINT32 addr, UINT32 bitmask);
-extern void CLEAR_BIT(UINT32 addr, UINT32 bitmask);
-extern BOOL CHECK_BIT(UINT32 addr, UINT32 bitmask);
-/********************************************************/
-/* END OF FUNCTION DECLARATION FOR COMMON USE           */
-/********************************************************/
+#define WRITE_REG(REG, VAL)   ((REG) = (VAL))
+
+#define READ_REG(REG)         ((REG))
+
+#define MODIFY_REG(REG, CLEARMASK, SETMASK)  WRITE_REG((REG), (((READ_REG(REG)) & (~(CLEARMASK))) | (SETMASK)))
 
 #endif

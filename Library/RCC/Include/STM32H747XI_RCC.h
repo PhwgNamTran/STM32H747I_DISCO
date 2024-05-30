@@ -1,248 +1,113 @@
 #ifndef STM32H747XI_RCC_H
 #define STM32H747XI_RCC_H
 
+#include "Common.h"
+
 /* Refer to RM0399 Reference Manual from http://www.st.com */
 
-/* RCC Base Address */
-#define RCC_BASE                    0x58024400U
+/* RCC Register - Refer to CMSIS Library */
+typedef struct
+{
+    UINT32 CR;             /* RCC clock control register,                             Address offset: 0x00  */
+    UINT32 HSICFGR;        /* HSI Clock Calibration Register,                         Address offset: 0x04  */
+    UINT32 CRRCR;          /* Clock Recovery RC  Register,                            Address offset: 0x08  */
+    UINT32 CSICFGR;        /* CSI Clock Calibration Register,                         Address offset: 0x0C  */
+    UINT32 CFGR;           /* RCC clock configuration register,                       Address offset: 0x10  */
+    UINT32 RESERVED1;      /* Reserved,                                               Address offset: 0x14  */
+    UINT32 D1CFGR;         /* RCC Domain 1 configuration register,                    Address offset: 0x18  */
+    UINT32 D2CFGR;         /* RCC Domain 2 configuration register,                    Address offset: 0x1C  */
+    UINT32 D3CFGR;         /* RCC Domain 3 configuration register,                    Address offset: 0x20  */
+    UINT32 RESERVED2;      /* Reserved,                                               Address offset: 0x24  */
+    UINT32 PLLCKSELR;      /* RCC PLLs Clock Source Selection Register,               Address offset: 0x28  */
+    UINT32 PLLCFGR;        /* RCC PLLs  Configuration Register,                       Address offset: 0x2C  */
+    UINT32 PLL1DIVR;       /* RCC PLL1 Dividers Configuration Register,               Address offset: 0x30  */
+    UINT32 PLL1FRACR;      /* RCC PLL1 Fractional Divider Configuration Register,     Address offset: 0x34  */
+    UINT32 PLL2DIVR;       /* RCC PLL2 Dividers Configuration Register,               Address offset: 0x38  */
+    UINT32 PLL2FRACR;      /* RCC PLL2 Fractional Divider Configuration Register,     Address offset: 0x3C  */
+    UINT32 PLL3DIVR;       /* RCC PLL3 Dividers Configuration Register,               Address offset: 0x40  */
+    UINT32 PLL3FRACR;      /* RCC PLL3 Fractional Divider Configuration Register,     Address offset: 0x44  */
+    UINT32 RESERVED3;      /* Reserved,                                               Address offset: 0x48  */
+    UINT32 D1CCIPR;        /* RCC Domain 1 Kernel Clock Configuration Register        Address offset: 0x4C  */
+    UINT32 D2CCIP1R;       /* RCC Domain 2 Kernel Clock Configuration Register        Address offset: 0x50  */
+    UINT32 D2CCIP2R;       /* RCC Domain 2 Kernel Clock Configuration Register        Address offset: 0x54  */
+    UINT32 D3CCIPR;        /* RCC Domain 3 Kernel Clock Configuration Register        Address offset: 0x58  */
+    UINT32 RESERVED4;      /* Reserved,                                               Address offset: 0x5C  */
+    UINT32 CIER;           /* RCC Clock Source Interrupt Enable Register              Address offset: 0x60  */
+    UINT32 CIFR;           /* RCC Clock Source Interrupt Flag Register                Address offset: 0x64  */
+    UINT32 CICR;           /* RCC Clock Source Interrupt Clear Register               Address offset: 0x68  */
+    UINT32 RESERVED5;      /* Reserved,                                               Address offset: 0x6C  */
+    UINT32 BDCR;           /* RCC Vswitch Backup Domain Control Register,             Address offset: 0x70  */
+    UINT32 CSR;            /* RCC clock control & status register,                    Address offset: 0x74  */
+    UINT32 RESERVED6;      /* Reserved,                                               Address offset: 0x78  */
+    UINT32 AHB3RSTR;       /* RCC AHB3 peripheral reset register,                     Address offset: 0x7C  */
+    UINT32 AHB1RSTR;       /* RCC AHB1 peripheral reset register,                     Address offset: 0x80  */
+    UINT32 AHB2RSTR;       /* RCC AHB2 peripheral reset register,                     Address offset: 0x84  */
+    UINT32 AHB4RSTR;       /* RCC AHB4 peripheral reset register,                     Address offset: 0x88  */
+    UINT32 APB3RSTR;       /* RCC APB3 peripheral reset register,                     Address offset: 0x8C  */
+    UINT32 APB1LRSTR;      /* RCC APB1 peripheral reset Low Word register,            Address offset: 0x90  */
+    UINT32 APB1HRSTR;      /* RCC APB1 peripheral reset High Word register,           Address offset: 0x94  */
+    UINT32 APB2RSTR;       /* RCC APB2 peripheral reset register,                     Address offset: 0x98  */
+    UINT32 APB4RSTR;       /* RCC APB4 peripheral reset register,                     Address offset: 0x9C  */
+    UINT32 GCR;            /* RCC RCC Global Control  Register,                       Address offset: 0xA0  */
+    UINT32 RESERVED8;      /* Reserved,                                               Address offset: 0xA4  */
+    UINT32 D3AMR;          /* RCC Domain 3 Autonomous Mode Register,                  Address offset: 0xA8  */
+    UINT32 RESERVED11[9];  /* Reserved, 0xAC-0xCC                                     Address offset: 0xAC  */
+    UINT32 RSR;            /* RCC Reset status register,                              Address offset: 0xD0  */
+    UINT32 AHB3ENR;        /* RCC AHB3 peripheral clock  register,                    Address offset: 0xD4  */
+    UINT32 AHB1ENR;        /* RCC AHB1 peripheral clock  register,                    Address offset: 0xD8  */
+    UINT32 AHB2ENR;        /* RCC AHB2 peripheral clock  register,                    Address offset: 0xDC  */
+    UINT32 AHB4ENR;        /* RCC AHB4 peripheral clock  register,                    Address offset: 0xE0  */
+    UINT32 APB3ENR;        /* RCC APB3 peripheral clock  register,                    Address offset: 0xE4  */
+    UINT32 APB1LENR;       /* RCC APB1 peripheral clock  Low Word register,           Address offset: 0xE8  */
+    UINT32 APB1HENR;       /* RCC APB1 peripheral clock  High Word register,          Address offset: 0xEC  */
+    UINT32 APB2ENR;        /* RCC APB2 peripheral clock  register,                    Address offset: 0xF0  */
+    UINT32 APB4ENR;        /* RCC APB4 peripheral clock  register,                    Address offset: 0xF4  */
+    UINT32 RESERVED12;     /* Reserved,                                               Address offset: 0xF8  */
+    UINT32 AHB3LPENR;      /* RCC AHB3 peripheral sleep clock  register,              Address offset: 0xFC  */
+    UINT32 AHB1LPENR;      /* RCC AHB1 peripheral sleep clock  register,              Address offset: 0x100 */
+    UINT32 AHB2LPENR;      /* RCC AHB2 peripheral sleep clock  register,              Address offset: 0x104 */
+    UINT32 AHB4LPENR;      /* RCC AHB4 peripheral sleep clock  register,              Address offset: 0x108 */
+    UINT32 APB3LPENR;      /* RCC APB3 peripheral sleep clock  register,              Address offset: 0x10C */
+    UINT32 APB1LLPENR;     /* RCC APB1 peripheral sleep clock  Low Word register,     Address offset: 0x110 */
+    UINT32 APB1HLPENR;     /* RCC APB1 peripheral sleep clock  High Word register,    Address offset: 0x114 */
+    UINT32 APB2LPENR;      /* RCC APB2 peripheral sleep clock  register,              Address offset: 0x118 */
+    UINT32 APB4LPENR;      /* RCC APB4 peripheral sleep clock  register,              Address offset: 0x11C */
+    UINT32 RESERVED13[4];  /* Reserved, 0x120-0x12C                                   Address offset: 0x120 */
+} RCC_ST;
 
-#define RCC_CR_OFFSET               0x000U
-#define RCC_HSICFGR_OFFSET          0x004U
-#define RCC_CRRCR_OFFSET            0x008U
-#define RCC_CSICFGR_OFFSET          0x00CU     
-#define RCC_CFGR_OFFSET             0x010U
+/* RCC Core Register - Refer to CMSIS Library */
+typedef struct
+{
+    UINT32 RSR;            /* RCC Reset status register,                              Address offset: 0x00 */
+    UINT32 AHB3ENR;        /* RCC AHB3 peripheral clock  register,                    Address offset: 0x04 */
+    UINT32 AHB1ENR;        /* RCC AHB1 peripheral clock  register,                    Address offset: 0x08 */
+    UINT32 AHB2ENR;        /* RCC AHB2 peripheral clock  register,                    Address offset: 0x0C */
+    UINT32 AHB4ENR;        /* RCC AHB4 peripheral clock  register,                    Address offset: 0x10 */
+    UINT32 APB3ENR;        /* RCC APB3 peripheral clock  register,                    Address offset: 0x14 */
+    UINT32 APB1LENR;       /* RCC APB1 peripheral clock  Low Word register,           Address offset: 0x18 */
+    UINT32 APB1HENR;       /* RCC APB1 peripheral clock  High Word register,          Address offset: 0x1C */
+    UINT32 APB2ENR;        /* RCC APB2 peripheral clock  register,                    Address offset: 0x20 */
+    UINT32 APB4ENR;        /* RCC APB4 peripheral clock  register,                    Address offset: 0x24 */
+    UINT32 RESERVED9;      /* Reserved,                                               Address offset: 0x28 */
+    UINT32 AHB3LPENR;      /* RCC AHB3 peripheral sleep clock  register,              Address offset: 0x3C */
+    UINT32 AHB1LPENR;      /* RCC AHB1 peripheral sleep clock  register,              Address offset: 0x40 */
+    UINT32 AHB2LPENR;      /* RCC AHB2 peripheral sleep clock  register,              Address offset: 0x44 */
+    UINT32 AHB4LPENR;      /* RCC AHB4 peripheral sleep clock  register,              Address offset: 0x48 */
+    UINT32 APB3LPENR;      /* RCC APB3 peripheral sleep clock  register,              Address offset: 0x4C */
+    UINT32 APB1LLPENR;     /* RCC APB1 peripheral sleep clock  Low Word register,     Address offset: 0x50 */
+    UINT32 APB1HLPENR;     /* RCC APB1 peripheral sleep clock  High Word register,    Address offset: 0x54 */
+    UINT32 APB2LPENR;      /* RCC APB2 peripheral sleep clock  register,              Address offset: 0x58 */
+    UINT32 APB4LPENR;      /* RCC APB4 peripheral sleep clock  register,              Address offset: 0x5C */
+    UINT32 RESERVED10[4];  /* Reserved, 0x60-0x6C                                     Address offset: 0x60 */
+} RCC_Core_ST;
 
-#define RCC_D1CFGR_OFFSET           0x018U
-#define RCC_D2CFGR_OFFSET           0x01CU
-#define RCC_D3CFGR_OFFSET           0x020U
+#define RCC_BASE    0x58024400U     /* RCC Base Address */
+#define RCC_C1_BASE 0x58024530U     /* RCC Core 1 Base Address */
+#define RCC_C2_BASE 0x58024590U     /* RCC Core 2 Base Address */
 
-#define RCC_PLLCKSELR_OFFSET        0x028U
-#define RCC_PLLCFGR_OFFSET          0x02CU
-#define RCC_PLL1DIVR_OFFSET         0x030U
-#define RCC_PLL1FRACR_OFFSET        0x034U
-#define RCC_PLL2DIVR_OFFSET         0x038U
-#define RCC_PLL2FRACR_OFFSET        0x03CU
-#define RCC_PLL3DIVR_OFFSET         0x040U
-#define RCC_PLL3FRACR_OFFSET        0x044U
-
-#define RCC_D1CCIPR_OFFSET          0x04CU
-#define RCC_D2CCIP1R_OFFSET         0x050U
-#define RCC_D2CCIP2R_OFFSET         0x054U
-#define RCC_D3CCIPR_OFFSET          0x058U
-
-#define RCC_CIER_OFFSET             0x060U
-#define RCC_CIFR_OFFSET             0x064U
-#define RCC_CICR_OFFSET             0x068U
-#define RCC_BDCR_OFFSET             0x070U
-#define RCC_CSR_OFFSET              0x074U
-
-#define RCC_AHB3RSTR_OFFSET         0x07CU
-#define RCC_AHB1RSTR_OFFSET         0x080U
-#define RCC_AHB2RSTR_OFFSET         0x084U
-#define RCC_AHB4RSTR_OFFSET         0x088U
-#define RCC_APB3RSTR_OFFSET         0x08CU
-#define RCC_APB1LRSTR_OFFSET        0x090U
-#define RCC_APB1HRSTR_OFFSET        0x094U
-#define RCC_APB2RSTR_OFFSET         0x098U
-#define RCC_APB4RSTR_OFFSET         0x09CU
-
-#define RCC_GCR_OFFSET              0x0A0U
-#define RCC_D3AMR_OFFSET            0x0A8U
-
-#define RCC_RSR_OFFSET              0x0D0U
-#define RCC_C1_RSR_OFFSET           0x130U
-#define RCC_C2_RSR_OFFSET           0x190U
-
-#define RCC_AHB3ENR_OFFSET          0x0D4U
-#define RCC_C1_AHB3ENR_OFFSET       0x134U
-#define RCC_C2_AHB3ENR_OFFSET       0x194U
-
-#define RCC_AHB1ENR_OFFSET          0x0D8U
-#define RCC_C1_AHB1ENR_OFFSET       0x138U
-#define RCC_C2_AHB1ENR_OFFSET       0x198U
-
-#define RCC_AHB2ENR_OFFSET          0x0DCU
-#define RCC_C1_AHB2ENR_OFFSET       0x13CU
-#define RCC_C2_AHB2ENR_OFFSET       0x19CU
-
-#define RCC_AHB4ENR_OFFSET          0x0E0U
-#define RCC_C1_AHB4ENR_OFFSET       0x140U
-#define RCC_C2_AHB4ENR_OFFSET       0x1A0U
-
-#define RCC_APB3ENR_OFFSET          0x0E4U
-#define RCC_C1_APB3ENR_OFFSET       0x144U
-#define RCC_C2_APB3ENR_OFFSET       0x1A4U
-
-#define RCC_APB1LENR_OFFSET         0x0E8U
-#define RCC_C1_APB1LENR_OFFSET      0x148U
-#define RCC_C2_APB1LENR_OFFSET      0x1A8U
-
-#define RCC_APB1HENR_OFFSET         0x0ECU
-#define RCC_C1_APB1HENR_OFFSET      0x14CU
-#define RCC_C2_APB1HENR_OFFSET      0x1ACU
-
-#define RCC_APB2ENR_OFFSET          0x0F0U
-#define RCC_C1_APB2ENR_OFFSET       0x150U
-#define RCC_C2_APB2ENR_OFFSET       0x1B0U
-
-#define RCC_APB4ENR_OFFSET          0x0F4U
-#define RCC_C1_APB4ENR_OFFSET       0x154U
-#define RCC_C2_APB4ENR_OFFSET       0x1B4U
-
-#define RCC_AHB3LPENR_OFFSET        0x0FCU
-#define RCC_C1_AHB3LPENR_OFFSET     0x15CU
-#define RCC_C2_AHB3LPENR_OFFSET     0x1BCU
-
-#define RCC_AHB1LPENR_OFFSET        0x100U
-#define RCC_C1_AHB1LPENR_OFFSET     0x160U
-#define RCC_C2_AHB1LPENR_OFFSET     0x1C0U
-
-#define RCC_AHB2LPENR_OFFSET        0x104U
-#define RCC_C1_AHB2LPENR_OFFSET     0x164U
-#define RCC_C2_AHB2LPENR_OFFSET     0x1C4U
-
-#define RCC_AHB4LPENR_OFFSET        0x108U
-#define RCC_C1_AHB4LPENR_OFFSET     0x168U
-#define RCC_C2_AHB4LPENR_OFFSET     0x1C8U
-
-#define RCC_APB3LPENR_OFFSET        0x10CU
-#define RCC_C1_APB3LPENR_OFFSET     0x16CU
-#define RCC_C2_APB3LPENR_OFFSET     0x1CCU
-
-#define RCC_APB1LLPENR_OFFSET       0x110U
-#define RCC_C1_APB1LLPENR_OFFSET    0x170U
-#define RCC_C2_APB1LLPENR_OFFSET    0x1D0U
-
-#define RCC_APB1HLPENR_OFFSET       0x114U
-#define RCC_C1_APB1HLPENR_OFFSET    0x174U
-#define RCC_C2_APB1HLPENR_OFFSET    0x1D4U
-
-#define RCC_APB2LPENR_OFFSET        0x118U
-#define RCC_C1_APB2LPENR_OFFSET     0x178U
-#define RCC_C2_APB2LPENR_OFFSET     0x1D8U
-
-#define RCC_APB4LPENR_OFFSET        0x11CU
-#define RCC_C1_APB4LPENR_OFFSET     0x17CU
-#define RCC_C2_APB4LPENR_OFFSET     0x1DCU
-
-
-#define RCC_CR                      (RCC_BASE + RCC_CR_OFFSET)
-#define RCC_HSICFGR                 (RCC_BASE + RCC_HSICFGR_OFFSET)
-#define RCC_CRRCR                   (RCC_BASE + RCC_CRRCR_OFFSET)
-#define RCC_CSICFGR                 (RCC_BASE + RCC_CSICFGR_OFFSET)
-#define RCC_CFGR                    (RCC_BASE + RCC_CFGR_OFFSET)
-
-#define RCC_D1CFGR                  (RCC_BASE + RCC_D1CFGR_OFFSET)
-#define RCC_D2CFGR                  (RCC_BASE + RCC_D2CFGR_OFFSET)
-#define RCC_D3CFGR                  (RCC_BASE + RCC_D3CFGR_OFFSET)
-
-#define RCC_PLLCKSELR               (RCC_BASE + RCC_PLLCKSELR_OFFSET)
-#define RCC_PLLCFGR                 (RCC_BASE + RCC_PLLCFGR_OFFSET)
-#define RCC_PLL1DIVR                (RCC_BASE + RCC_PLL1DIVR_OFFSET)
-#define RCC_PLL1FRACR               (RCC_BASE + RCC_PLL1FRACR_OFFSET)
-#define RCC_PLL2DIVR                (RCC_BASE + RCC_PLL2DIVR_OFFSET)
-#define RCC_PLL2FRACR               (RCC_BASE + RCC_PLL2FRACR_OFFSET)
-#define RCC_PLL3DIVR                (RCC_BASE + RCC_PLL3DIVR_OFFSET)
-#define RCC_PLL3FRACR               (RCC_BASE + RCC_PLL3FRACR_OFFSET)
-
-#define RCC_D1CCIPR                 (RCC_BASE + RCC_D1CCIPR_OFFSET)
-#define RCC_D2CCIP1R                (RCC_BASE + RCC_D2CCIP1R_OFFSET)
-#define RCC_D2CCIP2R                (RCC_BASE + RCC_D2CCIP2R_OFFSET)
-#define RCC_D3CCIPR                 (RCC_BASE + RCC_D3CCIPR_OFFSET)
-
-#define RCC_CIER                    (RCC_BASE + RCC_CIER_OFFSET)
-#define RCC_CIFR                    (RCC_BASE + RCC_CIFR_OFFSET)
-#define RCC_CICR                    (RCC_BASE + RCC_CICR_OFFSET)
-#define RCC_BDCR                    (RCC_BASE + RCC_BDCR_OFFSET)
-#define RCC_CSR                     (RCC_BASE + RCC_CSR_OFFSET)
-
-#define RCC_AHB3RSTR                (RCC_BASE + RCC_AHB3RSTR_OFFSET)
-#define RCC_AHB1RSTR                (RCC_BASE + RCC_AHB1RSTR_OFFSET)
-#define RCC_AHB2RSTR                (RCC_BASE + RCC_AHB2RSTR_OFFSET)
-#define RCC_AHB4RSTR                (RCC_BASE + RCC_AHB4RSTR_OFFSET)
-#define RCC_APB3RSTR                (RCC_BASE + RCC_APB3RSTR_OFFSET)
-#define RCC_APB1LRSTR               (RCC_BASE + RCC_APB1LRSTR_OFFSET)
-#define RCC_APB1HRSTR               (RCC_BASE + RCC_APB1HRSTR_OFFSET)
-#define RCC_APB2RSTR                (RCC_BASE + RCC_APB2RSTR_OFFSET)
-#define RCC_APB4RSTR                (RCC_BASE + RCC_APB4RSTR_OFFSET)
-
-#define RCC_GCR                     (RCC_BASE + RCC_GCR_OFFSET)
-#define RCC_D3AMR                   (RCC_BASE + RCC_D3AMR_OFFSET)
-
-#define RCC_RSR                     (RCC_BASE + RCC_RSR_OFFSET)
-#define RCC_C1_RSR                  (RCC_BASE + RCC_C1_RSR_OFFSET)
-#define RCC_C2_RSR                  (RCC_BASE + RCC_C2_RSR_OFFSET)
-
-#define RCC_AHB3ENR                 (RCC_BASE + RCC_AHB3ENR_OFFSET)
-#define RCC_C1_AHB3ENR              (RCC_BASE + RCC_C1_AHB3ENR_OFFSET)
-#define RCC_C2_AHB3ENR              (RCC_BASE + RCC_C2_AHB3ENR_OFFSET)
-
-#define RCC_AHB1ENR                 (RCC_BASE + RCC_AHB1ENR_OFFSET)
-#define RCC_C1_AHB1ENR              (RCC_BASE + RCC_C1_AHB1ENR_OFFSET)
-#define RCC_C2_AHB1ENR              (RCC_BASE + RCC_C2_AHB1ENR_OFFSET)
-
-#define RCC_AHB2ENR                 (RCC_BASE + RCC_AHB2ENR_OFFSET)
-#define RCC_C1_AHB2ENR              (RCC_BASE + RCC_C1_AHB2ENR_OFFSET)
-#define RCC_C2_AHB2ENR              (RCC_BASE + RCC_C2_AHB2ENR_OFFSET)
-
-#define RCC_AHB4ENR                 (RCC_BASE + RCC_AHB4ENR_OFFSET)
-#define RCC_C1_AHB4ENR              (RCC_BASE + RCC_C1_AHB4ENR_OFFSET)
-#define RCC_C2_AHB4ENR              (RCC_BASE + RCC_C2_AHB4ENR_OFFSET)
-
-#define RCC_APB3ENR                 (RCC_BASE + RCC_APB3ENR_OFFSET)
-#define RCC_C1_APB3ENR              (RCC_BASE + RCC_C1_APB3ENR_OFFSET)
-#define RCC_C2_APB3ENR              (RCC_BASE + RCC_C2_APB3ENR_OFFSET)
-
-#define RCC_APB1LENR                (RCC_BASE + RCC_APB1LENR_OFFSET)
-#define RCC_C1_APB1LENR             (RCC_BASE + RCC_C1_APB1LENR_OFFSET)
-#define RCC_C2_APB1LENR             (RCC_BASE + RCC_C2_APB1LENR_OFFSET)
-
-#define RCC_APB1HENR                (RCC_BASE + RCC_APB1HENR_OFFSET)
-#define RCC_C1_APB1HENR             (RCC_BASE + RCC_C1_APB1HENR_OFFSET)
-#define RCC_C2_APB1HENR             (RCC_BASE + RCC_C2_APB1HENR_OFFSET)
-
-#define RCC_APB2ENR                 (RCC_BASE + RCC_APB2ENR_OFFSET)
-#define RCC_C1_APB2ENR              (RCC_BASE + RCC_C1_APB2ENR_OFFSET)
-#define RCC_C2_APB2ENR              (RCC_BASE + RCC_C2_APB2ENR_OFFSET)
-
-#define RCC_APB4ENR                 (RCC_BASE + RCC_APB4ENR_OFFSET)
-#define RCC_C1_APB4ENR              (RCC_BASE + RCC_C1_APB4ENR_OFFSET)
-#define RCC_C2_APB4ENR              (RCC_BASE + RCC_C2_APB4ENR_OFFSET)
-
-#define RCC_AHB3LPENR               (RCC_BASE + RCC_AHB3LPENR_OFFSET)
-#define RCC_C1_AHB3LPENR            (RCC_BASE + RCC_C1_AHB3LPENR_OFFSET)
-#define RCC_C2_AHB3LPENR            (RCC_BASE + RCC_C2_AHB3LPENR_OFFSET)
-
-#define RCC_AHB1LPENR               (RCC_BASE + RCC_AHB1LPENR_OFFSET)
-#define RCC_C1_AHB1LPENR            (RCC_BASE + RCC_C1_AHB1LPENR_OFFSET)
-#define RCC_C2_AHB1LPENR            (RCC_BASE + RCC_C2_AHB1LPENR_OFFSET)
-
-#define RCC_AHB2LPENR               (RCC_BASE + RCC_AHB2LPENR_OFFSET)
-#define RCC_C1_AHB2LPENR            (RCC_BASE + RCC_C1_AHB2LPENR_OFFSET)
-#define RCC_C2_AHB2LPENR            (RCC_BASE + RCC_C2_AHB2LPENR_OFFSET)
-
-#define RCC_AHB4LPENR               (RCC_BASE + RCC_AHB4LPENR_OFFSET)
-#define RCC_C1_AHB4LPENR            (RCC_BASE + RCC_C1_AHB4LPENR_OFFSET)
-#define RCC_C2_AHB4LPENR            (RCC_BASE + RCC_C2_AHB4LPENR_OFFSET)
-
-#define RCC_APB3LPENR               (RCC_BASE + RCC_APB3LPENR_OFFSET)
-#define RCC_C1_APB3LPENR            (RCC_BASE + RCC_C1_APB3LPENR_OFFSET)
-#define RCC_C2_APB3LPENR            (RCC_BASE + RCC_C2_APB3LPENR_OFFSET)
-
-#define RCC_APB1LLPENR              (RCC_BASE + RCC_APB1LLPENR_OFFSET)
-#define RCC_C1_APB1LLPENR           (RCC_BASE + RCC_C1_APB1LLPENR_OFFSET)
-#define RCC_C2_APB1LLPENR           (RCC_BASE + RCC_C2_APB1LLPENR_OFFSET)
-
-#define RCC_APB1HLPENR              (RCC_BASE + RCC_APB1HLPENR_OFFSET)
-#define RCC_C1_APB1HLPENR           (RCC_BASE + RCC_C1_APB1HLPENR_OFFSET)
-#define RCC_C2_APB1HLPENR           (RCC_BASE + RCC_C2_APB1HLPENR_OFFSET)
-
-#define RCC_APB2LPENR               (RCC_BASE + RCC_APB2LPENR_OFFSET)
-#define RCC_C1_APB2LPENR            (RCC_BASE + RCC_C1_APB2LPENR_OFFSET)
-#define RCC_C2_APB2LPENR            (RCC_BASE + RCC_C2_APB2LPENR_OFFSET)
-
-#define RCC_APB4LPENR               (RCC_BASE + RCC_APB4LPENR_OFFSET)
-#define RCC_C1_APB4LPENR            (RCC_BASE + RCC_C1_APB4LPENR_OFFSET)
-#define RCC_C2_APB4LPENR            (RCC_BASE + RCC_C2_APB4LPENR_OFFSET)
+/* RCC & RCC Core Declaration */
+#define RCC         ((RCC_ST *) RCC_BASE)
+#define RCC_C1      ((RCC_Core_ST *) RCC_C1_BASE)
+#define RCC_C2      ((RCC_Core_ST *) RCC_C2_BASE)
 
 #endif
