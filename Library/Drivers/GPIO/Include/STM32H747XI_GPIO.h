@@ -85,6 +85,5 @@ typedef struct
 
 extern void GPIO_Enable_ClockSource(UINT16 GPIOx_CLKSRC);
 extern void GPIO_Disable_ClockSource(UINT16 GPIOx_CLKSRC);
-extern void GPIO_PinConfig(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Mode);
 
 #endif
