@@ -23,23 +23,23 @@ void GPIO_Disable_ClockSource(UINT16 GPIOx_CLKSRC)
 void GPIO_Mode_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Mode)
 {
     // Clear the mode register
-    GPIOx->MODER &= ~(GPIO_Mode_Input << (Pin * 2));
+    CLEAR_BIT(GPIOx->MODER, (0x3 << (Pin * 2)));
     // Set the new mode
-    GPIOx->MODER |= ((Mode & 0x3) << (Pin * 2));
+    SET_BIT(GPIOx->MODER, ((Mode & 0x3) << (Pin * 2)));
 }
 
 void GPIO_Pull_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Pull)
 {
     // Clear the pull-up/pull-down register
-    GPIOx->PUPDR &= ~(GPIO_No_Pull << (Pin * 2));
+    CLEAR_BIT(GPIOx->PUPDR, (0x3 << (Pin * 2)));
     // Set the new value
-    GPIOx->PUPDR |= ((Pull & 0x3) << (Pin * 2));
+    SET_BIT(GPIOx->PUPDR, ((Pull & 0x3) << (Pin * 2)));
 }
 
 void GPIO_OutputType_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 OutputType)
 {
     // Clear the output type register
-    GPIOx->OTYPER &= ~(GPIO_Output_PushPull << (Pin * 1));
+    CLEAR_BIT(GPIOx->OTYPER, (0x1 << Pin));
     // Set the new value
-    GPIOx->OTYPER |= ((OutputType & 0x3) << (Pin * 1));
+    SET_BIT(GPIOx->OTYPER, (OutputType << Pin));
 }
