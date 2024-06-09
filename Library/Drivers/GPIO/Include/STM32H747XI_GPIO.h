@@ -83,7 +83,20 @@ typedef struct
 #define GPIO_Mode_Alternate_Funtion         2U
 #define GPIO_Mode_Analog                    3U
 
+/* GPIO Reister Pull Value */
+#define GPIO_No_Pull                        0U
+#define GPIO_Pull_Up                        1U
+#define GPIO_Pull_Down                      2U
+#define GPIO_Pull_Reserved                  3U
+
+/* GPIO Output Type Value */
+#define GPIO_Output_PushPull                0U
+#define GPIO_Output_OpenDrain               1U
+
 extern void GPIO_Enable_ClockSource(UINT16 GPIOx_CLKSRC);
 extern void GPIO_Disable_ClockSource(UINT16 GPIOx_CLKSRC);
+extern void GPIO_Mode_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Mode);
+extern void GPIO_Pull_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Pull);
+extern void GPIO_OutputType_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 OutputType); 
 
 #endif
