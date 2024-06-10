@@ -8,4 +8,6 @@
 #define USER_LED_3_USED      STD_OFF
 #define USER_LED_4_USED      STD_OFF     
 
+#define WK_BUTTON_USED       STD_ON
+
 #endif

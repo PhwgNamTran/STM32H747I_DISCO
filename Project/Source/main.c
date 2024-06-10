@@ -1,49 +1,52 @@
 #include "Common.h"
 #include "STM32H747XI_RCC.h"
 #include "STM32H747XI_GPIO.h"
+#include "UserLED.h"
+#include "WkButton.h"
+
+
+#define LED_ON_STATE    TRUE
+#define LED_OFF_STATE   FALSE
+
+void BlinkLED_StateMachine(void)
+{
+    static BOOL LED_State_B = LED_OFF_STATE;
+    switch (LED_State_B)
+    {
+        case LED_OFF_STATE:
+            if(WK_Button_Pressed_then_Released_B())
+            {
+                UserLED_ON(UserLED_1);
+                LED_State_B = LED_ON_STATE;
+            }
+            break;
+
+        case LED_ON_STATE:
+            if(WK_Button_Pressed_then_Released_B())
+            {
+                UserLED_OFF(UserLED_1);
+                LED_State_B = LED_OFF_STATE;
+            }
+            break;   
+
+        default:
+            break;
+    }
+}
 
 int main(void)
 {
-    /* Enable clock for GPIO_C */
-    GPIO_Enable_ClockSource(GPIO_C_CLKSRC);
-
-    /* Set GPIO_C_PIN13 mode as Input Mode */
-    CLEAR_BIT(GPIO_C->MODER, (3 << 26));
-
-    /* Reset GPIO_C_PIN13 pull up/down register*/
-    CLEAR_BIT(GPIO_C->PUPDR, (3 << 26));
-
-    /* Set GPIO_C_PIN13 register pull-down*/
-    SET_BIT(GPIO_C->PUPDR, (2 << 26));
-
-    /* Enable clock for GPIO_I */
-    GPIO_Enable_ClockSource(GPIO_I_CLKSRC);
-
-    /* Reset Mode for GPIO_I_PIN12 */
-    CLEAR_BIT(GPIO_I->MODER, (3 << 24));
-
-    /* Set GPIO_I_PIN12 mode as General Output Mode */
-    SET_BIT(GPIO_I->MODER, (1 << 24));
-
-    /* Set GPIO_I_PIN12 No register pull up/down */
-    CLEAR_BIT(GPIO_I->PUPDR, (3 << 24));
-
-    /* Set GPIO_I_PIN12 Output type to Open-drain */
-    CLEAR_BIT(GPIO_I->OTYPER, (1 << 12));
+    UserLED_Init();
+    WK_Button_Init();
+    
+    UserLED_OFF(UserLED_1);
+    UserLED_OFF(UserLED_2);
+    UserLED_OFF(UserLED_3);
+    UserLED_OFF(UserLED_4);
 
     while (1) 
     {
-        /* Check if WK_Button is NOT pressed */
-        if(CHECK_BIT(GPIO_C->IDR, (1 << 13)))
-        {
-            /* OFF USER LED1 */
-            CLEAR_BIT(GPIO_I->ODR, (1 << 12));
-        }
-        else
-        {
-            /* ON USER LED1 */
-            SET_BIT(GPIO_I->ODR, (1 << 12));
-        }
+        BlinkLED_StateMachine();
     }
 
     return 0;
