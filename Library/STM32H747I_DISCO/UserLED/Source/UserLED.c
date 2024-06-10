@@ -4,6 +4,12 @@
 #include "UserLED.h"
 #include "Project_config.h"
 
+
+/*
+Function description: Init UserLED.
+        - Enable Cloclsource.
+        - Config GPIO Mode, Pull resistor and Output type.
+*/
 void UserLED_Init(void)
 {
     /* Enable clock for UserLED */
@@ -32,4 +38,68 @@ void UserLED_Init(void)
     GPIO_Pull_Set(UserLED_Port, UserLED_4_PIN, GPIO_No_Pull);
     GPIO_OutputType_Set(UserLED_Port, UserLED_4_PIN, GPIO_Output_PushPull);
 #endif
+}
+
+/*
+Function description: Turn ON UserLED.
+*/
+void UserLED_ON(UINT8 UserLEDx)
+{
+    switch (UserLEDx)
+    {
+#if(USER_LED_1_USED == STD_ON)
+        case UserLED_1:
+            GPIO_OutputData_Set(UserLED_Port, UserLED_1_PIN);
+            break;
+#endif
+#if(USER_LED_2_USED == STD_ON)
+        case UserLED_2:
+            GPIO_OutputData_Set(UserLED_Port, UserLED_2_PIN);
+            break;
+#endif
+#if(USER_LED_3_USED == STD_ON)
+        case UserLED_3:
+            GPIO_OutputData_Set(UserLED_Port, UserLED_3_PIN);
+            break;
+#endif
+#if(USER_LED_4_USED == STD_ON)
+        case UserLED_4:
+            GPIO_OutputData_Set(UserLED_Port, UserLED_4_PIN);
+            break;
+#endif
+        default:
+            break;
+    }
+}
+
+/*
+Function description: Turn OFF UserLED.
+*/
+void UserLED_OFF(UINT8 UserLEDx)
+{
+    switch (UserLEDx)
+    {
+#if(USER_LED_1_USED == STD_ON)
+        case UserLED_1:
+            GPIO_OutputData_Reset(UserLED_Port, UserLED_1_PIN);
+            break;
+#endif
+#if(USER_LED_2_USED == STD_ON)
+        case UserLED_2:
+            GPIO_OutputData_Reset(UserLED_Port, UserLED_2_PIN);
+            break;
+#endif
+#if(USER_LED_3_USED == STD_ON)
+        case UserLED_3:
+            GPIO_OutputData_Reset(UserLED_Port, UserLED_3_PIN);
+            break;
+#endif
+#if(USER_LED_4_USED == STD_ON)
+        case UserLED_4:
+            GPIO_OutputData_Reset(UserLED_Port, UserLED_4_PIN);
+            break;
+#endif
+        default:
+            break;
+    }
 }

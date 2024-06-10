@@ -13,6 +13,13 @@
 #define UserLED_3_PIN       14
 #define UserLED_4_PIN       15
 
+#define UserLED_1           0
+#define UserLED_2           1
+#define UserLED_3           2
+#define UserLED_4           3
+
 extern void UserLED_Init(void);
+extern void UserLED_ON(UINT8 UserLEDx);
+extern void UserLED_OFF(UINT8 UserLEDx);
 
 #endif
