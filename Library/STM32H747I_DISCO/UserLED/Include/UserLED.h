@@ -8,15 +8,15 @@
 #define UserLED_ClockSrc    GPIO_C_CLKSRC
 #define UserLED_Port        GPIO_I
 
-#define UserLED_1_PIN       12
-#define UserLED_2_PIN       13
-#define UserLED_3_PIN       14
-#define UserLED_4_PIN       15
+#define UserLED_1_PIN       12U
+#define UserLED_2_PIN       13U
+#define UserLED_3_PIN       14U
+#define UserLED_4_PIN       15U
 
-#define UserLED_1           0
-#define UserLED_2           1
-#define UserLED_3           2
-#define UserLED_4           3
+#define UserLED_1           0U
+#define UserLED_2           1U
+#define UserLED_3           2U
+#define UserLED_4           3U
 
 extern void UserLED_Init(void);
 extern void UserLED_ON(UINT8 UserLEDx);
