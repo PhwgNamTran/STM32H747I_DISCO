@@ -4,7 +4,6 @@
 #include "UserLED.h"
 #include "WkButton.h"
 
-
 #define LED_ON_STATE    TRUE
 #define LED_OFF_STATE   FALSE
 
@@ -36,15 +35,9 @@ void BlinkLED_StateMachine(void)
 
 int main(void)
 {
-    UserLED_Init();
-    WK_Button_Init();
-    
-    UserLED_OFF(UserLED_1);
-
     while (1) 
     {
         BlinkLED_StateMachine();
     }
-
     return 0;
 }
