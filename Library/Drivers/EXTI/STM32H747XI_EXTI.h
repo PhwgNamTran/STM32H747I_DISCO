@@ -54,4 +54,28 @@ typedef struct
     UINT32 C2PR3;               /*!< EXTI Pending register,                           Address offset: 0xE8 */
 }EXTI_ST;
 
+typedef struct
+{
+    UINT32 IMR1;                /*!< EXTI Interrupt mask register,                Address offset: 0x00 */
+    UINT32 EMR1;                /*!< EXTI Event mask register,                    Address offset: 0x04 */
+    UINT32 PR1;                 /*!< EXTI Pending register,                       Address offset: 0x08 */
+    UINT32 RESERVED1;           /*!< Reserved, 0x0C                                                    */
+    UINT32 IMR2;                /*!< EXTI Interrupt mask register,                Address offset: 0x10 */
+    UINT32 EMR2;                /*!< EXTI Event mask register,                    Address offset: 0x14 */
+    UINT32 PR2;                 /*!< EXTI Pending register,                       Address offset: 0x18 */
+    UINT32 RESERVED2;           /*!< Reserved, 0x1C                                                    */
+    UINT32 IMR3;                /*!< EXTI Interrupt mask register,                Address offset: 0x20 */
+    UINT32 EMR3;                /*!< EXTI Event mask register,                    Address offset: 0x24 */
+    UINT32 PR3;                 /*!< EXTI Pending register,                       Address offset: 0x28 */
+}EXTI_Core_ST;
+
+#define EXTI_BASE       0x58000000UL    /* EXTI Base Address */
+#define EXTI_C1_BASE    0x58000080UL    /* EXTI Core 1 Base Address */
+#define EXTI_C2_BASE    0x580000C0UL    /* EXTI Core 2 Base Address */
+
+/* EXTI & EXTI Core Declaration */
+#define EXTI         ((EXTI_ST *) EXTI_BASE)
+#define EXTI_C1      ((EXTI_Core_ST *) EXTI_C1_BASE)
+#define EXTI_C2      ((EXTI_Core_ST *) EXTI_C2_BASE)
+
 #endif

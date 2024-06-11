@@ -40,4 +40,9 @@ typedef struct
     UINT32 UR17;           /*!< SYSCFG user register 17,                            Address offset: 0x344       */
 } SYSCFG_ST;
 
+#define SYSCFG_BASE     0x58000400UL    /* SYSCFG Base Address */
+
+/* SYSCFG Declaration */
+#define SYSCFG         ((SYSCFG_ST *) SYSCFG_BASE)
+
 #endif
