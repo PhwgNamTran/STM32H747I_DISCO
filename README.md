@@ -5,3 +5,8 @@ Purpose: Self-learning STM32 from bare metal.
 Hardware: STM32H747I_DISC0 Kit
 
 Scope: Change User_LED_1 status when WK_Button is pressed.
+        - LED is OFF at start up.
+        - When button pressed and then release, status LED will change.
+
+Method 1: Read GPIO Pin status
+Method 2: Use HW Interrupt 
