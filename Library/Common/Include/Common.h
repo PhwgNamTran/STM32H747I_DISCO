@@ -35,7 +35,7 @@ typedef BOOL ReturnType;
 #define MODIFY_REG(REG, CLEARMASK, SETMASK)  WRITE_REG((REG), (((READ_REG(REG)) & (~(CLEARMASK))) | (SETMASK)))
 
 
-#define STD_ON  TRUE
-#define STD_OFF FALSE
+#define STD_ON  1
+#define STD_OFF 0
 
 #endif

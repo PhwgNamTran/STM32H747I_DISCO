@@ -40,9 +40,6 @@ int main(void)
     WK_Button_Init();
     
     UserLED_OFF(UserLED_1);
-    UserLED_OFF(UserLED_2);
-    UserLED_OFF(UserLED_3);
-    UserLED_OFF(UserLED_4);
 
     while (1) 
     {
