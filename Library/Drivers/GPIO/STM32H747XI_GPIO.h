@@ -46,18 +46,30 @@ typedef struct
 #define GPIO_J ((GPIO_ST *) GPIO_J_BASE)
 #define GPIO_K ((GPIO_ST *) GPIO_K_BASE)
 
+#define GPIO_A_Num 0
+#define GPIO_B_Num 1
+#define GPIO_C_Num 2
+#define GPIO_D_Num 3
+#define GPIO_E_Num 4
+#define GPIO_F_Num 5
+#define GPIO_G_Num 6
+#define GPIO_H_Num 7
+#define GPIO_I_Num 8
+#define GPIO_J_Num 9
+#define GPIO_K_Num 10
+
 /* GPIO Clocksoure bit in AHB4ENR Register */
-#define GPIO_A_CLKSRC (1 << 0)
-#define GPIO_B_CLKSRC (1 << 1)
-#define GPIO_C_CLKSRC (1 << 2)
-#define GPIO_D_CLKSRC (1 << 3)
-#define GPIO_E_CLKSRC (1 << 4)
-#define GPIO_F_CLKSRC (1 << 5)
-#define GPIO_G_CLKSRC (1 << 6)
-#define GPIO_H_CLKSRC (1 << 7)
-#define GPIO_I_CLKSRC (1 << 8)
-#define GPIO_J_CLKSRC (1 << 9)
-#define GPIO_K_CLKSRC (1 << 10)
+#define GPIO_A_CLKSRC (1 << GPIO_A_Num)
+#define GPIO_B_CLKSRC (1 << GPIO_B_Num)
+#define GPIO_C_CLKSRC (1 << GPIO_C_Num)
+#define GPIO_D_CLKSRC (1 << GPIO_D_Num)
+#define GPIO_E_CLKSRC (1 << GPIO_E_Num)
+#define GPIO_F_CLKSRC (1 << GPIO_F_Num)
+#define GPIO_G_CLKSRC (1 << GPIO_G_Num)
+#define GPIO_H_CLKSRC (1 << GPIO_H_Num)
+#define GPIO_I_CLKSRC (1 << GPIO_I_Num)
+#define GPIO_J_CLKSRC (1 << GPIO_J_Num)
+#define GPIO_K_CLKSRC (1 << GPIO_K_Num)
 
 /* GPIO Pin number definition */
 #define GPIO_PIN_0     0U

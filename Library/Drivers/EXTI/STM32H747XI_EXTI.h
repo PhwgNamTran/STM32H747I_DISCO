@@ -29,17 +29,17 @@ typedef struct
     UINT32 D3PCR3L;             /*!< EXTI D3 Pending clear selection register low, (same register as to SRDPCR3L) Address offset: 0x50 */
     UINT32 D3PCR3H;             /*!< EXTI D3 Pending clear selection register High, (same register as to SRDPCR3H) Address offset: 0x54 */
     UINT32 RESERVED3[10];       /*!< Reserved,                                        0x58 to 0x7C         */
-    UINT32 IMR1;                /*!< EXTI Interrupt mask register,                    Address offset: 0x80 */
-    UINT32 EMR1;                /*!< EXTI Event mask register,                        Address offset: 0x84 */
-    UINT32 PR1;                 /*!< EXTI Pending register,                           Address offset: 0x88 */
+    UINT32 C1IMR1;              /*!< EXTI Interrupt mask register,                    Address offset: 0x80 */
+    UINT32 C1EMR1;              /*!< EXTI Event mask register,                        Address offset: 0x84 */
+    UINT32 C1PR1;               /*!< EXTI Pending register,                           Address offset: 0x88 */
     UINT32 RESERVED4;           /*!< Reserved,                                        0x8C                 */
-    UINT32 IMR2;                /*!< EXTI Interrupt mask register,                    Address offset: 0x90 */
-    UINT32 EMR2;                /*!< EXTI Event mask register,                        Address offset: 0x94 */
-    UINT32 PR2;                 /*!< EXTI Pending register,                           Address offset: 0x98 */
+    UINT32 C1IMR2;              /*!< EXTI Interrupt mask register,                    Address offset: 0x90 */
+    UINT32 C1EMR2;              /*!< EXTI Event mask register,                        Address offset: 0x94 */
+    UINT32 C1PR2;               /*!< EXTI Pending register,                           Address offset: 0x98 */
     UINT32 RESERVED5;           /*!< Reserved,                                        0x9C                 */
-    UINT32 IMR3;                /*!< EXTI Interrupt mask register,                    Address offset: 0xA0 */
-    UINT32 EMR3;                /*!< EXTI Event mask register,                        Address offset: 0xA4 */
-    UINT32 PR3;                 /*!< EXTI Pending register,                           Address offset: 0xA8 */
+    UINT32 C1IMR3;              /*!< EXTI Interrupt mask register,                    Address offset: 0xA0 */
+    UINT32 C1EMR3;              /*!< EXTI Event mask register,                        Address offset: 0xA4 */
+    UINT32 C1PR3;               /*!< EXTI Pending register,                           Address offset: 0xA8 */
     UINT32 RESERVED6[5];        /*!< Reserved,                                        0xAC to 0xBC         */
     UINT32 C2IMR1;              /*!< EXTI Interrupt mask register,                    Address offset: 0xC0 */
     UINT32 C2EMR1;              /*!< EXTI Event mask register,                        Address offset: 0xC4 */
