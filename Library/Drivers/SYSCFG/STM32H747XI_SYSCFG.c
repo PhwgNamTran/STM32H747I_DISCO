@@ -5,7 +5,7 @@ Function description: Enable SYSCFG Clocksource.
 Input: N/A
 Return value: N/A
 */
-void SYSCFG_Enable()
+void SYSCFG_Enable(void)
 {
     SET_BIT(RCC->APB4ENR, RCC_APB4ENR_SYSCFGEN); 
 }
@@ -17,7 +17,7 @@ Input:
         - GPIO Pin: 0, 1, ...15.
 Return value: N/A
 */
-void SYSCFG_EXITx_GPIO_Enabled(UINT8 GPIO_x_Num, UINT8 GPIO_Pin)
+void SYSCFG_EXITx_GPIO_Cfg(UINT8 GPIO_x_Num, UINT8 GPIO_Pin)
 {
     if(GPIO_x_Num == GPIO_K_Num 
        && ((GPIO_PIN_8 <= GPIO_Pin)&&(GPIO_PIN_15 >= GPIO_Pin)))
@@ -26,7 +26,7 @@ void SYSCFG_EXITx_GPIO_Enabled(UINT8 GPIO_x_Num, UINT8 GPIO_Pin)
     }
     else
     {
-        CLEAR_BIT(SYSCFG->EXTICR[GPIO_Pin/4], (GPIO_x_Num << ((GPIO_Pin%4)*4)));
-        SET_BIT(SYSCFG->EXTICR[GPIO_Pin/4], (GPIO_x_Num << ((GPIO_Pin%4)*4)));
+        CLEAR_BIT(SYSCFG->EXTICR[GPIO_Pin/4], (0xF << ((GPIO_Pin%4)*4)));
+        SET_BIT(SYSCFG->EXTICR[GPIO_Pin/4], ((GPIO_x_Num & 0xF) << ((GPIO_Pin%4)*4)));
     }
 }

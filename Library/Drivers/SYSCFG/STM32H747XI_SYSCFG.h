@@ -49,7 +49,7 @@ typedef struct
 
 #define RCC_APB4ENR_SYSCFGEN    (1 << 1)
 
-extern void SYSCFG_Enable();
-extern void SYSCFG_EXITx_GPIO_Enabled(UINT8 GPIO_x_Num, UINT8 GPIO_Pin);
+extern void SYSCFG_Enable(void);
+extern void SYSCFG_EXITx_GPIO_Cfg(UINT8 GPIO_x_Num, UINT8 GPIO_Pin);
 
 #endif
