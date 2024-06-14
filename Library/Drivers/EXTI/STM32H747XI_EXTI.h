@@ -168,5 +168,9 @@ extern void EXTI_Enable_Event_Input_Interrupt_C1(UINT8 Event_Input);
 extern void EXTI_Enable_Event_Input_Interrupt_C2(UINT8 Event_Input);
 extern void EXTI_Disable_Event_Input_Interrupt_C1(UINT8 Event_Input);
 extern void EXTI_Disable_Event_Input_Interrupt_C2(UINT8 Event_Input);
+extern void EXTI_Enable_Rising_Trigger(UINT8 Event_Input);
+extern void EXTI_Disable_Rising_Trigger(UINT8 Event_Input);
+extern void EXTI_Enable_Falling_Trigger(UINT8 Event_Input);
+extern void EXTI_Disable_Falling_Trigger(UINT8 Event_Input);
 
 #endif
