@@ -7,7 +7,7 @@ Input:
     - Event_Input number from 0 to 88.
 Return value: N/A
 */
-void EXTI_Enable_Event_Input_Interrupt_C1(UINT8 Event_Input)
+void EXTI_Enable_Event_Input_Interrupt_C1(Event_Input_N Event_Input)
 {
     UINT8 C1IMR_idx = 0;
     UINT8 C1IMR_pos = 0;
@@ -34,7 +34,7 @@ void EXTI_Enable_Event_Input_Interrupt_C1(UINT8 Event_Input)
     } 
 }
 
-void EXTI_Enable_Event_Input_Interrupt_C2(UINT8 Event_Input)
+void EXTI_Enable_Event_Input_Interrupt_C2(Event_Input_N Event_Input)
 {
     UINT8 C2IMR_idx = 0;
     UINT8 C2IMR_pos = 0;
@@ -68,7 +68,7 @@ Input:
     - Event_Input number from 0 to 88.
 Return value: N/A
 */
-void EXTI_Disable_Event_Input_Interrupt_C1(UINT8 Event_Input)
+void EXTI_Disable_Event_Input_Interrupt_C1(Event_Input_N Event_Input)
 {
     UINT8 C1IMR_idx = 0;
     UINT8 C1IMR_pos = 0;
@@ -95,7 +95,7 @@ void EXTI_Disable_Event_Input_Interrupt_C1(UINT8 Event_Input)
     } 
 }
 
-void EXTI_Disable_Event_Input_Interrupt_C2(UINT8 Event_Input)
+void EXTI_Disable_Event_Input_Interrupt_C2(Event_Input_N Event_Input)
 {
     UINT8 C2IMR_idx = 0;
     UINT8 C2IMR_pos = 0;
@@ -130,7 +130,7 @@ Input:
     - Event_Input number from 0 to 88.
 Return value: N/A
 */
-void EXTI_Enable_Rising_Trigger(UINT8 Event_Input)
+void EXTI_Enable_Rising_Trigger(Event_Input_N Event_Input)
 {
     UINT8 RTSR_idx = 0;
     UINT8 RTSR_pos = 0;
@@ -157,7 +157,7 @@ void EXTI_Enable_Rising_Trigger(UINT8 Event_Input)
     } 
 }
 
-void EXTI_Disable_Rising_Trigger(UINT8 Event_Input)
+void EXTI_Disable_Rising_Trigger(Event_Input_N Event_Input)
 {
     UINT8 RTSR_idx = 0;
     UINT8 RTSR_pos = 0;
@@ -191,7 +191,7 @@ Input:
     - Event_Input number from 0 to 88.
 Return value: N/A
 */
-void EXTI_Enable_Falling_Trigger(UINT8 Event_Input)
+void EXTI_Enable_Falling_Trigger(Event_Input_N Event_Input)
 {
     UINT8 FTSR_idx = 0;
     UINT8 FTSR_pos = 0;
@@ -218,7 +218,7 @@ void EXTI_Enable_Falling_Trigger(UINT8 Event_Input)
     } 
 }
 
-void EXTI_Disable_Falling_Trigger(UINT8 Event_Input)
+void EXTI_Disable_Falling_Trigger(Event_Input_N Event_Input)
 {
     UINT8 FTSR_idx = 0;
     UINT8 FTSR_pos = 0;
