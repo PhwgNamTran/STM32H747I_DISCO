@@ -193,7 +193,7 @@ typedef enum
 #define NVIC        ((NVIC_ST *) NVIC_BASE)
 
 extern void   NVIC_EnableIRQ(IRQn_N IRQn);              
-extern UINT32 NVIC_GetEnableIRQ(IRQn_N IRQn);           
+extern BOOL   NVIC_GetEnableIRQ(IRQn_N IRQn);           
 extern void   NVIC_DisableIRQ(IRQn_N IRQn);             
 extern UINT32 NVIC_GetPendingIRQ(IRQn_N IRQn);          
 extern void   NVIC_SetPendingIRQ(IRQn_N IRQn);          
