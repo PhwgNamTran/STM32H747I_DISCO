@@ -67,7 +67,7 @@ g_pfnVectors:
     .word 0                                        // USART1                       
     .word 0                                        // USART2                       
     .word 0                                        // USART3                       
-    .word 0                                        // External Line[15:10]s        
+    .word EXTI15_10_IRQHandler                     // External Line[15:10]s        
     .word 0                                        // RTC Alarm (A and B) through EXTI Line 
     .word 0                                        // Reserved                     
     .word 0                                        // TIM8 Break and TIM12         
@@ -180,6 +180,9 @@ g_pfnVectors:
 
     .weak      SysTick_Handler
     .thumb_set SysTick_Handler,Default_Handler
+
+    .weak      EXTI15_10_IRQHandler
+    .thumb_set EXTI15_10_IRQHandler,Default_Handler
 
 .size  g_pfnVectors, .-g_pfnVectors
 
