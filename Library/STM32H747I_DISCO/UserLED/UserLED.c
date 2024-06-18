@@ -104,3 +104,35 @@ void UserLED_OFF(UINT8 UserLEDx)
             break;
     }
 }
+
+/*
+Function description: TOGGLE UserLED.
+*/
+void UserLED_TOGGLE(UINT8 UserLEDx)
+{
+    switch (UserLEDx)
+    {
+#if(USER_LED_1_USED == STD_ON)
+        case UserLED_1:
+            GPIO_OutputData_Toggle(UserLED_Port, UserLED_1_PIN);
+            break;
+#endif
+#if(USER_LED_2_USED == STD_ON)
+        case UserLED_2:
+            GPIO_OutputData_Toggle(UserLED_Port, UserLED_2_PIN);
+            break;
+#endif
+#if(USER_LED_3_USED == STD_ON)
+        case UserLED_3:
+            GPIO_OutputData_Toggle(UserLED_Port, UserLED_3_PIN);
+            break;
+#endif
+#if(USER_LED_4_USED == STD_ON)
+        case UserLED_4:
+            GPIO_OutputData_Toggle(UserLED_Port, UserLED_4_PIN);
+            break;
+#endif
+        default:
+            break;
+    }
+}

@@ -21,5 +21,6 @@
 extern void UserLED_Init(void);
 extern void UserLED_ON(UINT8 UserLEDx);
 extern void UserLED_OFF(UINT8 UserLEDx);
+extern void UserLED_TOGGLE(UINT8 UserLEDx);
 
 #endif

@@ -93,3 +93,23 @@ void GPIO_OutputData_Reset(GPIO_ST *GPIOx, UINT16 Pin)
     // Clear the output data register
     CLEAR_BIT(GPIOx->ODR, (0x1 << Pin));
 }
+
+/*
+Function description: Reverse value of ODR registor of GPIO Pin.
+Input:
+        - GPIO Port A, B, C, ...K.
+        - GPIO Pin: 0, 1, ...15.
+Return value: N/A
+*/
+void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, UINT16 Pin)
+{
+    // Clear the output data register
+    if(READ_BIT(GPIOx->ODR, (0x1 << Pin)))
+    {
+        CLEAR_BIT(GPIOx->ODR, (0x1 << Pin));
+    }
+    else
+    {
+        SET_BIT(GPIOx->ODR, (0x1 << Pin));
+    }
+}

@@ -244,3 +244,137 @@ void EXTI_Disable_Falling_Trigger(Event_Input_N Event_Input)
             break;
     } 
 }
+
+
+/*
+Function description:
+    - Check if EXTI trigger request is occurred.
+Input:
+    - Event_Input number from 0 to 88.
+Return value:
+    - TRUE: Selected trigger request occurred.
+    - FALSE: No trigger request occurred.
+*/
+BOOL EXTI_Trigger_Request_Occurred_C1_B(Event_Input_N Event_Input)
+{
+    UINT8 PR_idx = 0;
+    UINT8 PR_pos = 0;
+
+    PR_idx = Event_Input/32;
+    PR_pos = Event_Input%32;
+
+    BOOL Request_Occurred_B = FALSE;
+
+    switch (PR_idx)
+    {
+        case 0:
+            Request_Occurred_B = CHECK_BIT(EXTI->C1PR1, (1 << PR_pos));
+            break;
+
+         case 1:
+            Request_Occurred_B = CHECK_BIT(EXTI->C1PR2, (1 << PR_pos));
+            break;
+
+        case 2:
+            Request_Occurred_B = CHECK_BIT(EXTI->C1PR3, (1 << PR_pos));
+            break;
+
+        default:
+            break;
+    }
+
+    return Request_Occurred_B; 
+}
+
+BOOL EXTI_Trigger_Request_Occurred_C2_B(Event_Input_N Event_Input)
+{
+    UINT8 PR_idx = 0;
+    UINT8 PR_pos = 0;
+
+    PR_idx = Event_Input/32;
+    PR_pos = Event_Input%32;
+
+    BOOL Request_Occurred_B = FALSE;
+
+    switch (PR_idx)
+    {
+        case 0:
+            Request_Occurred_B = CHECK_BIT(EXTI->C2PR1, (1 << PR_pos));
+            break;
+
+         case 1:
+            Request_Occurred_B = CHECK_BIT(EXTI->C2PR2, (1 << PR_pos));
+            break;
+
+        case 2:
+            Request_Occurred_B = CHECK_BIT(EXTI->C2PR3, (1 << PR_pos));
+            break;
+
+        default:
+            break;
+    }
+
+    return Request_Occurred_B; 
+}
+
+
+/*
+Function description:
+    - Enable/Disable Rising trigger of Configurable Event input.
+Input:
+    - Event_Input number from 0 to 88.
+Return value: N/A
+*/
+void EXTI_Clear_Trigger_Request_Flag_C1(Event_Input_N Event_Input)
+{
+    UINT8 PR_idx = 0;
+    UINT8 PR_pos = 0;
+
+    PR_idx = Event_Input/32;
+    PR_pos = Event_Input%32;
+
+    switch (PR_idx)
+    {
+        case 0:
+            SET_BIT(EXTI->C1PR1, (1 << PR_pos));
+            break;
+
+         case 1:
+            SET_BIT(EXTI->C1PR2, (1 << PR_pos));
+            break;
+
+        case 2:
+            SET_BIT(EXTI->C1PR3, (1 << PR_pos));
+            break;
+
+        default:
+            break;
+    } 
+}
+
+void EXTI_Clear_Trigger_Request_Flag_C2(Event_Input_N Event_Input)
+{
+    UINT8 PR_idx = 0;
+    UINT8 PR_pos = 0;
+
+    PR_idx = Event_Input/32;
+    PR_pos = Event_Input%32;
+
+    switch (PR_idx)
+    {
+        case 0:
+            SET_BIT(EXTI->C2PR1, (1 << PR_pos));
+            break;
+
+         case 1:
+            SET_BIT(EXTI->C2PR2, (1 << PR_pos));
+            break;
+
+        case 2:
+            SET_BIT(EXTI->C2PR2, (1 << PR_pos));
+            break;
+
+        default:
+            break;
+    } 
+}
