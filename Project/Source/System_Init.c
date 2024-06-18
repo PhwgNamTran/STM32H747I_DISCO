@@ -28,13 +28,8 @@ void Periperals_Init(void)
 
 #if(WK_BUTTON_USED)
     WK_Button_Init();
-    #if(WK_BUTTON_INTERRUPT == STD_ON)
-        SYSCFG_Enable();
-        SYSCFG_EXITx_GPIO_Cfg(WK_Button_Port_Num, WK_Button_PIN);
-        EXTI_Disable_Event_Input_Interrupt_C1(WK_Button_Event_Input);
-        EXTI_Disable_Falling_Trigger(WK_Button_Event_Input);
-        EXTI_Enable_Rising_Trigger(WK_Button_Event_Input);
-        NVIC_EnableIRQ(WK_Button_IRQn);
-    #endif
+#if(WK_BUTTON_Interrupt == STD_ON)
+    WK_Button_Interrupt_Init();
+#endif
 #endif
 }

@@ -5,6 +5,8 @@
 #include "STM32H747XI_GPIO.h"
 #include "STM32H747XI_EXTI.h"
 #include "STM32H747XI_NVIC.h"
+#include "STM32H747XI_SYSCFG.h"
+#include "STM32H747XI_EXTI.h"
 #include "Common.h"
 
 typedef enum
@@ -27,5 +29,6 @@ typedef enum
 extern void WK_Button_Init(void);
 extern ButtonState_N WK_Button_State(void);
 extern BOOL WK_Button_Pressed_then_Released_B(void);
+extern void WK_Button_Interrupt_Init(void);
 
 #endif
