@@ -11,7 +11,7 @@ int main(void)
     while (1) 
     {
 #if(WK_BUTTON_Interrupt != STD_ON)
-        if(WK_Button_Pressed_then_Released_B())
+        if(WK_Button_Released_then_Pressed_B())
         {
             UserLED_TOGGLE(UserLED_1);
         }

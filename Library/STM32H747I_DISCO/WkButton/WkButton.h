@@ -27,8 +27,10 @@ typedef enum
 #define WK_Button_IRQn          IRQn_EXTI15_10
 
 extern void WK_Button_Init(void);
+extern void WK_Button_Interrupt_Init(void);
+
 extern ButtonState_N WK_Button_State(void);
 extern BOOL WK_Button_Pressed_then_Released_B(void);
-extern void WK_Button_Interrupt_Init(void);
+extern BOOL WK_Button_Released_then_Pressed_B(void);
 
 #endif

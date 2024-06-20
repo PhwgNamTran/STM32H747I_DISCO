@@ -44,6 +44,7 @@ ButtonState_N WK_Button_State(void)
 Function description: Check if button state is changed from pressed to released.
 Input: N/A
 Return value: TRUE or FALSE.
+FUNCTION SHOULD BE CALL UNDER CYCLIC FUNCTION OR IN WHILE(1)
 */
 BOOL WK_Button_Pressed_then_Released_B(void)
 {
@@ -67,4 +68,35 @@ BOOL WK_Button_Pressed_then_Released_B(void)
     ls_PrevButton_State_N = ls_CurrButton_State_N;
 
     return l_Pressed_then_Released_B;
+}
+
+/*
+Function description: Check if button state is changed from released to pressed.
+Input: N/A
+Return value: TRUE or FALSE.
+FUNCTION SHOULD BE CALL UNDER CYCLIC FUNCTION OR IN WHILE(1)
+
+*/
+BOOL WK_Button_Released_then_Pressed_B(void)
+{
+    static ButtonState_N ls_PrevButton_State_N = C_Button_Released_N;
+
+    ButtonState_N ls_CurrButton_State_N = C_Button_Released_N;
+
+    BOOL l_Released_then_Pressed_B = FALSE;
+
+    ls_CurrButton_State_N = WK_Button_State();
+
+    if((ls_PrevButton_State_N == C_Button_Released_N) && (ls_CurrButton_State_N == C_Button_Pressed_N))
+    {
+        l_Released_then_Pressed_B = TRUE;
+    }
+    else
+    {
+        l_Released_then_Pressed_B = FALSE;
+    }
+
+    ls_PrevButton_State_N = ls_CurrButton_State_N;
+
+    return l_Released_then_Pressed_B;
 }
