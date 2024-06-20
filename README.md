@@ -8,7 +8,7 @@ Scope: Change User_LED_1 status when WK_Button is pressed.
 
         - LED is OFF at start up.
 
-        - When button is pressed and then released, status LED will change.
+        - When button is pressed, status LED will change.
 
 
 Method 1: Read GPIO Pin status
