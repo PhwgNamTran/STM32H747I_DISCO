@@ -1,6 +1,8 @@
 # STM32H747XI_GPIO
 
-Purpose: Self-learning STM32 from bare metal.
+Purpose: Self-learning STM32 from bare metal
+
+         Build my own library for driver and periperals
 
 Hardware: STM32H747I_DISC0 Kit
 
