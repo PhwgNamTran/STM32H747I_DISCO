@@ -1,4 +1,4 @@
-TARGET = STM32H747XI_GPIO
+TARGET = STM32H747XI
 
 # Define the linker script location and chip architecture.
 LD_SCRIPT = CM7/Linker_STM32H747_CM7.ld
