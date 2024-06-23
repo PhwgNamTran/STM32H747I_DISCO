@@ -1,5 +1,5 @@
 #include "WkButton.h"
-#include "Project_config.h"
+#include "Project_Cfg.h"
 
 /*
 Function description: Init WK Button.

@@ -3,7 +3,7 @@
 
 #include "STM32H747XI_EXTI.h"
 #include "Common.h"
-#include "Project_config.h"
+#include "Project_Cfg.h"
 
 #define EXTI_0_ENABLED                      STD_OFF                          
 #define EXTI_1_ENABLED                      STD_OFF

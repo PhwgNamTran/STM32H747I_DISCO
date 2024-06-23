@@ -1,7 +1,7 @@
 TARGET = STM32H747XI_GPIO
 
 # Define the linker script location and chip architecture.
-LD_SCRIPT = Linker_STM32H747_CM7.ld
+LD_SCRIPT = CM7/Linker_STM32H747_CM7.ld
 MCU_SPEC  = cortex-m7
 
 # Define the source, header and startup file.
