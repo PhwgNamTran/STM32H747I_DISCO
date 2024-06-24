@@ -4,10 +4,13 @@ TARGET = STM32H747XI
 LD_SCRIPT = CM7/Linker_STM32H747XI_CM7.ld
 MCU_SPEC  = cortex-m7
 
+CM7_DIR = CM7
+COMMON_DIR = Common
+
 # Define the source, header and startup file.
-C_SOURCES   = $(shell find . -name "*.c")
-ASM_SOURCES = $(shell find . -name "*.S")
-HEADERS		= $(shell find . -name "*.h")
+C_SOURCES   = $(shell find $(CM7_DIR) $(COMMON_DIR) -name "*.c")
+ASM_SOURCES = $(shell find $(CM7_DIR) $(COMMON_DIR) -name "*.S")
+HEADERS		= $(shell find $(CM7_DIR) $(COMMON_DIR) -name "*.h")
 
 #Define the output folder.
 BUILD_DIR   = Build/CM7
