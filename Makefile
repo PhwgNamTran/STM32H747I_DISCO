@@ -1,7 +1,7 @@
 TARGET = STM32H747XI
 
 # Define the linker script location and chip architecture.
-LD_SCRIPT = CM7/Linker_STM32H747_CM7.ld
+LD_SCRIPT = CM7/Linker_STM32H747XI_CM7.ld
 MCU_SPEC  = cortex-m7
 
 # Define the source, header and startup file.
@@ -10,7 +10,7 @@ ASM_SOURCES = $(shell find . -name "*.S")
 HEADERS		= $(shell find . -name "*.h")
 
 #Define the output folder.
-BUILD_DIR   = Build
+BUILD_DIR   = Build/CM7
 
 # ARM Toolchain definitions
 CC = arm-none-eabi-gcc
