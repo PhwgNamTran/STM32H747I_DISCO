@@ -2,11 +2,13 @@
 #include "Project_Cfg.h"
 
 /*
-Function description: Init UserLED.
-        - Enable Cloclsource.
-        - Config GPIO Mode, Pull resistor and Output type.
-        - Set default state to LED OFF.
-*/
+ * Function: UserLED_Init
+ * ----------------------
+ * Initializes UserLEDs:
+ *   - Enables clock source.
+ *   - Configures GPIO mode, pull resistor, and output type.
+ *   - Sets default state to LED OFF.
+ */
 void UserLED_Init(void)
 {
     /* Enable clock for UserLED */
@@ -42,8 +44,13 @@ void UserLED_Init(void)
 }
 
 /*
-Function description: Turn ON UserLED.
-*/
+ * Function: UserLED_ON
+ * --------------------
+ * Turns ON the specified UserLED.
+ *
+ * Parameters:
+ *   UserLEDx: UserLED number to turn ON (UserLED_1, UserLED_2, UserLED_3, UserLED_4)
+ */
 void UserLED_ON(UINT8 UserLEDx)
 {
     switch (UserLEDx)
@@ -74,8 +81,13 @@ void UserLED_ON(UINT8 UserLEDx)
 }
 
 /*
-Function description: Turn OFF UserLED.
-*/
+ * Function: UserLED_OFF
+ * ---------------------
+ * Turns OFF the specified UserLED.
+ *
+ * Parameters:
+ *   UserLEDx: UserLED number to turn OFF (UserLED_1, UserLED_2, UserLED_3, UserLED_4)
+ */
 void UserLED_OFF(UINT8 UserLEDx)
 {
     switch (UserLEDx)
@@ -106,8 +118,13 @@ void UserLED_OFF(UINT8 UserLEDx)
 }
 
 /*
-Function description: TOGGLE UserLED.
-*/
+ * Function: UserLED_TOGGLE
+ * ------------------------
+ * Toggles the state of the specified UserLED (ON to OFF or OFF to ON).
+ *
+ * Parameters:
+ *   UserLEDx: UserLED number to toggle (UserLED_1, UserLED_2, UserLED_3, UserLED_4)
+ */
 void UserLED_TOGGLE(UINT8 UserLEDx)
 {
     switch (UserLEDx)

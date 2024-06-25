@@ -1,22 +1,36 @@
 #include "STM32H747XI_SYSCFG.h"
 
 /*
-Function description: Enable SYSCFG Clocksource.
-Input: N/A
-Return value: N/A
-*/
+ * Function: SYSCFG_Enable
+ * ------------------------
+ * Enables the SYSCFG clock in RCC's APB4ENR register.
+ *
+ * Parameters:
+ *   None
+ *
+ * Returns:
+ *   None
+ */
 void SYSCFG_Enable(void)
 {
     SET_BIT(RCC->APB4ENR, RCC_APB4ENR_SYSCFGEN); 
 }
 
 /*
-Function description: Enable External Interrupt for GPIO Pin.
-Input:
-        - GPIO Port A, B, C, ...K number 0, 1, 2, ...10.
-        - GPIO Pin: 0, 1, ...15.
-Return value: N/A
-*/
+ * Function: SYSCFG_EXITx_GPIO_Cfg
+ * -------------------------------
+ * Configures the SYSCFG EXTI configuration registers to enable external interrupt for a specific GPIO pin.
+ *
+ * Parameters:
+ *   GPIO_x_Num - GPIO Port number (e.g., GPIO_K_Num)
+ *   GPIO_Pin   - GPIO Pin number (0 to 15)
+ *
+ * Returns:
+ *   None
+ *
+ * Notes:
+ *   GPIO K Pin from 8 to 15 is not supported for EXTI.
+ */
 void SYSCFG_EXITx_GPIO_Cfg(UINT8 GPIO_x_Num, UINT8 GPIO_Pin)
 {
     if(GPIO_x_Num == GPIO_K_Num 

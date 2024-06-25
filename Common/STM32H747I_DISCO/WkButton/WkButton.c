@@ -2,11 +2,14 @@
 #include "Project_Cfg.h"
 
 /*
-Function description: Init WK Button.
-        - Enable Cloclsource.
-        - Config GPIO Mode as Input.
-        - No Pull up/down resister need because of it already has pull down resister at HW level.
-*/
+ * Function: WK_Button_Init
+ * ------------------------
+ * Initializes the WK Button.
+ *
+ * - Enables Clock source.
+ * - Configures GPIO Mode as Input.
+ * - No Pull up/down resistor needed because it already has a pull-down resistor at the HW level.
+ */
 void WK_Button_Init(void)
 {
     GPIO_Enable_ClockSource(WK_Button_ClockSrc);
@@ -14,6 +17,16 @@ void WK_Button_Init(void)
     GPIO_Pull_Set(WK_Button_Port, WK_Button_PIN, GPIO_No_Pull);
 }
 
+/*
+ * Function: WK_Button_Interrupt_Init
+ * ----------------------------------
+ * Initializes WK Button Interrupt.
+ *
+ * - Enables SYSCFG Clock source.
+ * - Configures EXTI GPIO for WK Button.
+ * - Enables Rising trigger and disables Falling trigger for WK Button event input.
+ * - Enables NVIC IRQ for WK Button.
+ */
 void WK_Button_Interrupt_Init(void)
 {
     SYSCFG_Enable();
@@ -25,38 +38,41 @@ void WK_Button_Interrupt_Init(void)
 }
 
 /*
-Function description: Check status of WK button 
-Input: N/A
-Return value:
-        - 0: Button is released.
-        - 1: Button is pressed.
-*/
+ * Function: WK_Button_State
+ * -------------------------
+ * Checks the status of the WK Button.
+ *
+ * Returns:
+ *   Button state:
+ *   - C_Button_Released_N (0): Button is released.
+ *   - C_Button_Pressed_N (1): Button is pressed.
+ */
 ButtonState_N WK_Button_State(void)
 {
     ButtonState_N l_WK_Button_State_N = C_Button_Released_N;
-
     l_WK_Button_State_N = (ButtonState_N)CHECK_BIT(WK_Button_Port->IDR, (0x1 << WK_Button_PIN));
-
     return l_WK_Button_State_N;
 }
 
 /*
-Function description: Check if button state is changed from pressed to released.
-Input: N/A
-Return value: TRUE or FALSE.
-FUNCTION SHOULD BE CALL UNDER CYCLIC FUNCTION OR IN WHILE(1)
-*/
+ * Function: WK_Button_Pressed_then_Released_B
+ * -------------------------------------------
+ * Checks if WK Button state changed from pressed to released.
+ *
+ * Returns:
+ *   - TRUE if button state changed from pressed to released, FALSE otherwise.
+ *
+ * Note: This function should be called under a cyclic function or in while(1).
+ */
 BOOL WK_Button_Pressed_then_Released_B(void)
 {
     static ButtonState_N ls_PrevButton_State_N = C_Button_Released_N;
-
     ButtonState_N ls_CurrButton_State_N = C_Button_Released_N;
-
     BOOL l_Pressed_then_Released_B = FALSE;
 
     ls_CurrButton_State_N = WK_Button_State();
 
-    if((ls_CurrButton_State_N == C_Button_Released_N) && (ls_PrevButton_State_N == C_Button_Pressed_N))
+    if ((ls_CurrButton_State_N == C_Button_Released_N) && (ls_PrevButton_State_N == C_Button_Pressed_N))
     {
         l_Pressed_then_Released_B = TRUE;
     }
@@ -71,23 +87,24 @@ BOOL WK_Button_Pressed_then_Released_B(void)
 }
 
 /*
-Function description: Check if button state is changed from released to pressed.
-Input: N/A
-Return value: TRUE or FALSE.
-FUNCTION SHOULD BE CALL UNDER CYCLIC FUNCTION OR IN WHILE(1)
-
-*/
+ * Function: WK_Button_Released_then_Pressed_B
+ * -------------------------------------------
+ * Checks if WK Button state changed from released to pressed.
+ *
+ * Returns:
+ *   - TRUE if button state changed from released to pressed, FALSE otherwise.
+ *
+ * Note: This function should be called under a cyclic function or in while(1).
+ */
 BOOL WK_Button_Released_then_Pressed_B(void)
 {
     static ButtonState_N ls_PrevButton_State_N = C_Button_Released_N;
-
     ButtonState_N ls_CurrButton_State_N = C_Button_Released_N;
-
     BOOL l_Released_then_Pressed_B = FALSE;
 
     ls_CurrButton_State_N = WK_Button_State();
 
-    if((ls_PrevButton_State_N == C_Button_Released_N) && (ls_CurrButton_State_N == C_Button_Pressed_N))
+    if ((ls_PrevButton_State_N == C_Button_Released_N) && (ls_CurrButton_State_N == C_Button_Pressed_N))
     {
         l_Released_then_Pressed_B = TRUE;
     }

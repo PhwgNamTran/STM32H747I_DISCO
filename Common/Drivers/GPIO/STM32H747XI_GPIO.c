@@ -1,110 +1,157 @@
 #include "STM32H747XI_GPIO.h"
 
 /*
-Function description: Enable Clock Source of GPIO Port
-Input: GPIO Port A, B, C, ...K.
-Return value: N/A
-*/
+ * Function: GPIO_Enable_ClockSource
+ * --------------------
+ * Enables the clock source for a GPIO port.
+ *
+ * Parameters:
+ *   GPIOx_CLKSRC: GPIO Port Clock Source to enable.
+ *                 Use GPIOx_CLKSRC macros defined in STM32H747XI_GPIO.h.
+ *
+ * Returns:
+ *   None
+ */
 void GPIO_Enable_ClockSource(UINT16 GPIOx_CLKSRC)
 {
     SET_BIT(RCC->AHB4ENR, GPIOx_CLKSRC);
 }
 
 /*
-Function description: Disable Clock Source of GPIO Port
-Input: GPIO Port A, B, C, ...K.
-Return value: N/A
-*/
+ * Function: GPIO_Disable_ClockSource
+ * --------------------
+ * Disables the clock source for a GPIO port.
+ *
+ * Parameters:
+ *   GPIOx_CLKSRC: GPIO Port Clock Source to disable.
+ *                 Use GPIOx_CLKSRC macros defined in STM32H747XI_GPIO.h.
+ *
+ * Returns:
+ *   None
+ */
 void GPIO_Disable_ClockSource(UINT16 GPIOx_CLKSRC)
 {
     CLEAR_BIT(RCC->AHB4ENR, GPIOx_CLKSRC);
 }
 
 /*
-Function description: Set value for GPIO Mode register
-Input:
-        - GPIO Port A, B, C, ...K.
-        - GPIO Pin 0, 1, ...15.
-        - Mode: Input, Output, Alternate Function, Analog.
-Return value: N/A
-*/
+ * Function: GPIO_Mode_Set
+ * --------------------
+ * Sets the mode for a GPIO pin.
+ *
+ * Parameters:
+ *   GPIOx: Pointer to GPIO structure (GPIO Port A, B, C, ...K).
+ *   Pin: GPIO Pin number (0 to 15).
+ *   Mode: GPIO mode to set (Input, Output, Alternate Function, Analog).
+ *         Use GPIO_MODE_* macros defined in STM32H747XI_GPIO.h.
+ *
+ * Returns:
+ *   None
+ */
 void GPIO_Mode_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Mode)
 {
-    // Clear the mode register
+    // Clear the mode register for the specified pin
     CLEAR_BIT(GPIOx->MODER, (0x3 << (Pin * 2)));
-    // Set the new mode
+    // Set the new mode for the specified pin
     SET_BIT(GPIOx->MODER, ((Mode & 0x3) << (Pin * 2)));
 }
 
 /*
-Function description: Set value for GPIO pull up/down resistor 
-Input:
-        - GPIO Port A, B, C, ...K.
-        - GPIO Pin: 0, 1, ...15.
-        - Pull mode: No pull, Pull up, Pull down, Reserved.
-Return value: N/A
-*/
+ * Function: GPIO_Pull_Set
+ * --------------------
+ * Configures the pull-up/pull-down resistor for a GPIO pin.
+ *
+ * Parameters:
+ *   GPIOx: Pointer to GPIO structure (GPIO Port A, B, C, ...K).
+ *   Pin: GPIO Pin number (0 to 15).
+ *   Pull: Pull-up/pull-down configuration (No pull, Pull up, Pull down, Reserved).
+ *         Use GPIO_PULL_* macros defined in STM32H747XI_GPIO.h.
+ *
+ * Returns:
+ *   None
+ */
 void GPIO_Pull_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Pull)
 {
-    // Clear the pull-up/pull-down register
+    // Clear the pull-up/pull-down register for the specified pin
     CLEAR_BIT(GPIOx->PUPDR, (0x3 << (Pin * 2)));
-    // Set the new value
+    // Set the new pull-up/pull-down configuration for the specified pin
     SET_BIT(GPIOx->PUPDR, ((Pull & 0x3) << (Pin * 2)));
 }
 
 /*
-Function description: Set GPIO output type.
-Input:
-        - GPIO Port A, B, C, ...K.
-        - GPIO Pin: 0, 1, ...15.
-        - Output type: PushPull, Open drain.
-Return value: N/A
-*/
+ * Function: GPIO_OutputType_Set
+ * --------------------
+ * Sets the output type for a GPIO pin (PushPull or Open drain).
+ *
+ * Parameters:
+ *   GPIOx: Pointer to GPIO structure (GPIO Port A, B, C, ...K).
+ *   Pin: GPIO Pin number (0 to 15).
+ *   OutputType: Output type to set (PushPull or Open drain).
+ *               Use GPIO_OUTPUT_TYPE_* macros defined in STM32H747XI_GPIO.h.
+ *
+ * Returns:
+ *   None
+ */
 void GPIO_OutputType_Set(GPIO_ST *GPIOx, UINT16 Pin, BOOL OutputType)
 {
-    // Clear the output type register
+    // Clear the output type register for the specified pin
     CLEAR_BIT(GPIOx->OTYPER, (0x1 << Pin));
-    // Set the new value
+    // Set the new output type for the specified pin
     SET_BIT(GPIOx->OTYPER, (OutputType << Pin));
 }
 
 /*
-Function description: Set value of ODR registor of GPIO Pin to 1.
-Input:
-        - GPIO Port A, B, C, ...K.
-        - GPIO Pin: 0, 1, ...15.
-Return value: N/A
-*/
+ * Function: GPIO_OutputData_Set
+ * --------------------
+ * Sets the output data for a GPIO pin to high (1).
+ *
+ * Parameters:
+ *   GPIOx: Pointer to GPIO structure (GPIO Port A, B, C, ...K).
+ *   Pin: GPIO Pin number (0 to 15).
+ *
+ * Returns:
+ *   None
+ */
 void GPIO_OutputData_Set(GPIO_ST *GPIOx, UINT16 Pin)
 {
-    // Set the output data register
+    // Set the output data register for the specified pin
     SET_BIT(GPIOx->ODR, (0x1 << Pin));
 }
 
 /*
-Function description: Reset value of ODR registor of GPIO Pin to 0.
-Input:
-        - GPIO Port A, B, C, ...K.
-        - GPIO Pin: 0, 1, ...15.
-Return value: N/A
-*/
+ * Function: GPIO_OutputData_Reset
+ * --------------------
+ * Resets the output data for a GPIO pin to low (0).
+ *
+ * Parameters:
+ *   GPIOx: Pointer to GPIO structure (GPIO Port A, B, C, ...K).
+ *   Pin: GPIO Pin number (0 to 15).
+ *
+ * Returns:
+ *   None
+ */
 void GPIO_OutputData_Reset(GPIO_ST *GPIOx, UINT16 Pin)
 {
-    // Clear the output data register
+    // Clear the output data register for the specified pin
     CLEAR_BIT(GPIOx->ODR, (0x1 << Pin));
 }
 
 /*
-Function description: Reverse value of ODR registor of GPIO Pin.
-Input:
-        - GPIO Port A, B, C, ...K.
-        - GPIO Pin: 0, 1, ...15.
-Return value: N/A
-*/
+ * Function: GPIO_OutputData_Toggle
+ * --------------------
+ * Toggles the output data for a GPIO pin.
+ *
+ * Parameters:
+ *   GPIOx: Pointer to GPIO structure (GPIO Port A, B, C, ...K).
+ *   Pin: GPIO Pin number (0 to 15).
+ *
+ * Returns:
+ *   None
+ */
 void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, UINT16 Pin)
 {
-    // Clear the output data register
-    if(READ_BIT(GPIOx->ODR, (0x1 << Pin)))
+    // Toggle the output data register for the specified pin
+    if (READ_BIT(GPIOx->ODR, (0x1 << Pin)))
     {
         CLEAR_BIT(GPIOx->ODR, (0x1 << Pin));
     }

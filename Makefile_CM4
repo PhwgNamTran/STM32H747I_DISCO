@@ -1,0 +1,92 @@
+# Define the target name for CM4 core
+TARGET_CM4 = STM32H747XI_CM4
+
+# Define the linker script location and chip architecture
+LD_SCRIPT_CM4 = CM4/Linker_STM32H747XI_CM4.ld
+MCU_SPEC_M4 = cortex-m4
+
+# Define directories for CM4 and common files
+CM4_DIR = CM4
+COMMON_DIR = Common
+
+# Find all source, header, and assembly files in the specified directories
+C_SOURCES_CM4 = $(shell find $(CM4_DIR) $(COMMON_DIR) -name "*.c")
+ASM_SOURCES_CM4 = $(shell find $(CM4_DIR) $(COMMON_DIR) -name "*.S")
+HEADERS_CM4 = $(shell find $(CM4_DIR) $(COMMON_DIR) -name "*.h")
+
+# Define the build directory for CM4
+BUILD_DIR_CM4 = Build/CM4
+
+# ARM Toolchain definitions
+CC = arm-none-eabi-gcc
+AS = arm-none-eabi-as
+LD = arm-none-eabi-ld
+OC = arm-none-eabi-objcopy
+OD = arm-none-eabi-objdump
+OS = arm-none-eabi-size
+DB = arm-none-eabi-gdb
+
+# Assembly directives
+ASFLAGS_CM4 += -c
+ASFLAGS_CM4 += -O0
+ASFLAGS_CM4 += -mcpu=$(MCU_SPEC_M4)
+ASFLAGS_CM4 += -mthumb
+ASFLAGS_CM4 += -Wall
+ASFLAGS_CM4 += -fmessage-length=0
+
+# C compilation directives
+CFLAGS_CM4 += -mcpu=$(MCU_SPEC_M4)
+CFLAGS_CM4 += -mthumb
+CFLAGS_CM4 += -Wall
+CFLAGS_CM4 += -g
+CFLAGS_CM4 += -fmessage-length=0
+CFLAGS_CM4 += --specs=nosys.specs
+
+# Linker directives
+LSCRIPT_CM4 = ./$(LD_SCRIPT_CM4)
+LFLAGS_CM4 += -mcpu=$(MCU_SPEC_M4)
+LFLAGS_CM4 += -mthumb
+LFLAGS_CM4 += -Wall
+LFLAGS_CM4 += --specs=nosys.specs
+LFLAGS_CM4 += -nostdlib
+LFLAGS_CM4 += -lgcc
+LFLAGS_CM4 += -T$(LSCRIPT_CM4)
+
+# Include paths for header files
+INCLUDES_CM4 = $(sort $(foreach dir,$(dir $(HEADERS_CM4)),-I$(dir)))
+
+# Define object files for assembly and C sources
+OBJECTS_CM4 = $(addprefix $(BUILD_DIR_CM4)/,$(notdir $(ASM_SOURCES_CM4:.S=.o)))
+vpath %.S $(sort $(dir $(ASM_SOURCES_CM4)))
+
+OBJECTS_CM4 += $(addprefix $(BUILD_DIR_CM4)/,$(notdir $(C_SOURCES_CM4:.c=.o)))
+vpath %.c $(sort $(dir $(C_SOURCES_CM4)))
+
+# Rule to compile assembly files
+$(BUILD_DIR_CM4)/%.o: %.S | $(BUILD_DIR_CM4)
+	$(CC) -x assembler-with-cpp $(ASFLAGS_CM4) $< -o $@
+
+# Rule to compile C files
+$(BUILD_DIR_CM4)/%.o: %.c | $(BUILD_DIR_CM4)
+	$(CC) -c $(CFLAGS_CM4) $(INCLUDES_CM4) $< -o $@
+
+# Rule to link object files into an ELF binary
+$(BUILD_DIR_CM4)/$(TARGET_CM4).elf: $(OBJECTS_CM4) | $(BUILD_DIR_CM4)
+	$(CC) $^ $(LFLAGS_CM4) -o $@
+
+# Rule to convert ELF binary to a bin file and show its size
+$(BUILD_DIR_CM4)/%.bin: $(BUILD_DIR_CM4)/%.elf | $(BUILD_DIR_CM4)
+	$(OC) -S -O binary $< $@
+	$(OS) $<
+
+# Create the build directory if it does not exist
+$(BUILD_DIR_CM4):
+	mkdir $@
+
+# Phony targets for building and cleaning the project
+.PHONY: CM4 clean
+CM4: $(BUILD_DIR_CM4)/$(TARGET_CM4).bin
+
+# Clean the build directory
+clean:
+	-rm -fr $(BUILD_DIR_CM4)
