@@ -10,14 +10,14 @@ typedef enum
     TRUE   /**< Boolean true */
 } BOOL;
 
-typedef unsigned char UINT8; /**< Unsigned 8-bit integer */
-typedef signed char SINT8;   /**< Signed 8-bit integer */
+typedef unsigned char UINT8;   /**< Unsigned 8-bit integer */
+typedef signed   char SINT8;   /**< Signed 8-bit integer */
 
-typedef unsigned short int UINT16; /**< Unsigned 16-bit integer */
-typedef signed short int SINT16;   /**< Signed 16-bit integer */
+typedef unsigned short int UINT16;   /**< Unsigned 16-bit integer */
+typedef signed   short int SINT16;   /**< Signed 16-bit integer */
 
-typedef unsigned long int UINT32; /**< Unsigned 32-bit integer */
-typedef signed long int SINT32;   /**< Signed 32-bit integer */
+typedef unsigned long int UINT32;   /**< Unsigned 32-bit integer */
+typedef signed   long int SINT32;   /**< Signed 32-bit integer */
 
 typedef BOOL ReturnType; /**< Return type */
 
