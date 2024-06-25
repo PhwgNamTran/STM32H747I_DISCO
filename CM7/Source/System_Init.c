@@ -6,21 +6,41 @@
 #include "STM32H747XI_EXTI.h"
 #include "Common.h"
 #include "STM32H747XI_NVIC.h"
+
 /*
-Function description: Init function 
-Input: N/A
-Return value: N/A
-*/
+ * Function: System_Init
+ * ---------------------
+ * Initializes the system.
+ *
+ * This function initializes various peripherals and configurations required
+ * for the system to operate.
+ *
+ * Input:
+ *   None
+ *
+ * Returns:
+ *   None
+ */
 void System_Init(void)
 {
-    
+    // Implement initialization code here
 }
 
 /*
-Function description: Init periperals 
-
-*/
-void Periperals_Init(void)
+ * Function: Peripherals_Init
+ * --------------------------
+ * Initializes peripheral devices based on configuration.
+ *
+ * This function initializes User LEDs and optionally initializes and configures
+ * the WK Button based on the project configuration.
+ *
+ * Input:
+ *   None
+ *
+ * Returns:
+ *   None
+ */
+void Peripherals_Init(void)
 {
 #if(USER_LED_1_USED || USER_LED_2_USED || USER_LED_3_USED || USER_LED_4_USED)
     UserLED_Init();

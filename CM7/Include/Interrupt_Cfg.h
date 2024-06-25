@@ -1,7 +1,14 @@
 #ifndef INTERRUPT_CFG_H
 #define INTERRUPT_CFG_H
 
-#define EXTI_0_ENABLED                      STD_OFF                          
+/*
+ * Interrupt Configuration:
+ * -------------------------
+ * This header file contains configuration macros to enable or disable specific interrupts
+ * based on the project requirements.
+ */
+
+#define EXTI_0_ENABLED                      STD_OFF
 #define EXTI_1_ENABLED                      STD_OFF
 #define EXTI_2_ENABLED                      STD_OFF
 #define EXTI_3_ENABLED                      STD_OFF
@@ -14,13 +21,16 @@
 #define EXTI_10_ENABLED                     STD_OFF
 #define EXTI_11_ENABLED                     STD_OFF
 #define EXTI_12_ENABLED                     STD_OFF
-#if(WK_BUTTON_Interrupt == STD_ON)
+
+#if (WK_BUTTON_Interrupt == STD_ON)
 #define EXTI_13_ENABLED                     STD_ON
 #else
 #define EXTI_13_ENABLED                     STD_OFF
 #endif
+
 #define EXTI_14_ENABLED                     STD_OFF
 #define EXTI_15_ENABLED                     STD_OFF
+
 #define PVD_AVD_ENABLED                     STD_OFF
 #define RTC_Alarms_ENABLED                  STD_OFF
 #define RTC_Tamper_Timestamp_LSECSS_ENABLED STD_OFF
@@ -91,4 +101,4 @@
 #define ETHERNET_Wakeup_ENABLED             STD_OFF
 #define HSECSS_Interrupt_ENABLED            STD_OFF
 
-#endif
+#endif /* INTERRUPT_CFG_H */

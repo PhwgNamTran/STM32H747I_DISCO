@@ -1,7 +1,13 @@
 #ifndef SYSTEM_INIT_H
 #define SYSTEM_INIT_H
 
-extern void System_Init(void);
-extern void Periperals_Init(void);
+/*
+ * System Initialization:
+ * ----------------------
+ * This header file declares functions for initializing the system and peripherals.
+ */
 
-#endif
+extern void System_Init(void);         /**< Initialize the system */
+extern void Periperals_Init(void);     /**< Initialize peripherals */
+
+#endif /* SYSTEM_INIT_H */
