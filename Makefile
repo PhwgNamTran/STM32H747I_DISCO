@@ -6,11 +6,16 @@ all: CM7 CM4
 
 # Target to build CM7 configuration
 CM7:
+	@echo "Start building for CM7....."
 	$(MAKE) -f Makefile_CM7 CM7
+	@echo ".....Building for CM7 is completed !"
+
 
 # Target to build CM4 configuration
 CM4:
+	@echo "Start building for CM4....."
 	$(MAKE) -f Makefile_CM4 CM4
+	@echo ".....Building for CM4 is completed !"
 
 # Target to clean both CM7 and CM4 configurations
 clean:

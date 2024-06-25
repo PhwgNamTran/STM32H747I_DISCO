@@ -7,7 +7,7 @@
 int main(void)
 {
     /* Initialize peripherals */
-    Periperals_Init();
+    Peripherals_Init();
     
     /* Main application loop */
     while (1) 

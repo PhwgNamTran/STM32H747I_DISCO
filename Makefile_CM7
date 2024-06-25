@@ -11,7 +11,7 @@ COMMON_DIR = Common
 
 # Find all source, header, and assembly files in the specified directories
 C_SOURCES_CM7 = $(shell find $(CM7_DIR) $(COMMON_DIR) -name "*.c")
-ASM_SOURCES_CM7 = $(shell find $(CM7_DIR) $(COMMON_DIR) -name "*.S")
+ASM_SOURCES_CM7 = $(shell find $(CM7_DIR) $(COMMON_DIR) -name "*.s")
 HEADERS_CM7 = $(shell find $(CM7_DIR) $(COMMON_DIR) -name "*.h")
 
 # Define the build directory for CM7
@@ -56,14 +56,14 @@ LFLAGS_CM7 += -T$(LSCRIPT_CM7)
 INCLUDES_CM7 = $(sort $(foreach dir,$(dir $(HEADERS_CM7)),-I$(dir)))
 
 # Define object files for assembly and C sources
-OBJECTS_CM7 = $(addprefix $(BUILD_DIR_CM7)/,$(notdir $(ASM_SOURCES_CM7:.S=.o)))
-vpath %.S $(sort $(dir $(ASM_SOURCES_CM7)))
+OBJECTS_CM7 = $(addprefix $(BUILD_DIR_CM7)/,$(notdir $(ASM_SOURCES_CM7:.s=.o)))
+vpath %.s $(sort $(dir $(ASM_SOURCES_CM7)))
 
 OBJECTS_CM7 += $(addprefix $(BUILD_DIR_CM7)/,$(notdir $(C_SOURCES_CM7:.c=.o)))
 vpath %.c $(sort $(dir $(C_SOURCES_CM7)))
 
 # Rule to compile assembly files
-$(BUILD_DIR_CM7)/%.o: %.S | $(BUILD_DIR_CM7)
+$(BUILD_DIR_CM7)/%.o: %.s | $(BUILD_DIR_CM7)
 	$(CC) -x assembler-with-cpp $(ASFLAGS_CM7) $< -o $@
 
 # Rule to compile C files

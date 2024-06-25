@@ -11,7 +11,7 @@ COMMON_DIR = Common
 
 # Find all source, header, and assembly files in the specified directories
 C_SOURCES_CM4 = $(shell find $(CM4_DIR) $(COMMON_DIR) -name "*.c")
-ASM_SOURCES_CM4 = $(shell find $(CM4_DIR) $(COMMON_DIR) -name "*.S")
+ASM_SOURCES_CM4 = $(shell find $(CM4_DIR) $(COMMON_DIR) -name "*.s")
 HEADERS_CM4 = $(shell find $(CM4_DIR) $(COMMON_DIR) -name "*.h")
 
 # Define the build directory for CM4
@@ -56,14 +56,14 @@ LFLAGS_CM4 += -T$(LSCRIPT_CM4)
 INCLUDES_CM4 = $(sort $(foreach dir,$(dir $(HEADERS_CM4)),-I$(dir)))
 
 # Define object files for assembly and C sources
-OBJECTS_CM4 = $(addprefix $(BUILD_DIR_CM4)/,$(notdir $(ASM_SOURCES_CM4:.S=.o)))
-vpath %.S $(sort $(dir $(ASM_SOURCES_CM4)))
+OBJECTS_CM4 = $(addprefix $(BUILD_DIR_CM4)/,$(notdir $(ASM_SOURCES_CM4:.s=.o)))
+vpath %.s $(sort $(dir $(ASM_SOURCES_CM4)))
 
 OBJECTS_CM4 += $(addprefix $(BUILD_DIR_CM4)/,$(notdir $(C_SOURCES_CM4:.c=.o)))
 vpath %.c $(sort $(dir $(C_SOURCES_CM4)))
 
 # Rule to compile assembly files
-$(BUILD_DIR_CM4)/%.o: %.S | $(BUILD_DIR_CM4)
+$(BUILD_DIR_CM4)/%.o: %.s | $(BUILD_DIR_CM4)
 	$(CC) -x assembler-with-cpp $(ASFLAGS_CM4) $< -o $@
 
 # Rule to compile C files
@@ -81,6 +81,7 @@ $(BUILD_DIR_CM4)/%.bin: $(BUILD_DIR_CM4)/%.elf | $(BUILD_DIR_CM4)
 
 # Create the build directory if it does not exist
 $(BUILD_DIR_CM4):
+	@echo "Start building for CM7....."
 	mkdir $@
 
 # Phony targets for building and cleaning the project
