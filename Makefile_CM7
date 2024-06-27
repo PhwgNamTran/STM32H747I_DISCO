@@ -7,7 +7,7 @@ MCU_SPEC_M7 = cortex-m7
 
 # Define directories for CM7 and common files
 CM7_DIR = CM7
-COMMON_DIR = Common
+COMMON_DIR = Drivers
 
 # Find all source, header, and assembly files in the specified directories
 C_SOURCES_CM7 = $(shell find $(CM7_DIR) $(COMMON_DIR) -name "*.c")

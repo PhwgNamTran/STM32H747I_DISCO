@@ -7,7 +7,7 @@ MCU_SPEC_M4 = cortex-m4
 
 # Define directories for CM4 and common files
 CM4_DIR = CM4
-COMMON_DIR = Common
+COMMON_DIR = Drivers
 
 # Find all source, header, and assembly files in the specified directories
 C_SOURCES_CM4 = $(shell find $(CM4_DIR) $(COMMON_DIR) -name "*.c")
