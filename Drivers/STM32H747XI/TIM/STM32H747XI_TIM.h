@@ -2,6 +2,7 @@
 #define STM32H747XI_TIM_H
 
 #include "Common.h"
+#include "STM32H747XI_RCC.h"
 
 /* Refer to RM0399 Reference Manual from http://www.st.com and CMSIS Library */
 
@@ -68,5 +69,40 @@ typedef struct
 #define TIM15 ((TIM_ST *) TIM15_BASE)   /**< TIM15 declaration */
 #define TIM16 ((TIM_ST *) TIM16_BASE)   /**< TIM16 declaration */
 #define TIM17 ((TIM_ST *) TIM17_BASE)   /**< TIM17 declaration */
+
+#define TIM1_Num  1
+#define TIM2_Num  2
+#define TIM3_Num  3
+#define TIM4_Num  4
+#define TIM5_Num  5
+#define TIM6_Num  6
+#define TIM7_Num  7
+#define TIM8_Num  8
+#define TIM12_Num 12
+#define TIM13_Num 13
+#define TIM14_Num 14
+#define TIM15_Num 15
+#define TIM16_Num 16
+#define TIM17_Num 17
+
+/* TIM Clock Source Bit in APB2LPENR Register */
+#define TIM1_CLKSRC  (1 << 0)  /**< Bit 0: TIM1 clock source enable */
+#define TIM8_CLKSRC  (1 << 1)  /**< Bit 1: TIM8 clock source enable */
+#define TIM15_CLKSRC (1 << 16) /**< Bit 16: TIM15 clock source enable */
+#define TIM16_CLKSRC (1 << 17) /**< Bit 17: TIM16 clock source enable */
+#define TIM17_CLKSRC (1 << 18) /**< Bit 18: TIM17 clock source enable */
+
+/* TIM Clock Source Bit in APB1LLPENR Register */
+#define TIM2_CLKSRC  (1 << 0)  /**< Bit 0: TIM2 clock source enable */
+#define TIM3_CLKSRC  (1 << 1)  /**< Bit 1: TIM3 clock source enable */
+#define TIM4_CLKSRC  (1 << 2)  /**< Bit 2: TIM4 clock source enable */
+#define TIM5_CLKSRC  (1 << 3)  /**< Bit 3: TIM5 clock source enable */
+#define TIM6_CLKSRC  (1 << 4)  /**< Bit 4: TIM6 clock source enable */
+#define TIM7_CLKSRC  (1 << 5)  /**< Bit 5: TIM7 clock source enable */
+#define TIM12_CLKSRC (1 << 6)  /**< Bit 6: TIM12 clock source enable */
+#define TIM13_CLKSRC (1 << 7)  /**< Bit 7: TIM13 clock source enable */
+#define TIM14_CLKSRC (1 << 8)  /**< Bit 8: TIM13 clock source enable */
+
+extern void TIM_Enable_ClockSource(UINT8 TIM_Num);
 
 #endif
