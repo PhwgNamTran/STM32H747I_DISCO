@@ -9,33 +9,33 @@
 /* TIM Register - Refer to CMSIS Library */
 typedef struct
 {
-    UINT32 CR1;         /**< TIM control register 1,                   Address offset: 0x00 */
-    UINT32 CR2;         /**< TIM control register 2,                   Address offset: 0x04 */
-    UINT32 SMCR;        /**< TIM slave mode control register,          Address offset: 0x08 */
-    UINT32 DIER;        /**< TIM DMA/interrupt enable register,        Address offset: 0x0C */
-    UINT32 SR;          /**< TIM status register,                      Address offset: 0x10 */
-    UINT32 EGR;         /**< TIM event generation register,            Address offset: 0x14 */
-    UINT32 CCMR1;       /**< TIM capture/compare mode register 1,      Address offset: 0x18 */
-    UINT32 CCMR2;       /**< TIM capture/compare mode register 2,      Address offset: 0x1C */
-    UINT32 CCER;        /**< TIM capture/compare enable register,      Address offset: 0x20 */
-    UINT32 CNT;         /**< TIM counter register,                     Address offset: 0x24 */
-    UINT32 PSC;         /**< TIM prescaler,                            Address offset: 0x28 */
-    UINT32 ARR;         /**< TIM auto-reload register,                 Address offset: 0x2C */
-    UINT32 RCR;         /**< TIM repetition counter register,          Address offset: 0x30 */
-    UINT32 CCR1;        /**< TIM capture/compare register 1,           Address offset: 0x34 */
-    UINT32 CCR2;        /**< TIM capture/compare register 2,           Address offset: 0x38 */
-    UINT32 CCR3;        /**< TIM capture/compare register 3,           Address offset: 0x3C */
-    UINT32 CCR4;        /**< TIM capture/compare register 4,           Address offset: 0x40 */
-    UINT32 BDTR;        /**< TIM break and dead-time register,         Address offset: 0x44 */
-    UINT32 DCR;         /**< TIM DMA control register,                 Address offset: 0x48 */
-    UINT32 DMAR;        /**< TIM DMA address for full transfer,        Address offset: 0x4C */
-    UINT32 RESERVED1;   /**< Reserved, 0x50                                                 */
-    UINT32 CCMR3;       /**< TIM capture/compare mode register 3,      Address offset: 0x54 */
-    UINT32 CCR5;        /**< TIM capture/compare register5,            Address offset: 0x58 */
-    UINT32 CCR6;        /**< TIM capture/compare register6,            Address offset: 0x5C */
-    UINT32 AF1;         /**< TIM alternate function option register 1, Address offset: 0x60 */
-    UINT32 AF2;         /**< TIM alternate function option register 2, Address offset: 0x64 */
-    UINT32 TISEL;       /**< TIM Input Selection register,             Address offset: 0x68 */
+    volatile UINT32 CR1;         /**< TIM control register 1,                   Address offset: 0x00 */
+    volatile UINT32 CR2;         /**< TIM control register 2,                   Address offset: 0x04 */
+    volatile UINT32 SMCR;        /**< TIM slave mode control register,          Address offset: 0x08 */
+    volatile UINT32 DIER;        /**< TIM DMA/interrupt enable register,        Address offset: 0x0C */
+    volatile UINT32 SR;          /**< TIM status register,                      Address offset: 0x10 */
+    volatile UINT32 EGR;         /**< TIM event generation register,            Address offset: 0x14 */
+    volatile UINT32 CCMR1;       /**< TIM capture/compare mode register 1,      Address offset: 0x18 */
+    volatile UINT32 CCMR2;       /**< TIM capture/compare mode register 2,      Address offset: 0x1C */
+    volatile UINT32 CCER;        /**< TIM capture/compare enable register,      Address offset: 0x20 */
+    volatile UINT32 CNT;         /**< TIM counter register,                     Address offset: 0x24 */
+    volatile UINT32 PSC;         /**< TIM prescaler,                            Address offset: 0x28 */
+    volatile UINT32 ARR;         /**< TIM auto-reload register,                 Address offset: 0x2C */
+    volatile UINT32 RCR;         /**< TIM repetition counter register,          Address offset: 0x30 */
+    volatile UINT32 CCR1;        /**< TIM capture/compare register 1,           Address offset: 0x34 */
+    volatile UINT32 CCR2;        /**< TIM capture/compare register 2,           Address offset: 0x38 */
+    volatile UINT32 CCR3;        /**< TIM capture/compare register 3,           Address offset: 0x3C */
+    volatile UINT32 CCR4;        /**< TIM capture/compare register 4,           Address offset: 0x40 */
+    volatile UINT32 BDTR;        /**< TIM break and dead-time register,         Address offset: 0x44 */
+    volatile UINT32 DCR;         /**< TIM DMA control register,                 Address offset: 0x48 */
+    volatile UINT32 DMAR;        /**< TIM DMA address for full transfer,        Address offset: 0x4C */
+    volatile UINT32 RESERVED1;   /**< Reserved, 0x50                                                 */
+    volatile UINT32 CCMR3;       /**< TIM capture/compare mode register 3,      Address offset: 0x54 */
+    volatile UINT32 CCR5;        /**< TIM capture/compare register5,            Address offset: 0x58 */
+    volatile UINT32 CCR6;        /**< TIM capture/compare register6,            Address offset: 0x5C */
+    volatile UINT32 AF1;         /**< TIM alternate function option register 1, Address offset: 0x60 */
+    volatile UINT32 AF2;         /**< TIM alternate function option register 2, Address offset: 0x64 */
+    volatile UINT32 TISEL;       /**< TIM Input Selection register,             Address offset: 0x68 */
 } TIM_ST;
 
 /* Base Address of Timers */

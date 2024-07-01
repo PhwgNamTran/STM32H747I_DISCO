@@ -9,15 +9,15 @@
 /* GPIO Register - Refer to CMSIS Library */
 typedef struct
 {
-    UINT32 MODER;    /* GPIO port mode register,                  Address offset: 0x00      */
-    UINT32 OTYPER;   /* GPIO port output type register,           Address offset: 0x04      */
-    UINT32 OSPEEDR;  /* GPIO port output speed register,          Address offset: 0x08      */
-    UINT32 PUPDR;    /* GPIO port pull-up/pull-down register,     Address offset: 0x0C      */
-    UINT32 IDR;      /* GPIO port input data register,            Address offset: 0x10      */
-    UINT32 ODR;      /* GPIO port output data register,           Address offset: 0x14      */
-    UINT32 BSRR;     /* GPIO port bit set/reset,                  Address offset: 0x18      */
-    UINT32 LCKR;     /* GPIO port configuration lock register,    Address offset: 0x1C      */
-    UINT32 AFR[2];   /* GPIO alternate function registers,        Address offset: 0x20-0x24 */
+    volatile UINT32 MODER;    /* GPIO port mode register,                  Address offset: 0x00      */
+    volatile UINT32 OTYPER;   /* GPIO port output type register,           Address offset: 0x04      */
+    volatile UINT32 OSPEEDR;  /* GPIO port output speed register,          Address offset: 0x08      */
+    volatile UINT32 PUPDR;    /* GPIO port pull-up/pull-down register,     Address offset: 0x0C      */
+    volatile UINT32 IDR;      /* GPIO port input data register,            Address offset: 0x10      */
+    volatile UINT32 ODR;      /* GPIO port output data register,           Address offset: 0x14      */
+    volatile UINT32 BSRR;     /* GPIO port bit set/reset,                  Address offset: 0x18      */
+    volatile UINT32 LCKR;     /* GPIO port configuration lock register,    Address offset: 0x1C      */
+    volatile UINT32 AFR[2];   /* GPIO alternate function registers,        Address offset: 0x20-0x24 */
 } GPIO_ST;
 
 /* Base Address of GPIO Ports */

@@ -10,19 +10,19 @@
  */
 typedef struct
 {
-    UINT32 ISER[8U];               /**< Offset: 0x000 (R/W)  Interrupt Set Enable Register */
-    UINT32 RESERVED0[24U];
-    UINT32 ICER[8U];               /**< Offset: 0x080 (R/W)  Interrupt Clear Enable Register */
-    UINT32 RESERVED1[24U];
-    UINT32 ISPR[8U];               /**< Offset: 0x100 (R/W)  Interrupt Set Pending Register */
-    UINT32 RESERVED2[24U];
-    UINT32 ICPR[8U];               /**< Offset: 0x180 (R/W)  Interrupt Clear Pending Register */
-    UINT32 RESERVED3[24U];
-    UINT32 IABR[8U];               /**< Offset: 0x200 (R/W)  Interrupt Active bit Register */
-    UINT32 RESERVED4[56U];
-    UINT8  IP[240U];               /**< Offset: 0x300 (R/W)  Interrupt Priority Register (8Bit wide) */
-    UINT32 RESERVED5[644U];
-    UINT32 STIR;                   /**< Offset: 0xE00 ( /W)  Software Trigger Interrupt Register */
+    volatile UINT32 ISER[8U];               /**< Offset: 0x000 (R/W)  Interrupt Set Enable Register */
+    volatile UINT32 RESERVED0[24U];
+    volatile UINT32 ICER[8U];               /**< Offset: 0x080 (R/W)  Interrupt Clear Enable Register */
+    volatile UINT32 RESERVED1[24U];
+    volatile UINT32 ISPR[8U];               /**< Offset: 0x100 (R/W)  Interrupt Set Pending Register */
+    volatile UINT32 RESERVED2[24U];
+    volatile UINT32 ICPR[8U];               /**< Offset: 0x180 (R/W)  Interrupt Clear Pending Register */
+    volatile UINT32 RESERVED3[24U];
+    volatile UINT32 IABR[8U];               /**< Offset: 0x200 (R/W)  Interrupt Active bit Register */
+    volatile UINT32 RESERVED4[56U];
+    volatile UINT8  IP[240U];               /**< Offset: 0x300 (R/W)  Interrupt Priority Register (8Bit wide) */
+    volatile UINT32 RESERVED5[644U];
+    volatile UINT32 STIR;                   /**< Offset: 0xE00 ( /W)  Software Trigger Interrupt Register */
 }  NVIC_ST;
 
 /*
