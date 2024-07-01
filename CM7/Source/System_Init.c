@@ -6,6 +6,7 @@
 #include "STM32H747XI_EXTI.h"
 #include "Common.h"
 #include "STM32H747XI_NVIC.h"
+#include "STM32H747XI_RCC.h"
 
 /*
  * Function: System_Init
@@ -24,6 +25,13 @@
 void System_Init(void)
 {
     // Implement initialization code here
+}
+
+void SystemClock_Config(void)
+{
+#if(System_Clock_Source == System_Clock_Source_HSI)
+    SET_BIT(RCC->CR, (1 << 0));
+#endif
 }
 
 /*
