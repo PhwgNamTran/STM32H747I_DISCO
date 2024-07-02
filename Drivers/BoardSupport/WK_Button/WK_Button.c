@@ -1,6 +1,4 @@
 #include "WK_Button.h"
-#include "Project_Cfg.h"
-
 /*
  * Function: WK_Button_Init
  * ------------------------

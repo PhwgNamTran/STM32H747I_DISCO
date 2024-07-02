@@ -34,9 +34,9 @@
  * Return value:
  *   N/A
  */
-extern void UserLED_Init(void);      /**< Initialize UserLEDs */
-extern void UserLED_ON(UINT8 UserLEDx);   /**< Turn ON specified UserLED */
-extern void UserLED_OFF(UINT8 UserLEDx);  /**< Turn OFF specified UserLED */
+extern void UserLED_Init(UINT8 UserLEDx);   /**< Initialize UserLEDs */
+extern void UserLED_ON(UINT8 UserLEDx);     /**< Turn ON specified UserLED */
+extern void UserLED_OFF(UINT8 UserLEDx);    /**< Turn OFF specified UserLED */
 extern void UserLED_TOGGLE(UINT8 UserLEDx); /**< Toggle specified UserLED */
 
 

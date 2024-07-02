@@ -51,8 +51,17 @@ void SystemClock_Config(void)
  */
 void Peripherals_Init(void)
 {
-#if(USER_LED_1_USED || USER_LED_2_USED || USER_LED_3_USED || USER_LED_4_USED)
-    UserLED_Init();
+#if(USER_LED_1_USED)
+    UserLED_Init(UserLED_1);
+#endif
+#if(USER_LED_2_USED)
+    UserLED_Init(UserLED_2);
+#endif
+#if(USER_LED_3_USED)
+    UserLED_Init(UserLED_3);
+#endif
+#if(USER_LED_4_USED)
+    UserLED_Init(UserLED_4);
 #endif
 
 #if(WK_BUTTON_USED)
