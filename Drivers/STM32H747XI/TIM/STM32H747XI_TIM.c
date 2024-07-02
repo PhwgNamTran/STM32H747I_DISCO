@@ -62,3 +62,9 @@ void TIM_Enable_ClockSource(UINT8 TIM_Num) {
             break;
     }
 }
+
+void TIM_Config(TIM_ST *TIMx, UINT32 TIMx_PSC, UINT32 TIMx_ARR)
+{
+    WRITE_REG(TIMx->PSC, TIMx_PSC);  // Prescaler value
+    WRITE_REG(TIMx->ARR, TIMx_ARR);  // Auto-reload value
+}
