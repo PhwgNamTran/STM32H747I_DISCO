@@ -12,6 +12,10 @@
 #define System_Clock         64000000U
 #define System_Clock_Source  System_Clock_Source_HSI
 
+#if(System_Clock_Source == System_Clock_Source_HSI)
+#define HSI_DIV             HSI_DIV_1
+#endif
+
 #define USER_LED_1_USED      STD_ON
 #define USER_LED_2_USED      STD_OFF
 #define USER_LED_3_USED      STD_OFF

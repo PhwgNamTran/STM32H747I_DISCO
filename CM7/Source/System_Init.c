@@ -30,7 +30,8 @@ void System_Init(void)
 void SystemClock_Config(void)
 {
 #if(System_Clock_Source == System_Clock_Source_HSI)
-    SET_BIT(RCC->CR, (1 << 0));
+    SET_BIT(RCC->CR, (1 << CR_HSI_POS));
+    SET_BIT(RCC->CR, (1 << CR_HSIDIV_POS));
 #endif
 }
 
