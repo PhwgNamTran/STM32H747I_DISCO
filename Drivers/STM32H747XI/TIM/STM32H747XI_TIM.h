@@ -38,6 +38,30 @@ typedef struct
     volatile UINT32 TISEL;       /**< TIM Input Selection register,             Address offset: 0x68 */
 } TIM_ST;
 
+#define CR1_CEN     (1 << 0)
+#define CR1_DIR     (1 << 4)
+
+#define TIM_Direction_Up            FALSE
+#define TIM_Direction_Down          TRUE
+
+#define TIM_No_DMA_Interrupt        255U
+#define TIM_Update_Interrupt        0U
+#define TIM_CC1_Interrupt           1U
+#define TIM_CC2_Interrupt           2U    
+#define TIM_CC3_Interrupt           3U    
+#define TIM_CC4_Interrupt           4U
+#define TIM_COM_Interrupt           5U
+#define TIM_Trigger_Interrupt       6U
+#define TIM_Break_Interrupt         7U
+#define TIM_Update_DMA_Request      8U
+#define TIM_CC1_DMA_Request         9U
+#define TIM_CC2_DMA_Request         10U
+#define TIM_CC3_DMA_Request         11U
+#define TIM_CC4_DMA_Request         12U
+#define TIM_COM_DMA_Request         13U
+#define TIM_Trigger_DMA_Request     14U
+#define TIM_DMA_Interrupt_Reserved  15U
+
 /* Base Address of Timers */
 #define TIM1_BASE   0x40010000UL  /**< Base address for Timer 1 (TIM1) */
 #define TIM2_BASE   0x40000000UL  /**< Base address for Timer 2 (TIM2) */
@@ -52,7 +76,7 @@ typedef struct
 #define TIM14_BASE  0x40002000UL  /**< Base address for Timer 14 (TIM14) */
 #define TIM15_BASE  0x40014000UL  /**< Base address for Timer 15 (TIM15) */
 #define TIM16_BASE  0x40014400UL  /**< Base address for Timer 16 (TIM16) */
-#define TIM17_BASE  0x40014800UL  /**< Base address for Timer 17 (TIM17) */
+#define TIM17_BASE  0x40014800UL  /**< Base address for Timer 17 (TIM17) */ 
 
 /* Timer Declarations */
 #define TIM1  ((TIM_ST *) TIM1_BASE)    /**< TIM1 declaration */
@@ -104,5 +128,9 @@ typedef struct
 #define TIM14_CLKSRC (1 << 8)  /**< Bit 8: TIM13 clock source enable */
 
 extern void TIM_Enable_ClockSource(UINT8 TIM_Num);
+extern void TIM_Config(TIM_ST *TIMx, UINT32 TIMx_PSC, UINT32 TIMx_ARR, BOOL Counter_Direction);
+extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode);
+extern void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode);
+extern void TIM_Enable(TIM_ST *TIMx);
 
 #endif

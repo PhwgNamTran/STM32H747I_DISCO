@@ -11,8 +11,8 @@
  * Returns:
  *   None
  */
-void TIM_Enable_ClockSource(UINT8 TIM_Num) {
-
+void TIM_Enable_ClockSource(UINT8 TIM_Num) 
+{
     switch (TIM_Num)
     {
         case TIM1_Num:
@@ -63,8 +63,97 @@ void TIM_Enable_ClockSource(UINT8 TIM_Num) {
     }
 }
 
-void TIM_Config(TIM_ST *TIMx, UINT32 TIMx_PSC, UINT32 TIMx_ARR)
+/*
+ * Function: TIM_Config
+ * ------------------------
+ * Configures the TIM peripheral with the specified prescaler, auto-reload value,
+ * and counter direction.
+ *
+ * Parameters:
+ *   TIMx              - Pointer to the TIM peripheral.
+ *   TIMx_PSC          - Prescaler value.
+ *   TIMx_ARR          - Auto-reload value.
+ *   Counter_Direction - Boolean value to set the counter direction.
+ *                       TRUE: Down-counting mode.
+ *                       FALSE: Up-counting mode.
+ *
+ * Returns:
+ *   None
+ */
+void TIM_Config(TIM_ST *TIMx, UINT32 TIMx_PSC, UINT32 TIMx_ARR, BOOL Counter_Direction)
 {
-    WRITE_REG(TIMx->PSC, TIMx_PSC);  // Prescaler value
-    WRITE_REG(TIMx->ARR, TIMx_ARR);  // Auto-reload value
+    WRITE_REG(TIMx->PSC, TIMx_PSC);  // Set the prescaler value
+    WRITE_REG(TIMx->ARR, TIMx_ARR);  // Set the auto-reload value
+    if(Counter_Direction)
+    {
+        SET_BIT(TIMx->CR1, CR1_DIR); // Set the counter direction to down-counting
+    }
+    else
+    {
+        CLEAR_BIT(TIMx->CR1, CR1_DIR); // Set the counter direction to up-counting
+    }
+}
+
+/*
+ * Function: TIM_DMA_Interrupt_Mode_Enable
+ * ------------------------
+ * Enables the specified DMA interrupt mode for the given TIM peripheral.
+ *
+ * Parameters:
+ *   TIMx                - Pointer to the TIM peripheral.
+ *   DMA_Interrupt_Mode  - DMA interrupt mode to be enabled.
+ *
+ * Returns:
+ *   None
+ */
+void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode)
+{
+    if(DMA_Interrupt_Mode < TIM_DMA_Interrupt_Reserved)
+    {
+        SET_BIT(TIMx->DIER, (1 << DMA_Interrupt_Mode)); // Enable the specified DMA interrupt mode
+    }
+    else
+    {
+        /* Nothing to do */
+    }
+}
+
+/*
+ * Function: TIM_DMA_Interrupt_Mode_Disable
+ * ------------------------
+ * Disables the specified DMA interrupt mode for the given TIM peripheral.
+ *
+ * Parameters:
+ *   TIMx                - Pointer to the TIM peripheral.
+ *   DMA_Interrupt_Mode  - DMA interrupt mode to be disabled.
+ *
+ * Returns:
+ *   None
+ */
+void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode)
+{
+    if(DMA_Interrupt_Mode < TIM_DMA_Interrupt_Reserved)
+    {
+        CLEAR_BIT(TIMx->DIER, (1 << DMA_Interrupt_Mode)); // Disable the specified DMA interrupt mode
+    }
+    else
+    {
+        /* Nothing to do */
+    }
+}
+
+/*
+ * Function: TIM_Enable
+ * ------------------------
+ * Enables the TIM peripheral by setting the CEN bit in the CR1 register.
+ *
+ * Parameters:
+ *   TIMx - Pointer to the TIM peripheral.
+ *
+ * Returns:
+ *   None
+ */
+void TIM_Enable(TIM_ST *TIMx)
+{
+    SET_BIT(TIMx->CR1, CR1_CEN); // Enable the TIM peripheral
 }
