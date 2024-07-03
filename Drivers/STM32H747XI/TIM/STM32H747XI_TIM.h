@@ -38,29 +38,32 @@ typedef struct
     volatile UINT32 TISEL;       /**< TIM Input Selection register,             Address offset: 0x68 */
 } TIM_ST;
 
-#define CR1_CEN     (1 << 0)
-#define CR1_DIR     (1 << 4)
+// Control Register 1 (CR1) Bit Definitions
+#define CR1_CEN     (1 << 0)  // Counter enable bit in the TIM CR1 register
+#define CR1_DIR     (1 << 4)  // Direction bit in the TIM CR1 register
 
-#define TIM_Direction_Up            FALSE
-#define TIM_Direction_Down          TRUE
+// Counter Direction Options
+#define TIM_Direction_Up            FALSE  // Up-counting mode
+#define TIM_Direction_Down          TRUE   // Down-counting mode
 
-#define TIM_No_DMA_Interrupt        255U
-#define TIM_Update_Interrupt        0U
-#define TIM_CC1_Interrupt           1U
-#define TIM_CC2_Interrupt           2U    
-#define TIM_CC3_Interrupt           3U    
-#define TIM_CC4_Interrupt           4U
-#define TIM_COM_Interrupt           5U
-#define TIM_Trigger_Interrupt       6U
-#define TIM_Break_Interrupt         7U
-#define TIM_Update_DMA_Request      8U
-#define TIM_CC1_DMA_Request         9U
-#define TIM_CC2_DMA_Request         10U
-#define TIM_CC3_DMA_Request         11U
-#define TIM_CC4_DMA_Request         12U
-#define TIM_COM_DMA_Request         13U
-#define TIM_Trigger_DMA_Request     14U
-#define TIM_DMA_Interrupt_Reserved  15U
+// DMA and Interrupt Modes
+#define TIM_No_DMA_Interrupt        255U   // No DMA/Interrupt
+#define TIM_Update_Interrupt        0U     // Update interrupt
+#define TIM_CC1_Interrupt           1U     // Capture/Compare 1 interrupt
+#define TIM_CC2_Interrupt           2U     // Capture/Compare 2 interrupt
+#define TIM_CC3_Interrupt           3U     // Capture/Compare 3 interrupt
+#define TIM_CC4_Interrupt           4U     // Capture/Compare 4 interrupt
+#define TIM_COM_Interrupt           5U     // Communication interrupt
+#define TIM_Trigger_Interrupt       6U     // Trigger interrupt
+#define TIM_Break_Interrupt         7U     // Break interrupt
+#define TIM_Update_DMA_Request      8U     // Update DMA request
+#define TIM_CC1_DMA_Request         9U     // Capture/Compare 1 DMA request
+#define TIM_CC2_DMA_Request         10U    // Capture/Compare 2 DMA request
+#define TIM_CC3_DMA_Request         11U    // Capture/Compare 3 DMA request
+#define TIM_CC4_DMA_Request         12U    // Capture/Compare 4 DMA request
+#define TIM_COM_DMA_Request         13U    // Communication DMA request
+#define TIM_Trigger_DMA_Request     14U    // Trigger DMA request
+#define TIM_DMA_Interrupt_Reserved  15U    // Reserved DMA/Interrupt
 
 /* Base Address of Timers */
 #define TIM1_BASE   0x40010000UL  /**< Base address for Timer 1 (TIM1) */
@@ -94,20 +97,22 @@ typedef struct
 #define TIM16 ((TIM_ST *) TIM16_BASE)   /**< TIM16 declaration */
 #define TIM17 ((TIM_ST *) TIM17_BASE)   /**< TIM17 declaration */
 
-#define TIM1_Num  1
-#define TIM2_Num  2
-#define TIM3_Num  3
-#define TIM4_Num  4
-#define TIM5_Num  5
-#define TIM6_Num  6
-#define TIM7_Num  7
-#define TIM8_Num  8
-#define TIM12_Num 12
-#define TIM13_Num 13
-#define TIM14_Num 14
-#define TIM15_Num 15
-#define TIM16_Num 16
-#define TIM17_Num 17
+// Timer Numbers
+#define TIMER_NUM_1   1   // Timer 1
+#define TIMER_NUM_2   2   // Timer 2
+#define TIMER_NUM_3   3   // Timer 3
+#define TIMER_NUM_4   4   // Timer 4
+#define TIMER_NUM_5   5   // Timer 5
+#define TIMER_NUM_6   6   // Timer 6
+#define TIMER_NUM_7   7   // Timer 7
+#define TIMER_NUM_8   8   // Timer 8
+#define TIMER_NUM_12  12  // Timer 12
+#define TIMER_NUM_13  13  // Timer 13
+#define TIMER_NUM_14  14  // Timer 14
+#define TIMER_NUM_15  15  // Timer 15
+#define TIMER_NUM_16  16  // Timer 16
+#define TIMER_NUM_17  17  // Timer 17
+
 
 /* TIM Clock Source Bit in APB2LPENR Register */
 #define TIM1_CLKSRC  (1 << 0)  /**< Bit 0: TIM1 clock source enable */
