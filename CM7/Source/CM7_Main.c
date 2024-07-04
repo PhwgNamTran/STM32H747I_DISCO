@@ -12,7 +12,7 @@ int main(void)
     /* Main application loop */
     while (1) 
     {
-#if (WK_BUTTON_Interrupt != STD_ON)
+#if (WK_BUTTON_USED && WK_BUTTON_Interrupt_USED)
         /* Check if WK button is pressed then released */
         if (WK_Button_Released_then_Pressed_B())
         {
