@@ -1,6 +1,6 @@
 #include "Common.h"
-#include "System_Init.h"
-#include "Project_Cfg.h"
+#include "CM4_System_Init.h"
+#include "CM4_Project_Cfg.h"
 #include "STM32H747XI_SYSCFG.h"
 #include "STM32H747XI_EXTI.h"
 #include "STM32H747XI_NVIC.h"

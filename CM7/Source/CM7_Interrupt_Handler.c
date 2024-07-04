@@ -1,5 +1,5 @@
-#include "Interrupt_Handler.h"
-#include "Interrupt_Cfg.h"
+#include "CM7_Interrupt_Handler.h"
+#include "CM7_Interrupt_Cfg.h"
 #include "Common.h"
 #include "UserLED.h"
 

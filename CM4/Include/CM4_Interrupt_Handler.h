@@ -3,6 +3,6 @@
 
 #include "STM32H747XI_EXTI.h"
 #include "Common.h"
-#include "Project_Cfg.h"
+#include "CM4_Project_Cfg.h"
 
 #endif

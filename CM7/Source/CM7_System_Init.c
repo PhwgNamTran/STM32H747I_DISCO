@@ -1,5 +1,5 @@
-#include "System_Init.h"
-#include "Project_Cfg.h"
+#include "CM7_System_Init.h"
+#include "CM7_Project_Cfg.h"
 #include "UserLED.h"
 #include "WK_Button.h"
 #include "STM32H747XI_SYSCFG.h"

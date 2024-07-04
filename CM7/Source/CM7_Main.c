@@ -1,8 +1,8 @@
 #include "Common.h"
 #include "UserLED.h"
 #include "WK_Button.h"
-#include "Project_Cfg.h"
-#include "System_Init.h"
+#include "CM7_Project_Cfg.h"
+#include "CM7_System_Init.h"
 
 int main(void)
 {
