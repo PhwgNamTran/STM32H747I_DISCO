@@ -116,10 +116,10 @@ typedef struct
 #define System_Clock_Source_PLL1_P_CK   4U
 
 #define CR_HSI_POS      0U
+#define CR_HSI          (1 << CR_HSI_POS)
+
 #define CR_HSIDIV_POS   3U
-#define HSI_DIV_1   0U
-#define HSI_DIV_2   1U
-#define HSI_DIV_4   2U
-#define HSI_DIV_8   3U
+
+#define HSI_Clock   64000000U
 
 #endif
