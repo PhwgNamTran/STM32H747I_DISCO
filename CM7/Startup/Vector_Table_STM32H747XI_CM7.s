@@ -55,7 +55,7 @@ g_pfnVectors:
     .word 0                                        // TIM1 Update interrupt        
     .word 0                                        // TIM1 Trigger and Commutation interrupt 
     .word 0                                        // TIM1 Capture Compare         
-    .word 0                                        // TIM2                         
+    .word TIM2_IRQHandler                          // TIM2                         
     .word 0                                        // TIM3                         
     .word 0                                        // TIM4                         
     .word 0                                        // I2C1 Event                   
@@ -180,6 +180,9 @@ g_pfnVectors:
 
     .weak      SysTick_Handler
     .thumb_set SysTick_Handler,Default_Handler
+
+    .weak      TIM2_IRQHandler
+    .thumb_set TIM2_IRQHandler,Default_Handler
 
     .weak      EXTI15_10_IRQHandler
     .thumb_set EXTI15_10_IRQHandler,Default_Handler

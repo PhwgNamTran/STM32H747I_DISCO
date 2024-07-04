@@ -4,6 +4,32 @@
 #include "UserLED.h"
 
 /*
+ * Function: TIM2_IRQHandler
+ * --------------------------
+ * Interrupt handler for TIM2.
+ * Checks and handles DMA interrupt status for TIM2.
+ * If DMA interrupt is set, toggles User LED 1 and clears the interrupt status.
+ * 
+ * Parameters:
+ *   None
+ *
+ * Returns:
+ *   None
+ */
+void TIM2_IRQHandler(void)
+{
+    if (TIM_DMA_Interrupt_Check_Status(TIM2))
+    {
+        UserLED_TOGGLE(UserLED_1);        // Toggle User LED 1
+        TIM_DMA_Interrupt_Clear_Status(TIM2);  // Clear DMA interrupt status for TIM2
+    }
+    else
+    {
+        // Handle other conditions if needed
+    }
+}
+
+/*
  * Function: EXTI15_10_IRQHandler
  * ------------------------------
  * Interrupt handler for EXTI lines 10 to 15.
