@@ -21,10 +21,16 @@
 #define USER_LED_3_USED      STD_OFF
 #define USER_LED_4_USED      STD_OFF
 
-#define WK_BUTTON_USED       STD_ON
-#define WK_BUTTON_Interrupt  STD_OFF
+#define WK_BUTTON_USED              STD_ON
+#if(WK_BUTTON_USED)
+#define WK_BUTTON_Interrupt_USED    STD_OFF
+#endif
 
-#define TIM2_PSC             15999U
-#define TIM2_ARR             999U
+#define TIM2_USED                   STD_ON
+#if(TIM2_USED)
+#define TIM2_Interrupt_USED         STD_ON
+#define TIM2_PSC                    15999U
+#define TIM2_ARR                    999U
+#endif
 
 #endif /* PROJECT_CONFIG_H */

@@ -22,7 +22,7 @@
 #define EXTI_11_ENABLED                     STD_OFF
 #define EXTI_12_ENABLED                     STD_OFF
 
-#if (WK_BUTTON_Interrupt == STD_ON)
+#if (WK_BUTTON_USED && WK_BUTTON_Interrupt_USED)
 #define EXTI_13_ENABLED                     STD_ON
 #else
 #define EXTI_13_ENABLED                     STD_OFF

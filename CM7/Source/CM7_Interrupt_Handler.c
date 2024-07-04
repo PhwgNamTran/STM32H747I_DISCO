@@ -18,6 +18,7 @@
  */
 void TIM2_IRQHandler(void)
 {
+#if(TIM2_USED && TIM2_Interrupt_USED)
     if (TIM_DMA_Interrupt_Check_Status(TIM2))
     {
         UserLED_TOGGLE(UserLED_1);        // Toggle User LED 1
@@ -27,6 +28,7 @@ void TIM2_IRQHandler(void)
     {
         // Handle other conditions if needed
     }
+#endif
 }
 
 /*

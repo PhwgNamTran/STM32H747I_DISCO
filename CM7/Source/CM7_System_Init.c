@@ -70,11 +70,14 @@ void Peripherals_Init(void)
 
 #if(WK_BUTTON_USED)
     WK_Button_Init();
-#if(WK_BUTTON_Interrupt == STD_ON)
+#if(WK_BUTTON_Interrupt_USED)
     WK_Button_Interrupt_Init();
 #endif
 #endif
+
+#if(TIM2_USED)
     Timer_2_Init();
+#endif
 }
 
 /*
@@ -92,10 +95,14 @@ void Peripherals_Init(void)
  */
 void Timer_2_Init(void)
 {
+#if(TIM2_USED)
     TIM_Enable_ClockSource(TIMER_NUM_2);          // Enable clock source for Timer 2
     TIM_Config(TIM2, TIM2_PSC, TIM2_ARR, TIM_Direction_Down);  // Configure Timer 2 with prescaler and auto-reload values, set direction down
+#if(TIM2_Interrupt_USED)
     TIM_DMA_Interrupt_Mode_Enable(TIM2, TIM_Update_Interrupt);  // Enable DMA interrupt mode for Timer 2 update events
     TIM_DMA_Interrupt_Clear_Status(TIM2);          // Clear DMA interrupt status for Timer 2
     NVIC_EnableIRQ(IRQn_TIM2);                     // Enable NVIC interrupt for Timer 2
+#endif
     TIM_Enable(TIM2);                              // Enable Timer 2
+#endif
 }
