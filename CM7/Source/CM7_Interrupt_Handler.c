@@ -21,7 +21,9 @@ void TIM2_IRQHandler(void)
 #if(TIM2_USED && TIM2_Interrupt_USED)
     if (TIM_DMA_Interrupt_Check_Status(TIM2))
     {
+        #if(USER_LED_1_USED)
         UserLED_TOGGLE(UserLED_1);        // Toggle User LED 1
+        #endif
         TIM_DMA_Interrupt_Clear_Status(TIM2);  // Clear DMA interrupt status for TIM2
     }
     else
@@ -76,7 +78,9 @@ void EXTI15_10_IRQHandler(void)
     {
         EXTI_Clear_Trigger_Request_Flag_C1(Event_Input_EXTI_13);
         /* USER CODE START */
+        #if(USER_LED_1_USED)
         UserLED_TOGGLE(UserLED_1); // Example user code: Toggle UserLED_1 on EXTI 13
+        #endif
         /* USER CODE END */
     }
 #endif
