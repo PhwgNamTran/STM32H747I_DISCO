@@ -8,7 +8,7 @@ int main(void)
 {
     /* Initialize peripherals */
     Peripherals_Init();
-    
+    SystemClock_Config();
     /* Main application loop */
     while (1) 
     {

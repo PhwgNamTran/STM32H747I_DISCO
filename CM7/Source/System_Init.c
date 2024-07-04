@@ -7,6 +7,7 @@
 #include "Common.h"
 #include "STM32H747XI_NVIC.h"
 #include "STM32H747XI_RCC.h"
+#include "STM32H747XI_TIM.h"
 
 /*
  * Function: System_Init
@@ -73,4 +74,12 @@ void Peripherals_Init(void)
     WK_Button_Interrupt_Init();
 #endif
 #endif
+    Timer_2_Init();
+}
+
+void Timer_2_Init(void)
+{
+    TIM_Enable_ClockSource(TIMER_NUM_2);
+    TIM_Config(TIM2, TIM2_PSC, TIM2_ARR, TIM_Direction_Down);
+    TIM_Enable(TIM2);
 }

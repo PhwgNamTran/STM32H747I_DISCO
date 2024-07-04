@@ -24,4 +24,7 @@
 #define WK_BUTTON_USED       STD_ON
 #define WK_BUTTON_Interrupt  STD_OFF
 
+#define TIM2_PSC             15999U
+#define TIM2_ARR             999U
+
 #endif /* PROJECT_CONFIG_H */
