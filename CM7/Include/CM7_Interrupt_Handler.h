@@ -3,7 +3,7 @@
 
 #include "STM32H747XI_EXTI.h"
 #include "Common.h"
-#include "Project_Cfg.h"
+#include "CM7_Project_Cfg.h"
 
 extern void EXTI15_10_IRQHandler(void);
 
