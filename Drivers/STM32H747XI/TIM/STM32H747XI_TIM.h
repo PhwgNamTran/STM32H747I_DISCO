@@ -42,6 +42,9 @@ typedef struct
 #define CR1_CEN     (1 << 0)  // Counter enable bit in the TIM CR1 register
 #define CR1_DIR     (1 << 4)  // Direction bit in the TIM CR1 register
 
+// Status Register (SR) Bit Definitions
+#define SR_UIF      (1 << 0)  // Update interrupt flag
+
 // Counter Direction Options
 #define TIM_Direction_Up            FALSE  // Up-counting mode
 #define TIM_Direction_Down          TRUE   // Down-counting mode
@@ -136,6 +139,8 @@ extern void TIM_Enable_ClockSource(UINT8 TIM_Num);
 extern void TIM_Config(TIM_ST *TIMx, UINT32 TIMx_PSC, UINT32 TIMx_ARR, BOOL Counter_Direction);
 extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode);
 extern void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode);
+extern void TIM_DMA_Interrupt_Clear_Status(TIM_ST *TIMx);
+extern BOOL TIM_DMA_Interrupt_Check_Status(TIM_ST *TIMx);
 extern void TIM_Enable(TIM_ST *TIMx);
 
 #endif

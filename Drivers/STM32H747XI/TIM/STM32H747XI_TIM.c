@@ -16,46 +16,46 @@ void TIM_Enable_ClockSource(UINT8 TIM_NUM_x)
     switch (TIM_NUM_x)
     {
         case TIMER_NUM_1:
-            SET_BIT(RCC->APB2LPENR, TIM1_CLKSRC);  /**< Enable TIM1 clock source */
+            SET_BIT(RCC->APB2ENR, TIM1_CLKSRC);  /**< Enable TIM1 clock source */
             break;
         case TIMER_NUM_8:
-            SET_BIT(RCC->APB2LPENR, TIM8_CLKSRC);  /**< Enable TIM8 clock source */
+            SET_BIT(RCC->APB2ENR, TIM8_CLKSRC);  /**< Enable TIM8 clock source */
             break;
         case TIMER_NUM_15:
-            SET_BIT(RCC->APB2LPENR, TIM15_CLKSRC); /**< Enable TIM15 clock source */
+            SET_BIT(RCC->APB2ENR, TIM15_CLKSRC); /**< Enable TIM15 clock source */
             break;
         case TIMER_NUM_16:
-            SET_BIT(RCC->APB2LPENR, TIM16_CLKSRC); /**< Enable TIM16 clock source */
+            SET_BIT(RCC->APB2ENR, TIM16_CLKSRC); /**< Enable TIM16 clock source */
             break;
         case TIMER_NUM_17:
-            SET_BIT(RCC->APB2LPENR, TIM17_CLKSRC); /**< Enable TIM17 clock source */
+            SET_BIT(RCC->APB2ENR, TIM17_CLKSRC); /**< Enable TIM17 clock source */
             break;
         case TIMER_NUM_2:
-            SET_BIT(RCC->APB1LLPENR, TIM2_CLKSRC); /**< Enable TIM2 clock source */
+            SET_BIT(RCC->APB1LENR, TIM2_CLKSRC); /**< Enable TIM2 clock source */
             break;
         case TIMER_NUM_3:
-            SET_BIT(RCC->APB1LLPENR, TIM3_CLKSRC); /**< Enable TIM3 clock source */
+            SET_BIT(RCC->APB1LENR, TIM3_CLKSRC); /**< Enable TIM3 clock source */
             break;
         case TIMER_NUM_4:
-            SET_BIT(RCC->APB1LLPENR, TIM4_CLKSRC); /**< Enable TIM4 clock source */
+            SET_BIT(RCC->APB1LENR, TIM4_CLKSRC); /**< Enable TIM4 clock source */
             break;
         case TIMER_NUM_5:
-            SET_BIT(RCC->APB1LLPENR, TIM5_CLKSRC); /**< Enable TIM5 clock source */
+            SET_BIT(RCC->APB1LENR, TIM5_CLKSRC); /**< Enable TIM5 clock source */
             break;
         case TIMER_NUM_6:
-            SET_BIT(RCC->APB1LLPENR, TIM6_CLKSRC); /**< Enable TIM6 clock source */
+            SET_BIT(RCC->APB1LENR, TIM6_CLKSRC); /**< Enable TIM6 clock source */
             break;
         case TIMER_NUM_7:
-            SET_BIT(RCC->APB1LLPENR, TIM7_CLKSRC); /**< Enable TIM7 clock source */
+            SET_BIT(RCC->APB1LENR, TIM7_CLKSRC); /**< Enable TIM7 clock source */
             break;
         case TIMER_NUM_12:
-            SET_BIT(RCC->APB1LLPENR, TIM12_CLKSRC); /**< Enable TIM12 clock source */
+            SET_BIT(RCC->APB1LENR, TIM12_CLKSRC); /**< Enable TIM12 clock source */
             break;
         case TIMER_NUM_13:
-            SET_BIT(RCC->APB1LLPENR, TIM13_CLKSRC); /**< Enable TIM13 clock source */
+            SET_BIT(RCC->APB1LENR, TIM13_CLKSRC); /**< Enable TIM13 clock source */
             break;
         case TIMER_NUM_14:
-            SET_BIT(RCC->APB1LLPENR, TIM14_CLKSRC); /**< Enable TIM14 clock source */
+            SET_BIT(RCC->APB1LENR, TIM14_CLKSRC); /**< Enable TIM14 clock source */
             break;
         default:
             // Handle invalid timer number
@@ -141,6 +141,46 @@ void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode)
         /* Nothing to do */
     }
 }
+
+/*
+ * Function: TIM_DMA_Interrupt_Clear_Status
+ * ----------------------------------------
+ * Clears the DMA interrupt status for the specified timer.
+ *
+ * Parameters:
+ *   TIMx - A pointer to the timer instance.
+ *
+ * Returns:
+ *   None
+ */
+void TIM_DMA_Interrupt_Clear_Status(TIM_ST *TIMx)
+{
+    CLEAR_BIT(TIMx->SR, SR_UIF);  // Clear the interrupt status bit
+}
+
+/*
+ * Function: TIM_DMA_Interrupt_Check_Status
+ * ----------------------------------------
+ * Checks the DMA interrupt status for the specified timer.
+ *
+ * Parameters:
+ *   TIMx - A pointer to the timer instance.
+ *
+ * Returns:
+ *   TRUE if the DMA interrupt status is set, FALSE otherwise.
+ */
+BOOL TIM_DMA_Interrupt_Check_Status(TIM_ST *TIMx)
+{
+    if (CHECK_BIT(TIMx->SR, SR_UIF))
+    {
+        return TRUE;  // Interrupt status is set
+    }
+    else
+    {
+        return FALSE; // Interrupt status is not set
+    }
+}
+
 
 /*
  * Function: TIM_Enable
