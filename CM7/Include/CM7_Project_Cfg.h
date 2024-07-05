@@ -1,5 +1,5 @@
-#ifndef PROJECT_CONFIG_H
-#define PROJECT_CONFIG_H
+#ifndef CM7_PROJECT_CONFIG_H
+#define CM7_PROJECT_CONFIG_H
 
 #include "Common.h"
 #include "STM32H747XI_RCC.h"

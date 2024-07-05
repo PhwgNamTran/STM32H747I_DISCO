@@ -1,5 +1,5 @@
-#ifndef INTERRUPT_CFG_H
-#define INTERRUPT_CFG_H
+#ifndef CM7_INTERRUPT_CFG_H
+#define CM7_INTERRUPT_CFG_H
 
 /*
  * Interrupt Configuration:

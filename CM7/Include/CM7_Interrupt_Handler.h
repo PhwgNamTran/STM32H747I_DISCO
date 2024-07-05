@@ -1,5 +1,5 @@
-#ifndef INTERRUPT_HANDLER_H
-#define INTERRUPT_HANDLER_H
+#ifndef CM7_INTERRUPT_HANDLER_H
+#define CM7_INTERRUPT_HANDLER_H
 
 #include "STM32H747XI_EXTI.h"
 #include "Common.h"
