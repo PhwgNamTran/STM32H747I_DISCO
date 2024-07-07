@@ -1,4 +1,0 @@
-#ifndef STM32H747XI_UART_H
-#define STM32H747XI_UART_H
-
-#endif
