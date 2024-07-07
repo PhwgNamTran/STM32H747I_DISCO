@@ -15,46 +15,46 @@ void TIM_Enable_ClockSource(UINT8 TIM_NUM_x)
 {
     switch (TIM_NUM_x)
     {
-        case TIMER_NUM_1:
+        case TIM1_Num:
             SET_BIT(RCC->APB2ENR, TIM1_CLKSRC);  /**< Enable TIM1 clock source */
             break;
-        case TIMER_NUM_8:
+        case TIM8_Num:
             SET_BIT(RCC->APB2ENR, TIM8_CLKSRC);  /**< Enable TIM8 clock source */
             break;
-        case TIMER_NUM_15:
+        case TIM15_Num:
             SET_BIT(RCC->APB2ENR, TIM15_CLKSRC); /**< Enable TIM15 clock source */
             break;
-        case TIMER_NUM_16:
+        case TIM16_Num:
             SET_BIT(RCC->APB2ENR, TIM16_CLKSRC); /**< Enable TIM16 clock source */
             break;
-        case TIMER_NUM_17:
+        case TIM17_Num:
             SET_BIT(RCC->APB2ENR, TIM17_CLKSRC); /**< Enable TIM17 clock source */
             break;
-        case TIMER_NUM_2:
+        case TIM2_Num:
             SET_BIT(RCC->APB1LENR, TIM2_CLKSRC); /**< Enable TIM2 clock source */
             break;
-        case TIMER_NUM_3:
+        case TIM3_Num:
             SET_BIT(RCC->APB1LENR, TIM3_CLKSRC); /**< Enable TIM3 clock source */
             break;
-        case TIMER_NUM_4:
+        case TIM4_Num:
             SET_BIT(RCC->APB1LENR, TIM4_CLKSRC); /**< Enable TIM4 clock source */
             break;
-        case TIMER_NUM_5:
+        case TIM5_Num:
             SET_BIT(RCC->APB1LENR, TIM5_CLKSRC); /**< Enable TIM5 clock source */
             break;
-        case TIMER_NUM_6:
+        case TIM6_Num:
             SET_BIT(RCC->APB1LENR, TIM6_CLKSRC); /**< Enable TIM6 clock source */
             break;
-        case TIMER_NUM_7:
+        case TIM7_Num:
             SET_BIT(RCC->APB1LENR, TIM7_CLKSRC); /**< Enable TIM7 clock source */
             break;
-        case TIMER_NUM_12:
+        case TIM12_Num:
             SET_BIT(RCC->APB1LENR, TIM12_CLKSRC); /**< Enable TIM12 clock source */
             break;
-        case TIMER_NUM_13:
+        case TIM13_Num:
             SET_BIT(RCC->APB1LENR, TIM13_CLKSRC); /**< Enable TIM13 clock source */
             break;
-        case TIMER_NUM_14:
+        case TIM14_Num:
             SET_BIT(RCC->APB1LENR, TIM14_CLKSRC); /**< Enable TIM14 clock source */
             break;
         default:

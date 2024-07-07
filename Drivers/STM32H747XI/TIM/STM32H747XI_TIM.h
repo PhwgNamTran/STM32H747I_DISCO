@@ -101,20 +101,20 @@ typedef struct
 #define TIM17 ((TIM_ST *) TIM17_BASE)   /**< TIM17 declaration */
 
 // Timer Numbers
-#define TIMER_NUM_1   1   // Timer 1
-#define TIMER_NUM_2   2   // Timer 2
-#define TIMER_NUM_3   3   // Timer 3
-#define TIMER_NUM_4   4   // Timer 4
-#define TIMER_NUM_5   5   // Timer 5
-#define TIMER_NUM_6   6   // Timer 6
-#define TIMER_NUM_7   7   // Timer 7
-#define TIMER_NUM_8   8   // Timer 8
-#define TIMER_NUM_12  12  // Timer 12
-#define TIMER_NUM_13  13  // Timer 13
-#define TIMER_NUM_14  14  // Timer 14
-#define TIMER_NUM_15  15  // Timer 15
-#define TIMER_NUM_16  16  // Timer 16
-#define TIMER_NUM_17  17  // Timer 17
+#define TIM1_Num   1   // Timer 1
+#define TIM2_Num   2   // Timer 2
+#define TIM3_Num   3   // Timer 3
+#define TIM4_Num   4   // Timer 4
+#define TIM5_Num   5   // Timer 5
+#define TIM6_Num   6   // Timer 6
+#define TIM7_Num   7   // Timer 7
+#define TIM8_Num   8   // Timer 8
+#define TIM12_Num  12  // Timer 12
+#define TIM13_Num  13  // Timer 13
+#define TIM14_Num  14  // Timer 14
+#define TIM15_Num  15  // Timer 15
+#define TIM16_Num  16  // Timer 16
+#define TIM17_Num  17  // Timer 17
 
 
 /* TIM Clock Source Bit in APB2LPENR Register */
