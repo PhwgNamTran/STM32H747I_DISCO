@@ -150,12 +150,12 @@ typedef struct
  */
 extern void GPIO_Enable_ClockSource(UINT16 GPIOx_CLKSRC);
 extern void GPIO_Disable_ClockSource(UINT16 GPIOx_CLKSRC);
-extern void GPIO_Mode_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Mode);
-extern void GPIO_Pull_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Pull);
-extern void GPIO_OutputType_Set(GPIO_ST *GPIOx, UINT16 Pin, BOOL OutputType); 
-extern void GPIO_OutputData_Set(GPIO_ST *GPIOx, UINT16 Pin);
-extern void GPIO_OutputData_Reset(GPIO_ST *GPIOx, UINT16 Pin);
-extern void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, UINT16 Pin);
-extern void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, UINT16 Pin, UINT8 AFx);
+extern void GPIO_Mode_Set(GPIO_ST *GPIOx, UINT8 Pin, UINT8 Mode);
+extern void GPIO_Pull_Set(GPIO_ST *GPIOx, UINT8 Pin, UINT8 Pull);
+extern void GPIO_OutputType_Set(GPIO_ST *GPIOx, UINT8 Pin, BOOL OutputType); 
+extern void GPIO_OutputData_Set(GPIO_ST *GPIOx, UINT8 Pin);
+extern void GPIO_OutputData_Reset(GPIO_ST *GPIOx, UINT8 Pin);
+extern void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, UINT8 Pin);
+extern void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, UINT8 Pin, UINT8 AFx);
 
 #endif

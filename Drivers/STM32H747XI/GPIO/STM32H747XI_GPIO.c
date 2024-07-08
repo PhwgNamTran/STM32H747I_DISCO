@@ -48,7 +48,7 @@ void GPIO_Disable_ClockSource(UINT16 GPIOx_CLKSRC)
  * Returns:
  *   None
  */
-void GPIO_Mode_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Mode)
+void GPIO_Mode_Set(GPIO_ST *GPIOx, UINT8 Pin, UINT8 Mode)
 {
     // Clear the mode register for the specified pin
     CLEAR_BIT(GPIOx->MODER, (0x3 << (Pin * 2)));
@@ -70,7 +70,7 @@ void GPIO_Mode_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Mode)
  * Returns:
  *   None
  */
-void GPIO_Pull_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Pull)
+void GPIO_Pull_Set(GPIO_ST *GPIOx, UINT8 Pin, UINT8 Pull)
 {
     // Clear the pull-up/pull-down register for the specified pin
     CLEAR_BIT(GPIOx->PUPDR, (0x3 << (Pin * 2)));
@@ -92,7 +92,7 @@ void GPIO_Pull_Set(GPIO_ST *GPIOx, UINT16 Pin, UINT8 Pull)
  * Returns:
  *   None
  */
-void GPIO_OutputType_Set(GPIO_ST *GPIOx, UINT16 Pin, BOOL OutputType)
+void GPIO_OutputType_Set(GPIO_ST *GPIOx, UINT8 Pin, BOOL OutputType)
 {
     // Clear the output type register for the specified pin
     CLEAR_BIT(GPIOx->OTYPER, (0x1 << Pin));
@@ -112,7 +112,7 @@ void GPIO_OutputType_Set(GPIO_ST *GPIOx, UINT16 Pin, BOOL OutputType)
  * Returns:
  *   None
  */
-void GPIO_OutputData_Set(GPIO_ST *GPIOx, UINT16 Pin)
+void GPIO_OutputData_Set(GPIO_ST *GPIOx, UINT8 Pin)
 {
     // Set the output data register for the specified pin
     SET_BIT(GPIOx->ODR, (0x1 << Pin));
@@ -130,7 +130,7 @@ void GPIO_OutputData_Set(GPIO_ST *GPIOx, UINT16 Pin)
  * Returns:
  *   None
  */
-void GPIO_OutputData_Reset(GPIO_ST *GPIOx, UINT16 Pin)
+void GPIO_OutputData_Reset(GPIO_ST *GPIOx, UINT8 Pin)
 {
     // Clear the output data register for the specified pin
     CLEAR_BIT(GPIOx->ODR, (0x1 << Pin));
@@ -148,7 +148,7 @@ void GPIO_OutputData_Reset(GPIO_ST *GPIOx, UINT16 Pin)
  * Returns:
  *   None
  */
-void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, UINT16 Pin)
+void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, UINT8 Pin)
 {
     // Toggle the output data register for the specified pin
     if (READ_BIT(GPIOx->ODR, (0x1 << Pin)))
@@ -174,7 +174,7 @@ void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, UINT16 Pin)
  * Returns:
  *   None
  */
-void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, UINT16 Pin, UINT8 AFx)
+void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, UINT8 Pin, UINT8 AFx)
 {
     // Clear the current alternate function for the specified pin
     CLEAR_BIT(GPIOx->AFR[(Pin / 8)], (0xF << ((Pin % 8) * 4)));
