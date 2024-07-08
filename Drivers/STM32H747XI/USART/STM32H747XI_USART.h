@@ -3,6 +3,7 @@
 
 #include "Common.h"
 #include "STM32H747XI_RCC.h"
+#include "STM32H747XI_GPIO.h"
 
 /* Refer to RM0399 Reference Manual from http://www.st.com and CMSIS Library */
 
