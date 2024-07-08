@@ -44,4 +44,7 @@ typedef struct
 #define UART7           ((USART_ST *) UART7_BASE)   /**< UART7 peripheral declaration */
 #define UART8           ((USART_ST *) UART8_BASE)   /**< UART8 peripheral declaration */
 
+
+extern void USART_PIN_Config(GPIO_ST *GPIOx, UINT8 GPIO_AFx, UINT8 USART_Rx_PIN, UINT8 USART_Tx_PIN);
+
 #endif
