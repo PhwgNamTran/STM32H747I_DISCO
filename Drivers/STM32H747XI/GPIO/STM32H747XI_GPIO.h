@@ -90,6 +90,24 @@ typedef struct
 #define GPIO_PIN_14    14U /**< GPIO Pin 14 */
 #define GPIO_PIN_15    15U /**< GPIO Pin 15 */
 
+/* GPIO Alternate Functions number definitions */
+#define GPIO_AF_0      0U  /**< GPIO Alternate Function 0 */
+#define GPIO_AF_1      1U  /**< GPIO Alternate Function 1 */
+#define GPIO_AF_2      2U  /**< GPIO Alternate Function 2 */
+#define GPIO_AF_3      3U  /**< GPIO Alternate Function 3 */
+#define GPIO_AF_4      4U  /**< GPIO Alternate Function 4 */
+#define GPIO_AF_5      5U  /**< GPIO Alternate Function 5 */
+#define GPIO_AF_6      6U  /**< GPIO Alternate Function 6 */
+#define GPIO_AF_7      7U  /**< GPIO Alternate Function 7 */
+#define GPIO_AF_8      8U  /**< GPIO Alternate Function 8 */
+#define GPIO_AF_9      9U  /**< GPIO Alternate Function 9 */
+#define GPIO_AF_10     10U /**< GPIO Alternate Function 10 */
+#define GPIO_AF_11     11U /**< GPIO Alternate Function 11 */
+#define GPIO_AF_12     12U /**< GPIO Alternate Function 12 */
+#define GPIO_AF_13     13U /**< GPIO Alternate Function 13 */
+#define GPIO_AF_14     14U /**< GPIO Alternate Function 14 */
+#define GPIO_AF_15     15U /**< GPIO Alternate Function 15 */
+
 /* GPIO Mode Value */
 #define GPIO_Mode_Input                     0U  /**< GPIO Input Mode */
 #define GPIO_Mode_General_Purpose_Output    1U  /**< GPIO General Purpose Output Mode */
