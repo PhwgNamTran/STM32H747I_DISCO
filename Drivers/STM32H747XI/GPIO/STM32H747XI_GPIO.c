@@ -160,3 +160,26 @@ void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, UINT16 Pin)
         SET_BIT(GPIOx->ODR, (0x1 << Pin));
     }
 }
+
+/*
+ * Function: GPIO_Select_Alternate_Function
+ * ----------------------------------------
+ * Configures the alternate function for a specific GPIO pin.
+ *
+ * Parameters:
+ *   GPIOx - Pointer to the GPIO peripheral
+ *   Pin   - GPIO pin number (0-15)
+ *   AFx   - Alternate function number (0-15)
+ *
+ * Returns:
+ *   None
+ */
+void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, UINT16 Pin, UINT8 AFx)
+{
+    // Clear the current alternate function for the specified pin
+    CLEAR_BIT(GPIOx->AFR[(Pin / 8)], (0xF << ((Pin % 8) * 4)));
+    
+    // Set the new alternate function for the specified pin
+    SET_BIT(GPIOx->AFR[(Pin / 8)], (AFx << ((Pin % 8) * 4)));
+}
+

@@ -136,6 +136,7 @@ typedef struct
  * - Set GPIO Output Data.
  * - Reset GPIO Output Data.
  * - Toggle GPIO Output Data.
+ * - Select Alternate function for GPIO Pin.
  *
  * Input:
  *   - GPIOx: Pointer to GPIO structure (GPIO_ST).
@@ -143,6 +144,7 @@ typedef struct
  *   - Mode: GPIO mode (input, output, alternate function, analog).
  *   - Pull: GPIO pull configuration (pull-up, pull-down, none).
  *   - OutputType: GPIO output type (push-pull or open-drain).
+ *   - Alternate function number.
  * Return value:
  *   - N/A
  */
@@ -154,5 +156,6 @@ extern void GPIO_OutputType_Set(GPIO_ST *GPIOx, UINT16 Pin, BOOL OutputType);
 extern void GPIO_OutputData_Set(GPIO_ST *GPIOx, UINT16 Pin);
 extern void GPIO_OutputData_Reset(GPIO_ST *GPIOx, UINT16 Pin);
 extern void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, UINT16 Pin);
+extern void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, UINT16 Pin, UINT8 AFx);
 
 #endif
