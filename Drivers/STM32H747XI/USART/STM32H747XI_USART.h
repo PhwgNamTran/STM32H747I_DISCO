@@ -24,6 +24,28 @@ typedef struct
     volatile UINT32 PRESC;  /*!< USART clock Prescaler register,           Address offset: 0x2C */
 } USART_ST;
 
+/* USART Control Register 1 Bit Position Definitions */
+#define USART_CR1_UE_Pos        0   /**< USART Enable */
+#define USART_CR1_PCE_Pos       10  /**< Parity Control Enable */
+#define USART_CR1_PS_Pos        11  /**< Parity Selection */
+#define USART_CR1_M0_Pos        12  /**< Word Length Bit 0 */
+#define USART_CR1_OVER8_Pos     15  /**< Oversampling Mode */
+#define USART_CR1_M1_Pos        28  /**< Word Length Bit 1 */
+
+/* USART Control Register 2 Bit Position Definitions */
+#define USART_CR2_STOP_Pos      12  /**< STOP Bits */
+
+/* USART Stop Bit Definitions */
+#define USART_StopBit_1         0   /**< 1 Stop bit */
+#define USART_StopBit_0_5       1   /**< 0.5 Stop bit */
+#define USART_StopBit_2         2   /**< 2 Stop bits */
+#define USART_StopBit_1_5       3   /**< 1.5 Stop bits */
+
+/* USART Parity Definitions */
+#define USART_Parity_None       2   /**< No Parity */
+#define USART_Parity_Even       0   /**< Even Parity */
+#define USART_Parity_Odd        1   /**< Odd Parity */
+
 /* Base Address of USART/UART */
 #define USART1_BASE     0x40011000UL  /**< Base address of USART1 peripheral */
 #define USART2_BASE     0x40004400UL  /**< Base address of USART2 peripheral */
@@ -46,5 +68,6 @@ typedef struct
 
 
 extern void USART_PIN_Config(GPIO_ST *GPIOx, UINT8 GPIO_AFx, UINT8 USART_Rx_PIN, UINT8 USART_Tx_PIN);
+extern void USART_Config(USART_ST *USARTx, UINT32 SysClock,UINT16 Baudrate, BOOL OverSamplingMode, UINT8 DataLengthCode, UINT8 NumberOfStopBit, UINT8 ParityCheck);
 
 #endif
