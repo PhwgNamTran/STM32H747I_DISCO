@@ -66,8 +66,20 @@ typedef struct
 #define UART7           ((USART_ST *) UART7_BASE)   /**< UART7 peripheral declaration */
 #define UART8           ((USART_ST *) UART8_BASE)   /**< UART8 peripheral declaration */
 
+/* USART/UART Clock Source Definitions in RCC_APB1LENR */
+#define USART2_ClockSource      (1 << 17) /**< USART2 Clock Source in RCC_APB1LENR */
+#define USART3_ClockSource      (1 << 18) /**< USART3 Clock Source in RCC_APB1LENR */
+#define UART4_ClockSource       (1 << 19) /**< UART4 Clock Source in RCC_APB1LENR */
+#define UART5_ClockSource       (1 << 20) /**< UART5 Clock Source in RCC_APB1LENR */
+#define UART7_ClockSource       (1 << 30) /**< UART7 Clock Source in RCC_APB1LENR */
+#define UART8_ClockSource       (1 << 31) /**< UART8 Clock Source in RCC_APB1LENR */
+
+/* USART/UART Clock Source Definitions in RCC_APB2ENR */
+#define USART1_ClockSource      (1 << 4)  /**< USART1 Clock Source in RCC_APB2ENR */
+#define USART6_ClockSource      (1 << 5)  /**< USART6 Clock Source in RCC_APB2ENR */
 
 extern void USART_PIN_Config(GPIO_ST *GPIOx, UINT8 GPIO_AFx, UINT8 USART_Rx_PIN, UINT8 USART_Tx_PIN);
 extern void USART_Config(USART_ST *USARTx, UINT32 SysClock,UINT16 Baudrate, BOOL OverSamplingMode, UINT8 DataLengthCode, UINT8 NumberOfStopBit, UINT8 ParityCheck);
+extern void USART_Enable_ClockSource(USART_ST *USARTx);
 
 #endif

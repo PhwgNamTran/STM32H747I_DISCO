@@ -98,3 +98,71 @@ void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT16 Baudrate, BOOL OverS
         CLEAR_BIT(USARTx->CR1, (ParityCheck << USART_CR1_PS_Pos));
     }
 }
+
+/*
+ * Function: USART_Enable_ClockSource
+ * ----------------------------------
+ * Enables the clock source for the specified USART peripheral.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART peripheral instance. This parameter can be one of the following values:
+ *            - USART1
+ *            - USART2
+ *            - USART3
+ *            - UART4
+ *            - UART5
+ *            - USART6
+ *            - UART7
+ *            - UART8
+ *
+ * Returns:
+ *   None
+ */
+void USART_Enable_ClockSource(USART_ST *USARTx)
+{
+    // Enable clock source for USART1
+    if (USARTx == USART1)
+    {
+        SET_BIT(RCC->APB2ENR, USART1_ClockSource);
+    }
+    // Enable clock source for USART2
+    else if (USARTx == USART2)
+    {
+        SET_BIT(RCC->APB1LENR, USART2_ClockSource);
+    }
+    // Enable clock source for USART3
+    else if (USARTx == USART3)
+    {
+        SET_BIT(RCC->APB1LENR, USART3_ClockSource);
+    }
+    // Enable clock source for UART4
+    else if (USARTx == UART4)
+    {
+        SET_BIT(RCC->APB1LENR, UART4_ClockSource);
+    }
+    // Enable clock source for UART5
+    else if (USARTx == UART5)
+    {
+        SET_BIT(RCC->APB1LENR, UART5_ClockSource);
+    }
+    // Enable clock source for USART6
+    else if (USARTx == USART6)
+    {
+        SET_BIT(RCC->APB2ENR, USART6_ClockSource);
+    }
+    // Enable clock source for UART7
+    else if (USARTx == UART7)
+    {
+        SET_BIT(RCC->APB1LENR, UART7_ClockSource);
+    }
+    // Enable clock source for UART8
+    else if (USARTx == UART8)
+    {
+        SET_BIT(RCC->APB1LENR, UART8_ClockSource);
+    }
+    // No action for invalid USART instance
+    else
+    {
+        // Handle invalid USART instance if needed
+    }
+}
