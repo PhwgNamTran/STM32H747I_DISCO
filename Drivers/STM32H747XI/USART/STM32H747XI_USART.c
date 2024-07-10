@@ -166,3 +166,54 @@ void USART_Enable_ClockSource(USART_ST *USARTx)
         // Handle invalid USART instance if needed
     }
 }
+
+/*
+ * Function: USART_Enable
+ * ----------------------
+ * Enables the specified USART peripheral by setting the UE bit in the CR1 register.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART peripheral instance. This parameter can be one of the following values:
+ *            - USART1
+ *            - USART2
+ *            - USART3
+ *            - UART4
+ *            - UART5
+ *            - USART6
+ *            - UART7
+ *            - UART8
+ *
+ * Returns:
+ *   None
+ */
+void USART_Enable(USART_ST *USARTx)
+{
+    // Enable the USART peripheral by setting the UE bit
+    SET_BIT(USARTx->CR1, (1 << USART_CR1_UE_Pos));
+}
+
+/*
+ * Function: USART_Disable
+ * -----------------------
+ * Disables the specified USART peripheral by clearing the UE bit in the CR1 register.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART peripheral instance. This parameter can be one of the following values:
+ *            - USART1
+ *            - USART2
+ *            - USART3
+ *            - UART4
+ *            - UART5
+ *            - USART6
+ *            - UART7
+ *            - UART8
+ *
+ * Returns:
+ *   None
+ */
+void USART_Disable(USART_ST *USARTx)
+{
+    // Disable the USART peripheral by clearing the UE bit
+    CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_UE_Pos));
+}
+
