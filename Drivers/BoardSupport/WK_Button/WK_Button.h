@@ -16,7 +16,6 @@ typedef enum
 
 #define WK_Button_ClockSrc    GPIO_C_CLKSRC /**< WK Button Clock source */
 #define WK_Button_Port        GPIO_C        /**< WK Button GPIO Port */
-#define WK_Button_Port_Num    GPIO_C_Num    /**< WK Button GPIO Port number */
 #define WK_Button_PIN         13U           /**< WK Button GPIO Pin number */
 
 #define Button_Pressed        TRUE          /**< Button is pressed */

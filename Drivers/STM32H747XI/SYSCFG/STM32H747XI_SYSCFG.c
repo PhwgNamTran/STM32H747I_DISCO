@@ -19,28 +19,88 @@ void SYSCFG_Enable(void)
 /*
  * Function: SYSCFG_EXITx_GPIO_Cfg
  * -------------------------------
- * Configures the SYSCFG EXTI configuration registers to enable external interrupt for a specific GPIO pin.
+ * Configures the specified GPIO pin to be used as an EXTI (External Interrupt) line.
  *
  * Parameters:
- *   GPIO_x_Num - GPIO Port number (e.g., GPIO_K_Num)
- *   GPIO_Pin   - GPIO Pin number (0 to 15)
+ *   GPIOx - Pointer to the GPIO peripheral instance. This parameter can be one of the following values:
+ *           - GPIO_A
+ *           - GPIO_B
+ *           - GPIO_C
+ *           - GPIO_D
+ *           - GPIO_E
+ *           - GPIO_F
+ *           - GPIO_G
+ *           - GPIO_H
+ *           - GPIO_I
+ *           - GPIO_J
+ *           - GPIO_K
+ *   GPIO_Pin - Specifies the GPIO pin to be configured for EXTI. This parameter must be a value between
+ *              GPIO_PIN_0 and GPIO_PIN_15.
  *
  * Returns:
  *   None
- *
- * Notes:
- *   GPIO K Pin from 8 to 15 is not supported for EXTI.
  */
-void SYSCFG_EXITx_GPIO_Cfg(UINT8 GPIO_x_Num, UINT8 GPIO_Pin)
+void SYSCFG_EXITx_GPIO_Cfg(GPIO_ST *GPIOx, UINT8 GPIO_Pin)
 {
-    if(GPIO_x_Num == GPIO_K_Num 
+    // Check if the GPIO port is GPIO_K and the pin is in the range 8 to 15
+    if((GPIOx == GPIO_K)
        && ((GPIO_PIN_8 <= GPIO_Pin)&&(GPIO_PIN_15 >= GPIO_Pin)))
     {
-        /* GPIO K Pin from 8 to 15 not support for EXTI */
+        /* GPIO K Pin from 8 to 15 not supported for EXTI */
     }
     else
     {
-        CLEAR_BIT(SYSCFG->EXTICR[GPIO_Pin/4], (0xF << ((GPIO_Pin%4)*4)));
-        SET_BIT(SYSCFG->EXTICR[GPIO_Pin/4], ((GPIO_x_Num & 0xF) << ((GPIO_Pin%4)*4)));
+        // Clear the previous EXTI configuration for the specified pin
+        CLEAR_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0xF << ((GPIO_Pin % 4) * 4)));
+        
+        // Set the EXTI configuration based on the GPIO port
+        if(GPIOx == GPIO_A)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x0 << ((GPIO_Pin % 4) * 4)));
+        }
+        else if(GPIOx == GPIO_B)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x1 << ((GPIO_Pin % 4) * 4)));
+        }
+        else if(GPIOx == GPIO_C)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x2 << ((GPIO_Pin % 4) * 4)));
+        }
+        else if(GPIOx == GPIO_D)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x3 << ((GPIO_Pin % 4) * 4)));
+        }
+        else if(GPIOx == GPIO_E)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x4 << ((GPIO_Pin % 4) * 4)));
+        }
+        else if(GPIOx == GPIO_F)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x5 << ((GPIO_Pin % 4) * 4)));
+        }
+        else if(GPIOx == GPIO_G)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x6 << ((GPIO_Pin % 4) * 4)));
+        }
+        else if(GPIOx == GPIO_H)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x7 << ((GPIO_Pin % 4) * 4)));
+        }
+        else if(GPIOx == GPIO_I)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x8 << ((GPIO_Pin % 4) * 4)));
+        }
+        else if(GPIOx == GPIO_J)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x9 << ((GPIO_Pin % 4) * 4)));
+        }
+        else if(GPIOx == GPIO_K)
+        {
+            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0xA << ((GPIO_Pin % 4) * 4)));
+        }
+        else
+        {
+            // Handle invalid GPIO port
+        }
     }
 }

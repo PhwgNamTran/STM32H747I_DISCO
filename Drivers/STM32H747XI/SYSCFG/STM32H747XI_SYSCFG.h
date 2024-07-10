@@ -50,19 +50,7 @@ typedef struct
 #define RCC_APB4ENR_SYSCFGEN    (1 << 1)
 
 
-/*
- * External declarations for SYSCFG functions:
- *   - SYSCFG_Enable: Enables the SYSCFG clock in RCC's APB4ENR register.
- *   - SYSCFG_EXITx_GPIO_Cfg: Configures EXTI for external interrupts on a GPIO pin.
- *
- * For SYSCFG_EXITx_GPIO_Cfg:
- *   Parameters:
- *     - GPIO_x_Num: GPIO Port number (e.g., GPIO_K_Num)
- *     - GPIO_Pin: GPIO Pin number (0 to 15)
- *   Notes:
- *     - GPIO K Pin from 8 to 15 is not supported for EXTI.
- */
 extern void SYSCFG_Enable(void);
-extern void SYSCFG_EXITx_GPIO_Cfg(UINT8 GPIO_x_Num, UINT8 GPIO_Pin);
+extern void SYSCFG_EXITx_GPIO_Cfg(GPIO_ST *GPIOx, UINT8 GPIO_Pin);
 
 #endif

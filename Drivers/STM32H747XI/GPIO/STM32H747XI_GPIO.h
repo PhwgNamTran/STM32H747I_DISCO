@@ -46,31 +46,18 @@ typedef struct
 #define GPIO_J ((GPIO_ST *) GPIO_J_BASE) /**< GPIO Port J declaration */
 #define GPIO_K ((GPIO_ST *) GPIO_K_BASE) /**< GPIO Port K declaration */
 
-/* GPIO Port Number Macros */
-#define GPIO_A_Num 0   /**< GPIO Port A number */
-#define GPIO_B_Num 1   /**< GPIO Port B number */
-#define GPIO_C_Num 2   /**< GPIO Port C number */
-#define GPIO_D_Num 3   /**< GPIO Port D number */
-#define GPIO_E_Num 4   /**< GPIO Port E number */
-#define GPIO_F_Num 5   /**< GPIO Port F number */
-#define GPIO_G_Num 6   /**< GPIO Port G number */
-#define GPIO_H_Num 7   /**< GPIO Port H number */
-#define GPIO_I_Num 8   /**< GPIO Port I number */
-#define GPIO_J_Num 9   /**< GPIO Port J number */
-#define GPIO_K_Num 10  /**< GPIO Port K number */
-
 /* GPIO Clock Source Bit in AHB4ENR Register */
-#define GPIO_A_CLKSRC (1 << GPIO_A_Num) /**< GPIO Port A clock source bit */
-#define GPIO_B_CLKSRC (1 << GPIO_B_Num) /**< GPIO Port B clock source bit */
-#define GPIO_C_CLKSRC (1 << GPIO_C_Num) /**< GPIO Port C clock source bit */
-#define GPIO_D_CLKSRC (1 << GPIO_D_Num) /**< GPIO Port D clock source bit */
-#define GPIO_E_CLKSRC (1 << GPIO_E_Num) /**< GPIO Port E clock source bit */
-#define GPIO_F_CLKSRC (1 << GPIO_F_Num) /**< GPIO Port F clock source bit */
-#define GPIO_G_CLKSRC (1 << GPIO_G_Num) /**< GPIO Port G clock source bit */
-#define GPIO_H_CLKSRC (1 << GPIO_H_Num) /**< GPIO Port H clock source bit */
-#define GPIO_I_CLKSRC (1 << GPIO_I_Num) /**< GPIO Port I clock source bit */
-#define GPIO_J_CLKSRC (1 << GPIO_J_Num) /**< GPIO Port J clock source bit */
-#define GPIO_K_CLKSRC (1 << GPIO_K_Num) /**< GPIO Port K clock source bit */
+#define GPIO_A_CLKSRC (1 << 0) /**< GPIO Port A clock source bit */
+#define GPIO_B_CLKSRC (1 << 1) /**< GPIO Port B clock source bit */
+#define GPIO_C_CLKSRC (1 << 2) /**< GPIO Port C clock source bit */
+#define GPIO_D_CLKSRC (1 << 3) /**< GPIO Port D clock source bit */
+#define GPIO_E_CLKSRC (1 << 4) /**< GPIO Port E clock source bit */
+#define GPIO_F_CLKSRC (1 << 5) /**< GPIO Port F clock source bit */
+#define GPIO_G_CLKSRC (1 << 6) /**< GPIO Port G clock source bit */
+#define GPIO_H_CLKSRC (1 << 7) /**< GPIO Port H clock source bit */
+#define GPIO_I_CLKSRC (1 << 8) /**< GPIO Port I clock source bit */
+#define GPIO_J_CLKSRC (1 << 9) /**< GPIO Port J clock source bit */
+#define GPIO_K_CLKSRC (1 << 10) /**< GPIO Port K clock source bit */
 
 /* GPIO Pin Number Definitions */
 #define GPIO_PIN_0     0U  /**< GPIO Pin 0 */
