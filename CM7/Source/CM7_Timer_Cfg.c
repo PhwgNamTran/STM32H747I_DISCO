@@ -20,7 +20,7 @@
 void Timer_2_Init(void)
 {
 #if(TIM2_USED)
-    TIM_Enable_ClockSource(TIM2_Num);          // Enable clock source for Timer 2
+    TIM_Enable_ClockSource(TIM2);          // Enable clock source for Timer 2
     TIM_Config(TIM2, TIM2_PSC, TIM2_ARR, TIM_Direction_Down);  // Configure Timer 2 with prescaler and auto-reload values, set direction down
 #if(TIM2_Interrupt_USED)
     TIM_DMA_Interrupt_Mode_Enable(TIM2, TIM_Update_Interrupt);  // Enable DMA interrupt mode for Timer 2 update events

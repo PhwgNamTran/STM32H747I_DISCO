@@ -100,23 +100,6 @@ typedef struct
 #define TIM16 ((TIM_ST *) TIM16_BASE)   /**< TIM16 declaration */
 #define TIM17 ((TIM_ST *) TIM17_BASE)   /**< TIM17 declaration */
 
-// Timer Numbers
-#define TIM1_Num   1   // Timer 1
-#define TIM2_Num   2   // Timer 2
-#define TIM3_Num   3   // Timer 3
-#define TIM4_Num   4   // Timer 4
-#define TIM5_Num   5   // Timer 5
-#define TIM6_Num   6   // Timer 6
-#define TIM7_Num   7   // Timer 7
-#define TIM8_Num   8   // Timer 8
-#define TIM12_Num  12  // Timer 12
-#define TIM13_Num  13  // Timer 13
-#define TIM14_Num  14  // Timer 14
-#define TIM15_Num  15  // Timer 15
-#define TIM16_Num  16  // Timer 16
-#define TIM17_Num  17  // Timer 17
-
-
 /* TIM Clock Source Bit in APB2LPENR Register */
 #define TIM1_CLKSRC  (1 << 0)  /**< Bit 0: TIM1 clock source enable */
 #define TIM8_CLKSRC  (1 << 1)  /**< Bit 1: TIM8 clock source enable */
@@ -135,7 +118,7 @@ typedef struct
 #define TIM13_CLKSRC (1 << 7)  /**< Bit 7: TIM13 clock source enable */
 #define TIM14_CLKSRC (1 << 8)  /**< Bit 8: TIM13 clock source enable */
 
-extern void TIM_Enable_ClockSource(UINT8 TIM_Num);
+extern void TIM_Enable_ClockSource(TIM_ST *TIMx);
 extern void TIM_Config(TIM_ST *TIMx, UINT32 TIMx_PSC, UINT32 TIMx_ARR, BOOL Counter_Direction);
 extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode);
 extern void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode);

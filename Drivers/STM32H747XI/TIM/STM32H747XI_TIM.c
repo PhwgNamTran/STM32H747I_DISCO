@@ -6,60 +6,72 @@
  * Enables the clock source for a TIM peripheral.
  *
  * Parameters:
- *   TIM_NUM_x: Timer number to enable the clock source for.
+ *   TIMx: Pointer to TIM peripheral instance.
  *
  * Returns:
  *   None
  */
-void TIM_Enable_ClockSource(UINT8 TIM_NUM_x) 
+void TIM_Enable_ClockSource(TIM_ST *TIMx) 
 {
-    switch (TIM_NUM_x)
+    if(TIMx == TIM1)
     {
-        case TIM1_Num:
-            SET_BIT(RCC->APB2ENR, TIM1_CLKSRC);  /**< Enable TIM1 clock source */
-            break;
-        case TIM8_Num:
-            SET_BIT(RCC->APB2ENR, TIM8_CLKSRC);  /**< Enable TIM8 clock source */
-            break;
-        case TIM15_Num:
-            SET_BIT(RCC->APB2ENR, TIM15_CLKSRC); /**< Enable TIM15 clock source */
-            break;
-        case TIM16_Num:
-            SET_BIT(RCC->APB2ENR, TIM16_CLKSRC); /**< Enable TIM16 clock source */
-            break;
-        case TIM17_Num:
-            SET_BIT(RCC->APB2ENR, TIM17_CLKSRC); /**< Enable TIM17 clock source */
-            break;
-        case TIM2_Num:
-            SET_BIT(RCC->APB1LENR, TIM2_CLKSRC); /**< Enable TIM2 clock source */
-            break;
-        case TIM3_Num:
-            SET_BIT(RCC->APB1LENR, TIM3_CLKSRC); /**< Enable TIM3 clock source */
-            break;
-        case TIM4_Num:
-            SET_BIT(RCC->APB1LENR, TIM4_CLKSRC); /**< Enable TIM4 clock source */
-            break;
-        case TIM5_Num:
-            SET_BIT(RCC->APB1LENR, TIM5_CLKSRC); /**< Enable TIM5 clock source */
-            break;
-        case TIM6_Num:
-            SET_BIT(RCC->APB1LENR, TIM6_CLKSRC); /**< Enable TIM6 clock source */
-            break;
-        case TIM7_Num:
-            SET_BIT(RCC->APB1LENR, TIM7_CLKSRC); /**< Enable TIM7 clock source */
-            break;
-        case TIM12_Num:
-            SET_BIT(RCC->APB1LENR, TIM12_CLKSRC); /**< Enable TIM12 clock source */
-            break;
-        case TIM13_Num:
-            SET_BIT(RCC->APB1LENR, TIM13_CLKSRC); /**< Enable TIM13 clock source */
-            break;
-        case TIM14_Num:
-            SET_BIT(RCC->APB1LENR, TIM14_CLKSRC); /**< Enable TIM14 clock source */
-            break;
-        default:
-            // Handle invalid timer number
-            break;
+        SET_BIT(RCC->APB2ENR, TIM1_CLKSRC);  /**< Enable TIM1 clock source */
+    }
+    else if(TIMx == TIM8)
+    {
+        SET_BIT(RCC->APB2ENR, TIM8_CLKSRC);  /**< Enable TIM8 clock source */
+    }
+    else if(TIMx == TIM15)
+    {
+        SET_BIT(RCC->APB2ENR, TIM15_CLKSRC); /**< Enable TIM15 clock source */
+    }
+    else if(TIMx == TIM16)
+    {
+        SET_BIT(RCC->APB2ENR, TIM16_CLKSRC); /**< Enable TIM16 clock source */
+    }
+    else if(TIMx == TIM17)
+    {
+        SET_BIT(RCC->APB2ENR, TIM17_CLKSRC); /**< Enable TIM17 clock source */
+    }
+    else if(TIMx == TIM2)
+    {
+        SET_BIT(RCC->APB1LENR, TIM2_CLKSRC); /**< Enable TIM2 clock source */
+    }
+    else if(TIMx == TIM3)
+    {
+        SET_BIT(RCC->APB1LENR, TIM3_CLKSRC); /**< Enable TIM3 clock source */
+    }
+    else if(TIMx == TIM4)
+    {
+        SET_BIT(RCC->APB1LENR, TIM4_CLKSRC); /**< Enable TIM4 clock source */
+    }
+    else if(TIMx == TIM5)
+    {
+        SET_BIT(RCC->APB1LENR, TIM5_CLKSRC); /**< Enable TIM5 clock source */
+    }
+    else if(TIMx == TIM6)
+    {
+        SET_BIT(RCC->APB1LENR, TIM6_CLKSRC); /**< Enable TIM6 clock source */
+    }
+    else if(TIMx == TIM7)
+    {
+        SET_BIT(RCC->APB1LENR, TIM7_CLKSRC); /**< Enable TIM7 clock source */
+    }
+    else if(TIMx == TIM12)
+    {
+        SET_BIT(RCC->APB1LENR, TIM12_CLKSRC); /**< Enable TIM12 clock source */
+    }
+    else if(TIMx == TIM13)
+    {
+        SET_BIT(RCC->APB1LENR, TIM13_CLKSRC); /**< Enable TIM13 clock source */
+    }
+    else if(TIMx == TIM14)
+    {
+        SET_BIT(RCC->APB1LENR, TIM14_CLKSRC); /**< Enable TIM14 clock source */
+    }
+    else
+    {
+
     }
 }
 
