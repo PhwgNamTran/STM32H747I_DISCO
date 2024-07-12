@@ -35,6 +35,16 @@ typedef struct
 /* USART Control Register 2 Bit Position Definitions */
 #define USART_CR2_STOP_Pos      12  /**< STOP Bits */
 
+/* USART Oversampling Mode Definitions */
+#define USART_OverSamplingBy8   1
+#define USART_OverSamplingBy16  0
+
+/* USART Data Bit Length Definitions */
+#define USART_DataBit_7         2
+#define USART_DataBit_8         0
+#define USART_DataBit_9         1
+
+
 /* USART Stop Bit Definitions */
 #define USART_StopBit_1         0   /**< 1 Stop bit */
 #define USART_StopBit_0_5       1   /**< 0.5 Stop bit */
