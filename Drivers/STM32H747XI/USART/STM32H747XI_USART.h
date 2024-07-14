@@ -35,7 +35,7 @@ typedef struct
 /* USART Control Register 2 Bit Position Definitions */
 #define USART_CR2_STOP_Pos      12  /**< STOP Bits */
 
-
+/* USART Interrupt and Status Bit Position Definitions */
 #define USART_ISR_PE_Pos        0   /**< Parity Error */
 #define USART_ISR_FE_Pos        1   /**< Framing Error */
 #define USART_ISR_NE_Pos        2   /**< Noise Error */
