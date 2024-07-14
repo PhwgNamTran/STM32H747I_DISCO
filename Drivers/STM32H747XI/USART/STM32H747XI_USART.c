@@ -217,3 +217,48 @@ void USART_Disable(USART_ST *USARTx)
     CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_UE_Pos));
 }
 
+
+/**
+ * Function: USART_Transmit
+ * ------------------------
+ * Transmits a single data frame (8 or 9 bits) via the specified USART.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART instance to use for transmission.
+ *   data - The data frame to transmit (8 or 9 bits).
+ *
+ * Returns:
+ *   None
+ */
+void USART_Transmit(USART_ST *USARTx, UINT16 Data)
+{
+    // Wait until TXFNF flag is set, indicating transmit data register is not full
+    while (!(CHECK_BIT(USARTx->ISR, (1 << USART_ISR_TXFNF_Pos))));
+
+    // Write the data to the USART transmit data register
+    USARTx->TDR = (Data & 0x1FF);
+
+    // Wait until TC flag is set, indicating transmission complete
+    while (!(CHECK_BIT(USARTx->ISR, (1 << USART_ISR_TC_Pos))));
+}
+
+
+/**
+ * Function: USART_Receive
+ * -----------------------
+ * Receives a single data frame (8 or 9 bits) from the specified USART.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART instance to use for reception.
+ *
+ * Returns:
+ *   The received data frame (8 or 9 bits).
+ */
+UINT16 USART_Receive(USART_ST *USARTx)
+{
+    // Wait until RXFNE flag is set, indicating receive data register is not empty
+    while (!(CHECK_BIT(USARTx->ISR, (1 << USART_ISR_RXFNE_Pos))));
+
+    // Read the data from the USART receive data register
+    return (UINT16)(USARTx->RDR & 0x1FF);
+}

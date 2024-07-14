@@ -35,6 +35,36 @@ typedef struct
 /* USART Control Register 2 Bit Position Definitions */
 #define USART_CR2_STOP_Pos      12  /**< STOP Bits */
 
+
+#define USART_ISR_PE_Pos        0   /**< Parity Error */
+#define USART_ISR_FE_Pos        1   /**< Framing Error */
+#define USART_ISR_NE_Pos        2   /**< Noise Error */
+#define USART_ISR_ORE_Pos       3   /**< Overrun Error */
+#define USART_ISR_IDLE_Pos      4   /**< Idle Line Detected */
+#define USART_ISR_RXFNE_Pos     5   /**< Read Data Register Not Empty */
+#define USART_ISR_TC_Pos        6   /**< Transmission Complete */
+#define USART_ISR_TXFNF_Pos     7   /**< Transmit Data Register Not Full */
+#define USART_ISR_LBDF_Pos      8   /**< LIN Break Detection Flag */
+#define USART_ISR_CTSIF_Pos     9   /**< CTS Interrupt Flag */
+#define USART_ISR_CTS_Pos       10  /**< CTS Flag */
+#define USART_ISR_RTOF_Pos      11  /**< Receiver Timeout */
+#define USART_ISR_EOBF_Pos      12  /**< End of Block Flag */
+#define USART_ISR_UDR_Pos       13  /**< SPI Slave underrun error flag */
+#define USART_ISR_ABRE_Pos      14  /**< Auto Baud Rate Error */
+#define USART_ISR_ABRF_Pos      15  /**< Auto Baud Rate Flag */
+#define USART_ISR_BUSY_Pos      16  /**< Busy Flag */
+#define USART_ISR_CMF_Pos       17  /**< Character Match Flag */
+#define USART_ISR_SBKF_Pos      18  /**< Send Break Flag */
+#define USART_ISR_RWU_Pos       19  /**< Receive Wake Up from mute mode Flag */
+#define USART_ISR_WUF_Pos       20  /**< Wake Up from stop mode Flag */
+#define USART_ISR_TEACK_Pos     21  /**< Transmit Enable Acknowledge Flag */
+#define USART_ISR_REACK_Pos     22  /**< Receive Enable Acknowledge Flag */
+#define USART_ISR_TXFE_Pos      23  /**< TX FIFO Empty */
+#define USART_ISR_RXFF_Pos      24  /**< RX FIFO Full */
+#define USART_ISR_TCBGT_Pos     25  /**< Transmission Complete Before Guard Time completion flag */
+#define USART_ISR_TXFT_Pos      26  /**< TX FIFO Threshold flag */
+#define USART_ISR_RXFT_Pos      27  /**< RX FIFO Threshold flag */
+
 /* USART Oversampling Mode Definitions */
 #define USART_OverSamplingBy8   1
 #define USART_OverSamplingBy16  0
@@ -93,5 +123,5 @@ extern void USART_Config(USART_ST *USARTx, UINT32 SysClock,UINT16 Baudrate, BOOL
 extern void USART_Enable_ClockSource(USART_ST *USARTx);
 extern void USART_Enable(USART_ST *USARTx);
 extern void USART_Disable(USART_ST *USARTx);
-
-#endif
+extern void USART_Transmit(USART_ST *USARTx, UINT16 Data);
+extern UINT16 USART_Receive(USART_ST *USARTx);
