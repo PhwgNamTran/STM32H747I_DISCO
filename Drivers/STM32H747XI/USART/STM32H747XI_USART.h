@@ -125,3 +125,5 @@ extern void USART_Enable(USART_ST *USARTx);
 extern void USART_Disable(USART_ST *USARTx);
 extern void USART_Transmit(USART_ST *USARTx, UINT16 Data);
 extern UINT16 USART_Receive(USART_ST *USARTx);
+
+#endif
