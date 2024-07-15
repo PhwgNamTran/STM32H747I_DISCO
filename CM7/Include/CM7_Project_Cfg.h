@@ -21,12 +21,12 @@
 #define USER_LED_3_USED      STD_OFF
 #define USER_LED_4_USED      STD_OFF
 
-#define WK_BUTTON_USED              STD_OFF
+#define WK_BUTTON_USED              STD_ON
 #if(WK_BUTTON_USED)
-#define WK_BUTTON_Interrupt_USED    STD_OFF
+#define WK_BUTTON_Interrupt_USED    STD_ON
 #endif
 
-#define TIM2_USED                   STD_ON
+#define TIM2_USED                   STD_OFF
 #if(TIM2_USED)
 #define TIM2_Interrupt_USED         STD_ON
 #define TIM2_PSC                    15999U

@@ -2,6 +2,7 @@
 #include "CM7_Project_Cfg.h"
 #include "UserLED.h"
 #include "WK_Button.h"
+#include "STLink_VCP.h"
 #include "STM32H747XI_SYSCFG.h"
 #include "STM32H747XI_EXTI.h"
 #include "Common.h"
@@ -79,5 +80,8 @@ void Peripherals_Init(void)
 #if(TIM2_USED)
     Timer_2_Init();
 #endif
+
+    STLink_VCP_Init();
+
 }
 

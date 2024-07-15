@@ -18,7 +18,7 @@ void STLink_VCP_Init(void)
                      STLink_VCP_USART_Rx_PIN, STLink_VCP_USART_Tx_PIN);
     
     // Configure USART with given parameters
-    USART_Config(STLink_VCP_USART, 16000000, STLink_VCP_USART_Baudrate, 
+    USART_Config(STLink_VCP_USART, 16000000U, STLink_VCP_USART_Baudrate, 
                  STLink_VCP_USART_OverSamplingMode, STLink_VCP_USART_DataLengthCode, 
                  STLink_VCP_USART_NumberOfStopBit, STLink_VCP_USART_ParityCheck);
     

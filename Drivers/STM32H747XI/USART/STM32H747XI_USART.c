@@ -44,7 +44,7 @@ void USART_PIN_Config(GPIO_ST *GPIOx, UINT8 GPIO_AFx, UINT8 USART_Rx_PIN, UINT8 
  * Returns:
  *   None
  */
-void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT16 Baudrate, BOOL OverSamplingMode,
+void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT32 Baudrate, BOOL OverSamplingMode,
                                     UINT8 DataLengthCode, UINT8 NumberOfStopBit, UINT8 ParityCheck)
 {
     UINT32 Baudrate_DIV;

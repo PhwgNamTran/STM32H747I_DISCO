@@ -14,7 +14,7 @@
 #define STLink_VCP_USART                        USART1                /**< USART Instance for STLink VCP */
 
 /* Parameter configuration for USART, CAN BE CHANGED */    
-#define STLink_VCP_USART_Baudrate               9600                   /**< Baudrate for USART communication */
+#define STLink_VCP_USART_Baudrate               115200UL                 /**< Baudrate for USART communication */
 #define STLink_VCP_USART_OverSamplingMode       USART_OverSamplingBy16 /**< Oversampling mode for USART */
 #define STLink_VCP_USART_DataLengthCode         USART_DataBit_8        /**< Data length code for USART */
 #define STLink_VCP_USART_NumberOfStopBit        USART_StopBit_1        /**< Number of stop bits for USART */
