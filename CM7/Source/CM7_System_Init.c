@@ -81,7 +81,5 @@ void Peripherals_Init(void)
     Timer_2_Init();
 #endif
 
-    STLink_VCP_Init();
-
 }
 
