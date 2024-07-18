@@ -244,6 +244,25 @@ void USART_Transmit(USART_ST *USARTx, UINT16 Data)
 
 
 /**
+ * Function: USART_Transmit_String
+ * -------------------------------
+ * Transmits a null-terminated string via the specified USART.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART instance to use for transmission.
+ *   str - Pointer to the null-terminated string to be transmitted.
+ *
+ * Returns:
+ *   None
+ */
+void USART_Transmit_String(USART_ST *USARTx, const char *str) {
+    while (*str) 
+    {
+        USART_Transmit(USARTx, *str++);
+    }
+}
+
+/**
  * Function: USART_Receive
  * -----------------------
  * Receives a single data frame (8 or 9 bits) from the specified USART.

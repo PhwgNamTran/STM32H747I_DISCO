@@ -124,6 +124,7 @@ extern void USART_Enable_ClockSource(USART_ST *USARTx);
 extern void USART_Enable(USART_ST *USARTx);
 extern void USART_Disable(USART_ST *USARTx);
 extern void USART_Transmit(USART_ST *USARTx, UINT16 Data);
+extern void USART_Transmit_String(USART_ST *USARTx, const char *str);
 extern UINT16 USART_Receive(USART_ST *USARTx);
 
 #endif
