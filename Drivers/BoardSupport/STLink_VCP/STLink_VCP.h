@@ -13,6 +13,7 @@
 #define STLink_VCP_USART_Rx_PIN                 GPIO_PIN_10           /**< GPIO Pin for USART Rx */
 #define STLink_VCP_USART_GPIO_AFx               GPIO_AF_7             /**< GPIO Alternate Function for USART */
 #define STLink_VCP_USART                        USART1                /**< USART Instance for STLink VCP */
+#define STLink_VCP_USART_MODE                   USART_TX_RX           /**< USART mode for STLink VCP */  
 
 /* Parameter configuration for USART, CAN BE CHANGED */    
 #define STLink_VCP_USART_Baudrate               115200UL               /**< Baudrate for USART communication */

@@ -29,5 +29,5 @@ void STLink_VCP_Init(void)
                  STLink_VCP_USART_NumberOfStopBit, STLink_VCP_USART_ParityCheck);
 
     // Enable USART
-    USART_Enable(STLink_VCP_USART);
+    USART_Enable(STLink_VCP_USART, STLink_VCP_USART_MODE);
 }
