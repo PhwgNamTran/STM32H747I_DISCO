@@ -170,7 +170,7 @@ void USART_Enable_ClockSource(USART_ST *USARTx)
 /*
  * Function: USART_Enable
  * ----------------------
- * Enables the specified USART peripheral by setting the UE bit in the CR1 register.
+ * Configures and enables the specified USART peripheral by setting the appropriate bits in the CR1 register.
  *
  * Parameters:
  *   USARTx - Pointer to the USART peripheral instance. This parameter can be one of the following values:
@@ -182,12 +182,37 @@ void USART_Enable_ClockSource(USART_ST *USARTx)
  *            - USART6
  *            - UART7
  *            - UART8
+ *   Mode - The desired mode of operation for the USART. This parameter can be one of the following values:
+ *            - USART_TX_ONLY: Transmit only mode
+ *            - USART_RX_ONLY: Receive only mode
+ *            - USART_TX_RX:   Both Transmit and Receive mode
  *
  * Returns:
  *   None
  */
-void USART_Enable(USART_ST *USARTx)
+void USART_Enable(USART_ST *USARTx, USART_Mode Mode)
 {
+    // Ensure USART is disabled before configuring
+    CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_UE_Pos));
+
+    switch (Mode) {
+        case USART_TX_ONLY:
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));   // Enable Transmit
+            CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos)); // Disable Receive
+            break;
+        case USART_RX_ONLY:
+            CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos)); // Disable Transmit
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos));   // Enable Receive
+            break;
+        case USART_TX_RX:
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));  // Enable Transmit
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos));  // Enable Receive
+            break;
+        default:
+            // Invalid mode, handle error if necessary
+            break;
+    }
+    
     // Enable the USART peripheral by setting the UE bit
     SET_BIT(USARTx->CR1, (1 << USART_CR1_UE_Pos));
 }

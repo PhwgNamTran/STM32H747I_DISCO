@@ -24,8 +24,17 @@ typedef struct
     volatile UINT32 PRESC;  /*!< USART clock Prescaler register,           Address offset: 0x2C */
 } USART_ST;
 
+/* Enumeration for USART operating modes */
+typedef enum {
+    USART_TX_ONLY = 0,
+    USART_RX_ONLY,
+    USART_TX_RX
+} USART_Mode;
+
 /* USART Control Register 1 Bit Position Definitions */
 #define USART_CR1_UE_Pos        0   /**< USART Enable */
+#define USART_CR1_RE_Pos        2   /**< Receiver Enable */
+#define USART_CR1_TE_Pos        3   /**< Transmitter Enable */
 #define USART_CR1_PCE_Pos       10  /**< Parity Control Enable */
 #define USART_CR1_PS_Pos        11  /**< Parity Selection */
 #define USART_CR1_M0_Pos        12  /**< Word Length Bit 0 */
@@ -121,7 +130,7 @@ typedef struct
 extern void USART_PIN_Config(GPIO_ST *GPIOx, UINT8 GPIO_AFx, UINT8 USART_Rx_PIN, UINT8 USART_Tx_PIN);
 extern void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT32 Baudrate, BOOL OverSamplingMode, UINT8 DataLengthCode, UINT8 NumberOfStopBit, UINT8 ParityCheck);
 extern void USART_Enable_ClockSource(USART_ST *USARTx);
-extern void USART_Enable(USART_ST *USARTx);
+extern void USART_Enable(USART_ST *USARTx, USART_Mode Mode);
 extern void USART_Disable(USART_ST *USARTx);
 extern void USART_Transmit(USART_ST *USARTx, UINT16 Data);
 extern void USART_Transmit_String(USART_ST *USARTx, const char *str);
