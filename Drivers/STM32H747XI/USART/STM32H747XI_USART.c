@@ -244,7 +244,7 @@ void USART_Disable(USART_ST *USARTx)
 
 
 /**
- * Function: USART_Transmit
+ * Function: USART_Transmit_Single_Data
  * ------------------------
  * Transmits a single data frame (8 or 9 bits) via the specified USART.
  *
@@ -255,7 +255,7 @@ void USART_Disable(USART_ST *USARTx)
  * Returns:
  *   None
  */
-void USART_Transmit(USART_ST *USARTx, UINT16 Data)
+void USART_Transmit_Single_Data(USART_ST *USARTx, UINT16 Data)
 {
     // Wait until TXFNF flag is set, indicating transmit data register is not full
     while (!(CHECK_BIT(USARTx->ISR, (1 << USART_ISR_TXFNF_Pos))));
@@ -269,7 +269,7 @@ void USART_Transmit(USART_ST *USARTx, UINT16 Data)
 
 
 /**
- * Function: USART_Transmit_String
+ * Function: USART_Transmit
  * -------------------------------
  * Transmits a null-terminated string via the specified USART.
  *
@@ -280,15 +280,15 @@ void USART_Transmit(USART_ST *USARTx, UINT16 Data)
  * Returns:
  *   None
  */
-void USART_Transmit_String(USART_ST *USARTx, const char *str) {
+void USART_Transmit(USART_ST *USARTx, const char *str) {
     while (*str) 
     {
-        USART_Transmit(USARTx, *str++);
+        USART_Transmit_Single_Data(USARTx, *str++);
     }
 }
 
 /**
- * Function: USART_Receive
+ * Function: USART_Receive_Single_Data
  * -----------------------
  * Receives a single data frame (8 or 9 bits) from the specified USART.
  *
@@ -298,7 +298,7 @@ void USART_Transmit_String(USART_ST *USARTx, const char *str) {
  * Returns:
  *   The received data frame (8 or 9 bits).
  */
-UINT16 USART_Receive(USART_ST *USARTx)
+UINT16 USART_Receive_Single_Data(USART_ST *USARTx)
 {
     // Wait until RXFNE flag is set, indicating receive data register is not empty
     while (!(CHECK_BIT(USARTx->ISR, (1 << USART_ISR_RXFNE_Pos))));
