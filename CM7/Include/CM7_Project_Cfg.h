@@ -26,6 +26,8 @@
 #define WK_BUTTON_Interrupt_USED    STD_ON
 #endif
 
+#define STLINK_VCP_USED             STD_ON
+
 #define TIM2_USED                   STD_OFF
 #if(TIM2_USED)
 #define TIM2_Interrupt_USED         STD_ON

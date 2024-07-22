@@ -6,7 +6,7 @@
  * Initializes the STLink VCP USART with specified parameters.
  *
  * Parameters:
- *   SysClock_Hz - The clock frequency for USART1 in Hz.
+ *   SysClock_Hz - The system clock in Hz.
  *
  * Returns:
  *   None
