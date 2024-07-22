@@ -22,6 +22,6 @@
 #define STLink_VCP_USART_NumberOfStopBit        USART_StopBit_1        /**< Number of stop bits for USART */
 #define STLink_VCP_USART_ParityCheck            USART_Parity_None      /**< Parity check mode for USART */
 
-extern void STLink_VCP_Init(void);
+extern void STLink_VCP_Init(UINT32 SysClock_Hz);
 
 #endif

@@ -6,12 +6,12 @@
  * Initializes the STLink VCP USART with specified parameters.
  *
  * Parameters:
- *   None
+ *   SysClock_Hz - The clock frequency for USART1 in Hz.
  *
  * Returns:
  *   None
  */
-void STLink_VCP_Init(void)
+void STLink_VCP_Init(UINT32 SysClock_Hz)
 {
     // Enable clock source for USART PIN
     GPIO_Enable_ClockSource(STLink_VCP_USART_GPIO_Port_CLKSRC);
@@ -24,7 +24,7 @@ void STLink_VCP_Init(void)
                      STLink_VCP_USART_Rx_PIN, STLink_VCP_USART_Tx_PIN);
     
     // Configure USART with given parameters
-    USART_Config(STLink_VCP_USART, 16000000U, STLink_VCP_USART_Baudrate, 
+    USART_Config(STLink_VCP_USART, SysClock_Hz, STLink_VCP_USART_Baudrate, 
                  STLink_VCP_USART_OverSamplingMode, STLink_VCP_USART_DataLengthCode, 
                  STLink_VCP_USART_NumberOfStopBit, STLink_VCP_USART_ParityCheck);
 
