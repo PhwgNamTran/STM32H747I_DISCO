@@ -31,3 +31,19 @@ void STLink_VCP_Init(UINT32 SysClock_Hz, USART_Mode Mode)
     // Enable USART
     USART_Enable(STLink_VCP_USART, Mode);
 }
+
+/**
+ * Function: STLink_VCP_Send
+ * -------------------------
+ * Sends a null-terminated string over the STLink VCP USART.
+ *
+ * Parameters:
+ *   str - Pointer to the null-terminated string to be transmitted.
+ *
+ * Returns:
+ *   None
+ */
+void STLink_VCP_Send(const char *str)
+{
+    USART_Transmit(STLink_VCP_USART, str);
+}

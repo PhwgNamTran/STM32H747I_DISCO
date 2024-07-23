@@ -22,5 +22,6 @@
 #define STLink_VCP_USART_ParityCheck            USART_Parity_None      /**< Parity check mode for USART */
 
 extern void STLink_VCP_Init(UINT32 SysClock_Hz, USART_Mode Mode);
+extern void STLink_VCP_Send(const char *str);
 
 #endif
