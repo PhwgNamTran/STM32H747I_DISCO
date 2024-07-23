@@ -13,7 +13,6 @@
 #define STLink_VCP_USART_Rx_PIN                 GPIO_PIN_10           /**< GPIO Pin for USART Rx */
 #define STLink_VCP_USART_GPIO_AFx               GPIO_AF_7             /**< GPIO Alternate Function for USART */
 #define STLink_VCP_USART                        USART1                /**< USART Instance for STLink VCP */
-#define STLink_VCP_USART_MODE                   USART_TX_RX           /**< USART mode for STLink VCP */  
 
 /* Parameter configuration for USART, CAN BE CHANGED */    
 #define STLink_VCP_USART_Baudrate               115200UL               /**< Baudrate for USART communication */
@@ -22,6 +21,6 @@
 #define STLink_VCP_USART_NumberOfStopBit        USART_StopBit_1        /**< Number of stop bits for USART */
 #define STLink_VCP_USART_ParityCheck            USART_Parity_None      /**< Parity check mode for USART */
 
-extern void STLink_VCP_Init(UINT32 SysClock_Hz);
+extern void STLink_VCP_Init(UINT32 SysClock_Hz, USART_Mode Mode);
 
 #endif

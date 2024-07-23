@@ -27,6 +27,9 @@
 #endif
 
 #define STLINK_VCP_USED             STD_ON
+#if(STLINK_VCP_USED)
+#define STLink_VCP_USART_MODE       USART_TX_RX
+#endif
 
 #define TIM2_USED                   STD_OFF
 #if(TIM2_USED)

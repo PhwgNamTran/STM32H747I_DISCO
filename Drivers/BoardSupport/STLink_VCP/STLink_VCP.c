@@ -11,7 +11,7 @@
  * Returns:
  *   None
  */
-void STLink_VCP_Init(UINT32 SysClock_Hz)
+void STLink_VCP_Init(UINT32 SysClock_Hz, USART_Mode Mode)
 {
     // Enable clock source for USART PIN
     GPIO_Enable_ClockSource(STLink_VCP_USART_GPIO_Port_CLKSRC);
@@ -29,5 +29,5 @@ void STLink_VCP_Init(UINT32 SysClock_Hz)
                  STLink_VCP_USART_NumberOfStopBit, STLink_VCP_USART_ParityCheck);
 
     // Enable USART
-    USART_Enable(STLink_VCP_USART, STLink_VCP_USART_MODE);
+    USART_Enable(STLink_VCP_USART, Mode);
 }
