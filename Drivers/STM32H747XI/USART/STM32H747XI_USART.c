@@ -245,6 +245,47 @@ void USART_Config_Mode(USART_ST *USARTx, USART_Mode Mode)
 }
 
 /*
+ * Function: USART_ConfigInterrupt
+ * -------------------------------
+ * Configures the USART interrupts based on the specified mode.
+ * Enables interrupts according to the provided configuration.
+ * 
+ * Parameters:
+ *   USARTx - Pointer to the USART peripheral (e.g., USART1, USART2, etc.)
+ *   Interrupt_Mode - Specifies the interrupt mode(s) to configure
+ * 
+ * Returns:
+ *   None
+ */
+void USART_Config_Interrupt(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode)
+{
+    // Configure interrupts based on Interrupt_Mode
+    switch (Interrupt_Mode) {
+        case USART_Interrupt_TransmitDataRegisterEmpty:
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_TXEIE_Pos));
+            break;
+        case USART_Interrupt_TransmissionComplete:
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_TCIE_Pos));
+            break;
+        case USART_Interrupt_ReceptionDataNotEmpty:
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_RXNEIE_Pos));
+            break;
+        case USART_Interrupt_ParityError:
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_PEIE_Pos));
+            break;
+        case USART_Interrupt_LINBreakDetection:
+            SET_BIT(USARTx->CR2, (1 << USART_CR2_LBDIE_Pos));
+            break;
+        case USART_Interrupt_CTS:
+            SET_BIT(USARTx->CR3, (1 << USART_CR3_CTSIE_Pos));
+            break;
+        default:
+            // Handle unknown or unsupported interrupt modes, if necessary
+            break;
+    }
+}
+
+/*
  * Function: USART_Enable
  * ----------------------
  * Enables the USART peripheral.

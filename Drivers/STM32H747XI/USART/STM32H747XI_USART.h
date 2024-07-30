@@ -37,30 +37,93 @@ typedef enum {
     USART_RS485                /**< RS485 mode */
 } USART_Mode;
 
+/* Enumeration for USART interrupt modes */
+typedef enum {
+    USART_Interrupt_TransmitDataRegisterEmpty = 0,  /**< Transmit Data Register Empty Interrupt */
+    USART_Interrupt_TransmissionComplete,           /**< Transmission Complete Interrupt */
+    USART_Interrupt_ReceptionDataNotEmpty,          /**< Reception Data Register Not Empty Interrupt */
+    USART_Interrupt_ParityError,                    /**< Parity Error Interrupt */
+    USART_Interrupt_FramingError,                   /**< Framing Error Interrupt */
+    USART_Interrupt_NoiseError,                     /**< Noise Error Interrupt */
+    USART_Interrupt_OverrunError,                   /**< Overrun Error Interrupt */
+    USART_Interrupt_LINBreakDetection,              /**< LIN Break Detection Interrupt */
+    USART_Interrupt_CTS                             /**< CTS Interrupt */
+} USART_Interrupt_Mode;
 
 /* USART Control Register 1 Bit Position Definitions */
 #define USART_CR1_UE_Pos        0   /**< USART Enable */
+#define USART_CR1_UESM_Pos      1   /**< USART Enable in Stop Mode */
 #define USART_CR1_RE_Pos        2   /**< Receiver Enable */
 #define USART_CR1_TE_Pos        3   /**< Transmitter Enable */
+#define USART_CR1_IDLEIE_Pos    4   /**< IDLE Interrupt Enable */
+#define USART_CR1_RXNEIE_Pos    5   /**< RXNE Interrupt Enable */
+#define USART_CR1_TCIE_Pos      6   /**< Transmission Complete Interrupt Enable */
+#define USART_CR1_TXEIE_Pos     7   /**< TXE Interrupt Enable */
+#define USART_CR1_PEIE_Pos      8   /**< PE Interrupt Enable */
 #define USART_CR1_PS_Pos        9   /**< Parity Selection */
 #define USART_CR1_PCE_Pos       10  /**< Parity Control Enable */
+#define USART_CR1_WAKE_Pos      11  /**< Wakeup Method */
 #define USART_CR1_M0_Pos        12  /**< Word Length Bit 0 */
+#define USART_CR1_MME_Pos       13  /**< Mute Mode Enable */
+#define USART_CR1_CMIE_Pos      14  /**< Character Match Interrupt Enable */
 #define USART_CR1_OVER8_Pos     15  /**< Oversampling Mode */
+#define USART_CR1_DEDT_Pos      16  /**< Driver Enable Deassertion Time */
+#define USART_CR1_DEAT_Pos      21  /**< Driver Enable Assertion Time */
+#define USART_CR1_RTOIE_Pos     26  /**< Receiver Timeout Interrupt Enable */
+#define USART_CR1_EOBIE_Pos     27  /**< End of Block Interrupt Enable */
 #define USART_CR1_M1_Pos        28  /**< Word Length Bit 1 */
+#define USART_CR1_FIFOEN_Pos    29  /**< FIFO Mode Enable */
+#define USART_CR1_TXFEIE_Pos    30  /**< TXFIFO Empty Interrupt Enable */
+#define USART_CR1_RXFFIE_Pos    31  /**< RXFIFO Full Interrupt Enable */
 
 /* USART Control Register 2 Bit Position Definitions */
+#define USART_CR2_SLVEN_Pos     0   /**< Synchronous Slave Mode Enable */
+#define USART_CR2_DIS_NSS_Pos   3   /**< Slave Select (NSS) Pin Management */
+#define USART_CR2_ADDM7_Pos     4   /**< 7-bit Address Detection/4-bit Address Detection */
+#define USART_CR2_LBDL_Pos      5   /**< LIN Break Detection Length */
+#define USART_CR2_LBDIE_Pos     6   /**< LIN Break Detection Interrupt Enable */
+#define USART_CR2_LBCL_Pos      8   /**< Last Bit Clock Pulse */
 #define USART_CR2_CPHA_Pos      9   /**< Clock Phase */
 #define USART_CR2_CPOL_Pos      10  /**< Clock Polarity */
 #define USART_CR2_CLKEN_Pos     11  /**< Clock Enable */
 #define USART_CR2_STOP_Pos      12  /**< STOP Bits */
 #define USART_CR2_LINEN_Pos     14  /**< LIN Mode Enable */
+#define USART_CR2_SWAP_Pos      15  /**< Swap TX/RX Pins */
+#define USART_CR2_RXINV_Pos     16  /**< RX Pin Active Level Inversion */
+#define USART_CR2_TXINV_Pos     17  /**< TX Pin Active Level Inversion */
+#define USART_CR2_DATAINV_Pos   18  /**< Binary Data Inversion */
+#define USART_CR2_MSBFIRST_Pos  19  /**< Most Significant Bit First */
+#define USART_CR2_ABREN_Pos     20  /**< Auto Baud Rate Enable */
+#define USART_CR2_ABRMODE_Pos   21  /**< Auto Baud Rate Mode */
+#define USART_CR2_RTOEN_Pos     23  /**< Receiver Timeout Enable */
+#define USART_CR2_ADD_Pos       24  /**< Address of the USART Node */
+
 
 /* USART Control Register 3 Bit Position Definitions */
+#define USART_CR3_EIE_Pos       0   /**< Error Interrupt Enable */
 #define USART_CR3_IREN_Pos      1   /**< IrDA Mode Enable */
+#define USART_CR3_IRLP_Pos      2   /**< IrDA Low-Power */
 #define USART_CR3_HDSEL_Pos     3   /**< Half-Duplex Selection */
 #define USART_CR3_NACK_Pos      4   /**< Smartcard NACK Enable */
 #define USART_CR3_SCEN_Pos      5   /**< Smartcard Mode Enable */
-#define USART_CR3_DEM_Pos       14   /**< Driver Enable Mode */
+#define USART_CR3_DMAR_Pos      6   /**< DMA Enable Receiver */
+#define USART_CR3_DMAT_Pos      7   /**< DMA Enable Transmitter */
+#define USART_CR3_RTSE_Pos      8   /**< RTS Enable */
+#define USART_CR3_CTSE_Pos      9   /**< CTS Enable */
+#define USART_CR3_CTSIE_Pos     10  /**< CTS Interrupt Enable */
+#define USART_CR3_ONEBIT_Pos    11  /**< One Sample Bit Method Enable */
+#define USART_CR3_OVRDIS_Pos    12  /**< Overrun Disable */
+#define USART_CR3_DDRE_Pos      13  /**< DMA Disable on Reception Error */
+#define USART_CR3_DEM_Pos       14  /**< Driver Enable Mode */
+#define USART_CR3_DEP_Pos       15  /**< Driver Enable Polarity Selection */
+#define USART_CR3_SCARCNT_Pos   17  /**< Smartcard Auto-Retry Count */
+#define USART_CR3_WUS_Pos       20  /**< Wakeup from Stop Mode Interrupt Flag Selection */
+#define USART_CR3_WUFIE_Pos     22  /**< Wakeup from Stop Mode Interrupt Enable */
+#define USART_CR3_TXFTIE_Pos    23  /**< TXFIFO Threshold Interrupt Enable */
+#define USART_CR3_TCBGTIE_Pos   24  /**< Transmission Complete Before Guard Time Interrupt Enable */
+#define USART_CR3_RXFTCFG_Pos   25  /**< RXFIFO Threshold Configuration */
+#define USART_CR3_RXFTIE_Pos    28  /**< RXFIFO Threshold Interrupt Enable */
+#define USART_CR3_TXFTCFG_Pos   29  /**< TXFIFO Threshold Configuration */
 
 /* USART Interrupt and Status Bit Position Definitions */
 #define USART_ISR_PE_Pos        0   /**< Parity Error */
