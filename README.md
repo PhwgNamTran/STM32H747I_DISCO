@@ -6,7 +6,7 @@ Learn ARM-Based Mirocontroller programing with bare metal
 
 Hardware: STM32H747I-DISCO Board
 
-Progress:
+Progress: Focus on Single core (CM7) first
 
     1. Makefile, Linkerfile, Start-Up file
 
