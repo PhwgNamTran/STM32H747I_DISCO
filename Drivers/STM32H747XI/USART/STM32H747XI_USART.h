@@ -93,14 +93,13 @@ typedef enum {
 #define USART_ISR_RXFT_Pos      27  /**< RX FIFO Threshold flag */
 
 /* USART Oversampling Mode Definitions */
-#define USART_OverSamplingBy8   1
-#define USART_OverSamplingBy16  0
+#define USART_OverSamplingBy8   1   /**< 8x oversampling */
+#define USART_OverSamplingBy16  0   /**< 16x oversampling */
 
 /* USART Data Bit Length Definitions */
-#define USART_DataBit_7         2
-#define USART_DataBit_8         0
-#define USART_DataBit_9         1
-
+#define USART_DataBit_7         2   /**< 7 data bits in communication */
+#define USART_DataBit_8         0   /**< 8 data bits in communication */
+#define USART_DataBit_9         1   /**< 9 data bits in communication */
 
 /* USART Stop Bit Definitions */
 #define USART_StopBit_1         0   /**< 1 Stop bit */
