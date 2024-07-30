@@ -106,15 +106,7 @@ void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT32 Baudrate, BOOL OverS
  *
  * Parameters:
  *   USARTx - Pointer to the USART peripheral instance. This parameter can be one of the following values:
- *            - USART1
- *            - USART2
- *            - USART3
- *            - UART4
- *            - UART5
- *            - USART6
- *            - UART7
- *            - UART8
- *
+ * 
  * Returns:
  *   None
  */
@@ -309,15 +301,7 @@ void USART_Enable(USART_ST *USARTx)
  *
  * Parameters:
  *   USARTx - Pointer to the USART peripheral instance. This parameter can be one of the following values:
- *            - USART1
- *            - USART2
- *            - USART3
- *            - UART4
- *            - UART5
- *            - USART6
- *            - UART7
- *            - UART8
- *
+ * 
  * Returns:
  *   None
  */
