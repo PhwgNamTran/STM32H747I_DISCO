@@ -28,7 +28,7 @@
 
 #define STLINK_VCP_USED             STD_ON
 #if(STLINK_VCP_USED)
-#define STLink_VCP_USART_MODE       USART_TX_RX
+#define STLink_VCP_USART_MODE       USART_ASYNC_TX_RX
 #define STLink_VCP_Interrupt_USED   STD_OFF
 #endif
 
