@@ -26,23 +26,41 @@ typedef struct
 
 /* Enumeration for USART operating modes */
 typedef enum {
-    USART_TX_ONLY = 0,
-    USART_RX_ONLY,
-    USART_TX_RX
+    USART_ASYNC_TX_ONLY = 0,   /**< Asynchronous mode: Transmit only */
+    USART_ASYNC_RX_ONLY,       /**< Asynchronous mode: Receive only */
+    USART_ASYNC_TX_RX,         /**< Asynchronous mode: Transmit and receive */
+    USART_SYNCHRONOUS,         /**< Synchronous mode */
+    USART_SINGLEWIRE,          /**< Single-wire half-duplex mode */
+    USART_SMARTCARD,           /**< Smartcard mode */
+    USART_IRDA,                /**< IrDA mode */
+    USART_LIN,                 /**< LIN mode */
+    USART_RS485                /**< RS485 mode */
 } USART_Mode;
+
 
 /* USART Control Register 1 Bit Position Definitions */
 #define USART_CR1_UE_Pos        0   /**< USART Enable */
 #define USART_CR1_RE_Pos        2   /**< Receiver Enable */
 #define USART_CR1_TE_Pos        3   /**< Transmitter Enable */
+#define USART_CR1_PS_Pos        9   /**< Parity Selection */
 #define USART_CR1_PCE_Pos       10  /**< Parity Control Enable */
-#define USART_CR1_PS_Pos        11  /**< Parity Selection */
 #define USART_CR1_M0_Pos        12  /**< Word Length Bit 0 */
 #define USART_CR1_OVER8_Pos     15  /**< Oversampling Mode */
 #define USART_CR1_M1_Pos        28  /**< Word Length Bit 1 */
 
 /* USART Control Register 2 Bit Position Definitions */
+#define USART_CR2_CPHA_Pos      9   /**< Clock Phase */
+#define USART_CR2_CPOL_Pos      10  /**< Clock Polarity */
+#define USART_CR2_CLKEN_Pos     11  /**< Clock Enable */
 #define USART_CR2_STOP_Pos      12  /**< STOP Bits */
+#define USART_CR2_LINEN_Pos     14  /**< LIN Mode Enable */
+
+/* USART Control Register 3 Bit Position Definitions */
+#define USART_CR3_IREN_Pos      1   /**< IrDA Mode Enable */
+#define USART_CR3_HDSEL_Pos     3   /**< Half-Duplex Selection */
+#define USART_CR3_NACK_Pos      4   /**< Smartcard NACK Enable */
+#define USART_CR3_SCEN_Pos      5   /**< Smartcard Mode Enable */
+#define USART_CR3_DEM_Pos       14   /**< Driver Enable Mode */
 
 /* USART Interrupt and Status Bit Position Definitions */
 #define USART_ISR_PE_Pos        0   /**< Parity Error */

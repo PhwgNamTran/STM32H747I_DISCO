@@ -170,22 +170,11 @@ void USART_Enable_ClockSource(USART_ST *USARTx)
 /*
  * Function: USART_Enable
  * ----------------------
- * Configures and enables the specified USART peripheral by setting the appropriate bits in the CR1 register.
- *
+ * Configures and enables the USART peripheral with the specified mode.
+ * 
  * Parameters:
- *   USARTx - Pointer to the USART peripheral instance. This parameter can be one of the following values:
- *            - USART1
- *            - USART2
- *            - USART3
- *            - UART4
- *            - UART5
- *            - USART6
- *            - UART7
- *            - UART8
- *   Mode - The desired mode of operation for the USART. This parameter can be one of the following values:
- *            - USART_TX_ONLY: Transmit only mode
- *            - USART_RX_ONLY: Receive only mode
- *            - USART_TX_RX:   Both Transmit and Receive mode
+ *   USARTx - Pointer to the USART peripheral (USART_ST *).
+ *   Mode - The desired USART mode (USART_Mode).
  *
  * Returns:
  *   None
@@ -196,18 +185,62 @@ void USART_Enable(USART_ST *USARTx, USART_Mode Mode)
     CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_UE_Pos));
 
     switch (Mode) {
-        case USART_TX_ONLY:
+        case USART_ASYNC_TX_ONLY:
             SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));   // Enable Transmit
             CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos)); // Disable Receive
             break;
-        case USART_RX_ONLY:
+            
+        case USART_ASYNC_RX_ONLY:
             CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos)); // Disable Transmit
             SET_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos));   // Enable Receive
             break;
-        case USART_TX_RX:
+            
+        case USART_ASYNC_TX_RX:
             SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));  // Enable Transmit
             SET_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos));  // Enable Receive
             break;
+            
+        case USART_SYNCHRONOUS:
+            SET_BIT(USARTx->CR2, (1 << USART_CR2_CLKEN_Pos)); // Enable clock
+            // Configure clock polarity and phase as needed
+            // USARTx->CR2 |= (USART_CP0L1 | USART_CPHA_1); // Example setting
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));  // Enable Transmit
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos));  // Enable Receive
+            break;
+            
+        case USART_SINGLEWIRE:
+            SET_BIT(USARTx->CR3, (1 << USART_CR3_HDSEL_Pos)); // Enable single-wire mode
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));  // Enable Transmit
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos));  // Enable Receive
+            break;
+            
+        case USART_SMARTCARD:
+            SET_BIT(USARTx->CR3, (1 << USART_CR3_SCEN_Pos)); // Enable smartcard mode
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));   // Enable Transmit
+            // Configure additional smartcard settings if needed
+            break;
+            
+        case USART_IRDA:
+            SET_BIT(USARTx->CR3, (1 << USART_CR3_IREN_Pos)); // Enable IrDA mode
+            // Configure low-power mode if necessary
+            // SET_BIT(USARTx->CR3, (1 << USART_CR3_IRLP_Pos));
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));  // Enable Transmit
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos));  // Enable Receive
+            break;
+            
+        case USART_LIN:
+            SET_BIT(USARTx->CR2, (1 << USART_CR2_LINEN_Pos)); // Enable LIN mode
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));  // Enable Transmit
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos));  // Enable Receive
+            break;
+            
+        case USART_RS485:
+            SET_BIT(USARTx->CR3, (1 << USART_CR3_DEM_Pos)); // Enable driver enable mode
+            // Configure DE polarity and settings as needed
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));  // Enable Transmit
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos));  // Enable Receive
+            break;
+            
         default:
             // Invalid mode, handle error if necessary
             break;
@@ -216,6 +249,7 @@ void USART_Enable(USART_ST *USARTx, USART_Mode Mode)
     // Enable the USART peripheral by setting the UE bit
     SET_BIT(USARTx->CR1, (1 << USART_CR1_UE_Pos));
 }
+
 
 /*
  * Function: USART_Disable
