@@ -168,9 +168,9 @@ void USART_Enable_ClockSource(USART_ST *USARTx)
 }
 
 /*
- * Function: USART_Enable
+ * Function: USART_Config_Mode
  * ----------------------
- * Configures and enables the USART peripheral with the specified mode.
+ * Configures the USART peripheral with the specified mode.
  * 
  * Parameters:
  *   USARTx - Pointer to the USART peripheral (USART_ST *).
@@ -179,11 +179,8 @@ void USART_Enable_ClockSource(USART_ST *USARTx)
  * Returns:
  *   None
  */
-void USART_Enable(USART_ST *USARTx, USART_Mode Mode)
+void USART_Config_Mode(USART_ST *USARTx, USART_Mode Mode)
 {
-    // Ensure USART is disabled before configuring
-    CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_UE_Pos));
-
     switch (Mode) {
         case USART_ASYNC_TX_ONLY:
             SET_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos));   // Enable Transmit
@@ -245,11 +242,24 @@ void USART_Enable(USART_ST *USARTx, USART_Mode Mode)
             // Invalid mode, handle error if necessary
             break;
     }
-    
+}
+
+/*
+ * Function: USART_Enable
+ * ----------------------
+ * Enables the USART peripheral.
+ * 
+ * Parameters:
+ *   USARTx - Pointer to the USART peripheral (USART_ST *).
+ *
+ * Returns:
+ *   None
+ */
+void USART_Enable(USART_ST *USARTx)
+{
     // Enable the USART peripheral by setting the UE bit
     SET_BIT(USARTx->CR1, (1 << USART_CR1_UE_Pos));
 }
-
 
 /*
  * Function: USART_Disable

@@ -146,8 +146,9 @@ typedef enum {
 
 extern void USART_PIN_Config(GPIO_ST *GPIOx, UINT8 GPIO_AFx, UINT8 USART_Rx_PIN, UINT8 USART_Tx_PIN);
 extern void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT32 Baudrate, BOOL OverSamplingMode, UINT8 DataLengthCode, UINT8 NumberOfStopBit, UINT8 ParityCheck);
+extern void USART_Config_Mode(USART_ST *USARTx, USART_Mode Mode);
 extern void USART_Enable_ClockSource(USART_ST *USARTx);
-extern void USART_Enable(USART_ST *USARTx, USART_Mode Mode);
+extern void USART_Enable(USART_ST *USARTx);
 extern void USART_Disable(USART_ST *USARTx);
 extern void USART_Transmit_Single_Data(USART_ST *USARTx, UINT16 Data);
 extern void USART_Transmit(USART_ST *USARTx, const char *str);
