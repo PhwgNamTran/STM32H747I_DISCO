@@ -12,11 +12,11 @@ Structure:
 
     - Drivers:
 
-        + Common:
+        + Common: datatype definition, macros, ...
 
-        + BoardSupport:
-        
-        + STM32H747XI:
+        + BoardSupport: driver for component supported on the board.
+
+        + STM32H747XI: driver for component supported on MCU.
 
 Progress: Focus on Single core (CM7) first
 
