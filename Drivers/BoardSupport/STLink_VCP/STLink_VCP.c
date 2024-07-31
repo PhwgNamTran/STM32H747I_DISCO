@@ -27,9 +27,10 @@ void STLink_VCP_Init(UINT32 SysClock_Hz, USART_Mode Mode)
     USART_Config(STLink_VCP_USART, SysClock_Hz, STLink_VCP_USART_Baudrate, 
                  STLink_VCP_USART_OverSamplingMode, STLink_VCP_USART_DataLengthCode, 
                  STLink_VCP_USART_NumberOfStopBit, STLink_VCP_USART_ParityCheck);
-
+    // Config USART Operation Mode
+    USART_Config_Mode(STLink_VCP_USART, Mode);
     // Enable USART
-    USART_Enable(STLink_VCP_USART, Mode);
+    USART_Enable(STLink_VCP_USART);
 }
 
 /**
