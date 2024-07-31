@@ -39,16 +39,17 @@ typedef enum {
 
 /* Enumeration for USART interrupt modes */
 typedef enum {
-    USART_Interrupt_TransmitDataRegisterEmpty = 0,  /**< Transmit Data Register Empty Interrupt */
-    USART_Interrupt_TransmissionComplete,           /**< Transmission Complete Interrupt */
-    USART_Interrupt_ReceptionDataNotEmpty,          /**< Reception Data Register Not Empty Interrupt */
-    USART_Interrupt_ParityError,                    /**< Parity Error Interrupt */
-    USART_Interrupt_FramingError,                   /**< Framing Error Interrupt */
-    USART_Interrupt_NoiseError,                     /**< Noise Error Interrupt */
-    USART_Interrupt_OverrunError,                   /**< Overrun Error Interrupt */
-    USART_Interrupt_LINBreakDetection,              /**< LIN Break Detection Interrupt */
-    USART_Interrupt_CTS                             /**< CTS Interrupt */
+    USART_Interrupt_TransmitDataRegisterEmpty = (1 << 0),  /**< Transmit Data Register Empty Interrupt */
+    USART_Interrupt_TransmissionComplete      = (1 << 1),  /**< Transmission Complete Interrupt */
+    USART_Interrupt_ReceptionDataNotEmpty     = (1 << 2),  /**< Reception Data Register Not Empty Interrupt */
+    USART_Interrupt_ParityError               = (1 << 3),  /**< Parity Error Interrupt */
+    USART_Interrupt_FramingError              = (1 << 4),  /**< Framing Error Interrupt */
+    USART_Interrupt_NoiseError                = (1 << 5),  /**< Noise Error Interrupt */
+    USART_Interrupt_OverrunError              = (1 << 6),  /**< Overrun Error Interrupt */
+    USART_Interrupt_LINBreakDetection         = (1 << 7),  /**< LIN Break Detection Interrupt */
+    USART_Interrupt_CTS                       = (1 << 8)  /**< CTS Interrupt */
 } USART_Interrupt_Mode;
+
 
 /* USART Control Register 1 Bit Position Definitions */
 #define USART_CR1_UE_Pos        0   /**< USART Enable */
@@ -210,7 +211,7 @@ typedef enum {
 extern void USART_PIN_Config(GPIO_ST *GPIOx, UINT8 GPIO_AFx, UINT8 USART_Rx_PIN, UINT8 USART_Tx_PIN);
 extern void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT32 Baudrate, BOOL OverSamplingMode, UINT8 DataLengthCode, UINT8 NumberOfStopBit, UINT8 ParityCheck);
 extern void USART_Config_Mode(USART_ST *USARTx, USART_Mode Mode);
-extern void USART_Config_Interrupt(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode);
+extern void USART_Config_Interrupt(USART_ST *USARTx, UINT32 Interrupt_Mode);
 extern void USART_Enable_ClockSource(USART_ST *USARTx);
 extern void USART_Enable(USART_ST *USARTx);
 extern void USART_Disable(USART_ST *USARTx);
