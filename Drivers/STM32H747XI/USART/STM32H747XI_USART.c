@@ -160,7 +160,7 @@ void USART_Enable_ClockSource(USART_ST *USARTx)
 }
 
 /*
- * Function: USART_Config_Mode
+ * Function: USART_Set_Mode
  * ----------------------
  * Configures the USART peripheral with the specified mode.
  * 
@@ -171,7 +171,7 @@ void USART_Enable_ClockSource(USART_ST *USARTx)
  * Returns:
  *   None
  */
-void USART_Config_Mode(USART_ST *USARTx, USART_Mode Mode)
+void USART_Set_Mode(USART_ST *USARTx, USART_Mode Mode)
 {
     switch (Mode) {
         case USART_ASYNC_TX_ONLY:
@@ -234,6 +234,80 @@ void USART_Config_Mode(USART_ST *USARTx, USART_Mode Mode)
             // Invalid mode, handle error if necessary
             break;
     }
+}
+
+/*
+ * Function: USART_GetMode
+ * -----------------------
+ * Determines the current operating mode of the specified USART peripheral by
+ * checking the configuration of control registers CR1, CR2, and CR3.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral
+ *            to check. This should be one of the available USART peripherals.
+ *
+ * Returns:
+ *   USART_Mode - An enumeration value indicating the current mode of the USART.
+ */
+USART_Mode USART_GetMode(USART_ST *USARTx)
+{
+    USART_Mode l_USART_Mode;
+
+    // Check for Synchronous mode
+    if (READ_BIT(USARTx->CR2, (1 << USART_CR2_CLKEN_Pos))) 
+    {
+        l_USART_Mode = USART_SYNCHRONOUS;
+    }
+    // Check for Single-wire half-duplex mode
+    else if (READ_BIT(USARTx->CR3, (1 << USART_CR3_HDSEL_Pos))) 
+    {
+        l_USART_Mode = USART_SINGLEWIRE;
+    }
+    // Check for Smartcard mode
+    else if (READ_BIT(USARTx->CR3, (1 << USART_CR3_SCEN_Pos))) 
+    {
+        l_USART_Mode = USART_SMARTCARD;
+    }
+    // Check for IrDA mode
+    else if (READ_BIT(USARTx->CR3, (1 << USART_CR3_IREN_Pos))) 
+    {
+        l_USART_Mode = USART_IRDA;
+    }
+    // Check for LIN mode
+    else if (READ_BIT(USARTx->CR2, (1 << USART_CR2_LINEN_Pos))) 
+    {
+        l_USART_Mode = USART_LIN;
+    }
+    // Check for RS485 mode
+    else if (READ_BIT(USARTx->CR3, (1 << USART_CR3_DEM_Pos))) 
+    {
+        l_USART_Mode = USART_RS485;
+    }
+    // Default to asynchronous mode if none of the above modes are set
+    else 
+    {
+        // Check Transmit only
+        if (READ_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos)) && (!READ_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos)))) 
+        {
+            l_USART_Mode = USART_ASYNC_TX_ONLY;
+        }
+        // Check Receive only
+        else if ((!READ_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos))) && READ_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos)))
+        {
+            l_USART_Mode = USART_ASYNC_RX_ONLY;
+        }
+        // Check Transmit and Receive
+        else if (READ_BIT(USARTx->CR1, (1 << USART_CR1_TE_Pos)) && READ_BIT(USARTx->CR1, (1 << USART_CR1_RE_Pos))) 
+        {
+            l_USART_Mode = USART_ASYNC_TX_RX;
+        }
+        else
+        {
+            l_USART_Mode = USART_ASYNC_TX_RX;
+        }
+    }
+
+    return l_USART_Mode;
 }
 
 /*
