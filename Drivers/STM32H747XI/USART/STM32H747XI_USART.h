@@ -230,6 +230,7 @@ extern void USART_SetMode(USART_ST *USARTx, USART_Mode Mode);
 extern USART_Mode USART_GetMode(USART_ST *USARTx);
 extern void USART_EnableFIFO(USART_ST *USARTx);
 extern void USART_DisableFIFO(USART_ST *USARTx);
+extern BOOL USART_IsFIFOEnabled(USART_ST *USARTx);
 extern void USART_Config_Interrupt(USART_ST *USARTx, UINT32 Interrupt_Mode);
 extern void USART_Enable_ClockSource(USART_ST *USARTx);
 extern void USART_Enable(USART_ST *USARTx);

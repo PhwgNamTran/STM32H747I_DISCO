@@ -392,6 +392,24 @@ void USART_DisableFIFO(USART_ST *USARTx)
 }
 
 /*
+ * Function: USART_IsFIFOEnabled
+ * -----------------------------
+ * Checks if FIFO mode is enabled for the specified USART peripheral.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral
+ *            to check.
+ *
+ * Returns:
+ *   true if FIFO mode is enabled, false otherwise.
+ */
+BOOL USART_IsFIFOEnabled(USART_ST *USARTx)
+{
+    // Check if the FIFO enable bit is set in the CR1 register
+    return (CHECK_BIT(USARTx->CR1, (1 << USART_CR1_FIFOEN_Pos)));
+}
+
+/*
  * Function: USART_ConfigInterrupt
  * -------------------------------
  * Configures the USART interrupts based on the specified mode.
