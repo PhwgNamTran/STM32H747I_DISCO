@@ -311,6 +311,87 @@ USART_Mode USART_GetMode(USART_ST *USARTx)
 }
 
 /*
+ * Function: USART_EnableFIFO
+ * --------------------------
+ * Enables FIFO mode for the USART peripheral based on its current mode.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral
+ *            to configure.
+ * Returns:
+ *   None
+ *
+ * Note:
+ *   FIFO mode can be used in standard UART communication, SPI master/slave mode,
+ *   and Smartcard modes only. It must not be enabled in IrDA and LIN modes.
+ */
+void USART_EnableFIFO(USART_ST *USARTx)
+{
+    // Read the current mode configuration
+    USART_Mode l_USART_Mode = USART_GetMode(USARTx);
+
+    switch (l_USART_Mode) 
+    {
+        case USART_ASYNC_TX_ONLY:
+        case USART_ASYNC_RX_ONLY:
+        case USART_ASYNC_TX_RX:
+        case USART_SYNCHRONOUS:
+        case USART_SMARTCARD:
+            SET_BIT(USARTx->CR1, (1 << USART_CR1_FIFOEN_Pos));
+            break;
+        case USART_IRDA:
+        case USART_LIN:
+        case USART_SINGLEWIRE:
+        case USART_RS485:
+            /* Nothing to do: FIFO is not supported in these Mode */
+            break;
+        default:
+            /* Nothing to do, handle invalid case if needed */
+            break;
+    }
+}
+
+/*
+ * Function: USART_DisableFIFO
+ * ---------------------------
+ * Disables FIFO mode for the USART peripheral based on its current mode.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral
+ *            to configure.
+ * Returns:
+ *   None
+ *
+ * Note:
+ *   This function disables FIFO mode regardless of the current USART mode.
+ */
+void USART_DisableFIFO(USART_ST *USARTx)
+{
+    // Read the current mode configuration
+    USART_Mode l_USART_Mode = USART_GetMode(USARTx);
+
+    switch (l_USART_Mode) 
+    {
+        case USART_ASYNC_TX_ONLY:
+        case USART_ASYNC_RX_ONLY:
+        case USART_ASYNC_TX_RX:
+        case USART_SYNCHRONOUS:
+        case USART_SMARTCARD:
+            CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_FIFOEN_Pos));
+            break;
+        case USART_IRDA:
+        case USART_LIN:
+        case USART_SINGLEWIRE:
+        case USART_RS485:
+            /* Nothing to do: FIFO is not supported in these Mode */
+            break;
+        default:
+            /* Nothing to do, handle invalid case if needed */
+            break;
+    }
+}
+
+/*
  * Function: USART_ConfigInterrupt
  * -------------------------------
  * Configures the USART interrupts based on the specified mode.
