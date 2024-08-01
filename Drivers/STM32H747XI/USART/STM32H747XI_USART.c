@@ -160,7 +160,7 @@ void USART_Enable_ClockSource(USART_ST *USARTx)
 }
 
 /*
- * Function: USART_Set_Mode
+ * Function: USART_SetMode
  * ----------------------
  * Configures the USART peripheral with the specified mode.
  * 
@@ -171,7 +171,7 @@ void USART_Enable_ClockSource(USART_ST *USARTx)
  * Returns:
  *   None
  */
-void USART_Set_Mode(USART_ST *USARTx, USART_Mode Mode)
+void USART_SetMode(USART_ST *USARTx, USART_Mode Mode)
 {
     switch (Mode) {
         case USART_ASYNC_TX_ONLY:
