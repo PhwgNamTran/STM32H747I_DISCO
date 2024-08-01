@@ -39,15 +39,29 @@ typedef enum {
 
 /* Enumeration for USART interrupt modes */
 typedef enum {
-    USART_Interrupt_TransmitDataRegisterEmpty = (1 << 0),  /**< Transmit Data Register Empty Interrupt */
-    USART_Interrupt_TransmissionComplete      = (1 << 1),  /**< Transmission Complete Interrupt */
-    USART_Interrupt_ReceptionDataNotEmpty     = (1 << 2),  /**< Reception Data Register Not Empty Interrupt */
-    USART_Interrupt_ParityError               = (1 << 3),  /**< Parity Error Interrupt */
-    USART_Interrupt_FramingError              = (1 << 4),  /**< Framing Error Interrupt */
-    USART_Interrupt_NoiseError                = (1 << 5),  /**< Noise Error Interrupt */
-    USART_Interrupt_OverrunError              = (1 << 6),  /**< Overrun Error Interrupt */
-    USART_Interrupt_LINBreakDetection         = (1 << 7),  /**< LIN Break Detection Interrupt */
-    USART_Interrupt_CTS                       = (1 << 8)  /**< CTS Interrupt */
+    USART_Interrupt_TransmitDataRegisterEmpty = (1 << 0),           /**< TXE: Transmit Data Register Empty */
+    USART_Interrupt_TransmitFIFONotFull = (1 << 1),                 /**< TXFNF: Transmit FIFO Not Full */
+    USART_Interrupt_TransmitFIFOEmpty = (1 << 2),                   /**< TXFE: Transmit FIFO Empty */
+    USART_Interrupt_TransmitFIFOThresholdReached = (1 << 3),        /**< TXFT: Transmit FIFO Threshold Reached */
+    USART_Interrupt_CTS = (1 << 4),                                 /**< CTSIF: CTS Interrupt */
+    USART_Interrupt_TransmissionComplete = (1 << 5),                /**< TC: Transmission Complete */
+    USART_Interrupt_TransmissionCompleteBeforeGuardTime = (1 << 6), /**< TCBGT: Transmission Complete Before Guard Time */
+    USART_Interrupt_ReceptionDataNotEmpty = (1 << 7),               /**< RXNE: Receive Data Register Not Empty */
+    USART_Interrupt_ReceiveFIFONotEmpty = (1 << 8),                 /**< RXFNE: Receive FIFO Not Empty */
+    USART_Interrupt_ReceiveFIFOFull = (1 << 9),                     /**< RXFF: Receive FIFO Full */
+    USART_Interrupt_ReceiveFIFOThresholdReached = (1 << 10),        /**< RXFT: Receive FIFO Threshold Reached */
+    USART_Interrupt_OverrunErrorDetected = (1 << 11),               /**< ORE: Overrun Error Detected */
+    USART_Interrupt_OverrunErrorMultibuffer = (1 << 12),            /**< ORE: Overrun Error in Multibuffer Communication */
+    USART_Interrupt_Idle = (1 << 13),                               /**< IDLE: Idle Line Detected */
+    USART_Interrupt_ParityError = (1 << 14),                        /**< PE: Parity Error */
+    USART_Interrupt_LINBreakDetection = (1 << 15),                  /**< LBD: LIN Break Detection */
+    USART_Interrupt_NoiseError = (1 << 16),                         /**< NE: Noise Error in Multibuffer Communication */
+    USART_Interrupt_FramingError = (1 << 17),                       /**< FE: Framing Error in Multibuffer Communication */
+    USART_Interrupt_CharacterMatch = (1 << 18),                     /**< CMF: Character Match */
+    USART_Interrupt_ReceiverTimeout = (1 << 19),                    /**< RTOF: Receiver Timeout */
+    USART_Interrupt_EndOfBlock = (1 << 20),                         /**< EOBF: End of Block */
+    USART_Interrupt_WakeupFromLowPowerMode = (1 << 21),             /**< WUF: Wake-up from Low-Power Mode */
+    USART_Interrupt_SPI_SlaveUnderrun = (1 << 22)                   /**< UDR: SPI Slave Underrun Error */
 } USART_Interrupt_Mode;
 
 
@@ -58,8 +72,10 @@ typedef enum {
 #define USART_CR1_TE_Pos        3   /**< Transmitter Enable */
 #define USART_CR1_IDLEIE_Pos    4   /**< IDLE Interrupt Enable */
 #define USART_CR1_RXNEIE_Pos    5   /**< RXNE Interrupt Enable */
+#define USART_CR1_RXFNEIE_Pos   5
 #define USART_CR1_TCIE_Pos      6   /**< Transmission Complete Interrupt Enable */
 #define USART_CR1_TXEIE_Pos     7   /**< TXE Interrupt Enable */
+#define USART_CR1_TXFNFIE_Pos   7
 #define USART_CR1_PEIE_Pos      8   /**< PE Interrupt Enable */
 #define USART_CR1_PS_Pos        9   /**< Parity Selection */
 #define USART_CR1_PCE_Pos       10  /**< Parity Control Enable */

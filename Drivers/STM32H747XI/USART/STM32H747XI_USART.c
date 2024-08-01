@@ -251,37 +251,78 @@ void USART_Config_Mode(USART_ST *USARTx, USART_Mode Mode)
  */
 void USART_Config_Interrupt(USART_ST *USARTx, UINT32 Interrupt_Mode)
 {
-    // Enable USART interrupts based on the Interrupt_Mode bitmask
-    if (Interrupt_Mode & USART_Interrupt_TransmitDataRegisterEmpty) 
-    {
+    // Configure USART interrupts based on the Interrupt_Mode bitmask
+    if (Interrupt_Mode & USART_Interrupt_TransmitDataRegisterEmpty) {
         SET_BIT(USARTx->CR1, (1 << USART_CR1_TXEIE_Pos));
     }
-
-    if (Interrupt_Mode & USART_Interrupt_TransmissionComplete) 
-    {
-        SET_BIT(USARTx->CR1, (1 << USART_CR1_TCIE_Pos));
+    if (Interrupt_Mode & USART_Interrupt_TransmitFIFONotFull) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_TXFNFIE_Pos));
     }
-
-    if (Interrupt_Mode & USART_Interrupt_ReceptionDataNotEmpty) 
-    {
-        SET_BIT(USARTx->CR1, (1 << USART_CR1_RXNEIE_Pos));
+    if (Interrupt_Mode & USART_Interrupt_TransmitFIFOEmpty) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_TXFEIE_Pos));
     }
-
-    if (Interrupt_Mode & USART_Interrupt_ParityError) 
-    {
-        SET_BIT(USARTx->CR1, (1 << USART_CR1_PEIE_Pos));
+    if (Interrupt_Mode & USART_Interrupt_TransmitFIFOThresholdReached) {
+        SET_BIT(USARTx->CR3, (1 << USART_CR3_TXFTIE_Pos));
     }
-
-    if (Interrupt_Mode & USART_Interrupt_LINBreakDetection) 
-    {
-        SET_BIT(USARTx->CR2, (1 << USART_CR2_LBDIE_Pos));
-    }
-
-    if (Interrupt_Mode & USART_Interrupt_CTS) 
-    {
+    if (Interrupt_Mode & USART_Interrupt_CTS) {
         SET_BIT(USARTx->CR3, (1 << USART_CR3_CTSIE_Pos));
     }
+    if (Interrupt_Mode & USART_Interrupt_TransmissionComplete) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_TCIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_TransmissionCompleteBeforeGuardTime) {
+        SET_BIT(USARTx->CR3, (1 << USART_CR3_TCBGTIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_ReceptionDataNotEmpty) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_RXNEIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_ReceiveFIFONotEmpty) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_RXFNEIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_ReceiveFIFOFull) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_RXFFIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_ReceiveFIFOThresholdReached) {
+        SET_BIT(USARTx->CR3, (1 << USART_CR3_RXFTIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_OverrunErrorDetected) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_RXNEIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_OverrunErrorMultibuffer) {
+        SET_BIT(USARTx->CR3, (1 << USART_CR3_EIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_Idle) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_IDLEIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_ParityError) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_PEIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_LINBreakDetection) {
+        SET_BIT(USARTx->CR2, (1 << USART_CR2_LBDIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_NoiseError) {
+        SET_BIT(USARTx->CR3, (1 << USART_CR3_EIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_FramingError) {
+        SET_BIT(USARTx->CR3, (1 << USART_CR3_EIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_CharacterMatch) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_CMIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_ReceiverTimeout) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_RTOIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_EndOfBlock) {
+        SET_BIT(USARTx->CR1, (1 << USART_CR1_EOBIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_WakeupFromLowPowerMode) {
+        SET_BIT(USARTx->CR3, (1 << USART_CR3_WUFIE_Pos));
+    }
+    if (Interrupt_Mode & USART_Interrupt_SPI_SlaveUnderrun) {
+        SET_BIT(USARTx->CR3, (1 << USART_CR3_EIE_Pos));
+    }
 }
+
 
 /*
  * Function: USART_Enable
