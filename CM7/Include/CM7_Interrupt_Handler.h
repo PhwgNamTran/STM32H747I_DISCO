@@ -5,6 +5,7 @@
 #include "Common.h"
 #include "CM7_Project_Cfg.h"
 #include "STM32H747XI_TIM.h"
+#include "STM32H747XI_USART.h"
 
 extern void EXTI15_10_IRQHandler(void);
 extern void TIM2_IRQHandler(void);

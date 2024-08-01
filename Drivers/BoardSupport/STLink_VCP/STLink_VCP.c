@@ -33,6 +33,11 @@ void STLink_VCP_Init(UINT32 SysClock_Hz, USART_Mode Mode)
     USART_Enable(STLink_VCP_USART);
 }
 
+void STLink_VCP_Interrupt_Init(USART_Interrupt_Mode Interrupt_Mode)
+{
+    USART_Config_Interrupt(STLink_VCP_USART, (UINT32)Interrupt_Mode);
+}
+
 /**
  * Function: STLink_VCP_Send
  * -------------------------

@@ -78,7 +78,10 @@ void Peripherals_Init(void)
 #endif
 
 #if(STLINK_VCP_USED)
-    STLink_VCP_Init(System_Clock, STLink_VCP_USART_MODE);
+    STLink_VCP_Init(System_Clock, STLink_VCP_USART_Mode);
+#if(STLink_VCP_Interrupt_USED)
+    STLink_VCP_Interrupt_Init(STLink_VCP_USART_Interrupt_Mode);
+#endif
 #endif
 
 #if(TIM2_USED)
