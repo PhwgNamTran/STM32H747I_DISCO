@@ -522,6 +522,99 @@ void USART_Enable_Interrupt(USART_ST *USARTx, UINT32 Interrupt_Mode)
     }
 }
 
+/*
+ * Function: USART_Check_Interrupt_Flag
+ * ------------------------------------
+ * Checks if a specific interrupt flag is set for the USART peripheral.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral.
+ *   Interrupt_Mode - The specific interrupt mode to check.
+ *
+ * Returns:
+ *   TRUE if the interrupt flag is set, FALSE otherwise.
+ */
+BOOL USART_Check_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode)
+{
+    BOOL flag_set = FALSE;
+
+    switch (Interrupt_Mode) 
+    {
+        case USART_Interrupt_TransmitDataRegisterEmpty:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_TXE_Pos));
+            break;
+        case USART_Interrupt_TransmitFIFONotFull:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_TXFNF_Pos));
+            break;
+        case USART_Interrupt_TransmitFIFOEmpty:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_TXFE_Pos));
+            break;
+        case USART_Interrupt_TransmitFIFOThresholdReached:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_TXFT_Pos));
+            break;
+        case USART_Interrupt_CTS:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_CTSIF_Pos));
+            break;
+        case USART_Interrupt_TransmissionComplete:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_TC_Pos));
+            break;
+        case USART_Interrupt_TransmissionCompleteBeforeGuardTime:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_TCBGT_Pos));
+            break;
+        case USART_Interrupt_ReceptionDataNotEmpty:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_RXNE_Pos));
+            break;
+        case USART_Interrupt_ReceiveFIFONotEmpty:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_RXFNE_Pos));
+            break;
+        case USART_Interrupt_ReceiveFIFOFull:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_RXFF_Pos));
+            break;
+        case USART_Interrupt_ReceiveFIFOThresholdReached:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_RXFT_Pos));
+            break;
+        case USART_Interrupt_OverrunErrorDetected:
+        case USART_Interrupt_OverrunErrorMultibuffer:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_ORE_Pos));
+            break;
+        case USART_Interrupt_Idle:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_IDLE_Pos));
+            break;
+        case USART_Interrupt_ParityError:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_PE_Pos));
+            break;
+        case USART_Interrupt_LINBreakDetection:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_LBDF_Pos));
+            break;
+        case USART_Interrupt_NoiseError:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_NE_Pos));
+            break;
+        case USART_Interrupt_FramingError:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_FE_Pos));
+            break;
+        case USART_Interrupt_CharacterMatch:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_CMF_Pos));
+            break;
+        case USART_Interrupt_ReceiverTimeout:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_RTOF_Pos));
+            break;
+        case USART_Interrupt_EndOfBlock:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_EOBF_Pos));
+            break;
+        case USART_Interrupt_WakeupFromLowPowerMode:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_WUF_Pos));
+            break;
+        case USART_Interrupt_SPI_SlaveUnderrun:
+            flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_UDR_Pos));
+            break;
+        default:
+            flag_set = FALSE;
+            break;
+    }
+
+    return flag_set;
+}
+
 
 /*
  * Function: USART_Enable
