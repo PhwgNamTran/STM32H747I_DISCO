@@ -22,7 +22,9 @@ void USART1_IRQHandler(void)
 #if(STLINK_VCP_USED && STLink_VCP_Interrupt_USED)
     if (USART_Check_Interrupt_Flag(STLink_VCP_USART, STLink_VCP_USART_Interrupt_Mode))
     {
-        
+        UINT16 = Rx_Data;
+        Rx_Data = STLink_VCP_Receive();
+
         USART_Clear_Interrupt_Flag(STLink_VCP_USART, STLink_VCP_USART_Interrupt_Mode);
     }
 #endif

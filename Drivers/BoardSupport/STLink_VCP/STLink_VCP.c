@@ -53,3 +53,19 @@ void STLink_VCP_Send(const char *str)
 {
     USART_Transmit(STLink_VCP_USART, str);
 }
+
+/**
+ * Function: STLink_VCP_Receive
+ * -------------------------
+ * Receive a charater over the STLink VCP USART.
+ *
+ * Parameters:
+ *   None
+ *
+ * Returns:
+ *   None
+ */
+UINT16 STLink_VCP_Receive(void)
+{
+    USART_Receive_Single_Data(STLink_VCP_USART);
+}
