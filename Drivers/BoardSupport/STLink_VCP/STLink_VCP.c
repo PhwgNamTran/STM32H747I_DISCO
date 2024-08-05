@@ -67,5 +67,5 @@ void STLink_VCP_Send(const char *str)
  */
 UINT16 STLink_VCP_Receive(void)
 {
-    USART_Receive_Single_Data(STLink_VCP_USART);
+    return USART_Receive_Single_Data(STLink_VCP_USART);
 }
