@@ -6,7 +6,9 @@
 #include "CM7_Project_Cfg.h"
 #include "STM32H747XI_TIM.h"
 #include "STM32H747XI_USART.h"
+#include "STLink_VCP.h"
 
+extern void USART1_IRQHandler(void) ;
 extern void EXTI15_10_IRQHandler(void);
 extern void TIM2_IRQHandler(void);
 

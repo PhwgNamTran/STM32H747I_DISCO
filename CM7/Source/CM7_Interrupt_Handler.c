@@ -6,10 +6,10 @@
 
 /*
  * Function: USART1_IRQHandler
- * ---------------------------
+ * -----------------------------
  * Interrupt handler for USART1.
- * Processes incoming data and handles USART1-related events.
- * This handler is active only if ST-Link VCP is used and its interrupt is enabled.
+ * Checks and handles various USART1 interrupt flags.
+ * Clears the interrupt flags after processing.
  * 
  * Parameters:
  *   None
@@ -17,17 +17,16 @@
  * Returns:
  *   None
  */
-void USART1_IRQHandler(void)
+void USART1_IRQHandler(void) 
 {
-    #if(STLINK_VCP_USED && STLink_VCP_Interrupt_USED)
-
-    // Add the code to handle USART1 interrupt events here.
-    // Typically involves reading received data, managing transmission complete events,
-    // and clearing error flags to prevent re-entry into the handler.
-
-    #endif
+#if(STLINK_VCP_USED && STLink_VCP_Interrupt_USED)
+    if (USART_Check_Interrupt_Flag(STLink_VCP_USART, STLink_VCP_USART_Interrupt_Mode))
+    {
+        
+        USART_Clear_Interrupt_Flag(STLink_VCP_USART, STLink_VCP_USART_Interrupt_Mode);
+    }
+#endif
 }
-
 
 /*
  * Function: TIM2_IRQHandler
