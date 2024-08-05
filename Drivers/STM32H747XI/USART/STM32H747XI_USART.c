@@ -795,9 +795,6 @@ void USART_Transmit(USART_ST *USARTx, const char *str) {
  */
 UINT16 USART_Receive_Single_Data(USART_ST *USARTx)
 {
-    // Wait until RXFNE flag is set, indicating receive data register is not empty
-    while (!(CHECK_BIT(USARTx->ISR, (1 << USART_ISR_RXFNE_Pos))));
-
     // Read the data from the USART receive data register
     return (UINT16)(USARTx->RDR & 0x1FF);
 }
