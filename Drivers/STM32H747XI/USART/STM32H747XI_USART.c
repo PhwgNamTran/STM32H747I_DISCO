@@ -689,6 +689,7 @@ void USART_Clear_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt
             SET_BIT(USARTx->ICR, (1 << USART_ICR_UDRCF_Pos));
             break;
         case USART_Interrupt_ReceptionDataNotEmpty:
+
         case USART_Interrupt_ReceiveFIFONotEmpty:
         case USART_Interrupt_ReceiveFIFOFull:
         case USART_Interrupt_ReceiveFIFOThresholdReached:
@@ -797,4 +798,84 @@ UINT16 USART_Receive_Single_Data(USART_ST *USARTx)
 {
     // Read the data from the USART receive data register
     return (UINT16)(USARTx->RDR & 0x1FF);
+}
+
+/*
+ * Function: USART_FlushReceiveData
+ * --------------------------------
+ * Flushes the receive data buffer of the specified USART.
+ * 
+ * Parameters:
+ *   USARTx: Pointer to the USART register structure.
+ *
+ * Returns:
+ *   None
+ */
+void USART_FlushReceiveData(USART_ST *USARTx) 
+{
+    SET_BIT(USARTx->RQR, (1 << USART_RQR_RXFRQ_Pos));  // Set the RXFRQ bit to flush receive data
+}
+
+/*
+ * Function: USART_FlushTransmitData
+ * ---------------------------------
+ * Flushes the transmit data buffer of the specified USART.
+ * 
+ * Parameters:
+ *   USARTx: Pointer to the USART register structure.
+ *
+ * Returns:
+ *   None
+ */
+void USART_FlushTransmitData(USART_ST *USARTx) 
+{
+    SET_BIT(USARTx->RQR, (1 << USART_RQR_TXFRQ_Pos));  // Set the TXFRQ bit to flush transmit data
+}
+
+/*
+ * Function: USART_SendBreakRequest
+ * --------------------------------
+ * Sends a break request on the specified USART.
+ * 
+ * Parameters:
+ *   USARTx: Pointer to the USART register structure.
+ *
+ * Returns:
+ *   None
+ */
+void USART_SendBreakRequest(USART_ST *USARTx) 
+{
+    SET_BIT(USARTx->RQR, (1 << USART_RQR_SBKRQ_Pos));  // Set the SBKRQ bit to send break request
+}
+
+/*
+ * Function: USART_EnterMuteMode
+ * -----------------------------
+ * Enters mute mode on the specified USART.
+ * 
+ * Parameters:
+ *   USARTx: Pointer to the USART register structure.
+ *
+ * Returns:
+ *   None
+ */
+void USART_EnterMuteMode(USART_ST *USARTx) 
+{
+    SET_BIT(USARTx->RQR, (1 << USART_RQR_MMRQ_Pos));  // Set the MMRQ bit to enter mute mode
+}
+
+/*
+ * Function: USART_AutoBaudRateRequest
+ * -----------------------------------
+ * Requests auto-baud rate detection on the specified USART.
+ * 
+ * Parameters:
+ *   USARTx: Pointer to the USART register structure.
+ *
+ * Returns:
+ *   None
+ */
+void USART_AutoBaudRateRequest(USART_ST *USARTx) 
+{
+    SET_BIT(USARTx->RQR, (1 << USART_RQR_ABRRQ_Pos));  // Set the ABRRQ bit to request auto-baud rate detection
 }

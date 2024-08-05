@@ -174,6 +174,7 @@ typedef enum {
 #define USART_ISR_RXFT_Pos      26  /**< TX FIFO Threshold flag */
 #define USART_ISR_TXFT_Pos      27  /**< RX FIFO Threshold flag */
 
+/* USART Interrupt Flag Clear Position Definitions */
 #define USART_ICR_PECF_Pos      0   /**< Parity Error Clear flag position */
 #define USART_ICR_FECF_Pos      1   /**< Framing Error Clear flag position */
 #define USART_ICR_NCF_Pos       2   /**< Noise Error Clear flag position */
@@ -189,6 +190,12 @@ typedef enum {
 #define USART_ICR_CMCF_Pos      17  /**< Character Match Clear flag position */
 #define USART_ICR_WUCF_Pos      20  /**< Wakeup from Stop Mode Clear flag position */
 
+/* USART Request Register (RQR) Position Definitions */
+#define USART_RQR_ABRRQ_Pos     0   /**< ABRRQ: Auto-Baud Rate Request position */
+#define USART_RQR_SBKRQ_Pos     1   /**< SBKRQ: Send Break Request position */
+#define USART_RQR_MMRQ_Pos      2   /**< MMRQ: Mute Mode Request position */
+#define USART_RQR_RXFRQ_Pos     3   /**< RXFRQ: Receive Data flush Request position */
+#define USART_RQR_TXFRQ_Pos     4   /**< TXFRQ: Transmit Data flush Request position */
 
 
 
@@ -260,5 +267,11 @@ extern void USART_Disable(USART_ST *USARTx);
 extern void USART_Transmit_Single_Data(USART_ST *USARTx, UINT16 Data);
 extern void USART_Transmit(USART_ST *USARTx, const char *str);
 extern UINT16 USART_Receive_Single_Data(USART_ST *USARTx);
+
+extern void USART_FlushReceiveData(USART_ST *USARTx);
+extern void USART_FlushTransmitData(USART_ST *USARTx);
+extern void USART_SendBreakRequest(USART_ST *USARTx);
+extern void USART_EnterMuteMode(USART_ST *USARTx);
+extern void USART_AutoBaudRateRequest(USART_ST *USARTx);
 
 #endif
