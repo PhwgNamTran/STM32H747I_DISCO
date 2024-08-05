@@ -72,10 +72,10 @@ typedef enum {
 #define USART_CR1_TE_Pos        3   /**< Transmitter Enable */
 #define USART_CR1_IDLEIE_Pos    4   /**< IDLE Interrupt Enable */
 #define USART_CR1_RXNEIE_Pos    5   /**< RXNE Interrupt Enable */
-#define USART_CR1_RXFNEIE_Pos   5
+#define USART_CR1_RXFNEIE_Pos   5   /**< RX FIFO NE Interrupt Enable */
 #define USART_CR1_TCIE_Pos      6   /**< Transmission Complete Interrupt Enable */
 #define USART_CR1_TXEIE_Pos     7   /**< TXE Interrupt Enable */
-#define USART_CR1_TXFNFIE_Pos   7
+#define USART_CR1_TXFNFIE_Pos   7   /**< TX FIFO E Interrupt Enable */
 #define USART_CR1_PEIE_Pos      8   /**< PE Interrupt Enable */
 #define USART_CR1_PS_Pos        9   /**< Parity Selection */
 #define USART_CR1_PCE_Pos       10  /**< Parity Control Enable */
@@ -148,9 +148,11 @@ typedef enum {
 #define USART_ISR_NE_Pos        2   /**< Noise Error */
 #define USART_ISR_ORE_Pos       3   /**< Overrun Error */
 #define USART_ISR_IDLE_Pos      4   /**< Idle Line Detected */
-#define USART_ISR_RXFNE_Pos     5   /**< Read Data Register Not Empty */
+#define USART_ISR_RXFNE_Pos     5   /**< Read Data Register FIFO Not Empty */
+#define USART_ISR_RXNE_Pos      5   /**< Read Data Register Not Empty */
 #define USART_ISR_TC_Pos        6   /**< Transmission Complete */
-#define USART_ISR_TXFNF_Pos     7   /**< Transmit Data Register Not Full */
+#define USART_ISR_TXFNF_Pos     7   /**< Transmit Data Register FIFO Not Full */
+#define USART_ISR_TXE_Pos       7   /**< Transmit Data Register Not Full */
 #define USART_ISR_LBDF_Pos      8   /**< LIN Break Detection Flag */
 #define USART_ISR_CTSIF_Pos     9   /**< CTS Interrupt Flag */
 #define USART_ISR_CTS_Pos       10  /**< CTS Flag */
@@ -169,8 +171,8 @@ typedef enum {
 #define USART_ISR_TXFE_Pos      23  /**< TX FIFO Empty */
 #define USART_ISR_RXFF_Pos      24  /**< RX FIFO Full */
 #define USART_ISR_TCBGT_Pos     25  /**< Transmission Complete Before Guard Time completion flag */
-#define USART_ISR_TXFT_Pos      26  /**< TX FIFO Threshold flag */
-#define USART_ISR_RXFT_Pos      27  /**< RX FIFO Threshold flag */
+#define USART_ISR_RXFT_Pos      26  /**< TX FIFO Threshold flag */
+#define USART_ISR_TXFT_Pos      27  /**< RX FIFO Threshold flag */
 
 /* USART Oversampling Mode Definitions */
 #define USART_OverSamplingBy8   1   /**< 8x oversampling */
