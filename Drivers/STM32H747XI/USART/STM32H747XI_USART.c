@@ -615,6 +615,93 @@ BOOL USART_Check_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt
     return flag_set;
 }
 
+/*
+ * Function: USART_Clear_Interrupt_Flag
+ * ------------------------------------
+ * Clears a specific interrupt flag for the USART peripheral.
+ *
+ * Parameters:
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral.
+ *   Interrupt_Mode - The specific interrupt mode to clear.
+ *
+ * Returns:
+ *   None
+ */
+void USART_Clear_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode)
+{
+    switch (Interrupt_Mode) 
+    {
+        case USART_Interrupt_CTS:
+            // Clear CTS interrupt flag by writing 1 to CTS clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_CTSCF_Pos));
+            break;
+        case USART_Interrupt_TransmissionComplete:
+            // Clear TC flag by writing 1 to TC clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_TCCF_Pos));
+            break;
+        case USART_Interrupt_TransmissionCompleteBeforeGuardTime:
+            // Clear TCBGT flag by writing 1 to TCBGT clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_TCBGTCF_Pos));
+            break;
+        case USART_Interrupt_OverrunErrorDetected:
+        case USART_Interrupt_OverrunErrorMultibuffer:
+            // Clear ORE flag by writing 1 to ORE clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_ORECF_Pos));
+            break;
+        case USART_Interrupt_Idle:
+            // Clear IDLE flag by writing 1 to IDLE clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_IDLECF_Pos));
+            break;
+        case USART_Interrupt_ParityError:
+            // Clear PE flag by writing 1 to PE clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_PECF_Pos));
+            break;
+        case USART_Interrupt_LINBreakDetection:
+            // Clear LBDF flag by writing 1 to LBDF clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_LBDCF_Pos));
+            break;
+        case USART_Interrupt_NoiseError:
+            // Clear NE flag by writing 1 to NE clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_NCF_Pos));
+            break;
+        case USART_Interrupt_FramingError:
+            // Clear FE flag by writing 1 to FE clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_FECF_Pos));
+            break;
+        case USART_Interrupt_CharacterMatch:
+            // Clear CMF flag by writing 1 to CMF clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_CMCF_Pos));
+            break;
+        case USART_Interrupt_ReceiverTimeout:
+            // Clear RTOF flag by writing 1 to RTOF clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_RTOCF_Pos));
+            break;
+        case USART_Interrupt_EndOfBlock:
+            // Clear EOBF flag by writing 1 to EOBF clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_EOBCF_Pos));
+            break;
+        case USART_Interrupt_WakeupFromLowPowerMode:
+            // Clear WUF flag by writing 1 to WUF clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_WUCF_Pos));
+            break;
+        case USART_Interrupt_SPI_SlaveUnderrun:
+            // Clear UDR flag by writing 1 to UDR clear flag in ICR
+            SET_BIT(USARTx->ICR, (1 << USART_ICR_UDRCF_Pos));
+            break;
+        case USART_Interrupt_ReceptionDataNotEmpty:
+        case USART_Interrupt_ReceiveFIFONotEmpty:
+        case USART_Interrupt_ReceiveFIFOFull:
+        case USART_Interrupt_ReceiveFIFOThresholdReached:
+        case USART_Interrupt_TransmitDataRegisterEmpty:
+        case USART_Interrupt_TransmitFIFONotFull:
+        case USART_Interrupt_TransmitFIFOEmpty:
+        case USART_Interrupt_TransmitFIFOThresholdReached:
+            break;
+        default:
+            // Handle other cases or invalid interrupts
+            break;
+    }
+}
 
 /*
  * Function: USART_Enable

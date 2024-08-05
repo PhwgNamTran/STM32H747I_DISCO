@@ -174,6 +174,24 @@ typedef enum {
 #define USART_ISR_RXFT_Pos      26  /**< TX FIFO Threshold flag */
 #define USART_ISR_TXFT_Pos      27  /**< RX FIFO Threshold flag */
 
+#define USART_ICR_PECF_Pos      0   /**< Parity Error Clear flag position */
+#define USART_ICR_FECF_Pos      1   /**< Framing Error Clear flag position */
+#define USART_ICR_NCF_Pos       2   /**< Noise Error Clear flag position */
+#define USART_ICR_ORECF_Pos     3   /**< Overrun Error Clear flag position */
+#define USART_ICR_IDLECF_Pos    4   /**< Idle Line Detected Clear flag position */
+#define USART_ICR_TCCF_Pos      5   /**< Transmission Complete Clear flag position */
+#define USART_ICR_TCBGTCF_Pos   6   /**< Transmission Complete Before Guard Time Clear flag position */
+#define USART_ICR_LBDCF_Pos     7   /**< LIN Break Detection Clear flag position */
+#define USART_ICR_CTSCF_Pos     8   /**< CTS Clear flag position */
+#define USART_ICR_RTOCF_Pos     11  /**< Receiver Time Out Clear flag position */
+#define USART_ICR_EOBCF_Pos     12  /**< End of Block Clear flag position */
+#define USART_ICR_UDRCF_Pos     13  /**< USART Data Register Not Empty Clear flag position */
+#define USART_ICR_CMCF_Pos      17  /**< Character Match Clear flag position */
+#define USART_ICR_WUCF_Pos      20  /**< Wakeup from Stop Mode Clear flag position */
+
+
+
+
 /* USART Oversampling Mode Definitions */
 #define USART_OverSamplingBy8   1   /**< 8x oversampling */
 #define USART_OverSamplingBy16  0   /**< 16x oversampling */
