@@ -36,7 +36,10 @@ void USART1_IRQHandler(void)
         if(gs_STLink_VCP_RxIdx_UB == (STLink_VCP_USART_RxBufferSize - 1))
         {
             /* USER CODE START */
-
+            if(1)
+            {
+                UserLED_TOGGLE(UserLED_1);
+            }
             /* USER CODE END */
             /* Reset buffer and index */
             gs_STLink_VCP_RxIdx_UB = 0;
