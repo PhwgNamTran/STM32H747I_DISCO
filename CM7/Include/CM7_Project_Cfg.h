@@ -30,9 +30,10 @@
 #define STLINK_VCP_USED                 STD_ON
 #if(STLINK_VCP_USED)
 #define STLink_VCP_USART_Mode           USART_ASYNC_TX_RX
-#define STLink_VCP_Interrupt_USED       STD_OFF
+#define STLink_VCP_Interrupt_USED       STD_ON
 #if(STLink_VCP_Interrupt_USED)
 #define STLink_VCP_USART_Interrupt_Mode USART_Interrupt_ReceptionDataNotEmpty
+#define STLink_VCP_USART_RxBufferSize   8
 #endif
 #endif
 

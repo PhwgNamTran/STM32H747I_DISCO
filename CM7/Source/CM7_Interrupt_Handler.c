@@ -17,15 +17,37 @@
  * Returns:
  *   None
  */
+
+#if(STLINK_VCP_USED && STLink_VCP_Interrupt_USED)
+UINT16 static gs_STLink_VCP_RxBuffer_UW[STLink_VCP_USART_RxBufferSize];
+UINT8 static gs_STLink_VCP_RxIdx_UB = 0;
+#endif
+
 void USART1_IRQHandler(void) 
 {
 #if(STLINK_VCP_USED && STLink_VCP_Interrupt_USED)
-    if (USART_Check_Interrupt_Flag(STLink_VCP_USART, STLink_VCP_USART_Interrupt_Mode))
+    if (USART_Check_Interrupt_Flag(STLink_VCP_USART, USART_Interrupt_ReceptionDataNotEmpty))
     {
-        UINT16 = Rx_Data;
-        Rx_Data = STLink_VCP_Receive();
+        // Read a single data from the USART
+        UINT16 Rx_Data = USART_Receive_Single_Data(STLink_VCP_USART);
+        // Store the received data in the buffer and increment the index
+        gs_STLink_VCP_RxBuffer_UW[gs_STLink_VCP_RxIdx_UB++] = Rx_Data;
+        // Check if there is space in the receive buffer
+        if(gs_STLink_VCP_RxIdx_UB == (STLink_VCP_USART_RxBufferSize - 1))
+        {
+            /* USER CODE START */
 
-        USART_Clear_Interrupt_Flag(STLink_VCP_USART, STLink_VCP_USART_Interrupt_Mode);
+            /* USER CODE END */
+            /* Reset buffer and index */
+            gs_STLink_VCP_RxIdx_UB = 0;
+            memset(gs_STLink_VCP_RxBuffer_UW, 0x00, STLink_VCP_USART_RxBufferSize * sizeof(UINT16));
+        }
+        // Clear the interrupt flag for reception data
+        USART_Clear_Interrupt_Flag(STLink_VCP_USART, USART_Interrupt_ReceptionDataNotEmpty);
+    }
+    else
+    {
+        /* Other Interrupt Flags ... */
     }
 #endif
 }

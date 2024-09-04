@@ -24,6 +24,5 @@
 extern void STLink_VCP_Init(UINT32 SysClock_Hz, USART_Mode Mode);
 extern void STLink_VCP_Interrupt_Init(USART_Interrupt_Mode Interrupt_Mode);
 extern void STLink_VCP_Send(const char *str);
-extern UINT16 STLink_VCP_Receive(void);
 
 #endif
