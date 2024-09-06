@@ -64,7 +64,7 @@ g_pfnVectors:
     .word 0                                        // I2C2 Error                   
     .word 0                                        // SPI1                         
     .word 0                                        // SPI2                         
-    .word 0                                        // USART1                       
+    .word USART1_IRQHandler                        // USART1                       
     .word 0                                        // USART2                       
     .word 0                                        // USART3                       
     .word EXTI15_10_IRQHandler                     // External Line[15:10]s        
@@ -183,6 +183,9 @@ g_pfnVectors:
 
     .weak      TIM2_IRQHandler
     .thumb_set TIM2_IRQHandler,Default_Handler
+
+    .weak      USART1_IRQHandler
+    .thumb_set USART1_IRQHandler,Default_Handler
 
     .weak      EXTI15_10_IRQHandler
     .thumb_set EXTI15_10_IRQHandler,Default_Handler
