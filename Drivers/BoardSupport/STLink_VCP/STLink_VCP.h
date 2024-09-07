@@ -4,6 +4,7 @@
 #include "Common.h"
 #include "STM32H747XI_RCC.h"
 #include "STM32H747XI_GPIO.h"
+#include "STM32H747XI_NVIC.h"
 #include "STM32H747XI_USART.h"
 
 /* HW configuration for STLink_VCP which connects to USART1 of STM32H747XI on STM32H747I-DISCO */
@@ -20,6 +21,8 @@
 #define STLink_VCP_USART_DataLengthCode         USART_DataBit_8        /**< Data length code for USART */
 #define STLink_VCP_USART_NumberOfStopBit        USART_StopBit_1        /**< Number of stop bits for USART */
 #define STLink_VCP_USART_ParityCheck            USART_Parity_None      /**< Parity check mode for USART */
+
+#define STLink_VCP_USART_IRQn                   IRQn_USART1            /**< USART1 IRQ number for STLink VCP */
 
 extern void STLink_VCP_Init(UINT32 SysClock_Hz, USART_Mode Mode);
 extern void STLink_VCP_Interrupt_Init(USART_Interrupt_Mode Interrupt_Mode);
