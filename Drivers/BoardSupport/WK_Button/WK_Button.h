@@ -38,8 +38,8 @@ typedef enum
 extern void WK_Button_Init(void);
 extern void WK_Button_Interrupt_Init(void);
 extern ButtonState_N WK_Button_State(void);
-extern BOOL WK_Button_Pressed_then_Released_B(void);
-extern BOOL WK_Button_Released_then_Pressed_B(void);
+extern boolean WK_Button_Pressed_then_Released_B(void);
+extern boolean WK_Button_Released_then_Pressed_B(void);
 
 
 #endif

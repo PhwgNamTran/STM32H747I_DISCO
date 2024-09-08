@@ -139,7 +139,7 @@ extern void GPIO_Enable_ClockSource(uint16_t GPIOx_CLKSRC);
 extern void GPIO_Disable_ClockSource(uint16_t GPIOx_CLKSRC);
 extern void GPIO_Mode_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Mode);
 extern void GPIO_Pull_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Pull);
-extern void GPIO_OutputType_Set(GPIO_ST *GPIOx, uint8_t Pin, BOOL OutputType); 
+extern void GPIO_OutputType_Set(GPIO_ST *GPIOx, uint8_t Pin, boolean OutputType); 
 extern void GPIO_OutputData_Set(GPIO_ST *GPIOx, uint8_t Pin);
 extern void GPIO_OutputData_Reset(GPIO_ST *GPIOx, uint8_t Pin);
 extern void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, uint8_t Pin);

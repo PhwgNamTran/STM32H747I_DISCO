@@ -92,7 +92,7 @@ void GPIO_Pull_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Pull)
  * Returns:
  *   None
  */
-void GPIO_OutputType_Set(GPIO_ST *GPIOx, uint8_t Pin, BOOL OutputType)
+void GPIO_OutputType_Set(GPIO_ST *GPIOx, uint8_t Pin, boolean OutputType)
 {
     // Clear the output type register for the specified pin
     CLEAR_BIT(GPIOx->OTYPER, (0x1 << Pin));

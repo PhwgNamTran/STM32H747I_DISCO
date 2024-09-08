@@ -177,7 +177,7 @@ typedef enum
  * Input:
  *   - Event_Input: Event input number from 0 to 88.
  * Return value:
- *   - N/A (void functions) or BOOL (for trigger request functions)
+ *   - N/A (void functions) or boolean (for trigger request functions)
  */
 extern void EXTI_Enable_Event_Input_Interrupt_C1(Event_Input_N Event_Input);
 extern void EXTI_Enable_Event_Input_Interrupt_C2(Event_Input_N Event_Input);
@@ -185,8 +185,8 @@ extern void EXTI_Disable_Event_Input_Interrupt_C1(Event_Input_N Event_Input);
 extern void EXTI_Disable_Event_Input_Interrupt_C2(Event_Input_N Event_Input);
 extern void EXTI_Clear_Trigger_Request_Flag_C1(Event_Input_N Event_Input);
 extern void EXTI_Clear_Trigger_Request_Flag_C2(Event_Input_N Event_Input);
-extern BOOL EXTI_Trigger_Request_Occurred_C1_B(Event_Input_N Event_Input);
-extern BOOL EXTI_Trigger_Request_Occurred_C2_B(Event_Input_N Event_Input);
+extern boolean EXTI_Trigger_Request_Occurred_C1_B(Event_Input_N Event_Input);
+extern boolean EXTI_Trigger_Request_Occurred_C2_B(Event_Input_N Event_Input);
 
 /*
  * Function declarations for managing EXTI triggers:

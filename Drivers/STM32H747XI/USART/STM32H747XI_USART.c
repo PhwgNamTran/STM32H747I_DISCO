@@ -44,7 +44,7 @@ void USART_PIN_Config(GPIO_ST *GPIOx, uint8_t GPIO_AFx, uint8_t USART_Rx_PIN, ui
  * Returns:
  *   None
  */
-void USART_Config(USART_ST *USARTx, uint32_t SysClock, uint32_t Baudrate, BOOL OverSamplingMode,
+void USART_Config(USART_ST *USARTx, uint32_t SysClock, uint32_t Baudrate, boolean OverSamplingMode,
                                     uint8_t DataLengthCode, uint8_t NumberOfStopBit, uint8_t ParityCheck)
 {
     uint32_t Baudrate_DIV;
@@ -403,7 +403,7 @@ void USART_DisableFIFO(USART_ST *USARTx)
  * Returns:
  *   true if FIFO mode is enabled, false otherwise.
  */
-BOOL USART_IsFIFOEnabled(USART_ST *USARTx)
+boolean USART_IsFIFOEnabled(USART_ST *USARTx)
 {
     // Check if the FIFO enable bit is set in the CR1 register
     return (CHECK_BIT(USARTx->CR1, (1 << USART_CR1_FIFOEN_Pos)));
@@ -424,7 +424,7 @@ BOOL USART_IsFIFOEnabled(USART_ST *USARTx)
  */
 void USART_Enable_Interrupt(USART_ST *USARTx, uint32_t Interrupt_Mode)
 {
-    if(USART_IsFIFOEnabled(USARTx) == TRUE)
+    if(USART_IsFIFOEnabled(USARTx) == true)
     {
         if (Interrupt_Mode & USART_Interrupt_TransmitFIFONotFull) 
         {
@@ -534,9 +534,9 @@ void USART_Enable_Interrupt(USART_ST *USARTx, uint32_t Interrupt_Mode)
  * Returns:
  *   TRUE if the interrupt flag is set, FALSE otherwise.
  */
-BOOL USART_Check_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode)
+boolean USART_Check_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode)
 {
-    BOOL flag_set = FALSE;
+    boolean flag_set = false;
 
     switch (Interrupt_Mode) 
     {
@@ -608,7 +608,7 @@ BOOL USART_Check_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt
             flag_set = CHECK_BIT(USARTx->ISR, (1 << USART_ISR_UDR_Pos));
             break;
         default:
-            flag_set = FALSE;
+            flag_set = false;
             break;
     }
 

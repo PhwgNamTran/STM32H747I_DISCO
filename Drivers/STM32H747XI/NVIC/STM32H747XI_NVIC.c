@@ -32,13 +32,13 @@ void NVIC_EnableIRQ(IRQn_N IRQn)
  *   IRQn: Device-specific interrupt number to check.
  *
  * Returns:
- *   BOOL: TRUE if the interrupt is enabled, FALSE otherwise.
+ *   boolean: TRUE if the interrupt is enabled, FALSE otherwise.
  */
-BOOL NVIC_GetEnableIRQ(IRQn_N IRQn)       
+boolean NVIC_GetEnableIRQ(IRQn_N IRQn)       
 {
     uint32_t ISER_Idx = 0;
     uint32_t IRQn_Pos = 0;
-    BOOL   IRQn_Enabled = FALSE;
+    boolean   IRQn_Enabled = false;
 
     if((uint8_t)IRQn >= 0)
     {
@@ -48,7 +48,7 @@ BOOL NVIC_GetEnableIRQ(IRQn_N IRQn)
     }
     else
     {
-        IRQn_Enabled = FALSE;
+        IRQn_Enabled = false;
     }
     return IRQn_Enabled;
 }

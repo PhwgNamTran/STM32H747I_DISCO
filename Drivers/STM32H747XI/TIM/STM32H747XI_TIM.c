@@ -92,7 +92,7 @@ void TIM_Enable_ClockSource(TIM_ST *TIMx)
  * Returns:
  *   None
  */
-void TIM_Config(TIM_ST *TIMx, uint32_t TIMx_PSC, uint32_t TIMx_ARR, BOOL Counter_Direction)
+void TIM_Config(TIM_ST *TIMx, uint32_t TIMx_PSC, uint32_t TIMx_ARR, boolean Counter_Direction)
 {
     WRITE_REG(TIMx->PSC, TIMx_PSC);  // Set the prescaler value
     WRITE_REG(TIMx->ARR, TIMx_ARR);  // Set the auto-reload value
@@ -181,15 +181,15 @@ void TIM_DMA_Interrupt_Clear_Status(TIM_ST *TIMx)
  * Returns:
  *   TRUE if the DMA interrupt status is set, FALSE otherwise.
  */
-BOOL TIM_DMA_Interrupt_Check_Status(TIM_ST *TIMx)
+boolean TIM_DMA_Interrupt_Check_Status(TIM_ST *TIMx)
 {
     if (CHECK_BIT(TIMx->SR, SR_UIF))
     {
-        return TRUE;  // Interrupt status is set
+        return true;  // Interrupt status is set
     }
     else
     {
-        return FALSE; // Interrupt status is not set
+        return false; // Interrupt status is not set
     }
 }
 

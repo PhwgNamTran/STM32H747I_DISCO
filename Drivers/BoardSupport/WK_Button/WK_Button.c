@@ -62,21 +62,21 @@ ButtonState_N WK_Button_State(void)
  *
  * Note: This function should be called under a cyclic function or in while(1).
  */
-BOOL WK_Button_Pressed_then_Released_B(void)
+boolean WK_Button_Pressed_then_Released_B(void)
 {
     static ButtonState_N ls_PrevButton_State_N = C_Button_Released_N;
     ButtonState_N ls_CurrButton_State_N = C_Button_Released_N;
-    BOOL l_Pressed_then_Released_B = FALSE;
+    boolean l_Pressed_then_Released_B = false;
 
     ls_CurrButton_State_N = WK_Button_State();
 
     if ((ls_CurrButton_State_N == C_Button_Released_N) && (ls_PrevButton_State_N == C_Button_Pressed_N))
     {
-        l_Pressed_then_Released_B = TRUE;
+        l_Pressed_then_Released_B = true;
     }
     else
     {
-        l_Pressed_then_Released_B = FALSE;
+        l_Pressed_then_Released_B = false;
     }
 
     ls_PrevButton_State_N = ls_CurrButton_State_N;
@@ -94,21 +94,21 @@ BOOL WK_Button_Pressed_then_Released_B(void)
  *
  * Note: This function should be called under a cyclic function or in while(1).
  */
-BOOL WK_Button_Released_then_Pressed_B(void)
+boolean WK_Button_Released_then_Pressed_B(void)
 {
     static ButtonState_N ls_PrevButton_State_N = C_Button_Released_N;
     ButtonState_N ls_CurrButton_State_N = C_Button_Released_N;
-    BOOL l_Released_then_Pressed_B = FALSE;
+    boolean l_Released_then_Pressed_B = false;
 
     ls_CurrButton_State_N = WK_Button_State();
 
     if ((ls_PrevButton_State_N == C_Button_Released_N) && (ls_CurrButton_State_N == C_Button_Pressed_N))
     {
-        l_Released_then_Pressed_B = TRUE;
+        l_Released_then_Pressed_B = true;
     }
     else
     {
-        l_Released_then_Pressed_B = FALSE;
+        l_Released_then_Pressed_B = false;
     }
 
     ls_PrevButton_State_N = ls_CurrButton_State_N;

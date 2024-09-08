@@ -316,7 +316,7 @@ void EXTI_Disable_Falling_Trigger(Event_Input_N Event_Input)
  *   TRUE: Selected trigger request occurred.
  *   FALSE: No trigger request occurred.
  */
-BOOL EXTI_Trigger_Request_Occurred_C1_B(Event_Input_N Event_Input)
+boolean EXTI_Trigger_Request_Occurred_C1_B(Event_Input_N Event_Input)
 {
     uint8_t PR_idx = 0;
     uint8_t PR_pos = 0;
@@ -324,7 +324,7 @@ BOOL EXTI_Trigger_Request_Occurred_C1_B(Event_Input_N Event_Input)
     PR_idx = Event_Input / 32;
     PR_pos = Event_Input % 32;
 
-    BOOL Request_Occurred_B = FALSE;
+    boolean Request_Occurred_B = false;
 
     switch (PR_idx)
     {
@@ -359,7 +359,7 @@ BOOL EXTI_Trigger_Request_Occurred_C1_B(Event_Input_N Event_Input)
  *   TRUE: Selected trigger request occurred.
  *   FALSE: No trigger request occurred.
  */
-BOOL EXTI_Trigger_Request_Occurred_C2_B(Event_Input_N Event_Input)
+boolean EXTI_Trigger_Request_Occurred_C2_B(Event_Input_N Event_Input)
 {
     uint8_t PR_idx = 0;
     uint8_t PR_pos = 0;
@@ -367,7 +367,7 @@ BOOL EXTI_Trigger_Request_Occurred_C2_B(Event_Input_N Event_Input)
     PR_idx = Event_Input / 32;
     PR_pos = Event_Input % 32;
 
-    BOOL Request_Occurred_B = FALSE;
+    boolean Request_Occurred_B = false;
 
     switch (PR_idx)
     {

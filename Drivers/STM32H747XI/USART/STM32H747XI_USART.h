@@ -252,14 +252,14 @@ typedef enum {
 #define USART6_ClockSource      (1 << 5)  /**< USART6 Clock Source in RCC_APB2ENR */
 
 extern void USART_PIN_Config(GPIO_ST *GPIOx, uint8_t GPIO_AFx, uint8_t USART_Rx_PIN, uint8_t USART_Tx_PIN);
-extern void USART_Config(USART_ST *USARTx, uint32_t SysClock, uint32_t Baudrate, BOOL OverSamplingMode, uint8_t DataLengthCode, uint8_t NumberOfStopBit, uint8_t ParityCheck);
+extern void USART_Config(USART_ST *USARTx, uint32_t SysClock, uint32_t Baudrate, boolean OverSamplingMode, uint8_t DataLengthCode, uint8_t NumberOfStopBit, uint8_t ParityCheck);
 extern void USART_SetMode(USART_ST *USARTx, USART_Mode Mode);
 extern USART_Mode USART_GetMode(USART_ST *USARTx);
 extern void USART_EnableFIFO(USART_ST *USARTx);
 extern void USART_DisableFIFO(USART_ST *USARTx);
-extern BOOL USART_IsFIFOEnabled(USART_ST *USARTx);
+extern boolean USART_IsFIFOEnabled(USART_ST *USARTx);
 extern void USART_Enable_Interrupt(USART_ST *USARTx, uint32_t Interrupt_Mode);
-extern BOOL USART_Check_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode);
+extern boolean USART_Check_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode);
 extern void USART_Clear_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode);
 extern void USART_Enable_ClockSource(USART_ST *USARTx);
 extern void USART_Enable(USART_ST *USARTx);

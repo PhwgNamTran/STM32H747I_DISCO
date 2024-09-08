@@ -198,7 +198,7 @@ typedef enum
  * for enabling/disabling interrupts, managing interrupt pending status, and setting/getting priorities.
  */
 extern void   NVIC_EnableIRQ(IRQn_N IRQn);              
-extern BOOL   NVIC_GetEnableIRQ(IRQn_N IRQn);           
+extern boolean   NVIC_GetEnableIRQ(IRQn_N IRQn);           
 extern void   NVIC_DisableIRQ(IRQn_N IRQn);             
 extern uint32_t NVIC_GetPendingIRQ(IRQn_N IRQn);          
 extern void   NVIC_SetPendingIRQ(IRQn_N IRQn);          
