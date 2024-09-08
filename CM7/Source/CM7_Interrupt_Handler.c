@@ -33,13 +33,10 @@ void USART1_IRQHandler(void)
         // Store the received data in the buffer and increment the index
         gs_STLink_VCP_RxBuffer_UW[gs_STLink_VCP_RxIdx_UB++] = Rx_Data;
         // Check if there is space in the receive buffer
-        if(gs_STLink_VCP_RxIdx_UB == (STLink_VCP_USART_RxBufferSize - 1))
+        if(gs_STLink_VCP_RxIdx_UB == STLink_VCP_USART_RxBufferSize)
         {
             /* USER CODE START */
-            if(1)
-            {
-                UserLED_TOGGLE(UserLED_1);
-            }
+            UserLED_TOGGLE(UserLED_1);
             /* USER CODE END */
             /* Reset buffer and index */
             gs_STLink_VCP_RxIdx_UB = 0;
