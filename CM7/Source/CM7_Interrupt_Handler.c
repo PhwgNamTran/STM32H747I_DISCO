@@ -30,6 +30,8 @@ void USART1_IRQHandler(void)
     {
         // Read a single data from the USART
         UINT16 Rx_Data = USART_Receive_Single_Data(STLink_VCP_USART);
+        // Echo received data
+        USART_Transmit_Single_Data(STLink_VCP_USART, Rx_Data);
         // Store the received data in the buffer and increment the index
         gs_STLink_VCP_RxBuffer_UW[gs_STLink_VCP_RxIdx_UB++] = Rx_Data;
         // Check if there is space in the receive buffer
