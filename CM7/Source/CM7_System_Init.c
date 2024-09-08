@@ -37,7 +37,7 @@ void SystemClock_Config(void)
     SET_BIT(RCC->CR, CR_HSI);
 
     CLEAR_BIT(RCC->CR, (0x3 << CR_HSIDIV_POS));
-    SET_BIT(RCC->CR, (((UINT8)sqrt(HSI_DIV) & 0x3) << CR_HSIDIV_POS));
+    SET_BIT(RCC->CR, (((uint8_t)sqrt(HSI_DIV) & 0x3) << CR_HSIDIV_POS));
 #endif
 }
 

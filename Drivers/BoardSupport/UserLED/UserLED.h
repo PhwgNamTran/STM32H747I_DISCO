@@ -34,10 +34,10 @@
  * Return value:
  *   N/A
  */
-extern void UserLED_Init(UINT8 UserLEDx);   /**< Initialize UserLEDs */
-extern void UserLED_ON(UINT8 UserLEDx);     /**< Turn ON specified UserLED */
-extern void UserLED_OFF(UINT8 UserLEDx);    /**< Turn OFF specified UserLED */
-extern void UserLED_TOGGLE(UINT8 UserLEDx); /**< Toggle specified UserLED */
+extern void UserLED_Init(uint8_t UserLEDx);   /**< Initialize UserLEDs */
+extern void UserLED_ON(uint8_t UserLEDx);     /**< Turn ON specified UserLED */
+extern void UserLED_OFF(uint8_t UserLEDx);    /**< Turn OFF specified UserLED */
+extern void UserLED_TOGGLE(uint8_t UserLEDx); /**< Toggle specified UserLED */
 
 
 #endif /* USERLED_H */

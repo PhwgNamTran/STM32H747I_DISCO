@@ -14,7 +14,7 @@
  * Returns:
  *   None
  */
-void USART_PIN_Config(GPIO_ST *GPIOx, UINT8 GPIO_AFx, UINT8 USART_Rx_PIN, UINT8 USART_Tx_PIN)
+void USART_PIN_Config(GPIO_ST *GPIOx, uint8_t GPIO_AFx, uint8_t USART_Rx_PIN, uint8_t USART_Tx_PIN)
 {
     // Configure the RX pin to alternate function mode
     GPIO_Mode_Set(GPIOx, USART_Rx_PIN, GPIO_Mode_Alternate_Function);
@@ -44,10 +44,10 @@ void USART_PIN_Config(GPIO_ST *GPIOx, UINT8 GPIO_AFx, UINT8 USART_Rx_PIN, UINT8 
  * Returns:
  *   None
  */
-void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT32 Baudrate, BOOL OverSamplingMode,
-                                    UINT8 DataLengthCode, UINT8 NumberOfStopBit, UINT8 ParityCheck)
+void USART_Config(USART_ST *USARTx, uint32_t SysClock, uint32_t Baudrate, BOOL OverSamplingMode,
+                                    uint8_t DataLengthCode, uint8_t NumberOfStopBit, uint8_t ParityCheck)
 {
-    UINT32 Baudrate_DIV;
+    uint32_t Baudrate_DIV;
 
     // Clear the data length bits in the CR1 register
     CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_M1_Pos));
@@ -63,7 +63,7 @@ void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT32 Baudrate, BOOL OverS
         SET_BIT(USARTx->CR1, (1 << USART_CR1_OVER8_Pos));
         
         // Calculate the baud rate divisor for oversampling by 8
-        Baudrate_DIV = (UINT16)(2 * SysClock / Baudrate + 0.5);
+        Baudrate_DIV = (uint16_t)(2 * SysClock / Baudrate + 0.5);
         Baudrate_DIV = (Baudrate_DIV & 0xFFF0) | ((Baudrate_DIV & 0x000F) >> 1);
     }
     else
@@ -72,7 +72,7 @@ void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT32 Baudrate, BOOL OverS
         CLEAR_BIT(USARTx->CR1, (1 << USART_CR1_OVER8_Pos));
         
         // Calculate the baud rate divisor for oversampling by 16
-        Baudrate_DIV = (UINT32)(SysClock / Baudrate + 0.5);
+        Baudrate_DIV = (uint32_t)(SysClock / Baudrate + 0.5);
     }
     
     // Set the baud rate divisor in the BRR register
@@ -422,7 +422,7 @@ BOOL USART_IsFIFOEnabled(USART_ST *USARTx)
  * Returns:
  *   None
  */
-void USART_Enable_Interrupt(USART_ST *USARTx, UINT32 Interrupt_Mode)
+void USART_Enable_Interrupt(USART_ST *USARTx, uint32_t Interrupt_Mode)
 {
     if(USART_IsFIFOEnabled(USARTx) == TRUE)
     {
@@ -751,7 +751,7 @@ void USART_Disable(USART_ST *USARTx)
  * Returns:
  *   None
  */
-void USART_Transmit_Single_Data(USART_ST *USARTx, UINT16 Data)
+void USART_Transmit_Single_Data(USART_ST *USARTx, uint16_t Data)
 {
     // Wait until TXFNF flag is set, indicating transmit data register is not full
     while (!(CHECK_BIT(USARTx->ISR, (1 << USART_ISR_TXFNF_Pos))));
@@ -794,10 +794,10 @@ void USART_Transmit(USART_ST *USARTx, const char *str) {
  * Returns:
  *   The received data frame (8 or 9 bits).
  */
-UINT16 USART_Receive_Single_Data(USART_ST *USARTx)
+uint16_t USART_Receive_Single_Data(USART_ST *USARTx)
 {
     // Read the data from the USART receive data register
-    return (UINT16)(USARTx->RDR & 0x1FF);
+    return (uint16_t)(USARTx->RDR & 0x1FF);
 }
 
 /*

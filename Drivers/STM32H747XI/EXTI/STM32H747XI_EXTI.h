@@ -8,65 +8,65 @@
 /* EXTI Register - Refer to CMSIS Library */
 typedef struct
 {
-    volatile UINT32 RTSR1;               /**< EXTI Rising trigger selection register,          Address offset: 0x00 */
-    volatile UINT32 FTSR1;               /**< EXTI Falling trigger selection register,         Address offset: 0x04 */
-    volatile UINT32 SWIER1;              /**< EXTI Software interrupt event register,          Address offset: 0x08 */
-    volatile UINT32 D3PMR1;              /**< EXTI D3 Pending mask register, (same register as to SRDPMR1) Address offset: 0x0C */
-    volatile UINT32 D3PCR1L;             /**< EXTI D3 Pending clear selection register low, (same register as to SRDPCR1L)     Address offset: 0x10 */
-    volatile UINT32 D3PCR1H;             /**< EXTI D3 Pending clear selection register High, (same register as to SRDPCR1H)   Address offset: 0x14 */
-    volatile UINT32 RESERVED1[2];        /**< Reserved,                                        0x18 to 0x1C         */
-    volatile UINT32 RTSR2;               /**< EXTI Rising trigger selection register,          Address offset: 0x20 */
-    volatile UINT32 FTSR2;               /**< EXTI Falling trigger selection register,         Address offset: 0x24 */
-    volatile UINT32 SWIER2;              /**< EXTI Software interrupt event register,          Address offset: 0x28 */
-    volatile UINT32 D3PMR2;              /**< EXTI D3 Pending mask register, (same register as to SRDPMR2) Address offset: 0x2C */
-    volatile UINT32 D3PCR2L;             /**< EXTI D3 Pending clear selection register low, (same register as to SRDPCR2L)  Address offset: 0x30 */
-    volatile UINT32 D3PCR2H;             /**< EXTI D3 Pending clear selection register High, (same register as to SRDPCR2H) Address offset: 0x34 */
-    volatile UINT32 RESERVED2[2];        /**< Reserved,                                        0x38 to 0x3C         */
-    volatile UINT32 RTSR3;               /**< EXTI Rising trigger selection register,          Address offset: 0x40 */
-    volatile UINT32 FTSR3;               /**< EXTI Falling trigger selection register,         Address offset: 0x44 */
-    volatile UINT32 SWIER3;              /**< EXTI Software interrupt event register,          Address offset: 0x48 */
-    volatile UINT32 D3PMR3;              /**< EXTI D3 Pending mask register, (same register as to SRDPMR3) Address offset: 0x4C */
-    volatile UINT32 D3PCR3L;             /**< EXTI D3 Pending clear selection register low, (same register as to SRDPCR3L) Address offset: 0x50 */
-    volatile UINT32 D3PCR3H;             /**< EXTI D3 Pending clear selection register High, (same register as to SRDPCR3H) Address offset: 0x54 */
-    volatile UINT32 RESERVED3[10];       /**< Reserved,                                        0x58 to 0x7C         */
-    volatile UINT32 C1IMR1;              /**< EXTI Interrupt mask register,                    Address offset: 0x80 */
-    volatile UINT32 C1EMR1;              /**< EXTI Event mask register,                        Address offset: 0x84 */
-    volatile UINT32 C1PR1;               /**< EXTI Pending register,                           Address offset: 0x88 */
-    volatile UINT32 RESERVED4;           /**< Reserved,                                        0x8C                 */
-    volatile UINT32 C1IMR2;              /**< EXTI Interrupt mask register,                    Address offset: 0x90 */
-    volatile UINT32 C1EMR2;              /**< EXTI Event mask register,                        Address offset: 0x94 */
-    volatile UINT32 C1PR2;               /**< EXTI Pending register,                           Address offset: 0x98 */
-    volatile UINT32 RESERVED5;           /**< Reserved,                                        0x9C                 */
-    volatile UINT32 C1IMR3;              /**< EXTI Interrupt mask register,                    Address offset: 0xA0 */
-    volatile UINT32 C1EMR3;              /**< EXTI Event mask register,                        Address offset: 0xA4 */
-    volatile UINT32 C1PR3;               /**< EXTI Pending register,                           Address offset: 0xA8 */
-    volatile UINT32 RESERVED6[5];        /**< Reserved,                                        0xAC to 0xBC         */
-    volatile UINT32 C2IMR1;              /**< EXTI Interrupt mask register,                    Address offset: 0xC0 */
-    volatile UINT32 C2EMR1;              /**< EXTI Event mask register,                        Address offset: 0xC4 */
-    volatile UINT32 C2PR1;               /**< EXTI Pending register,                           Address offset: 0xC8 */
-    volatile UINT32 RESERVED7;           /**< Reserved,                                        0xCC                 */
-    volatile UINT32 C2IMR2;              /**< EXTI Interrupt mask register,                    Address offset: 0xD0 */
-    volatile UINT32 C2EMR2;              /**< EXTI Event mask register,                        Address offset: 0xD4 */
-    volatile UINT32 C2PR2;               /**< EXTI Pending register,                           Address offset: 0xD8 */
-    volatile UINT32 RESERVED8;           /**< Reserved,                                        0xDC                 */
-    volatile UINT32 C2IMR3;              /**< EXTI Interrupt mask register,                    Address offset: 0xE0 */
-    volatile UINT32 C2EMR3;              /**< EXTI Event mask register,                        Address offset: 0xE4 */
-    volatile UINT32 C2PR3;               /**< EXTI Pending register,                           Address offset: 0xE8 */
+    volatile uint32_t RTSR1;               /**< EXTI Rising trigger selection register,          Address offset: 0x00 */
+    volatile uint32_t FTSR1;               /**< EXTI Falling trigger selection register,         Address offset: 0x04 */
+    volatile uint32_t SWIER1;              /**< EXTI Software interrupt event register,          Address offset: 0x08 */
+    volatile uint32_t D3PMR1;              /**< EXTI D3 Pending mask register, (same register as to SRDPMR1) Address offset: 0x0C */
+    volatile uint32_t D3PCR1L;             /**< EXTI D3 Pending clear selection register low, (same register as to SRDPCR1L)     Address offset: 0x10 */
+    volatile uint32_t D3PCR1H;             /**< EXTI D3 Pending clear selection register High, (same register as to SRDPCR1H)   Address offset: 0x14 */
+    volatile uint32_t RESERVED1[2];        /**< Reserved,                                        0x18 to 0x1C         */
+    volatile uint32_t RTSR2;               /**< EXTI Rising trigger selection register,          Address offset: 0x20 */
+    volatile uint32_t FTSR2;               /**< EXTI Falling trigger selection register,         Address offset: 0x24 */
+    volatile uint32_t SWIER2;              /**< EXTI Software interrupt event register,          Address offset: 0x28 */
+    volatile uint32_t D3PMR2;              /**< EXTI D3 Pending mask register, (same register as to SRDPMR2) Address offset: 0x2C */
+    volatile uint32_t D3PCR2L;             /**< EXTI D3 Pending clear selection register low, (same register as to SRDPCR2L)  Address offset: 0x30 */
+    volatile uint32_t D3PCR2H;             /**< EXTI D3 Pending clear selection register High, (same register as to SRDPCR2H) Address offset: 0x34 */
+    volatile uint32_t RESERVED2[2];        /**< Reserved,                                        0x38 to 0x3C         */
+    volatile uint32_t RTSR3;               /**< EXTI Rising trigger selection register,          Address offset: 0x40 */
+    volatile uint32_t FTSR3;               /**< EXTI Falling trigger selection register,         Address offset: 0x44 */
+    volatile uint32_t SWIER3;              /**< EXTI Software interrupt event register,          Address offset: 0x48 */
+    volatile uint32_t D3PMR3;              /**< EXTI D3 Pending mask register, (same register as to SRDPMR3) Address offset: 0x4C */
+    volatile uint32_t D3PCR3L;             /**< EXTI D3 Pending clear selection register low, (same register as to SRDPCR3L) Address offset: 0x50 */
+    volatile uint32_t D3PCR3H;             /**< EXTI D3 Pending clear selection register High, (same register as to SRDPCR3H) Address offset: 0x54 */
+    volatile uint32_t RESERVED3[10];       /**< Reserved,                                        0x58 to 0x7C         */
+    volatile uint32_t C1IMR1;              /**< EXTI Interrupt mask register,                    Address offset: 0x80 */
+    volatile uint32_t C1EMR1;              /**< EXTI Event mask register,                        Address offset: 0x84 */
+    volatile uint32_t C1PR1;               /**< EXTI Pending register,                           Address offset: 0x88 */
+    volatile uint32_t RESERVED4;           /**< Reserved,                                        0x8C                 */
+    volatile uint32_t C1IMR2;              /**< EXTI Interrupt mask register,                    Address offset: 0x90 */
+    volatile uint32_t C1EMR2;              /**< EXTI Event mask register,                        Address offset: 0x94 */
+    volatile uint32_t C1PR2;               /**< EXTI Pending register,                           Address offset: 0x98 */
+    volatile uint32_t RESERVED5;           /**< Reserved,                                        0x9C                 */
+    volatile uint32_t C1IMR3;              /**< EXTI Interrupt mask register,                    Address offset: 0xA0 */
+    volatile uint32_t C1EMR3;              /**< EXTI Event mask register,                        Address offset: 0xA4 */
+    volatile uint32_t C1PR3;               /**< EXTI Pending register,                           Address offset: 0xA8 */
+    volatile uint32_t RESERVED6[5];        /**< Reserved,                                        0xAC to 0xBC         */
+    volatile uint32_t C2IMR1;              /**< EXTI Interrupt mask register,                    Address offset: 0xC0 */
+    volatile uint32_t C2EMR1;              /**< EXTI Event mask register,                        Address offset: 0xC4 */
+    volatile uint32_t C2PR1;               /**< EXTI Pending register,                           Address offset: 0xC8 */
+    volatile uint32_t RESERVED7;           /**< Reserved,                                        0xCC                 */
+    volatile uint32_t C2IMR2;              /**< EXTI Interrupt mask register,                    Address offset: 0xD0 */
+    volatile uint32_t C2EMR2;              /**< EXTI Event mask register,                        Address offset: 0xD4 */
+    volatile uint32_t C2PR2;               /**< EXTI Pending register,                           Address offset: 0xD8 */
+    volatile uint32_t RESERVED8;           /**< Reserved,                                        0xDC                 */
+    volatile uint32_t C2IMR3;              /**< EXTI Interrupt mask register,                    Address offset: 0xE0 */
+    volatile uint32_t C2EMR3;              /**< EXTI Event mask register,                        Address offset: 0xE4 */
+    volatile uint32_t C2PR3;               /**< EXTI Pending register,                           Address offset: 0xE8 */
 }EXTI_ST;
 
 typedef struct
 {
-    volatile UINT32 IMR1;                /**< EXTI Interrupt mask register,                Address offset: 0x00 */
-    volatile UINT32 EMR1;                /**< EXTI Event mask register,                    Address offset: 0x04 */
-    volatile UINT32 PR1;                 /**< EXTI Pending register,                       Address offset: 0x08 */
-    volatile UINT32 RESERVED1;           /**< Reserved, 0x0C                                                    */
-    volatile UINT32 IMR2;                /**< EXTI Interrupt mask register,                Address offset: 0x10 */
-    volatile UINT32 EMR2;                /**< EXTI Event mask register,                    Address offset: 0x14 */
-    volatile UINT32 PR2;                 /**< EXTI Pending register,                       Address offset: 0x18 */
-    volatile UINT32 RESERVED2;           /**< Reserved, 0x1C                                                    */
-    volatile UINT32 IMR3;                /**< EXTI Interrupt mask register,                Address offset: 0x20 */
-    volatile UINT32 EMR3;                /**< EXTI Event mask register,                    Address offset: 0x24 */
-    volatile UINT32 PR3;                 /**< EXTI Pending register,                       Address offset: 0x28 */
+    volatile uint32_t IMR1;                /**< EXTI Interrupt mask register,                Address offset: 0x00 */
+    volatile uint32_t EMR1;                /**< EXTI Event mask register,                    Address offset: 0x04 */
+    volatile uint32_t PR1;                 /**< EXTI Pending register,                       Address offset: 0x08 */
+    volatile uint32_t RESERVED1;           /**< Reserved, 0x0C                                                    */
+    volatile uint32_t IMR2;                /**< EXTI Interrupt mask register,                Address offset: 0x10 */
+    volatile uint32_t EMR2;                /**< EXTI Event mask register,                    Address offset: 0x14 */
+    volatile uint32_t PR2;                 /**< EXTI Pending register,                       Address offset: 0x18 */
+    volatile uint32_t RESERVED2;           /**< Reserved, 0x1C                                                    */
+    volatile uint32_t IMR3;                /**< EXTI Interrupt mask register,                Address offset: 0x20 */
+    volatile uint32_t EMR3;                /**< EXTI Event mask register,                    Address offset: 0x24 */
+    volatile uint32_t PR3;                 /**< EXTI Pending register,                       Address offset: 0x28 */
 }EXTI_Core_ST;
 
 typedef enum

@@ -14,7 +14,7 @@
 #define System_Clock_Source  System_Clock_Source_HSI
 
 #if(System_Clock_Source == System_Clock_Source_HSI)
-#define HSI_DIV              (UINT8)(HSI_Clock/System_Clock)
+#define HSI_DIV              (uint8_t)(HSI_Clock/System_Clock)
 #endif
 
 #define USER_LED_1_USED      STD_ON

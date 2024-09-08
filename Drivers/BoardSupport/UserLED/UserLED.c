@@ -8,7 +8,7 @@
  *   - Configures GPIO mode, pull resistor, and output type.
  *   - Sets default state to LED OFF.
  */
-void UserLED_Init(UINT8 UserLEDx)
+void UserLED_Init(uint8_t UserLEDx)
 {
     /* Enable clock for UserLED */
     GPIO_Enable_ClockSource(UserLED_ClockSrc);
@@ -53,7 +53,7 @@ void UserLED_Init(UINT8 UserLEDx)
  * Parameters:
  *   UserLEDx: UserLED number to turn ON (UserLED_1, UserLED_2, UserLED_3, UserLED_4)
  */
-void UserLED_ON(UINT8 UserLEDx)
+void UserLED_ON(uint8_t UserLEDx)
 {
     switch (UserLEDx)
     {
@@ -86,7 +86,7 @@ void UserLED_ON(UINT8 UserLEDx)
  * Parameters:
  *   UserLEDx: UserLED number to turn OFF (UserLED_1, UserLED_2, UserLED_3, UserLED_4)
  */
-void UserLED_OFF(UINT8 UserLEDx)
+void UserLED_OFF(uint8_t UserLEDx)
 {
     switch (UserLEDx)
     {
@@ -119,7 +119,7 @@ void UserLED_OFF(UINT8 UserLEDx)
  * Parameters:
  *   UserLEDx: UserLED number to toggle (UserLED_1, UserLED_2, UserLED_3, UserLED_4)
  */
-void UserLED_TOGGLE(UINT8 UserLEDx)
+void UserLED_TOGGLE(uint8_t UserLEDx)
 {
     switch (UserLEDx)
     {

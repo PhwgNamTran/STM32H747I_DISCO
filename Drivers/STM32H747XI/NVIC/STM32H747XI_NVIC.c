@@ -13,12 +13,12 @@
  */
 void NVIC_EnableIRQ(IRQn_N IRQn)  
 {
-    UINT32 ISER_Idx = 0;
-    UINT32 IRQn_Pos = 0;
-    if((UINT8)IRQn >= 0)
+    uint32_t ISER_Idx = 0;
+    uint32_t IRQn_Pos = 0;
+    if((uint8_t)IRQn >= 0)
     {
-        ISER_Idx = ((UINT8)IRQn) >> 5UL;
-        IRQn_Pos = 1UL << (((UINT8)IRQn) & 0x1FUL);
+        ISER_Idx = ((uint8_t)IRQn) >> 5UL;
+        IRQn_Pos = 1UL << (((uint8_t)IRQn) & 0x1FUL);
         SET_BIT(NVIC->ISER[ISER_Idx], IRQn_Pos);
     }
 }
@@ -36,14 +36,14 @@ void NVIC_EnableIRQ(IRQn_N IRQn)
  */
 BOOL NVIC_GetEnableIRQ(IRQn_N IRQn)       
 {
-    UINT32 ISER_Idx = 0;
-    UINT32 IRQn_Pos = 0;
+    uint32_t ISER_Idx = 0;
+    uint32_t IRQn_Pos = 0;
     BOOL   IRQn_Enabled = FALSE;
 
-    if((UINT8)IRQn >= 0)
+    if((uint8_t)IRQn >= 0)
     {
-        ISER_Idx = ((UINT8)IRQn) >> 5UL;
-        IRQn_Pos = 1UL << (((UINT8)IRQn) & 0x1FUL);
+        ISER_Idx = ((uint8_t)IRQn) >> 5UL;
+        IRQn_Pos = 1UL << (((uint8_t)IRQn) & 0x1FUL);
         IRQn_Enabled = CHECK_BIT(NVIC->ISER[ISER_Idx], IRQn_Pos);
     }
     else
@@ -78,9 +78,9 @@ void NVIC_DisableIRQ(IRQn_N IRQn)
  *   IRQn: Device-specific interrupt number to check.
  *
  * Returns:
- *   UINT32: The pending status (always returns 0 for this implementation).
+ *   uint32_t: The pending status (always returns 0 for this implementation).
  */
-UINT32 NVIC_GetPendingIRQ(IRQn_N IRQn)   
+uint32_t NVIC_GetPendingIRQ(IRQn_N IRQn)   
 {
     return 0;
 }
@@ -126,9 +126,9 @@ void NVIC_ClearPendingIRQ(IRQn_N IRQn)
  *   IRQn: Device-specific interrupt number to check.
  *
  * Returns:
- *   UINT32: The active status (always returns 0 for this implementation).
+ *   uint32_t: The active status (always returns 0 for this implementation).
  */
-UINT32 NVIC_GetActive(IRQn_N IRQn)
+uint32_t NVIC_GetActive(IRQn_N IRQn)
 {
     return 0;
 }
@@ -145,11 +145,11 @@ UINT32 NVIC_GetActive(IRQn_N IRQn)
  * Returns:
  *   None
  */
-void NVIC_SetPriority(IRQn_N IRQn, UINT8 Priority)
+void NVIC_SetPriority(IRQn_N IRQn, uint8_t Priority)
 {
-    if((UINT8)IRQn >= 0)
+    if((uint8_t)IRQn >= 0)
     {
-        SET_BIT(NVIC->IP[((UINT8)IRQn)], (UINT8)((Priority & 0xFFUL)));
+        SET_BIT(NVIC->IP[((uint8_t)IRQn)], (uint8_t)((Priority & 0xFFUL)));
     }
 }
 
@@ -162,9 +162,9 @@ void NVIC_SetPriority(IRQn_N IRQn, UINT8 Priority)
  *   IRQn: Device-specific interrupt number to get priority.
  *
  * Returns:
- *   UINT32: The priority value (always returns 0 for this implementation).
+ *   uint32_t: The priority value (always returns 0 for this implementation).
  */
-UINT32 NVIC_GetPriority(IRQn_N IRQn)
+uint32_t NVIC_GetPriority(IRQn_N IRQn)
 {
     return 0;
 }

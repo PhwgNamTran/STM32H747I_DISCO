@@ -9,15 +9,15 @@
 /* GPIO Register - Refer to CMSIS Library */
 typedef struct
 {
-    volatile UINT32 MODER;    /* GPIO port mode register,                  Address offset: 0x00      */
-    volatile UINT32 OTYPER;   /* GPIO port output type register,           Address offset: 0x04      */
-    volatile UINT32 OSPEEDR;  /* GPIO port output speed register,          Address offset: 0x08      */
-    volatile UINT32 PUPDR;    /* GPIO port pull-up/pull-down register,     Address offset: 0x0C      */
-    volatile UINT32 IDR;      /* GPIO port input data register,            Address offset: 0x10      */
-    volatile UINT32 ODR;      /* GPIO port output data register,           Address offset: 0x14      */
-    volatile UINT32 BSRR;     /* GPIO port bit set/reset,                  Address offset: 0x18      */
-    volatile UINT32 LCKR;     /* GPIO port configuration lock register,    Address offset: 0x1C      */
-    volatile UINT32 AFR[2];   /* GPIO alternate function registers,        Address offset: 0x20-0x24 */
+    volatile uint32_t MODER;    /* GPIO port mode register,                  Address offset: 0x00      */
+    volatile uint32_t OTYPER;   /* GPIO port output type register,           Address offset: 0x04      */
+    volatile uint32_t OSPEEDR;  /* GPIO port output speed register,          Address offset: 0x08      */
+    volatile uint32_t PUPDR;    /* GPIO port pull-up/pull-down register,     Address offset: 0x0C      */
+    volatile uint32_t IDR;      /* GPIO port input data register,            Address offset: 0x10      */
+    volatile uint32_t ODR;      /* GPIO port output data register,           Address offset: 0x14      */
+    volatile uint32_t BSRR;     /* GPIO port bit set/reset,                  Address offset: 0x18      */
+    volatile uint32_t LCKR;     /* GPIO port configuration lock register,    Address offset: 0x1C      */
+    volatile uint32_t AFR[2];   /* GPIO alternate function registers,        Address offset: 0x20-0x24 */
 } GPIO_ST;
 
 /* Base Address of GPIO Ports */
@@ -135,14 +135,14 @@ typedef struct
  * Return value:
  *   - N/A
  */
-extern void GPIO_Enable_ClockSource(UINT16 GPIOx_CLKSRC);
-extern void GPIO_Disable_ClockSource(UINT16 GPIOx_CLKSRC);
-extern void GPIO_Mode_Set(GPIO_ST *GPIOx, UINT8 Pin, UINT8 Mode);
-extern void GPIO_Pull_Set(GPIO_ST *GPIOx, UINT8 Pin, UINT8 Pull);
-extern void GPIO_OutputType_Set(GPIO_ST *GPIOx, UINT8 Pin, BOOL OutputType); 
-extern void GPIO_OutputData_Set(GPIO_ST *GPIOx, UINT8 Pin);
-extern void GPIO_OutputData_Reset(GPIO_ST *GPIOx, UINT8 Pin);
-extern void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, UINT8 Pin);
-extern void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, UINT8 Pin, UINT8 AFx);
+extern void GPIO_Enable_ClockSource(uint16_t GPIOx_CLKSRC);
+extern void GPIO_Disable_ClockSource(uint16_t GPIOx_CLKSRC);
+extern void GPIO_Mode_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Mode);
+extern void GPIO_Pull_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Pull);
+extern void GPIO_OutputType_Set(GPIO_ST *GPIOx, uint8_t Pin, BOOL OutputType); 
+extern void GPIO_OutputData_Set(GPIO_ST *GPIOx, uint8_t Pin);
+extern void GPIO_OutputData_Reset(GPIO_ST *GPIOx, uint8_t Pin);
+extern void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, uint8_t Pin);
+extern void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, uint8_t Pin, uint8_t AFx);
 
 #endif

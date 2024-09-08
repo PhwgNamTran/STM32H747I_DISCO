@@ -10,18 +10,18 @@
 /* USART Register - Refer to CMSIS Library */
 typedef struct
 {
-    volatile UINT32 CR1;    /*!< USART Control register 1,                 Address offset: 0x00 */
-    volatile UINT32 CR2;    /*!< USART Control register 2,                 Address offset: 0x04 */
-    volatile UINT32 CR3;    /*!< USART Control register 3,                 Address offset: 0x08 */
-    volatile UINT32 BRR;    /*!< USART Baud rate register,                 Address offset: 0x0C */
-    volatile UINT32 GTPR;   /*!< USART Guard time and prescaler register,  Address offset: 0x10 */
-    volatile UINT32 RTOR;   /*!< USART Receiver Time Out register,         Address offset: 0x14 */
-    volatile UINT32 RQR;    /*!< USART Request register,                   Address offset: 0x18 */
-    volatile UINT32 ISR;    /*!< USART Interrupt and status register,      Address offset: 0x1C */
-    volatile UINT32 ICR;    /*!< USART Interrupt flag Clear register,      Address offset: 0x20 */
-    volatile UINT32 RDR;    /*!< USART Receive Data register,              Address offset: 0x24 */
-    volatile UINT32 TDR;    /*!< USART Transmit Data register,             Address offset: 0x28 */
-    volatile UINT32 PRESC;  /*!< USART clock Prescaler register,           Address offset: 0x2C */
+    volatile uint32_t CR1;    /*!< USART Control register 1,                 Address offset: 0x00 */
+    volatile uint32_t CR2;    /*!< USART Control register 2,                 Address offset: 0x04 */
+    volatile uint32_t CR3;    /*!< USART Control register 3,                 Address offset: 0x08 */
+    volatile uint32_t BRR;    /*!< USART Baud rate register,                 Address offset: 0x0C */
+    volatile uint32_t GTPR;   /*!< USART Guard time and prescaler register,  Address offset: 0x10 */
+    volatile uint32_t RTOR;   /*!< USART Receiver Time Out register,         Address offset: 0x14 */
+    volatile uint32_t RQR;    /*!< USART Request register,                   Address offset: 0x18 */
+    volatile uint32_t ISR;    /*!< USART Interrupt and status register,      Address offset: 0x1C */
+    volatile uint32_t ICR;    /*!< USART Interrupt flag Clear register,      Address offset: 0x20 */
+    volatile uint32_t RDR;    /*!< USART Receive Data register,              Address offset: 0x24 */
+    volatile uint32_t TDR;    /*!< USART Transmit Data register,             Address offset: 0x28 */
+    volatile uint32_t PRESC;  /*!< USART clock Prescaler register,           Address offset: 0x2C */
 } USART_ST;
 
 /* Enumeration for USART operating modes */
@@ -251,22 +251,22 @@ typedef enum {
 #define USART1_ClockSource      (1 << 4)  /**< USART1 Clock Source in RCC_APB2ENR */
 #define USART6_ClockSource      (1 << 5)  /**< USART6 Clock Source in RCC_APB2ENR */
 
-extern void USART_PIN_Config(GPIO_ST *GPIOx, UINT8 GPIO_AFx, UINT8 USART_Rx_PIN, UINT8 USART_Tx_PIN);
-extern void USART_Config(USART_ST *USARTx, UINT32 SysClock, UINT32 Baudrate, BOOL OverSamplingMode, UINT8 DataLengthCode, UINT8 NumberOfStopBit, UINT8 ParityCheck);
+extern void USART_PIN_Config(GPIO_ST *GPIOx, uint8_t GPIO_AFx, uint8_t USART_Rx_PIN, uint8_t USART_Tx_PIN);
+extern void USART_Config(USART_ST *USARTx, uint32_t SysClock, uint32_t Baudrate, BOOL OverSamplingMode, uint8_t DataLengthCode, uint8_t NumberOfStopBit, uint8_t ParityCheck);
 extern void USART_SetMode(USART_ST *USARTx, USART_Mode Mode);
 extern USART_Mode USART_GetMode(USART_ST *USARTx);
 extern void USART_EnableFIFO(USART_ST *USARTx);
 extern void USART_DisableFIFO(USART_ST *USARTx);
 extern BOOL USART_IsFIFOEnabled(USART_ST *USARTx);
-extern void USART_Enable_Interrupt(USART_ST *USARTx, UINT32 Interrupt_Mode);
+extern void USART_Enable_Interrupt(USART_ST *USARTx, uint32_t Interrupt_Mode);
 extern BOOL USART_Check_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode);
 extern void USART_Clear_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode);
 extern void USART_Enable_ClockSource(USART_ST *USARTx);
 extern void USART_Enable(USART_ST *USARTx);
 extern void USART_Disable(USART_ST *USARTx);
-extern void USART_Transmit_Single_Data(USART_ST *USARTx, UINT16 Data);
+extern void USART_Transmit_Single_Data(USART_ST *USARTx, uint16_t Data);
 extern void USART_Transmit(USART_ST *USARTx, const char *str);
-extern UINT16 USART_Receive_Single_Data(USART_ST *USARTx);
+extern uint16_t USART_Receive_Single_Data(USART_ST *USARTx);
 
 extern void USART_FlushReceiveData(USART_ST *USARTx);
 extern void USART_FlushTransmitData(USART_ST *USARTx);

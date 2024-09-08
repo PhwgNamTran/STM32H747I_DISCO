@@ -13,8 +13,8 @@
  */
 void EXTI_Enable_Event_Input_Interrupt_C1(Event_Input_N Event_Input)
 {
-    UINT8 C1IMR_idx = 0;
-    UINT8 C1IMR_pos = 0;
+    uint8_t C1IMR_idx = 0;
+    uint8_t C1IMR_pos = 0;
 
     C1IMR_idx = Event_Input / 32;
     C1IMR_pos = Event_Input % 32;
@@ -51,8 +51,8 @@ void EXTI_Enable_Event_Input_Interrupt_C1(Event_Input_N Event_Input)
  */
 void EXTI_Enable_Event_Input_Interrupt_C2(Event_Input_N Event_Input)
 {
-    UINT8 C2IMR_idx = 0;
-    UINT8 C2IMR_pos = 0;
+    uint8_t C2IMR_idx = 0;
+    uint8_t C2IMR_pos = 0;
 
     C2IMR_idx = Event_Input / 32;
     C2IMR_pos = Event_Input % 32;
@@ -89,8 +89,8 @@ void EXTI_Enable_Event_Input_Interrupt_C2(Event_Input_N Event_Input)
  */
 void EXTI_Disable_Event_Input_Interrupt_C1(Event_Input_N Event_Input)
 {
-    UINT8 C1IMR_idx = 0;
-    UINT8 C1IMR_pos = 0;
+    uint8_t C1IMR_idx = 0;
+    uint8_t C1IMR_pos = 0;
 
     C1IMR_idx = Event_Input / 32;
     C1IMR_pos = Event_Input % 32;
@@ -127,8 +127,8 @@ void EXTI_Disable_Event_Input_Interrupt_C1(Event_Input_N Event_Input)
  */
 void EXTI_Disable_Event_Input_Interrupt_C2(Event_Input_N Event_Input)
 {
-    UINT8 C2IMR_idx = 0;
-    UINT8 C2IMR_pos = 0;
+    uint8_t C2IMR_idx = 0;
+    uint8_t C2IMR_pos = 0;
 
     C2IMR_idx = Event_Input / 32;
     C2IMR_pos = Event_Input % 32;
@@ -165,8 +165,8 @@ void EXTI_Disable_Event_Input_Interrupt_C2(Event_Input_N Event_Input)
  */
 void EXTI_Enable_Rising_Trigger(Event_Input_N Event_Input)
 {
-    UINT8 RTSR_idx = 0;
-    UINT8 RTSR_pos = 0;
+    uint8_t RTSR_idx = 0;
+    uint8_t RTSR_pos = 0;
 
     RTSR_idx = Event_Input / 32;
     RTSR_pos = Event_Input % 32;
@@ -203,8 +203,8 @@ void EXTI_Enable_Rising_Trigger(Event_Input_N Event_Input)
  */
 void EXTI_Disable_Rising_Trigger(Event_Input_N Event_Input)
 {
-    UINT8 RTSR_idx = 0;
-    UINT8 RTSR_pos = 0;
+    uint8_t RTSR_idx = 0;
+    uint8_t RTSR_pos = 0;
 
     RTSR_idx = Event_Input / 32;
     RTSR_pos = Event_Input % 32;
@@ -241,8 +241,8 @@ void EXTI_Disable_Rising_Trigger(Event_Input_N Event_Input)
  */
 void EXTI_Enable_Falling_Trigger(Event_Input_N Event_Input)
 {
-    UINT8 FTSR_idx = 0;
-    UINT8 FTSR_pos = 0;
+    uint8_t FTSR_idx = 0;
+    uint8_t FTSR_pos = 0;
 
     FTSR_idx = Event_Input / 32;
     FTSR_pos = Event_Input % 32;
@@ -279,8 +279,8 @@ void EXTI_Enable_Falling_Trigger(Event_Input_N Event_Input)
  */
 void EXTI_Disable_Falling_Trigger(Event_Input_N Event_Input)
 {
-    UINT8 FTSR_idx = 0;
-    UINT8 FTSR_pos = 0;
+    uint8_t FTSR_idx = 0;
+    uint8_t FTSR_pos = 0;
 
     FTSR_idx = Event_Input / 32;
     FTSR_pos = Event_Input % 32;
@@ -318,8 +318,8 @@ void EXTI_Disable_Falling_Trigger(Event_Input_N Event_Input)
  */
 BOOL EXTI_Trigger_Request_Occurred_C1_B(Event_Input_N Event_Input)
 {
-    UINT8 PR_idx = 0;
-    UINT8 PR_pos = 0;
+    uint8_t PR_idx = 0;
+    uint8_t PR_pos = 0;
 
     PR_idx = Event_Input / 32;
     PR_pos = Event_Input % 32;
@@ -361,8 +361,8 @@ BOOL EXTI_Trigger_Request_Occurred_C1_B(Event_Input_N Event_Input)
  */
 BOOL EXTI_Trigger_Request_Occurred_C2_B(Event_Input_N Event_Input)
 {
-    UINT8 PR_idx = 0;
-    UINT8 PR_pos = 0;
+    uint8_t PR_idx = 0;
+    uint8_t PR_pos = 0;
 
     PR_idx = Event_Input / 32;
     PR_pos = Event_Input % 32;
@@ -403,8 +403,8 @@ BOOL EXTI_Trigger_Request_Occurred_C2_B(Event_Input_N Event_Input)
  */
 void EXTI_Clear_Trigger_Request_Flag_C1(Event_Input_N Event_Input)
 {
-    UINT8 PR_idx = 0;
-    UINT8 PR_pos = 0;
+    uint8_t PR_idx = 0;
+    uint8_t PR_pos = 0;
 
     PR_idx = Event_Input / 32;
     PR_pos = Event_Input % 32;
@@ -441,8 +441,8 @@ void EXTI_Clear_Trigger_Request_Flag_C1(Event_Input_N Event_Input)
  */
 void EXTI_Clear_Trigger_Request_Flag_C2(Event_Input_N Event_Input)
 {
-    UINT8 PR_idx = 0;
-    UINT8 PR_pos = 0;
+    uint8_t PR_idx = 0;
+    uint8_t PR_pos = 0;
 
     PR_idx = Event_Input / 32;
     PR_pos = Event_Input % 32;

@@ -19,8 +19,8 @@
  */
 
 #if(STLINK_VCP_USED && STLink_VCP_Interrupt_USED)
-UINT16 static gs_STLink_VCP_RxBuffer_UW[STLink_VCP_USART_RxBufferSize];
-UINT8 static gs_STLink_VCP_RxIdx_UB = 0;
+uint16_t static gs_STLink_VCP_RxBuffer_UW[STLink_VCP_USART_RxBufferSize];
+uint8_t static gs_STLink_VCP_RxIdx_UB = 0;
 #endif
 
 void USART1_IRQHandler(void) 
@@ -29,7 +29,7 @@ void USART1_IRQHandler(void)
     if (USART_Check_Interrupt_Flag(STLink_VCP_USART, USART_Interrupt_ReceptionDataNotEmpty))
     {
         // Read a single data from the USART
-        UINT16 Rx_Data = USART_Receive_Single_Data(STLink_VCP_USART);
+        uint16_t Rx_Data = USART_Receive_Single_Data(STLink_VCP_USART);
         // Echo received data
         USART_Transmit_Single_Data(STLink_VCP_USART, Rx_Data);
         // Store the received data in the buffer and increment the index
@@ -42,7 +42,7 @@ void USART1_IRQHandler(void)
             /* USER CODE END */
             /* Reset buffer and index */
             gs_STLink_VCP_RxIdx_UB = 0;
-            memset(gs_STLink_VCP_RxBuffer_UW, 0x00, STLink_VCP_USART_RxBufferSize * sizeof(UINT16));
+            memset(gs_STLink_VCP_RxBuffer_UW, 0x00, STLink_VCP_USART_RxBufferSize * sizeof(uint16_t));
         }
         // Clear the interrupt flag for reception data
         USART_Clear_Interrupt_Flag(STLink_VCP_USART, USART_Interrupt_ReceptionDataNotEmpty);

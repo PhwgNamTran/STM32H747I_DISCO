@@ -40,7 +40,7 @@ void SYSCFG_Enable(void)
  * Returns:
  *   None
  */
-void SYSCFG_EXITx_GPIO_Cfg(GPIO_ST *GPIOx, UINT8 GPIO_Pin)
+void SYSCFG_EXITx_GPIO_Cfg(GPIO_ST *GPIOx, uint8_t GPIO_Pin)
 {
     // Check if the GPIO port is GPIO_K and the pin is in the range 8 to 15
     if((GPIOx == GPIO_K)

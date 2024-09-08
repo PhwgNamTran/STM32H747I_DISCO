@@ -10,19 +10,19 @@
  */
 typedef struct
 {
-    volatile UINT32 ISER[8U];               /**< Offset: 0x000 (R/W)  Interrupt Set Enable Register */
-    volatile UINT32 RESERVED0[24U];
-    volatile UINT32 ICER[8U];               /**< Offset: 0x080 (R/W)  Interrupt Clear Enable Register */
-    volatile UINT32 RESERVED1[24U];
-    volatile UINT32 ISPR[8U];               /**< Offset: 0x100 (R/W)  Interrupt Set Pending Register */
-    volatile UINT32 RESERVED2[24U];
-    volatile UINT32 ICPR[8U];               /**< Offset: 0x180 (R/W)  Interrupt Clear Pending Register */
-    volatile UINT32 RESERVED3[24U];
-    volatile UINT32 IABR[8U];               /**< Offset: 0x200 (R/W)  Interrupt Active bit Register */
-    volatile UINT32 RESERVED4[56U];
-    volatile UINT8  IP[240U];               /**< Offset: 0x300 (R/W)  Interrupt Priority Register (8Bit wide) */
-    volatile UINT32 RESERVED5[644U];
-    volatile UINT32 STIR;                   /**< Offset: 0xE00 ( /W)  Software Trigger Interrupt Register */
+    volatile uint32_t ISER[8U];               /**< Offset: 0x000 (R/W)  Interrupt Set Enable Register */
+    volatile uint32_t RESERVED0[24U];
+    volatile uint32_t ICER[8U];               /**< Offset: 0x080 (R/W)  Interrupt Clear Enable Register */
+    volatile uint32_t RESERVED1[24U];
+    volatile uint32_t ISPR[8U];               /**< Offset: 0x100 (R/W)  Interrupt Set Pending Register */
+    volatile uint32_t RESERVED2[24U];
+    volatile uint32_t ICPR[8U];               /**< Offset: 0x180 (R/W)  Interrupt Clear Pending Register */
+    volatile uint32_t RESERVED3[24U];
+    volatile uint32_t IABR[8U];               /**< Offset: 0x200 (R/W)  Interrupt Active bit Register */
+    volatile uint32_t RESERVED4[56U];
+    volatile uint8_t  IP[240U];               /**< Offset: 0x300 (R/W)  Interrupt Priority Register (8Bit wide) */
+    volatile uint32_t RESERVED5[644U];
+    volatile uint32_t STIR;                   /**< Offset: 0xE00 ( /W)  Software Trigger Interrupt Register */
 }  NVIC_ST;
 
 /*
@@ -200,11 +200,11 @@ typedef enum
 extern void   NVIC_EnableIRQ(IRQn_N IRQn);              
 extern BOOL   NVIC_GetEnableIRQ(IRQn_N IRQn);           
 extern void   NVIC_DisableIRQ(IRQn_N IRQn);             
-extern UINT32 NVIC_GetPendingIRQ(IRQn_N IRQn);          
+extern uint32_t NVIC_GetPendingIRQ(IRQn_N IRQn);          
 extern void   NVIC_SetPendingIRQ(IRQn_N IRQn);          
 extern void   NVIC_ClearPendingIRQ(IRQn_N IRQn);        
-extern UINT32 NVIC_GetActive(IRQn_N IRQn);              
-extern void   NVIC_SetPriority(IRQn_N IRQn, UINT8 Priority);            
-extern UINT32 NVIC_GetPriority(IRQn_N IRQn);                       
+extern uint32_t NVIC_GetActive(IRQn_N IRQn);              
+extern void   NVIC_SetPriority(IRQn_N IRQn, uint8_t Priority);            
+extern uint32_t NVIC_GetPriority(IRQn_N IRQn);                       
 
 #endif

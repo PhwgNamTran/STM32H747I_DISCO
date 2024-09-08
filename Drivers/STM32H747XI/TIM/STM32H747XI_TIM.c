@@ -92,7 +92,7 @@ void TIM_Enable_ClockSource(TIM_ST *TIMx)
  * Returns:
  *   None
  */
-void TIM_Config(TIM_ST *TIMx, UINT32 TIMx_PSC, UINT32 TIMx_ARR, BOOL Counter_Direction)
+void TIM_Config(TIM_ST *TIMx, uint32_t TIMx_PSC, uint32_t TIMx_ARR, BOOL Counter_Direction)
 {
     WRITE_REG(TIMx->PSC, TIMx_PSC);  // Set the prescaler value
     WRITE_REG(TIMx->ARR, TIMx_ARR);  // Set the auto-reload value
@@ -118,7 +118,7 @@ void TIM_Config(TIM_ST *TIMx, UINT32 TIMx_PSC, UINT32 TIMx_ARR, BOOL Counter_Dir
  * Returns:
  *   None
  */
-void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode)
+void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode)
 {
     if(DMA_Interrupt_Mode < TIM_DMA_Interrupt_Reserved)
     {
@@ -142,7 +142,7 @@ void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode)
  * Returns:
  *   None
  */
-void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, UINT8 DMA_Interrupt_Mode)
+void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode)
 {
     if(DMA_Interrupt_Mode < TIM_DMA_Interrupt_Reserved)
     {
