@@ -7,23 +7,6 @@
 
 /* Refer to RM0399 Reference Manual from http://www.st.com and CMSIS Library */
 
-/* USART Register - Refer to CMSIS Library */
-typedef struct
-{
-    volatile uint32_t CR1;    /*!< USART Control register 1,                 Address offset: 0x00 */
-    volatile uint32_t CR2;    /*!< USART Control register 2,                 Address offset: 0x04 */
-    volatile uint32_t CR3;    /*!< USART Control register 3,                 Address offset: 0x08 */
-    volatile uint32_t BRR;    /*!< USART Baud rate register,                 Address offset: 0x0C */
-    volatile uint32_t GTPR;   /*!< USART Guard time and prescaler register,  Address offset: 0x10 */
-    volatile uint32_t RTOR;   /*!< USART Receiver Time Out register,         Address offset: 0x14 */
-    volatile uint32_t RQR;    /*!< USART Request register,                   Address offset: 0x18 */
-    volatile uint32_t ISR;    /*!< USART Interrupt and status register,      Address offset: 0x1C */
-    volatile uint32_t ICR;    /*!< USART Interrupt flag Clear register,      Address offset: 0x20 */
-    volatile uint32_t RDR;    /*!< USART Receive Data register,              Address offset: 0x24 */
-    volatile uint32_t TDR;    /*!< USART Transmit Data register,             Address offset: 0x28 */
-    volatile uint32_t PRESC;  /*!< USART clock Prescaler register,           Address offset: 0x2C */
-} USART_ST;
-
 /* Enumeration for USART operating modes */
 typedef enum {
     USART_ASYNC_TX_ONLY = 0,   /**< Asynchronous mode: Transmit only */

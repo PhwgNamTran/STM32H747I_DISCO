@@ -6,20 +6,6 @@
 
 /* Refer to RM0399 Reference Manual from http://www.st.com */
 
-/* GPIO Register - Refer to CMSIS Library */
-typedef struct
-{
-    volatile uint32_t MODER;    /* GPIO port mode register,                  Address offset: 0x00      */
-    volatile uint32_t OTYPER;   /* GPIO port output type register,           Address offset: 0x04      */
-    volatile uint32_t OSPEEDR;  /* GPIO port output speed register,          Address offset: 0x08      */
-    volatile uint32_t PUPDR;    /* GPIO port pull-up/pull-down register,     Address offset: 0x0C      */
-    volatile uint32_t IDR;      /* GPIO port input data register,            Address offset: 0x10      */
-    volatile uint32_t ODR;      /* GPIO port output data register,           Address offset: 0x14      */
-    volatile uint32_t BSRR;     /* GPIO port bit set/reset,                  Address offset: 0x18      */
-    volatile uint32_t LCKR;     /* GPIO port configuration lock register,    Address offset: 0x1C      */
-    volatile uint32_t AFR[2];   /* GPIO alternate function registers,        Address offset: 0x20-0x24 */
-} GPIO_ST;
-
 /* Base Address of GPIO Ports */
 #define GPIO_A_BASE 0x58020000U /**< Base address of GPIO Port A */
 #define GPIO_B_BASE 0x58020400U /**< Base address of GPIO Port B */
