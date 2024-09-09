@@ -1,5 +1,5 @@
-#ifndef MACROS_H
-#define MACROS_H
+#ifndef MISCELLANEOUS_H
+#define MISCELLANEOUS_H
 
 #include "standard_libs.h"
 

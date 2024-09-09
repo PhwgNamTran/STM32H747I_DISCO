@@ -7,6 +7,357 @@
 /* Refer to RM0399 Reference Manual from http://www.st.com */
 /* Refer to CMSIS */
 
+/* START of MEMORY MAP */
+#define D1_ITCMRAM_BASE           (0x00000000UL) /*!< Base address of : 64KB RAM reserved for CPU execution/instruction accessible over ITCM  */
+#define D1_ITCMICP_BASE           (0x00100000UL) /*!< Base address of : (up to 128KB) embedded Test FLASH memory accessible over ITCM         */
+#define D1_DTCMRAM_BASE           (0x20000000UL) /*!< Base address of : 128KB system data RAM accessible over DTCM                            */
+#define D1_AXIFLASH_BASE          (0x08000000UL) /*!< Base address of : (up to 2 MB) embedded FLASH memory accessible over AXI                */
+#define D1_AXIICP_BASE            (0x1FF00000UL) /*!< Base address of : (up to 128KB) embedded Test FLASH memory accessible over AXI          */
+#define D1_AXISRAM_BASE           (0x24000000UL) /*!< Base address of : (up to 512KB) system data RAM accessible over over AXI                */
+
+#define D2_AXISRAM_BASE           (0x10000000UL) /*!< Base address of : (up to 288KB) system data RAM accessible over over AXI                */
+#define D2_AHBSRAM_BASE           (0x30000000UL) /*!< Base address of : (up to 288KB) system data RAM accessible over over AXI->AHB Bridge    */
+
+#define D3_BKPSRAM_BASE           (0x38800000UL) /*!< Base address of : Backup SRAM(4 KB) over AXI->AHB Bridge                                */
+#define D3_SRAM_BASE              (0x38000000UL) /*!< Base address of : Backup SRAM(64 KB) over AXI->AHB Bridge                               */
+
+#define PERIPH_BASE               (0x40000000UL) /*!< Base address of : AHB/APB Peripherals                                                   */
+#define QSPI_BASE                 (0x90000000UL) /*!< Base address of : QSPI memories  accessible over AXI                                    */
+
+#define FLASH_BANK1_BASE          (0x08000000UL) /*!< Base address of : (up to 1 MB) Flash Bank1 accessible over AXI                          */
+#define FLASH_BANK2_BASE          (0x08100000UL) /*!< Base address of : (up to 1 MB) Flash Bank2 accessible over AXI                          */
+#define FLASH_END                 (0x081FFFFFUL) /*!< FLASH end address                                                                       */
+
+/* Legacy define */
+#define FLASH_BASE                FLASH_BANK1_BASE
+
+/*!< Device electronic signature memory map */
+#define UID_BASE                  (0x1FF1E800UL)            /*!< Unique device ID register base address */
+#define FLASHSIZE_BASE            (0x1FF1E880UL)            /*!< FLASH Size register base address */
+
+/*!< Peripheral memory map */
+#define D2_APB1PERIPH_BASE        PERIPH_BASE
+#define D2_APB2PERIPH_BASE       (PERIPH_BASE + 0x00010000UL)
+#define D2_AHB1PERIPH_BASE       (PERIPH_BASE + 0x00020000UL)
+#define D2_AHB2PERIPH_BASE       (PERIPH_BASE + 0x08020000UL)
+
+#define D1_APB1PERIPH_BASE       (PERIPH_BASE + 0x10000000UL)
+#define D1_AHB1PERIPH_BASE       (PERIPH_BASE + 0x12000000UL)
+
+#define D3_APB1PERIPH_BASE       (PERIPH_BASE + 0x18000000UL)
+#define D3_AHB1PERIPH_BASE       (PERIPH_BASE + 0x18020000UL)
+
+/*!< Legacy Peripheral memory map */
+#define APB1PERIPH_BASE        PERIPH_BASE
+#define APB2PERIPH_BASE       (PERIPH_BASE + 0x00010000UL)
+#define AHB1PERIPH_BASE       (PERIPH_BASE + 0x00020000UL)
+#define AHB2PERIPH_BASE       (PERIPH_BASE + 0x08000000UL)
+
+/*!< D1_AHB1PERIPH peripherals */
+#define MDMA_BASE             (D1_AHB1PERIPH_BASE + 0x0000UL)
+#define DMA2D_BASE            (D1_AHB1PERIPH_BASE + 0x1000UL)
+#define JPGDEC_BASE           (D1_AHB1PERIPH_BASE + 0x3000UL)
+#define FLASH_R_BASE          (D1_AHB1PERIPH_BASE + 0x2000UL)
+#define FMC_R_BASE            (D1_AHB1PERIPH_BASE + 0x4000UL)
+#define QSPI_R_BASE           (D1_AHB1PERIPH_BASE + 0x5000UL)
+#define DLYB_QSPI_BASE        (D1_AHB1PERIPH_BASE + 0x6000UL)
+#define SDMMC1_BASE           (D1_AHB1PERIPH_BASE + 0x7000UL)
+#define DLYB_SDMMC1_BASE      (D1_AHB1PERIPH_BASE + 0x8000UL)
+#define RAMECC1_BASE          (D1_AHB1PERIPH_BASE + 0x9000UL)
+
+/*!< D2_AHB1PERIPH peripherals */
+#define DMA1_BASE               (D2_AHB1PERIPH_BASE + 0x0000UL)
+#define DMA2_BASE               (D2_AHB1PERIPH_BASE + 0x0400UL)
+#define DMAMUX1_BASE            (D2_AHB1PERIPH_BASE + 0x0800UL)
+#define ADC1_BASE               (D2_AHB1PERIPH_BASE + 0x2000UL)
+#define ADC2_BASE               (D2_AHB1PERIPH_BASE + 0x2100UL)
+#define ADC12_COMMON_BASE       (D2_AHB1PERIPH_BASE + 0x2300UL)
+#define ART_BASE                (D2_AHB1PERIPH_BASE + 0x4400UL)
+#define ETH_BASE                (D2_AHB1PERIPH_BASE + 0x8000UL)
+#define ETH_MAC_BASE            (ETH_BASE)
+
+/*!< USB registers base address */
+#define USB1_OTG_HS_PERIPH_BASE              (0x40040000UL)
+#define USB2_OTG_FS_PERIPH_BASE              (0x40080000UL)
+#define USB_OTG_GLOBAL_BASE                  (0x000UL)
+#define USB_OTG_DEVICE_BASE                  (0x800UL)
+#define USB_OTG_IN_ENDPOINT_BASE             (0x900UL)
+#define USB_OTG_OUT_ENDPOINT_BASE            (0xB00UL)
+#define USB_OTG_EP_REG_SIZE                  (0x20UL)
+#define USB_OTG_HOST_BASE                    (0x400UL)
+#define USB_OTG_HOST_PORT_BASE               (0x440UL)
+#define USB_OTG_HOST_CHANNEL_BASE            (0x500UL)
+#define USB_OTG_HOST_CHANNEL_SIZE            (0x20UL)
+#define USB_OTG_PCGCCTL_BASE                 (0xE00UL)
+#define USB_OTG_FIFO_BASE                    (0x1000UL)
+#define USB_OTG_FIFO_SIZE                    (0x1000UL)
+
+/*!< D2_AHB2PERIPH peripherals */
+#define DCMI_BASE              (D2_AHB2PERIPH_BASE + 0x0000UL)
+#define RNG_BASE               (D2_AHB2PERIPH_BASE + 0x1800UL)
+#define SDMMC2_BASE            (D2_AHB2PERIPH_BASE + 0x2400UL)
+#define DLYB_SDMMC2_BASE       (D2_AHB2PERIPH_BASE + 0x2800UL)
+#define RAMECC2_BASE           (D2_AHB2PERIPH_BASE + 0x3000UL)
+
+/*!< D3_AHB1PERIPH peripherals */
+#define GPIOA_BASE            (D3_AHB1PERIPH_BASE + 0x0000UL)
+#define GPIOB_BASE            (D3_AHB1PERIPH_BASE + 0x0400UL)
+#define GPIOC_BASE            (D3_AHB1PERIPH_BASE + 0x0800UL)
+#define GPIOD_BASE            (D3_AHB1PERIPH_BASE + 0x0C00UL)
+#define GPIOE_BASE            (D3_AHB1PERIPH_BASE + 0x1000UL)
+#define GPIOF_BASE            (D3_AHB1PERIPH_BASE + 0x1400UL)
+#define GPIOG_BASE            (D3_AHB1PERIPH_BASE + 0x1800UL)
+#define GPIOH_BASE            (D3_AHB1PERIPH_BASE + 0x1C00UL)
+#define GPIOI_BASE            (D3_AHB1PERIPH_BASE + 0x2000UL)
+#define GPIOJ_BASE            (D3_AHB1PERIPH_BASE + 0x2400UL)
+#define GPIOK_BASE            (D3_AHB1PERIPH_BASE + 0x2800UL)
+#define RCC_BASE              (D3_AHB1PERIPH_BASE + 0x4400UL)
+#define RCC_C1_BASE           (RCC_BASE + 0x130UL)
+#define RCC_C2_BASE           (RCC_BASE + 0x190UL)
+#define PWR_BASE              (D3_AHB1PERIPH_BASE + 0x4800UL)
+#define CRC_BASE              (D3_AHB1PERIPH_BASE + 0x4C00UL)
+#define BDMA_BASE             (D3_AHB1PERIPH_BASE + 0x5400UL)
+#define DMAMUX2_BASE          (D3_AHB1PERIPH_BASE + 0x5800UL)
+#define ADC3_BASE             (D3_AHB1PERIPH_BASE + 0x6000UL)
+#define ADC3_COMMON_BASE      (D3_AHB1PERIPH_BASE + 0x6300UL)
+#define HSEM_BASE             (D3_AHB1PERIPH_BASE + 0x6400UL)
+#define RAMECC3_BASE          (D3_AHB1PERIPH_BASE + 0x7000UL)
+
+/*!< D1_APB1PERIPH peripherals */
+#define LTDC_BASE             (D1_APB1PERIPH_BASE + 0x1000UL)
+#define LTDC_Layer1_BASE      (LTDC_BASE + 0x84UL)
+#define LTDC_Layer2_BASE      (LTDC_BASE + 0x104UL)
+#define DSI_BASE              (D1_APB1PERIPH_BASE)
+#define WWDG1_BASE            (D1_APB1PERIPH_BASE + 0x3000UL)
+
+/*!< D2_APB1PERIPH peripherals */
+#define TIM2_BASE             (D2_APB1PERIPH_BASE + 0x0000UL)
+#define TIM3_BASE             (D2_APB1PERIPH_BASE + 0x0400UL)
+#define TIM4_BASE             (D2_APB1PERIPH_BASE + 0x0800UL)
+#define TIM5_BASE             (D2_APB1PERIPH_BASE + 0x0C00UL)
+#define TIM6_BASE             (D2_APB1PERIPH_BASE + 0x1000UL)
+#define TIM7_BASE             (D2_APB1PERIPH_BASE + 0x1400UL)
+#define TIM12_BASE            (D2_APB1PERIPH_BASE + 0x1800UL)
+#define TIM13_BASE            (D2_APB1PERIPH_BASE + 0x1C00UL)
+#define TIM14_BASE            (D2_APB1PERIPH_BASE + 0x2000UL)
+#define LPTIM1_BASE           (D2_APB1PERIPH_BASE + 0x2400UL)
+
+#define WWDG2_BASE            (D2_APB1PERIPH_BASE + 0x2C00UL)
+
+#define SPI2_BASE             (D2_APB1PERIPH_BASE + 0x3800UL)
+#define SPI3_BASE             (D2_APB1PERIPH_BASE + 0x3C00UL)
+#define SPDIFRX_BASE          (D2_APB1PERIPH_BASE + 0x4000UL)
+#define USART2_BASE           (D2_APB1PERIPH_BASE + 0x4400UL)
+#define USART3_BASE           (D2_APB1PERIPH_BASE + 0x4800UL)
+#define UART4_BASE            (D2_APB1PERIPH_BASE + 0x4C00UL)
+#define UART5_BASE            (D2_APB1PERIPH_BASE + 0x5000UL)
+#define I2C1_BASE             (D2_APB1PERIPH_BASE + 0x5400UL)
+#define I2C2_BASE             (D2_APB1PERIPH_BASE + 0x5800UL)
+#define I2C3_BASE             (D2_APB1PERIPH_BASE + 0x5C00UL)
+#define CEC_BASE              (D2_APB1PERIPH_BASE + 0x6C00UL)
+#define DAC1_BASE             (D2_APB1PERIPH_BASE + 0x7400UL)
+#define UART7_BASE            (D2_APB1PERIPH_BASE + 0x7800UL)
+#define UART8_BASE            (D2_APB1PERIPH_BASE + 0x7C00UL)
+#define CRS_BASE              (D2_APB1PERIPH_BASE + 0x8400UL)
+#define SWPMI1_BASE           (D2_APB1PERIPH_BASE + 0x8800UL)
+#define OPAMP_BASE            (D2_APB1PERIPH_BASE + 0x9000UL)
+#define OPAMP1_BASE           (D2_APB1PERIPH_BASE + 0x9000UL)
+#define OPAMP2_BASE           (D2_APB1PERIPH_BASE + 0x9010UL)
+#define MDIOS_BASE            (D2_APB1PERIPH_BASE + 0x9400UL)
+#define FDCAN1_BASE           (D2_APB1PERIPH_BASE + 0xA000UL)
+#define FDCAN2_BASE           (D2_APB1PERIPH_BASE + 0xA400UL)
+#define FDCAN_CCU_BASE        (D2_APB1PERIPH_BASE + 0xA800UL)
+#define SRAMCAN_BASE          (D2_APB1PERIPH_BASE + 0xAC00UL)
+
+/*!< D2_APB2PERIPH peripherals */
+#define TIM1_BASE             (D2_APB2PERIPH_BASE + 0x0000UL)
+#define TIM8_BASE             (D2_APB2PERIPH_BASE + 0x0400UL)
+#define USART1_BASE           (D2_APB2PERIPH_BASE + 0x1000UL)
+#define USART6_BASE           (D2_APB2PERIPH_BASE + 0x1400UL)
+#define SPI1_BASE             (D2_APB2PERIPH_BASE + 0x3000UL)
+#define SPI4_BASE             (D2_APB2PERIPH_BASE + 0x3400UL)
+#define TIM15_BASE            (D2_APB2PERIPH_BASE + 0x4000UL)
+#define TIM16_BASE            (D2_APB2PERIPH_BASE + 0x4400UL)
+#define TIM17_BASE            (D2_APB2PERIPH_BASE + 0x4800UL)
+#define SPI5_BASE             (D2_APB2PERIPH_BASE + 0x5000UL)
+#define SAI1_BASE             (D2_APB2PERIPH_BASE + 0x5800UL)
+#define SAI1_Block_A_BASE     (SAI1_BASE + 0x004UL)
+#define SAI1_Block_B_BASE     (SAI1_BASE + 0x024UL)
+#define SAI2_BASE             (D2_APB2PERIPH_BASE + 0x5C00UL)
+#define SAI2_Block_A_BASE     (SAI2_BASE + 0x004UL)
+#define SAI2_Block_B_BASE     (SAI2_BASE + 0x024UL)
+#define SAI3_BASE             (D2_APB2PERIPH_BASE + 0x6000UL)
+#define SAI3_Block_A_BASE     (SAI3_BASE + 0x004UL)
+#define SAI3_Block_B_BASE     (SAI3_BASE + 0x024UL)
+#define DFSDM1_BASE           (D2_APB2PERIPH_BASE + 0x7000UL)
+#define DFSDM1_Channel0_BASE  (DFSDM1_BASE + 0x00UL)
+#define DFSDM1_Channel1_BASE  (DFSDM1_BASE + 0x20UL)
+#define DFSDM1_Channel2_BASE  (DFSDM1_BASE + 0x40UL)
+#define DFSDM1_Channel3_BASE  (DFSDM1_BASE + 0x60UL)
+#define DFSDM1_Channel4_BASE  (DFSDM1_BASE + 0x80UL)
+#define DFSDM1_Channel5_BASE  (DFSDM1_BASE + 0xA0UL)
+#define DFSDM1_Channel6_BASE  (DFSDM1_BASE + 0xC0UL)
+#define DFSDM1_Channel7_BASE  (DFSDM1_BASE + 0xE0UL)
+#define DFSDM1_Filter0_BASE   (DFSDM1_BASE + 0x100UL)
+#define DFSDM1_Filter1_BASE   (DFSDM1_BASE + 0x180UL)
+#define DFSDM1_Filter2_BASE   (DFSDM1_BASE + 0x200UL)
+#define DFSDM1_Filter3_BASE   (DFSDM1_BASE + 0x280UL)
+#define HRTIM1_BASE           (D2_APB2PERIPH_BASE + 0x7400UL)
+#define HRTIM1_TIMA_BASE      (HRTIM1_BASE + 0x00000080UL)
+#define HRTIM1_TIMB_BASE      (HRTIM1_BASE + 0x00000100UL)
+#define HRTIM1_TIMC_BASE      (HRTIM1_BASE + 0x00000180UL)
+#define HRTIM1_TIMD_BASE      (HRTIM1_BASE + 0x00000200UL)
+#define HRTIM1_TIME_BASE      (HRTIM1_BASE + 0x00000280UL)
+#define HRTIM1_COMMON_BASE    (HRTIM1_BASE + 0x00000380UL)
+
+/*!< D3_APB1PERIPH peripherals */
+#define EXTI_BASE             (D3_APB1PERIPH_BASE + 0x0000UL)
+#define EXTI_D1_BASE          (EXTI_BASE + 0x0080UL)
+#define EXTI_D2_BASE          (EXTI_BASE + 0x00C0UL)
+#define SYSCFG_BASE           (D3_APB1PERIPH_BASE + 0x0400UL)
+#define LPUART1_BASE          (D3_APB1PERIPH_BASE + 0x0C00UL)
+#define SPI6_BASE             (D3_APB1PERIPH_BASE + 0x1400UL)
+#define I2C4_BASE             (D3_APB1PERIPH_BASE + 0x1C00UL)
+#define LPTIM2_BASE           (D3_APB1PERIPH_BASE + 0x2400UL)
+#define LPTIM3_BASE           (D3_APB1PERIPH_BASE + 0x2800UL)
+#define LPTIM4_BASE           (D3_APB1PERIPH_BASE + 0x2C00UL)
+#define LPTIM5_BASE           (D3_APB1PERIPH_BASE + 0x3000UL)
+#define COMP12_BASE           (D3_APB1PERIPH_BASE + 0x3800UL)
+#define COMP1_BASE            (COMP12_BASE + 0x0CUL)
+#define COMP2_BASE            (COMP12_BASE + 0x10UL)
+#define VREFBUF_BASE          (D3_APB1PERIPH_BASE + 0x3C00UL)
+#define RTC_BASE              (D3_APB1PERIPH_BASE + 0x4000UL)
+#define IWDG1_BASE            (D3_APB1PERIPH_BASE + 0x4800UL)
+
+#define IWDG2_BASE            (D3_APB1PERIPH_BASE + 0x4C00UL)
+
+#define SAI4_BASE             (D3_APB1PERIPH_BASE + 0x5400UL)
+#define SAI4_Block_A_BASE     (SAI4_BASE + 0x004UL)
+#define SAI4_Block_B_BASE     (SAI4_BASE + 0x024UL)
+
+#define BDMA_Channel0_BASE    (BDMA_BASE + 0x0008UL)
+#define BDMA_Channel1_BASE    (BDMA_BASE + 0x001CUL)
+#define BDMA_Channel2_BASE    (BDMA_BASE + 0x0030UL)
+#define BDMA_Channel3_BASE    (BDMA_BASE + 0x0044UL)
+#define BDMA_Channel4_BASE    (BDMA_BASE + 0x0058UL)
+#define BDMA_Channel5_BASE    (BDMA_BASE + 0x006CUL)
+#define BDMA_Channel6_BASE    (BDMA_BASE + 0x0080UL)
+#define BDMA_Channel7_BASE    (BDMA_BASE + 0x0094UL)
+
+#define DMAMUX2_Channel0_BASE    (DMAMUX2_BASE)
+#define DMAMUX2_Channel1_BASE    (DMAMUX2_BASE + 0x0004UL)
+#define DMAMUX2_Channel2_BASE    (DMAMUX2_BASE + 0x0008UL)
+#define DMAMUX2_Channel3_BASE    (DMAMUX2_BASE + 0x000CUL)
+#define DMAMUX2_Channel4_BASE    (DMAMUX2_BASE + 0x0010UL)
+#define DMAMUX2_Channel5_BASE    (DMAMUX2_BASE + 0x0014UL)
+#define DMAMUX2_Channel6_BASE    (DMAMUX2_BASE + 0x0018UL)
+#define DMAMUX2_Channel7_BASE    (DMAMUX2_BASE + 0x001CUL)
+
+#define DMAMUX2_RequestGenerator0_BASE  (DMAMUX2_BASE + 0x0100UL)
+#define DMAMUX2_RequestGenerator1_BASE  (DMAMUX2_BASE + 0x0104UL)
+#define DMAMUX2_RequestGenerator2_BASE  (DMAMUX2_BASE + 0x0108UL)
+#define DMAMUX2_RequestGenerator3_BASE  (DMAMUX2_BASE + 0x010CUL)
+#define DMAMUX2_RequestGenerator4_BASE  (DMAMUX2_BASE + 0x0110UL)
+#define DMAMUX2_RequestGenerator5_BASE  (DMAMUX2_BASE + 0x0114UL)
+#define DMAMUX2_RequestGenerator6_BASE  (DMAMUX2_BASE + 0x0118UL)
+#define DMAMUX2_RequestGenerator7_BASE  (DMAMUX2_BASE + 0x011CUL)
+
+#define DMAMUX2_ChannelStatus_BASE      (DMAMUX2_BASE + 0x0080UL)
+#define DMAMUX2_RequestGenStatus_BASE   (DMAMUX2_BASE + 0x0140UL)
+
+#define DMA1_Stream0_BASE     (DMA1_BASE + 0x010UL)
+#define DMA1_Stream1_BASE     (DMA1_BASE + 0x028UL)
+#define DMA1_Stream2_BASE     (DMA1_BASE + 0x040UL)
+#define DMA1_Stream3_BASE     (DMA1_BASE + 0x058UL)
+#define DMA1_Stream4_BASE     (DMA1_BASE + 0x070UL)
+#define DMA1_Stream5_BASE     (DMA1_BASE + 0x088UL)
+#define DMA1_Stream6_BASE     (DMA1_BASE + 0x0A0UL)
+#define DMA1_Stream7_BASE     (DMA1_BASE + 0x0B8UL)
+
+#define DMA2_Stream0_BASE     (DMA2_BASE + 0x010UL)
+#define DMA2_Stream1_BASE     (DMA2_BASE + 0x028UL)
+#define DMA2_Stream2_BASE     (DMA2_BASE + 0x040UL)
+#define DMA2_Stream3_BASE     (DMA2_BASE + 0x058UL)
+#define DMA2_Stream4_BASE     (DMA2_BASE + 0x070UL)
+#define DMA2_Stream5_BASE     (DMA2_BASE + 0x088UL)
+#define DMA2_Stream6_BASE     (DMA2_BASE + 0x0A0UL)
+#define DMA2_Stream7_BASE     (DMA2_BASE + 0x0B8UL)
+
+#define DMAMUX1_Channel0_BASE    (DMAMUX1_BASE)
+#define DMAMUX1_Channel1_BASE    (DMAMUX1_BASE + 0x0004UL)
+#define DMAMUX1_Channel2_BASE    (DMAMUX1_BASE + 0x0008UL)
+#define DMAMUX1_Channel3_BASE    (DMAMUX1_BASE + 0x000CUL)
+#define DMAMUX1_Channel4_BASE    (DMAMUX1_BASE + 0x0010UL)
+#define DMAMUX1_Channel5_BASE    (DMAMUX1_BASE + 0x0014UL)
+#define DMAMUX1_Channel6_BASE    (DMAMUX1_BASE + 0x0018UL)
+#define DMAMUX1_Channel7_BASE    (DMAMUX1_BASE + 0x001CUL)
+#define DMAMUX1_Channel8_BASE    (DMAMUX1_BASE + 0x0020UL)
+#define DMAMUX1_Channel9_BASE    (DMAMUX1_BASE + 0x0024UL)
+#define DMAMUX1_Channel10_BASE   (DMAMUX1_BASE + 0x0028UL)
+#define DMAMUX1_Channel11_BASE   (DMAMUX1_BASE + 0x002CUL)
+#define DMAMUX1_Channel12_BASE   (DMAMUX1_BASE + 0x0030UL)
+#define DMAMUX1_Channel13_BASE   (DMAMUX1_BASE + 0x0034UL)
+#define DMAMUX1_Channel14_BASE   (DMAMUX1_BASE + 0x0038UL)
+#define DMAMUX1_Channel15_BASE   (DMAMUX1_BASE + 0x003CUL)
+
+#define DMAMUX1_RequestGenerator0_BASE  (DMAMUX1_BASE + 0x0100UL)
+#define DMAMUX1_RequestGenerator1_BASE  (DMAMUX1_BASE + 0x0104UL)
+#define DMAMUX1_RequestGenerator2_BASE  (DMAMUX1_BASE + 0x0108UL)
+#define DMAMUX1_RequestGenerator3_BASE  (DMAMUX1_BASE + 0x010CUL)
+#define DMAMUX1_RequestGenerator4_BASE  (DMAMUX1_BASE + 0x0110UL)
+#define DMAMUX1_RequestGenerator5_BASE  (DMAMUX1_BASE + 0x0114UL)
+#define DMAMUX1_RequestGenerator6_BASE  (DMAMUX1_BASE + 0x0118UL)
+#define DMAMUX1_RequestGenerator7_BASE  (DMAMUX1_BASE + 0x011CUL)
+
+#define DMAMUX1_ChannelStatus_BASE      (DMAMUX1_BASE + 0x0080UL)
+#define DMAMUX1_RequestGenStatus_BASE   (DMAMUX1_BASE + 0x0140UL)
+
+/*!< FMC Banks registers base  address */
+#define FMC_Bank1_R_BASE      (FMC_R_BASE + 0x0000UL)
+#define FMC_Bank1E_R_BASE     (FMC_R_BASE + 0x0104UL)
+#define FMC_Bank2_R_BASE      (FMC_R_BASE + 0x0060UL)
+#define FMC_Bank3_R_BASE      (FMC_R_BASE + 0x0080UL)
+#define FMC_Bank5_6_R_BASE    (FMC_R_BASE + 0x0140UL)
+
+/* Debug MCU registers base address */
+#define DBGMCU_BASE           (0x5C001000UL)
+
+#define MDMA_Channel0_BASE    (MDMA_BASE + 0x00000040UL)
+#define MDMA_Channel1_BASE    (MDMA_BASE + 0x00000080UL)
+#define MDMA_Channel2_BASE    (MDMA_BASE + 0x000000C0UL)
+#define MDMA_Channel3_BASE    (MDMA_BASE + 0x00000100UL)
+#define MDMA_Channel4_BASE    (MDMA_BASE + 0x00000140UL)
+#define MDMA_Channel5_BASE    (MDMA_BASE + 0x00000180UL)
+#define MDMA_Channel6_BASE    (MDMA_BASE + 0x000001C0UL)
+#define MDMA_Channel7_BASE    (MDMA_BASE + 0x00000200UL)
+#define MDMA_Channel8_BASE    (MDMA_BASE + 0x00000240UL)
+#define MDMA_Channel9_BASE    (MDMA_BASE + 0x00000280UL)
+#define MDMA_Channel10_BASE   (MDMA_BASE + 0x000002C0UL)
+#define MDMA_Channel11_BASE   (MDMA_BASE + 0x00000300UL)
+#define MDMA_Channel12_BASE   (MDMA_BASE + 0x00000340UL)
+#define MDMA_Channel13_BASE   (MDMA_BASE + 0x00000380UL)
+#define MDMA_Channel14_BASE   (MDMA_BASE + 0x000003C0UL)
+#define MDMA_Channel15_BASE   (MDMA_BASE + 0x00000400UL)
+
+#define RAMECC1_Monitor1_BASE (RAMECC1_BASE + 0x20UL)
+#define RAMECC1_Monitor2_BASE (RAMECC1_BASE + 0x40UL)
+#define RAMECC1_Monitor3_BASE (RAMECC1_BASE + 0x60UL)
+#define RAMECC1_Monitor4_BASE (RAMECC1_BASE + 0x80UL)
+#define RAMECC1_Monitor5_BASE (RAMECC1_BASE + 0xA0UL)
+
+#define RAMECC2_Monitor1_BASE (RAMECC2_BASE + 0x20UL)
+#define RAMECC2_Monitor2_BASE (RAMECC2_BASE + 0x40UL)
+#define RAMECC2_Monitor3_BASE (RAMECC2_BASE + 0x60UL)
+#define RAMECC2_Monitor4_BASE (RAMECC2_BASE + 0x80UL)
+#define RAMECC2_Monitor5_BASE (RAMECC2_BASE + 0xA0UL)
+
+#define RAMECC3_Monitor1_BASE (RAMECC3_BASE + 0x20UL)
+#define RAMECC3_Monitor2_BASE (RAMECC3_BASE + 0x40UL)
+
+#define GPV_BASE              (PERIPH_BASE + 0x11000000UL)
+
+/* END of MEMORY MAP */
+
 /*
  * STM32H7XX Interrupt Number Definition
  */
@@ -169,5 +520,70 @@ typedef enum
     HOLD_CORE_IRQn              = 148,    /*!< Hold core interrupt                                               */
     WAKEUP_PIN_IRQn             = 149,    /*!< Interrupt for all 6 wake-up pins                                  */
 } IRQn_Type;
+
+
+/* External Interrupt/Event Controller */
+typedef struct
+{
+    volatile uint32_t RTSR1;               /*!< EXTI Rising trigger selection register,          Address offset: 0x00 */
+    volatile uint32_t FTSR1;               /*!< EXTI Falling trigger selection register,         Address offset: 0x04 */
+    volatile uint32_t SWIER1;              /*!< EXTI Software interrupt event register,          Address offset: 0x08 */
+    volatile uint32_t D3PMR1;              /*!< EXTI D3 Pending mask register, (same register as to SRDPMR1) Address offset: 0x0C */
+    volatile uint32_t D3PCR1L;             /*!< EXTI D3 Pending clear selection register low, (same register as to SRDPCR1L)     Address offset: 0x10 */
+    volatile uint32_t D3PCR1H;             /*!< EXTI D3 Pending clear selection register High, (same register as to SRDPCR1H)   Address offset: 0x14 */
+             uint32_t RESERVED1[2];        /*!< Reserved,                                        0x18 to 0x1C         */
+    volatile uint32_t RTSR2;               /*!< EXTI Rising trigger selection register,          Address offset: 0x20 */
+    volatile uint32_t FTSR2;               /*!< EXTI Falling trigger selection register,         Address offset: 0x24 */
+    volatile uint32_t SWIER2;              /*!< EXTI Software interrupt event register,          Address offset: 0x28 */
+    volatile uint32_t D3PMR2;              /*!< EXTI D3 Pending mask register, (same register as to SRDPMR2) Address offset: 0x2C */
+    volatile uint32_t D3PCR2L;             /*!< EXTI D3 Pending clear selection register low, (same register as to SRDPCR2L)  Address offset: 0x30 */
+    volatile uint32_t D3PCR2H;             /*!< EXTI D3 Pending clear selection register High, (same register as to SRDPCR2H) Address offset: 0x34 */
+             uint32_t RESERVED2[2];        /*!< Reserved,                                        0x38 to 0x3C         */
+    volatile uint32_t RTSR3;               /*!< EXTI Rising trigger selection register,          Address offset: 0x40 */
+    volatile uint32_t FTSR3;               /*!< EXTI Falling trigger selection register,         Address offset: 0x44 */
+    volatile uint32_t SWIER3;              /*!< EXTI Software interrupt event register,          Address offset: 0x48 */
+    volatile uint32_t D3PMR3;              /*!< EXTI D3 Pending mask register, (same register as to SRDPMR3) Address offset: 0x4C */
+    volatile uint32_t D3PCR3L;             /*!< EXTI D3 Pending clear selection register low, (same register as to SRDPCR3L) Address offset: 0x50 */
+    volatile uint32_t D3PCR3H;             /*!< EXTI D3 Pending clear selection register High, (same register as to SRDPCR3H) Address offset: 0x54 */
+             uint32_t RESERVED3[10];       /*!< Reserved,                                        0x58 to 0x7C         */
+    volatile uint32_t IMR1;                /*!< EXTI Interrupt mask register,                    Address offset: 0x80 */
+    volatile uint32_t EMR1;                /*!< EXTI Event mask register,                        Address offset: 0x84 */
+    volatile uint32_t PR1;                 /*!< EXTI Pending register,                           Address offset: 0x88 */
+             uint32_t RESERVED4;           /*!< Reserved,                                        0x8C                 */
+    volatile uint32_t IMR2;                /*!< EXTI Interrupt mask register,                    Address offset: 0x90 */
+    volatile uint32_t EMR2;                /*!< EXTI Event mask register,                        Address offset: 0x94 */
+    volatile uint32_t PR2;                 /*!< EXTI Pending register,                           Address offset: 0x98 */
+             uint32_t RESERVED5;           /*!< Reserved,                                        0x9C                 */
+    volatile uint32_t IMR3;                /*!< EXTI Interrupt mask register,                    Address offset: 0xA0 */
+    volatile uint32_t EMR3;                /*!< EXTI Event mask register,                        Address offset: 0xA4 */
+    volatile uint32_t PR3;                 /*!< EXTI Pending register,                           Address offset: 0xA8 */
+             uint32_t RESERVED6[5];        /*!< Reserved,                                        0xAC to 0xBC         */
+    volatile uint32_t C2IMR1;              /*!< EXTI Interrupt mask register,                    Address offset: 0xC0 */
+    volatile uint32_t C2EMR1;              /*!< EXTI Event mask register,                        Address offset: 0xC4 */
+    volatile uint32_t C2PR1;               /*!< EXTI Pending register,                           Address offset: 0xC8 */
+             uint32_t RESERVED7;           /*!< Reserved,                                        0xCC                 */
+    volatile uint32_t C2IMR2;              /*!< EXTI Interrupt mask register,                    Address offset: 0xD0 */
+    volatile uint32_t C2EMR2;              /*!< EXTI Event mask register,                        Address offset: 0xD4 */
+    volatile uint32_t C2PR2;               /*!< EXTI Pending register,                           Address offset: 0xD8 */
+             uint32_t RESERVED8;           /*!< Reserved,                                        0xDC                 */
+    volatile uint32_t C2IMR3;              /*!< EXTI Interrupt mask register,                    Address offset: 0xE0 */
+    volatile uint32_t C2EMR3;              /*!< EXTI Event mask register,                        Address offset: 0xE4 */
+    volatile uint32_t C2PR3;               /*!< EXTI Pending register,                           Address offset: 0xE8 */
+}EXTI_TypeDef;
+
+typedef struct
+{
+    volatile uint32_t IMR1;                /*!< EXTI Interrupt mask register,                Address offset: 0x00 */
+    volatile uint32_t EMR1;                /*!< EXTI Event mask register,                    Address offset: 0x04 */
+    volatile uint32_t PR1;                 /*!< EXTI Pending register,                       Address offset: 0x08 */
+             uint32_t RESERVED1;           /*!< Reserved, 0x0C                                                    */
+    volatile uint32_t IMR2;                /*!< EXTI Interrupt mask register,                Address offset: 0x10 */
+    volatile uint32_t EMR2;                /*!< EXTI Event mask register,                    Address offset: 0x14 */
+    volatile uint32_t PR2;                 /*!< EXTI Pending register,                       Address offset: 0x18 */
+             uint32_t RESERVED2;           /*!< Reserved, 0x1C                                                    */
+    volatile uint32_t IMR3;                /*!< EXTI Interrupt mask register,                Address offset: 0x20 */
+    volatile uint32_t EMR3;                /*!< EXTI Event mask register,                    Address offset: 0x24 */
+    volatile uint32_t PR3;                 /*!< EXTI Pending register,                       Address offset: 0x28 */
+}EXTI_Core_TypeDef;
 
 #endif
