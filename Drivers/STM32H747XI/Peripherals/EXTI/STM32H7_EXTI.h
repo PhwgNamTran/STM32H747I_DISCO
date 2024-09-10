@@ -1,7 +1,7 @@
-#ifndef STM32H747XI_EXTI_H
-#define STM32H747XI_EXTI_H
+#ifndef STM32H7_EXTI_H
+#define STM32H7_EXTI_H
 
-#include "Common.h"
+#include "STM32H747xx.h"
 
 typedef enum
 {
@@ -92,49 +92,21 @@ typedef enum
     Event_Input_HSECSS_Interrupt                 = 87
 }Event_Input_N;
 
-#define EXTI_BASE       0x58000000UL    /**< EXTI Base Address */
-#define EXTI_C1_BASE    0x58000080UL    /**< EXTI Core 1 Base Address */
-#define EXTI_C2_BASE    0x580000C0UL    /**< EXTI Core 2 Base Address */
+extern void EXTI_Enable_Event_Input_Interrupt_CPU1(Event_Input_N Event_Input);
+extern void EXTI_Enable_Event_Input_Interrupt_CPU2(Event_Input_N Event_Input);
 
-/* EXTI & EXTI Core Declaration */
-#define EXTI         ((EXTI_ST *) EXTI_BASE)            /**< EXTI structure declaration */
-#define EXTI_C1      ((EXTI_Core_ST *) EXTI_C1_BASE)    /**< EXTI Core 1 structure declaration */
-#define EXTI_C2      ((EXTI_Core_ST *) EXTI_C2_BASE)    /**< EXTI Core 2 structure declaration */
+extern void EXTI_Disable_Event_Input_Interrupt_CPU1(Event_Input_N Event_Input);
+extern void EXTI_Disable_Event_Input_Interrupt_CPU2(Event_Input_N Event_Input);
 
-/*
- * Function declarations for managing EXTI event input interrupts and trigger requests:
- *
- * - Enable/Disable Event Input Interrupt for Cortex-M7 and Cortex-M4 cores.
- * - Check if trigger request occurred for Cortex-M7 and Cortex-M4 cores.
- * - Clear trigger request flag for Cortex-M7 and Cortex-M4 cores.
- *
- * Input:
- *   - Event_Input: Event input number from 0 to 88.
- * Return value:
- *   - N/A (void functions) or boolean (for trigger request functions)
- */
-extern void EXTI_Enable_Event_Input_Interrupt_C1(Event_Input_N Event_Input);
-extern void EXTI_Enable_Event_Input_Interrupt_C2(Event_Input_N Event_Input);
-extern void EXTI_Disable_Event_Input_Interrupt_C1(Event_Input_N Event_Input);
-extern void EXTI_Disable_Event_Input_Interrupt_C2(Event_Input_N Event_Input);
-extern void EXTI_Clear_Trigger_Request_Flag_C1(Event_Input_N Event_Input);
-extern void EXTI_Clear_Trigger_Request_Flag_C2(Event_Input_N Event_Input);
-extern boolean EXTI_Trigger_Request_Occurred_C1_B(Event_Input_N Event_Input);
-extern boolean EXTI_Trigger_Request_Occurred_C2_B(Event_Input_N Event_Input);
+extern void EXTI_Clear_Trigger_Request_Flag_CPU1(Event_Input_N Event_Input);
+extern void EXTI_Clear_Trigger_Request_Flag_CPU2(Event_Input_N Event_Input);
 
-/*
- * Function declarations for managing EXTI triggers:
- *
- * - Enable/Disable Rising trigger of Configurable Event input.
- * - Enable/Disable Falling trigger of Configurable Event input.
- *
- * Input:
- *   - Event_Input: Event input number from 0 to 88.
- * Return value:
- *   - N/A
- */
+extern boolean EXTI_Trigger_Request_Occurred_CPU1_B(Event_Input_N Event_Input);
+extern boolean EXTI_Trigger_Request_Occurred_CPU2_B(Event_Input_N Event_Input);
+
 extern void EXTI_Enable_Rising_Trigger(Event_Input_N Event_Input);
 extern void EXTI_Disable_Rising_Trigger(Event_Input_N Event_Input);
+
 extern void EXTI_Enable_Falling_Trigger(Event_Input_N Event_Input);
 extern void EXTI_Disable_Falling_Trigger(Event_Input_N Event_Input);
 
