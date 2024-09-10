@@ -29435,5 +29435,25 @@ typedef struct
 #define USB_OTG_PCGCCTL_PHYSUSP_Msk              (0x1UL << USB_OTG_PCGCCTL_PHYSUSP_Pos) /*!< 0x00000010 */
 #define USB_OTG_PCGCCTL_PHYSUSP                  USB_OTG_PCGCCTL_PHYSUSP_Msk   /*!<Bit 1 */
 
+/********************  Bit definition for HSEM_CR register  *****************/
+#define HSEM_CPU1_COREID    (0x00000003U) /* Semaphore Core CM7 ID */
+#define HSEM_CPU2_COREID    (0x00000001U) /* Semaphore Core CM4 ID */
+#define HSEM_CR_COREID_CPU1      (HSEM_CPU1_COREID << HSEM_CR_COREID_Pos)
+#define HSEM_CR_COREID_CPU2      (HSEM_CPU2_COREID << HSEM_CR_COREID_Pos)
+#if defined(CORE_CM4)
+#define HSEM_CR_COREID_CURRENT   (HSEM_CPU2_COREID << HSEM_CR_COREID_Pos)
+#else  /* CORE_CM7 */
+#define HSEM_CR_COREID_CURRENT   (HSEM_CPU1_COREID << HSEM_CR_COREID_Pos)
+#endif /* CORE_CM4 */
+
+#define HSEM_SEMID_MIN     (0U)       /* HSEM ID Min*/
+#define HSEM_SEMID_MAX     (31U)      /* HSEM ID Max */
+
+#define HSEM_PROCESSID_MIN (0U)       /* HSEM Process ID Min */
+#define HSEM_PROCESSID_MAX (255U)     /* HSEM Process ID Max */
+
+#define HSEM_CLEAR_KEY_MIN (0U)       /* HSEM clear Key Min value */
+#define HSEM_CLEAR_KEY_MAX (0xFFFFU)  /* HSEM clear Key Max value */
+
 /* END of Peripheral declaration */
 #endif
