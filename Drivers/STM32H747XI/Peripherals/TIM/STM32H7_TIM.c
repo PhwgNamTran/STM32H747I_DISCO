@@ -1,4 +1,4 @@
-#include "STM32H747XI_TIM.h"
+#include "STM32H7_TIM.h"
 
 /*
  * Function: TIM_Enable_ClockSource
@@ -11,7 +11,7 @@
  * Returns:
  *   None
  */
-void TIM_Enable_ClockSource(TIM_ST *TIMx) 
+void TIM_Enable_ClockSource(TIM_TypeDef *TIMx) 
 {
     if(TIMx == TIM1)
     {
@@ -92,17 +92,17 @@ void TIM_Enable_ClockSource(TIM_ST *TIMx)
  * Returns:
  *   None
  */
-void TIM_Config(TIM_ST *TIMx, uint32_t TIMx_PSC, uint32_t TIMx_ARR, boolean Counter_Direction)
+void TIM_Config(TIM_TypeDef *TIMx, uint32_t TIMx_PSC, uint32_t TIMx_ARR, boolean Counter_Direction)
 {
     WRITE_REG(TIMx->PSC, TIMx_PSC);  // Set the prescaler value
     WRITE_REG(TIMx->ARR, TIMx_ARR);  // Set the auto-reload value
     if(Counter_Direction)
     {
-        SET_BIT(TIMx->CR1, CR1_DIR); // Set the counter direction to down-counting
+        SET_BIT(TIMx->CR1, TIM_CR1_DIR); // Set the counter direction to down-counting
     }
     else
     {
-        CLEAR_BIT(TIMx->CR1, CR1_DIR); // Set the counter direction to up-counting
+        CLEAR_BIT(TIMx->CR1, TIM_CR1_DIR); // Set the counter direction to up-counting
     }
 }
 
@@ -118,7 +118,7 @@ void TIM_Config(TIM_ST *TIMx, uint32_t TIMx_PSC, uint32_t TIMx_ARR, boolean Coun
  * Returns:
  *   None
  */
-void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode)
+void TIM_DMA_Interrupt_Mode_Enable(TIM_TypeDef *TIMx, uint8_t DMA_Interrupt_Mode)
 {
     if(DMA_Interrupt_Mode < TIM_DMA_Interrupt_Reserved)
     {
@@ -142,7 +142,7 @@ void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode)
  * Returns:
  *   None
  */
-void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode)
+void TIM_DMA_Interrupt_Mode_Disable(TIM_TypeDef *TIMx, uint8_t DMA_Interrupt_Mode)
 {
     if(DMA_Interrupt_Mode < TIM_DMA_Interrupt_Reserved)
     {
@@ -165,9 +165,9 @@ void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode)
  * Returns:
  *   None
  */
-void TIM_DMA_Interrupt_Clear_Status(TIM_ST *TIMx)
+void TIM_DMA_Interrupt_Clear_Status(TIM_TypeDef *TIMx)
 {
-    CLEAR_BIT(TIMx->SR, SR_UIF);  // Clear the interrupt status bit
+    CLEAR_BIT(TIMx->SR, TIM_SR_UIF);  // Clear the interrupt status bit
 }
 
 /*
@@ -181,9 +181,9 @@ void TIM_DMA_Interrupt_Clear_Status(TIM_ST *TIMx)
  * Returns:
  *   TRUE if the DMA interrupt status is set, FALSE otherwise.
  */
-boolean TIM_DMA_Interrupt_Check_Status(TIM_ST *TIMx)
+boolean TIM_DMA_Interrupt_Check_Status(TIM_TypeDef *TIMx)
 {
-    if (CHECK_BIT(TIMx->SR, SR_UIF))
+    if (CHECK_BIT(TIMx->SR, TIM_SR_UIF))
     {
         return true;  // Interrupt status is set
     }
@@ -205,7 +205,7 @@ boolean TIM_DMA_Interrupt_Check_Status(TIM_ST *TIMx)
  * Returns:
  *   None
  */
-void TIM_Enable(TIM_ST *TIMx)
+void TIM_Enable(TIM_TypeDef *TIMx)
 {
-    SET_BIT(TIMx->CR1, CR1_CEN); // Enable the TIM peripheral
+    SET_BIT(TIMx->CR1, TIM_CR1_CEN); // Enable the TIM peripheral
 }
