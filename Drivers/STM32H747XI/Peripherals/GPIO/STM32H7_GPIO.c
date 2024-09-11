@@ -1,4 +1,4 @@
-#include "STM32H747XI_GPIO.h"
+#include "STM32H7_GPIO.h"
 
 /*
  * Function: GPIO_Enable_ClockSource
@@ -48,7 +48,7 @@ void GPIO_Disable_ClockSource(uint16_t GPIOx_CLKSRC)
  * Returns:
  *   None
  */
-void GPIO_Mode_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Mode)
+void GPIO_Mode_Set(GPIO_TypeDef *GPIOx, uint8_t Pin, uint8_t Mode)
 {
     // Clear the mode register for the specified pin
     CLEAR_BIT(GPIOx->MODER, (0x3 << (Pin * 2)));
@@ -70,7 +70,7 @@ void GPIO_Mode_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Mode)
  * Returns:
  *   None
  */
-void GPIO_Pull_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Pull)
+void GPIO_Pull_Set(GPIO_TypeDef *GPIOx, uint8_t Pin, uint8_t Pull)
 {
     // Clear the pull-up/pull-down register for the specified pin
     CLEAR_BIT(GPIOx->PUPDR, (0x3 << (Pin * 2)));
@@ -92,7 +92,7 @@ void GPIO_Pull_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Pull)
  * Returns:
  *   None
  */
-void GPIO_OutputType_Set(GPIO_ST *GPIOx, uint8_t Pin, boolean OutputType)
+void GPIO_OutputType_Set(GPIO_TypeDef *GPIOx, uint8_t Pin, boolean OutputType)
 {
     // Clear the output type register for the specified pin
     CLEAR_BIT(GPIOx->OTYPER, (0x1 << Pin));
@@ -112,7 +112,7 @@ void GPIO_OutputType_Set(GPIO_ST *GPIOx, uint8_t Pin, boolean OutputType)
  * Returns:
  *   None
  */
-void GPIO_OutputData_Set(GPIO_ST *GPIOx, uint8_t Pin)
+void GPIO_OutputData_Set(GPIO_TypeDef *GPIOx, uint8_t Pin)
 {
     // Set the output data register for the specified pin
     SET_BIT(GPIOx->ODR, (0x1 << Pin));
@@ -130,7 +130,7 @@ void GPIO_OutputData_Set(GPIO_ST *GPIOx, uint8_t Pin)
  * Returns:
  *   None
  */
-void GPIO_OutputData_Reset(GPIO_ST *GPIOx, uint8_t Pin)
+void GPIO_OutputData_Reset(GPIO_TypeDef *GPIOx, uint8_t Pin)
 {
     // Clear the output data register for the specified pin
     CLEAR_BIT(GPIOx->ODR, (0x1 << Pin));
@@ -148,7 +148,7 @@ void GPIO_OutputData_Reset(GPIO_ST *GPIOx, uint8_t Pin)
  * Returns:
  *   None
  */
-void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, uint8_t Pin)
+void GPIO_OutputData_Toggle(GPIO_TypeDef *GPIOx, uint8_t Pin)
 {
     // Toggle the output data register for the specified pin
     if (READ_BIT(GPIOx->ODR, (0x1 << Pin)))
@@ -174,7 +174,7 @@ void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, uint8_t Pin)
  * Returns:
  *   None
  */
-void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, uint8_t Pin, uint8_t AFx)
+void GPIO_Select_Alternate_Function(GPIO_TypeDef *GPIOx, uint8_t Pin, uint8_t AFx)
 {
     // Clear the current alternate function for the specified pin
     CLEAR_BIT(GPIOx->AFR[(Pin / 8)], (0xF << ((Pin % 8) * 4)));

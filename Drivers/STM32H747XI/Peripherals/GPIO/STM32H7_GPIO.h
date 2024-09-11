@@ -1,49 +1,7 @@
-#ifndef STM32H747XI_GPIO_H
-#define STM32H747XI_GPIO_H
+#ifndef STM32H7_GPIO_H
+#define STM32H7_GPIO_H
 
-#include "Common.h"
-#include "STM32H747XI_RCC.h"
-
-/* Refer to RM0399 Reference Manual from http://www.st.com */
-
-/* Base Address of GPIO Ports */
-#define GPIO_A_BASE 0x58020000U /**< Base address of GPIO Port A */
-#define GPIO_B_BASE 0x58020400U /**< Base address of GPIO Port B */
-#define GPIO_C_BASE 0x58020800U /**< Base address of GPIO Port C */
-#define GPIO_D_BASE 0x58020C00U /**< Base address of GPIO Port D */
-#define GPIO_E_BASE 0x58021000U /**< Base address of GPIO Port E */
-#define GPIO_F_BASE 0x58021400U /**< Base address of GPIO Port F */
-#define GPIO_G_BASE 0x58021800U /**< Base address of GPIO Port G */
-#define GPIO_H_BASE 0x58021C00U /**< Base address of GPIO Port H */
-#define GPIO_I_BASE 0x58022000U /**< Base address of GPIO Port I */
-#define GPIO_J_BASE 0x58022400U /**< Base address of GPIO Port J */
-#define GPIO_K_BASE 0x58022800U /**< Base address of GPIO Port K */
-
-/* GPIO Declaration */
-#define GPIO_A ((GPIO_ST *) GPIO_A_BASE) /**< GPIO Port A declaration */
-#define GPIO_B ((GPIO_ST *) GPIO_B_BASE) /**< GPIO Port B declaration */
-#define GPIO_C ((GPIO_ST *) GPIO_C_BASE) /**< GPIO Port C declaration */
-#define GPIO_D ((GPIO_ST *) GPIO_D_BASE) /**< GPIO Port D declaration */
-#define GPIO_E ((GPIO_ST *) GPIO_E_BASE) /**< GPIO Port E declaration */
-#define GPIO_F ((GPIO_ST *) GPIO_F_BASE) /**< GPIO Port F declaration */
-#define GPIO_G ((GPIO_ST *) GPIO_G_BASE) /**< GPIO Port G declaration */
-#define GPIO_H ((GPIO_ST *) GPIO_H_BASE) /**< GPIO Port H declaration */
-#define GPIO_I ((GPIO_ST *) GPIO_I_BASE) /**< GPIO Port I declaration */
-#define GPIO_J ((GPIO_ST *) GPIO_J_BASE) /**< GPIO Port J declaration */
-#define GPIO_K ((GPIO_ST *) GPIO_K_BASE) /**< GPIO Port K declaration */
-
-/* GPIO Clock Source Bit in AHB4ENR Register */
-#define GPIO_A_CLKSRC (1 << 0) /**< GPIO Port A clock source bit */
-#define GPIO_B_CLKSRC (1 << 1) /**< GPIO Port B clock source bit */
-#define GPIO_C_CLKSRC (1 << 2) /**< GPIO Port C clock source bit */
-#define GPIO_D_CLKSRC (1 << 3) /**< GPIO Port D clock source bit */
-#define GPIO_E_CLKSRC (1 << 4) /**< GPIO Port E clock source bit */
-#define GPIO_F_CLKSRC (1 << 5) /**< GPIO Port F clock source bit */
-#define GPIO_G_CLKSRC (1 << 6) /**< GPIO Port G clock source bit */
-#define GPIO_H_CLKSRC (1 << 7) /**< GPIO Port H clock source bit */
-#define GPIO_I_CLKSRC (1 << 8) /**< GPIO Port I clock source bit */
-#define GPIO_J_CLKSRC (1 << 9) /**< GPIO Port J clock source bit */
-#define GPIO_K_CLKSRC (1 << 10) /**< GPIO Port K clock source bit */
+#include "STM32H747xx.h"
 
 /* GPIO Pin Number Definitions */
 #define GPIO_PIN_0     0U  /**< GPIO Pin 0 */
@@ -97,8 +55,6 @@
 #define GPIO_Output_PushPull                0U  /**< GPIO Push-Pull Output Type */
 #define GPIO_Output_OpenDrain               1U  /**< GPIO Open-Drain Output Type */
 
-
-
 /*
  * Function declarations for GPIO operations:
  *
@@ -112,7 +68,7 @@
  * - Select Alternate function for GPIO Pin.
  *
  * Input:
- *   - GPIOx: Pointer to GPIO structure (GPIO_ST).
+ *   - GPIOx: Pointer to GPIO structure (GPIO_TypeDef).
  *   - Pin: GPIO pin number.
  *   - Mode: GPIO mode (input, output, alternate function, analog).
  *   - Pull: GPIO pull configuration (pull-up, pull-down, none).
@@ -123,12 +79,12 @@
  */
 extern void GPIO_Enable_ClockSource(uint16_t GPIOx_CLKSRC);
 extern void GPIO_Disable_ClockSource(uint16_t GPIOx_CLKSRC);
-extern void GPIO_Mode_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Mode);
-extern void GPIO_Pull_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Pull);
-extern void GPIO_OutputType_Set(GPIO_ST *GPIOx, uint8_t Pin, boolean OutputType); 
-extern void GPIO_OutputData_Set(GPIO_ST *GPIOx, uint8_t Pin);
-extern void GPIO_OutputData_Reset(GPIO_ST *GPIOx, uint8_t Pin);
-extern void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, uint8_t Pin);
-extern void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, uint8_t Pin, uint8_t AFx);
+extern void GPIO_Mode_Set(GPIO_TypeDef *GPIOx, uint8_t Pin, uint8_t Mode);
+extern void GPIO_Pull_Set(GPIO_TypeDef *GPIOx, uint8_t Pin, uint8_t Pull);
+extern void GPIO_OutputType_Set(GPIO_TypeDef *GPIOx, uint8_t Pin, boolean OutputType); 
+extern void GPIO_OutputData_Set(GPIO_TypeDef *GPIOx, uint8_t Pin);
+extern void GPIO_OutputData_Reset(GPIO_TypeDef *GPIOx, uint8_t Pin);
+extern void GPIO_OutputData_Toggle(GPIO_TypeDef *GPIOx, uint8_t Pin);
+extern void GPIO_Select_Alternate_Function(GPIO_TypeDef *GPIOx, uint8_t Pin, uint8_t AFx);
 
 #endif
