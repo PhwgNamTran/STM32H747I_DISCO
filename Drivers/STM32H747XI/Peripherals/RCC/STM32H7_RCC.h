@@ -1,5 +1,5 @@
-#ifndef STM32H747XI_RCC_H
-#define STM32H747XI_RCC_H
+#ifndef STM32H7_RCC_H
+#define STM32H7_RCC_H
 
 #include "STM32H747xx.h"
 
