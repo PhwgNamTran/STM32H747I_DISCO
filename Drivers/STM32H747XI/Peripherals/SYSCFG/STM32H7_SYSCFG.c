@@ -1,4 +1,4 @@
-#include "STM32H747XI_SYSCFG.h"
+#include "STM32H7_SYSCFG.h"
 
 /*
  * Function: SYSCFG_Enable
@@ -40,10 +40,10 @@ void SYSCFG_Enable(void)
  * Returns:
  *   None
  */
-void SYSCFG_EXITx_GPIO_Cfg(GPIO_ST *GPIOx, uint8_t GPIO_Pin)
+void SYSCFG_EXITx_GPIO_Cfg(GPIO_TypeDef *GPIOx, uint8_t GPIO_Pin)
 {
     // Check if the GPIO port is GPIO_K and the pin is in the range 8 to 15
-    if((GPIOx == GPIO_K)
+    if((GPIOx == GPIOK)
        && ((GPIO_PIN_8 <= GPIO_Pin)&&(GPIO_PIN_15 >= GPIO_Pin)))
     {
         /* GPIO K Pin from 8 to 15 not supported for EXTI */
@@ -54,47 +54,47 @@ void SYSCFG_EXITx_GPIO_Cfg(GPIO_ST *GPIOx, uint8_t GPIO_Pin)
         CLEAR_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0xF << ((GPIO_Pin % 4) * 4)));
         
         // Set the EXTI configuration based on the GPIO port
-        if(GPIOx == GPIO_A)
+        if(GPIOx == GPIOA)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x0 << ((GPIO_Pin % 4) * 4)));
         }
-        else if(GPIOx == GPIO_B)
+        else if(GPIOx == GPIOB)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x1 << ((GPIO_Pin % 4) * 4)));
         }
-        else if(GPIOx == GPIO_C)
+        else if(GPIOx == GPIOC)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x2 << ((GPIO_Pin % 4) * 4)));
         }
-        else if(GPIOx == GPIO_D)
+        else if(GPIOx == GPIOD)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x3 << ((GPIO_Pin % 4) * 4)));
         }
-        else if(GPIOx == GPIO_E)
+        else if(GPIOx == GPIOE)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x4 << ((GPIO_Pin % 4) * 4)));
         }
-        else if(GPIOx == GPIO_F)
+        else if(GPIOx == GPIOF)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x5 << ((GPIO_Pin % 4) * 4)));
         }
-        else if(GPIOx == GPIO_G)
+        else if(GPIOx == GPIOG)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x6 << ((GPIO_Pin % 4) * 4)));
         }
-        else if(GPIOx == GPIO_H)
+        else if(GPIOx == GPIOH)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x7 << ((GPIO_Pin % 4) * 4)));
         }
-        else if(GPIOx == GPIO_I)
+        else if(GPIOx == GPIOI)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x8 << ((GPIO_Pin % 4) * 4)));
         }
-        else if(GPIOx == GPIO_J)
+        else if(GPIOx == GPIOJ)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x9 << ((GPIO_Pin % 4) * 4)));
         }
-        else if(GPIOx == GPIO_K)
+        else if(GPIOx == GPIOK)
         {
             SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0xA << ((GPIO_Pin % 4) * 4)));
         }
