@@ -103,6 +103,24 @@ typedef enum
     GPIO_Output_OpenDrain_N        /**< GPIO Open-Drain Output Type */
 } GPIO_OutputType_N;
 
+/**
+  * @brief   Enum for GPIO Lock Key settings
+  */
+typedef enum
+{
+    GPIO_LockKey_NotActive_N = 0U,    /**< GPIO Lock Key Not Active */
+    GPIO_LockKey_Active_N             /**< GPIO Lock Key Active */
+} GPIO_LockKey_N;
+
+/**
+  * @brief   Enum for GPIO Lock settings
+  */
+typedef enum
+{
+    GPIO_NoLock_N = 0U,    /**< GPIO No Lock */
+    GPIO_Lock_N            /**< GPIO Locked */
+} GPIO_Lock_N;
+
 extern void GPIO_Enable_ClockSource(uint16_t GPIOx_CLKSRC);
 extern void GPIO_Disable_ClockSource(uint16_t GPIOx_CLKSRC);
 extern void GPIO_Mode_Set(GPIO_TypeDef *GPIOx, uint8_t Pin, uint8_t Mode);
