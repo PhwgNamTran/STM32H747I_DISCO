@@ -14,7 +14,7 @@
  * Returns:
  *   None
  */
-void USART_PIN_Config(GPIO_TypeDef *GPIOx, uint8_t GPIO_AFx, uint8_t USART_Rx_PIN, uint8_t USART_Tx_PIN)
+void USART_PIN_Config(GPIO_ST *GPIOx, uint8_t GPIO_AFx, uint8_t USART_Rx_PIN, uint8_t USART_Tx_PIN)
 {
     // Configure the RX pin to alternate function mode
     GPIO_Mode_Set(GPIOx, USART_Rx_PIN, GPIO_Mode_Alternate_Function);
@@ -44,7 +44,7 @@ void USART_PIN_Config(GPIO_TypeDef *GPIOx, uint8_t GPIO_AFx, uint8_t USART_Rx_PI
  * Returns:
  *   None
  */
-void USART_Config(USART_TypeDef *USARTx, uint32_t SysClock, uint32_t Baudrate, boolean OverSamplingMode,
+void USART_Config(USART_ST *USARTx, uint32_t SysClock, uint32_t Baudrate, boolean OverSamplingMode,
                                     uint8_t DataLengthCode, uint8_t NumberOfStopBit, uint8_t ParityCheck)
 {
     uint32_t Baudrate_DIV;
@@ -110,7 +110,7 @@ void USART_Config(USART_TypeDef *USARTx, uint32_t SysClock, uint32_t Baudrate, b
  * Returns:
  *   None
  */
-void USART_Enable_ClockSource(USART_TypeDef *USARTx)
+void USART_Enable_ClockSource(USART_ST *USARTx)
 {
     // Enable clock source for USART1
     if (USARTx == USART1)
@@ -165,13 +165,13 @@ void USART_Enable_ClockSource(USART_TypeDef *USARTx)
  * Configures the USART peripheral with the specified mode.
  * 
  * Parameters:
- *   USARTx - Pointer to the USART peripheral (USART_TypeDef *).
+ *   USARTx - Pointer to the USART peripheral (USART_ST *).
  *   Mode - The desired USART mode (USART_Mode).
  *
  * Returns:
  *   None
  */
-void USART_SetMode(USART_TypeDef *USARTx, USART_Mode Mode)
+void USART_SetMode(USART_ST *USARTx, USART_Mode Mode)
 {
     switch (Mode) {
         case USART_ASYNC_TX_ONLY:
@@ -243,13 +243,13 @@ void USART_SetMode(USART_TypeDef *USARTx, USART_Mode Mode)
  * checking the configuration of control registers CR1, CR2, and CR3.
  *
  * Parameters:
- *   USARTx - Pointer to the USART_TypeDef structure representing the USART peripheral
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral
  *            to check. This should be one of the available USART peripherals.
  *
  * Returns:
  *   USART_Mode - An enumeration value indicating the current mode of the USART.
  */
-USART_Mode USART_GetMode(USART_TypeDef *USARTx)
+USART_Mode USART_GetMode(USART_ST *USARTx)
 {
     USART_Mode l_USART_Mode;
 
@@ -316,7 +316,7 @@ USART_Mode USART_GetMode(USART_TypeDef *USARTx)
  * Enables FIFO mode for the USART peripheral based on its current mode.
  *
  * Parameters:
- *   USARTx - Pointer to the USART_TypeDef structure representing the USART peripheral
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral
  *            to configure.
  * Returns:
  *   None
@@ -325,7 +325,7 @@ USART_Mode USART_GetMode(USART_TypeDef *USARTx)
  *   FIFO mode can be used in standard UART communication, SPI master/slave mode,
  *   and Smartcard modes only. It must not be enabled in IrDA and LIN modes.
  */
-void USART_EnableFIFO(USART_TypeDef *USARTx)
+void USART_EnableFIFO(USART_ST *USARTx)
 {
     // Read the current mode configuration
     USART_Mode l_USART_Mode = USART_GetMode(USARTx);
@@ -357,7 +357,7 @@ void USART_EnableFIFO(USART_TypeDef *USARTx)
  * Disables FIFO mode for the USART peripheral based on its current mode.
  *
  * Parameters:
- *   USARTx - Pointer to the USART_TypeDef structure representing the USART peripheral
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral
  *            to configure.
  * Returns:
  *   None
@@ -365,7 +365,7 @@ void USART_EnableFIFO(USART_TypeDef *USARTx)
  * Note:
  *   This function disables FIFO mode regardless of the current USART mode.
  */
-void USART_DisableFIFO(USART_TypeDef *USARTx)
+void USART_DisableFIFO(USART_ST *USARTx)
 {
     // Read the current mode configuration
     USART_Mode l_USART_Mode = USART_GetMode(USARTx);
@@ -397,13 +397,13 @@ void USART_DisableFIFO(USART_TypeDef *USARTx)
  * Checks if FIFO mode is enabled for the specified USART peripheral.
  *
  * Parameters:
- *   USARTx - Pointer to the USART_TypeDef structure representing the USART peripheral
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral
  *            to check.
  *
  * Returns:
  *   true if FIFO mode is enabled, false otherwise.
  */
-boolean USART_IsFIFOEnabled(USART_TypeDef *USARTx)
+boolean USART_IsFIFOEnabled(USART_ST *USARTx)
 {
     // Check if the FIFO enable bit is set in the CR1 register
     return (CHECK_BIT(USARTx->CR1, USART_CR1_FIFOEN));
@@ -422,7 +422,7 @@ boolean USART_IsFIFOEnabled(USART_TypeDef *USARTx)
  * Returns:
  *   None
  */
-void USART_Enable_Interrupt(USART_TypeDef *USARTx, uint32_t Interrupt_Mode)
+void USART_Enable_Interrupt(USART_ST *USARTx, uint32_t Interrupt_Mode)
 {
     if(USART_IsFIFOEnabled(USARTx) == true)
     {
@@ -528,13 +528,13 @@ void USART_Enable_Interrupt(USART_TypeDef *USARTx, uint32_t Interrupt_Mode)
  * Checks if a specific interrupt flag is set for the USART peripheral.
  *
  * Parameters:
- *   USARTx - Pointer to the USART_TypeDef structure representing the USART peripheral.
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral.
  *   Interrupt_Mode - The specific interrupt mode to check.
  *
  * Returns:
  *   TRUE if the interrupt flag is set, FALSE otherwise.
  */
-boolean USART_Check_Interrupt_Flag(USART_TypeDef *USARTx, USART_Interrupt_Mode Interrupt_Mode)
+boolean USART_Check_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode)
 {
     boolean flag_set = false;
 
@@ -621,13 +621,13 @@ boolean USART_Check_Interrupt_Flag(USART_TypeDef *USARTx, USART_Interrupt_Mode I
  * Clears a specific interrupt flag for the USART peripheral.
  *
  * Parameters:
- *   USARTx - Pointer to the USART_TypeDef structure representing the USART peripheral.
+ *   USARTx - Pointer to the USART_ST structure representing the USART peripheral.
  *   Interrupt_Mode - The specific interrupt mode to clear.
  *
  * Returns:
  *   None
  */
-void USART_Clear_Interrupt_Flag(USART_TypeDef *USARTx, USART_Interrupt_Mode Interrupt_Mode)
+void USART_Clear_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode)
 {
     switch (Interrupt_Mode) 
     {
@@ -710,12 +710,12 @@ void USART_Clear_Interrupt_Flag(USART_TypeDef *USARTx, USART_Interrupt_Mode Inte
  * Enables the USART peripheral.
  * 
  * Parameters:
- *   USARTx - Pointer to the USART peripheral (USART_TypeDef *).
+ *   USARTx - Pointer to the USART peripheral (USART_ST *).
  *
  * Returns:
  *   None
  */
-void USART_Enable(USART_TypeDef *USARTx)
+void USART_Enable(USART_ST *USARTx)
 {
     // Enable the USART peripheral by setting the UE bit
     SET_BIT(USARTx->CR1, USART_CR1_UE);
@@ -732,7 +732,7 @@ void USART_Enable(USART_TypeDef *USARTx)
  * Returns:
  *   None
  */
-void USART_Disable(USART_TypeDef *USARTx)
+void USART_Disable(USART_ST *USARTx)
 {
     // Disable the USART peripheral by clearing the UE bit
     CLEAR_BIT(USARTx->CR1, USART_CR1_UE);
@@ -751,7 +751,7 @@ void USART_Disable(USART_TypeDef *USARTx)
  * Returns:
  *   None
  */
-void USART_Transmit_Single_Data(USART_TypeDef *USARTx, uint16_t Data)
+void USART_Transmit_Single_Data(USART_ST *USARTx, uint16_t Data)
 {
     // Wait until TXFNF flag is set, indicating transmit data register is not full
     while (!(CHECK_BIT(USARTx->ISR, USART_ISR_TXE_TXFNF)));
@@ -776,7 +776,7 @@ void USART_Transmit_Single_Data(USART_TypeDef *USARTx, uint16_t Data)
  * Returns:
  *   None
  */
-void USART_Transmit(USART_TypeDef *USARTx, const char *str) {
+void USART_Transmit(USART_ST *USARTx, const char *str) {
     while (*str) 
     {
         USART_Transmit_Single_Data(USARTx, *str++);
@@ -794,7 +794,7 @@ void USART_Transmit(USART_TypeDef *USARTx, const char *str) {
  * Returns:
  *   The received data frame (8 or 9 bits).
  */
-uint16_t USART_Receive_Single_Data(USART_TypeDef *USARTx)
+uint16_t USART_Receive_Single_Data(USART_ST *USARTx)
 {
     // Read the data from the USART receive data register
     return (uint16_t)(USARTx->RDR & 0x1FF);
@@ -811,7 +811,7 @@ uint16_t USART_Receive_Single_Data(USART_TypeDef *USARTx)
  * Returns:
  *   None
  */
-void USART_FlushReceiveData(USART_TypeDef *USARTx) 
+void USART_FlushReceiveData(USART_ST *USARTx) 
 {
     SET_BIT(USARTx->RQR, USART_RQR_RXFRQ);  // Set the RXFRQ bit to flush receive data
 }
@@ -827,7 +827,7 @@ void USART_FlushReceiveData(USART_TypeDef *USARTx)
  * Returns:
  *   None
  */
-void USART_FlushTransmitData(USART_TypeDef *USARTx) 
+void USART_FlushTransmitData(USART_ST *USARTx) 
 {
     SET_BIT(USARTx->RQR, USART_RQR_TXFRQ);  // Set the TXFRQ bit to flush transmit data
 }
@@ -843,7 +843,7 @@ void USART_FlushTransmitData(USART_TypeDef *USARTx)
  * Returns:
  *   None
  */
-void USART_SendBreakRequest(USART_TypeDef *USARTx) 
+void USART_SendBreakRequest(USART_ST *USARTx) 
 {
     SET_BIT(USARTx->RQR, USART_RQR_SBKRQ);  // Set the SBKRQ bit to send break request
 }
@@ -859,7 +859,7 @@ void USART_SendBreakRequest(USART_TypeDef *USARTx)
  * Returns:
  *   None
  */
-void USART_EnterMuteMode(USART_TypeDef *USARTx) 
+void USART_EnterMuteMode(USART_ST *USARTx) 
 {
     SET_BIT(USARTx->RQR, USART_RQR_MMRQ);  // Set the MMRQ bit to enter mute mode
 }
@@ -875,7 +875,7 @@ void USART_EnterMuteMode(USART_TypeDef *USARTx)
  * Returns:
  *   None
  */
-void USART_AutoBaudRateRequest(USART_TypeDef *USARTx) 
+void USART_AutoBaudRateRequest(USART_ST *USARTx) 
 {
     SET_BIT(USARTx->RQR, USART_RQR_ABRRQ);  // Set the ABRRQ bit to request auto-baud rate detection
 }

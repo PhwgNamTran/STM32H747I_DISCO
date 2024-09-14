@@ -570,7 +570,7 @@ typedef struct
     volatile uint32_t DIFSEL;           /*!< ADC  Differential Mode Selection Register,                  Address offset: 0xC0 */
     volatile uint32_t CALFACT;          /*!< ADC  Calibration Factors,                                   Address offset: 0xC4 */
     volatile uint32_t CALFACT2;         /*!< ADC  Linearity Calibration Factors,                         Address offset: 0xC8 */
-} ADC_TypeDef;
+} ADC_ST;
 
 typedef struct
 {
@@ -579,7 +579,7 @@ typedef struct
     volatile uint32_t CCR;          /*!< ADC common control register, Address offset: ADC1/3 base address + 0x308 */
     volatile uint32_t CDR;          /*!< ADC common regular data register for dual Address offset: ADC1/3 base address + 0x30C */
     volatile uint32_t CDR2;         /*!< ADC common regular data register for 32-bit dual mode Address offset: ADC1/3 base address + 0x310 */
-} ADC_Common_TypeDef;
+} ADC_Common_ST;
 
 /**
   * @brief ART
@@ -587,7 +587,7 @@ typedef struct
 typedef struct
 {
     volatile uint32_t  CTR;        /*!< ART accelerator - control register */
-}ART_TypeDef;
+}ART_ST;
 
 /**
   * @brief VREFBUF
@@ -596,7 +596,7 @@ typedef struct
 {
     volatile uint32_t CSR;         /*!< VREFBUF control and status register,         Address offset: 0x00 */
     volatile uint32_t CCR;         /*!< VREFBUF calibration and control register,    Address offset: 0x04 */
-} VREFBUF_TypeDef;
+} VREFBUF_ST;
 
 
 /**
@@ -657,7 +657,7 @@ typedef struct
     volatile uint32_t TXEFS;        /*!< FDCAN Tx Event FIFO Status register,                             Address offset: 0x0F4 */
     volatile uint32_t TXEFA;        /*!< FDCAN Tx Event FIFO Acknowledge register,                        Address offset: 0x0F8 */
     volatile uint32_t RESERVED7;    /*!< Reserved,                                                                        0x0FC */
-} FDCAN_GlobalTypeDef;
+} FDCAN_Global_ST;
 
 /**
   * @brief TTFD Controller Area Network
@@ -683,7 +683,7 @@ typedef struct
     volatile uint32_t TTCSM;          /*!< TT Cycle Sync Mark register,                 Address offset: 0x140 */
     volatile uint32_t RESERVED1[111]; /*!< Reserved,                                            0x144 - 0x2FC */
     volatile uint32_t TTTS;           /*!< TT Trigger Select register,                  Address offset: 0x300 */
-} TTCAN_TypeDef;
+} TTCAN_ST;
 
 /**
   * @brief FD Controller Area Network
@@ -696,7 +696,7 @@ typedef struct
     volatile uint32_t CWD;   /*!< Calibration Watchdog register,                Address offset: 0x0C */
     volatile uint32_t IR;    /*!< CCU Interrupt register,                       Address offset: 0x10 */
     volatile uint32_t IE;    /*!< CCU Interrupt Enable register,                Address offset: 0x14 */
-} FDCAN_ClockCalibrationUnit_TypeDef;
+} FDCAN_ClockCalibrationUnit_ST;
 
 /**
   * @brief Consumer Electronics Control
@@ -709,7 +709,7 @@ typedef struct
     volatile uint32_t RXDR;         /*!< CEC Rx Data Register,              Address offset:0x0C */
     volatile uint32_t ISR;          /*!< CEC Interrupt and Status Register, Address offset:0x10 */
     volatile uint32_t IER;          /*!< CEC interrupt enable register,     Address offset:0x14 */
-}CEC_TypeDef;
+}CEC_ST;
 
 /**
   * @brief CRC calculation unit
@@ -722,7 +722,7 @@ typedef struct
              uint32_t RESERVED2;   /*!< Reserved,                                                    0x0C */
     volatile uint32_t INIT;        /*!< Initial CRC value register,                  Address offset: 0x10 */
     volatile uint32_t POL;         /*!< CRC polynomial register,                     Address offset: 0x14 */
-} CRC_TypeDef;
+} CRC_ST;
 
 /**
   * @brief Clock Recovery System
@@ -733,7 +733,7 @@ typedef struct
     volatile uint32_t CFGR;          /*!< CRS configuration register,         Address offset: 0x04 */
     volatile uint32_t ISR;           /*!< CRS interrupt and status register,  Address offset: 0x08 */
     volatile uint32_t ICR;           /*!< CRS interrupt flag clear register,  Address offset: 0x0C */
-} CRS_TypeDef;
+} CRS_ST;
 
 /**
   * @brief Digital to Analog Converter
@@ -760,7 +760,7 @@ typedef struct
     volatile uint32_t SHSR2;    /*!< DAC Sample and Hold sample time register 2,              Address offset: 0x44 */
     volatile uint32_t SHHR;     /*!< DAC Sample and Hold hold time register,                  Address offset: 0x48 */
     volatile uint32_t SHRR;     /*!< DAC Sample and Hold refresh time register,               Address offset: 0x4C */
-} DAC_TypeDef;
+} DAC_ST;
 
 /**
   * @brief DFSDM module registers
@@ -782,7 +782,7 @@ typedef struct
     volatile uint32_t FLTEXMAX;        /*!< DFSDM extreme detector maximum register,          Address offset: 0x130 */
     volatile uint32_t FLTEXMIN;        /*!< DFSDM extreme detector minimum register           Address offset: 0x134 */
     volatile uint32_t FLTCNVTIMR;      /*!< DFSDM conversion timer,                           Address offset: 0x138 */
-} DFSDM_Filter_TypeDef;
+} DFSDM_Filter_ST;
 
 /**
   * @brief DFSDM channel configuration registers
@@ -795,7 +795,7 @@ typedef struct
                                          short circuit detector register,                  Address offset: 0x08 */
     volatile uint32_t CHWDATAR;     /*!< DFSDM channel watchdog filter data register,      Address offset: 0x0C */
     volatile uint32_t CHDATINR;     /*!< DFSDM channel data input register,                Address offset: 0x10 */
-} DFSDM_Channel_TypeDef;
+} DFSDM_Channel_ST;
 
 /**
   * @brief Debug MCU
@@ -815,7 +815,7 @@ typedef struct
     volatile uint32_t APB2FZ2;          /*!< Debug MCU APB2FZ2 freeze register,      Address offset: 0x50 */
     volatile uint32_t APB4FZ1;          /*!< Debug MCU APB4FZ1 freeze register,      Address offset: 0x54 */
     volatile uint32_t APB4FZ2;          /*!< Debug MCU APB4FZ2 freeze register,      Address offset: 0x58 */
-}DBGMCU_TypeDef;
+}DBGMCU_ST;
 
 /**
   * @brief DCMI
@@ -833,7 +833,7 @@ typedef struct
     volatile uint32_t CWSTRTR;  /*!< DCMI crop window start,                        Address offset: 0x20 */
     volatile uint32_t CWSIZER;  /*!< DCMI crop window size,                         Address offset: 0x24 */
     volatile uint32_t DR;       /*!< DCMI data register,                            Address offset: 0x28 */
-} DCMI_TypeDef;
+} DCMI_ST;
 
 /**
   * @brief DMA Controller
@@ -846,7 +846,7 @@ typedef struct
     volatile uint32_t M0AR;   /*!< DMA stream x memory 0 address register   */
     volatile uint32_t M1AR;   /*!< DMA stream x memory 1 address register   */
     volatile uint32_t FCR;    /*!< DMA stream x FIFO control register       */
-} DMA_Stream_TypeDef;
+} DMA_Stream_ST;
 
 typedef struct
 {
@@ -854,7 +854,7 @@ typedef struct
     volatile uint32_t HISR;   /*!< DMA high interrupt status register,     Address offset: 0x04 */
     volatile uint32_t LIFCR;  /*!< DMA low interrupt flag clear register,  Address offset: 0x08 */
     volatile uint32_t HIFCR;  /*!< DMA high interrupt flag clear register, Address offset: 0x0C */
-} DMA_TypeDef;
+} DMA_ST;
 
 typedef struct
 {
@@ -863,35 +863,35 @@ typedef struct
     volatile uint32_t CPAR;         /*!< DMA channel x peripheral address register     */
     volatile uint32_t CM0AR;        /*!< DMA channel x memory 0 address register       */
     volatile uint32_t CM1AR;        /*!< DMA channel x memory 1 address register       */
-} BDMA_Channel_TypeDef;
+} BDMA_Channel_ST;
 
 typedef struct
 {
     volatile uint32_t ISR;          /*!< DMA interrupt status register,               Address offset: 0x00 */
     volatile uint32_t IFCR;         /*!< DMA interrupt flag clear register,           Address offset: 0x04 */
-} BDMA_TypeDef;
+} BDMA_ST;
 
 typedef struct
 {
     volatile uint32_t  CCR;        /*!< DMA Multiplexer Channel x Control Register   */
-}DMAMUX_Channel_TypeDef;
+}DMAMUX_Channel_ST;
 
 typedef struct
 {
     volatile uint32_t  CSR;      /*!< DMA Channel Status Register     */
     volatile uint32_t  CFR;      /*!< DMA Channel Clear Flag Register */
-}DMAMUX_ChannelStatus_TypeDef;
+}DMAMUX_ChannelStatus_ST;
 
 typedef struct
 {
     volatile uint32_t  RGCR;        /*!< DMA Request Generator x Control Register   */
-}DMAMUX_RequestGen_TypeDef;
+}DMAMUX_RequestGen_ST;
 
 typedef struct
 {
     volatile uint32_t  RGSR;        /*!< DMA Request Generator Status Register       */
     volatile uint32_t  RGCFR;       /*!< DMA Request Generator Clear Flag Register   */
-}DMAMUX_RequestGenStatus_TypeDef;
+}DMAMUX_RequestGenStatus_ST;
 
 /**
   * @brief MDMA Controller
@@ -899,7 +899,7 @@ typedef struct
 typedef struct
 {
     volatile uint32_t  GISR0;   /*!< MDMA Global Interrupt/Status Register 0,          Address offset: 0x00 */
-}MDMA_TypeDef;
+}MDMA_ST;
 
 typedef struct
 {
@@ -917,7 +917,7 @@ typedef struct
              uint32_t  RESERVED0; /*!< Reserved, 0x6C                                                             */
     volatile uint32_t  CMAR;      /*!< MDMA channel x Mask address register,                 Address offset: 0x70 */
     volatile uint32_t  CMDR;      /*!< MDMA channel x Mask Data register,                    Address offset: 0x74 */
-}MDMA_Channel_TypeDef;
+}MDMA_Channel_ST;
 
 /**
   * @brief DMA2D Controller
@@ -947,7 +947,7 @@ typedef struct
              uint32_t RESERVED[236]; /*!< Reserved, 0x50-0x3FF */
     volatile uint32_t FGCLUT[256];   /*!< DMA2D Foreground CLUT,                          Address offset:400-7FF */
     volatile uint32_t BGCLUT[256];   /*!< DMA2D Background CLUT,                          Address offset:800-BFF */
-} DMA2D_TypeDef;
+} DMA2D_ST;
 
 /**
   * @brief DSI Controller
@@ -1027,7 +1027,7 @@ typedef struct
     volatile uint32_t WPCR[5];        /*!< DSI Wrapper PHY Configuration Register,                    Address offset: 0x418-0x42B */
              uint32_t RESERVED10;     /*!< Reserved, 0x42C                                                                        */
     volatile uint32_t WRPCR;          /*!< DSI Wrapper Regulator and PLL Control Register, Address offset: 0x430                  */
-} DSI_TypeDef;
+} DSI_ST;
 
 /**
   * @brief Ethernet MAC
@@ -1201,7 +1201,7 @@ typedef struct
     volatile uint32_t DMACSR;
              uint32_t RESERVED45[2];
     volatile uint32_t DMACMFCR;
-}ETH_TypeDef;
+}ETH_ST;
 
 /**
   * @brief External Interrupt/Event Controller
@@ -1252,7 +1252,7 @@ typedef struct
     volatile uint32_t C2IMR3;              /*!< EXTI Interrupt mask register,                    Address offset: 0xE0 */
     volatile uint32_t C2EMR3;              /*!< EXTI Event mask register,                        Address offset: 0xE4 */
     volatile uint32_t C2PR3;               /*!< EXTI Pending register,                           Address offset: 0xE8 */
-}EXTI_TypeDef;
+}EXTI_ST;
 
 /**
   * @brief This structure registers corresponds to EXTI_Typdef CPU1/CPU2 registers subset (IMRx, EMRx and PRx),
@@ -1275,7 +1275,7 @@ typedef struct
     volatile uint32_t IMR3;                /*!< EXTI Interrupt mask register,                Address offset: 0x20 */
     volatile uint32_t EMR3;                /*!< EXTI Event mask register,                    Address offset: 0x24 */
     volatile uint32_t PR3;                 /*!< EXTI Pending register,                       Address offset: 0x28 */
-}EXTI_Core_TypeDef;
+}EXTI_Core_ST;
 
 
 /**
@@ -1327,7 +1327,7 @@ typedef struct
     volatile uint32_t CRCEADD2;        /*!< Flash CRC End Address Register for Bank2 ,                Address offset: 0x158 */
     volatile uint32_t CRCDATA2;        /*!< Flash CRC Data Register for Bank2 ,                       Address offset: 0x15C */
     volatile uint32_t ECC_FA2;         /*!< Flash ECC Fail Address For Bank2 Register ,               Address offset: 0x160 */
-} FLASH_TypeDef;
+} FLASH_ST;
 
 /**
   * @brief Flexible Memory Controller
@@ -1335,7 +1335,7 @@ typedef struct
 typedef struct
 {
     volatile uint32_t BTCR[8];    /*!< NOR/PSRAM chip-select control register(BCR) and chip-select timing register(BTR), Address offset: 0x00-1C */
-} FMC_Bank1_TypeDef;
+} FMC_Bank1_ST;
 
 /**
   * @brief Flexible Memory Controller Bank1E
@@ -1343,7 +1343,7 @@ typedef struct
 typedef struct
 {
     volatile uint32_t BWTR[7];    /*!< NOR/PSRAM write timing registers, Address offset: 0x104-0x11C */
-} FMC_Bank1E_TypeDef;
+} FMC_Bank1E_ST;
 
 /**
   * @brief Flexible Memory Controller Bank2
@@ -1356,7 +1356,7 @@ typedef struct
     volatile uint32_t PATT2;      /*!< NAND Flash Attribute memory space timing register 2, Address offset: 0x6C */
              uint32_t RESERVED0;  /*!< Reserved, 0x70                                                            */
     volatile uint32_t ECCR2;      /*!< NAND Flash ECC result registers 2,                   Address offset: 0x74 */
-} FMC_Bank2_TypeDef;
+} FMC_Bank2_ST;
 
 /**
   * @brief Flexible Memory Controller Bank3
@@ -1369,7 +1369,7 @@ typedef struct
     volatile uint32_t PATT;      /*!< NAND Flash Attribute memory space timing register 3, Address offset: 0x8C */
              uint32_t RESERVED;  /*!< Reserved, 0x90                                                            */
     volatile uint32_t ECCR;      /*!< NAND Flash ECC result registers 3,                   Address offset: 0x94 */
-} FMC_Bank3_TypeDef;
+} FMC_Bank3_ST;
 
 /**
   * @brief Flexible Memory Controller Bank5 and 6
@@ -1381,7 +1381,7 @@ typedef struct
     volatile uint32_t SDCMR;       /*!< SDRAM Command Mode register,    Address offset: 0x150  */
     volatile uint32_t SDRTR;       /*!< SDRAM Refresh Timer register,   Address offset: 0x154  */
     volatile uint32_t SDSR;        /*!< SDRAM Status register,          Address offset: 0x158  */
-} FMC_Bank5_6_TypeDef;
+} FMC_Bank5_6_ST;
 
 /**
   * @brief General Purpose I/O
@@ -1397,7 +1397,7 @@ typedef struct
     volatile uint32_t BSRR;     /*!< GPIO port bit set/reset,               Address offset: 0x18      */
     volatile uint32_t LCKR;     /*!< GPIO port configuration lock register, Address offset: 0x1C      */
     volatile uint32_t AFR[2];   /*!< GPIO alternate function registers,     Address offset: 0x20-0x24 */
-} GPIO_TypeDef;
+} GPIO_ST;
 
 /**
   * @brief Operational Amplifier (OPAMP)
@@ -1407,7 +1407,7 @@ typedef struct
     volatile uint32_t CSR;          /*!< OPAMP control/status register,                      Address offset: 0x00 */
     volatile uint32_t OTR;          /*!< OPAMP offset trimming register for normal mode,     Address offset: 0x04 */
     volatile uint32_t HSOTR;        /*!< OPAMP offset trimming register for high speed mode, Address offset: 0x08 */
-} OPAMP_TypeDef;
+} OPAMP_ST;
 
 /**
   * @brief System configuration controller
@@ -1444,7 +1444,7 @@ typedef struct
     volatile uint32_t UR15;           /*!< SYSCFG user register 15,                            Address offset: 0x33C       */
     volatile uint32_t UR16;           /*!< SYSCFG user register 16,                            Address offset: 0x340       */
     volatile uint32_t UR17;           /*!< SYSCFG user register 17,                            Address offset: 0x344       */
-} SYSCFG_TypeDef;
+} SYSCFG_ST;
 
 /**
   * @brief Inter-integrated Circuit Interface
@@ -1462,7 +1462,7 @@ typedef struct
     volatile uint32_t PECR;     /*!< I2C PEC register,                  Address offset: 0x20 */
     volatile uint32_t RXDR;     /*!< I2C Receive data register,         Address offset: 0x24 */
     volatile uint32_t TXDR;     /*!< I2C Transmit data register,        Address offset: 0x28 */
-} I2C_TypeDef;
+} I2C_ST;
 
 /**
   * @brief Independent WATCHDOG
@@ -1474,7 +1474,7 @@ typedef struct
     volatile uint32_t RLR;  /*!< IWDG Reload register,    Address offset: 0x08 */
     volatile uint32_t SR;   /*!< IWDG Status register,    Address offset: 0x0C */
     volatile uint32_t WINR; /*!< IWDG Window register,    Address offset: 0x10 */
-} IWDG_TypeDef;
+} IWDG_ST;
 
 /**
   * @brief JPEG Codec
@@ -1510,7 +1510,7 @@ typedef struct
     volatile uint32_t HUFFENC_AC1[88]; /*!< JPEG encodor, AC Huffman table 1,                 Address offset: 660h-7BCh */
     volatile uint32_t HUFFENC_DC0[8];  /*!< JPEG encodor, DC Huffman table 0,                 Address offset: 7C0h-7DCh */
     volatile uint32_t HUFFENC_DC1[8];  /*!< JPEG encodor, DC Huffman table 1,                 Address offset: 7E0h-7FCh */
-} JPEG_TypeDef;
+} JPEG_ST;
 
 /**
   * @brief LCD-TFT Display Controller
@@ -1534,7 +1534,7 @@ typedef struct
     volatile uint32_t LIPCR;         /*!< LTDC Line Interrupt Position Configuration Register, Address offset: 0x40 */
     volatile uint32_t CPSR;          /*!< LTDC Current Position Status Register,               Address offset: 0x44 */
     volatile uint32_t CDSR;          /*!< LTDC Current Display Status Register,                 Address offset: 0x48 */
-} LTDC_TypeDef;
+} LTDC_ST;
 
 /**
   * @brief LCD-TFT Display layer x Controller
@@ -1555,7 +1555,7 @@ typedef struct
     volatile uint32_t CFBLNR;        /*!< LTDC Layerx ColorFrame Buffer Line Number Register            Address offset: 0xB4 */
              uint32_t RESERVED1[3];  /*!< Reserved */
     volatile uint32_t CLUTWR;        /*!< LTDC Layerx CLUT Write Register                               Address offset: 0x144 */
-} LTDC_Layer_TypeDef;
+} LTDC_Layer_ST;
 
 /**
   * @brief Power Control
@@ -1573,7 +1573,7 @@ typedef struct
     volatile uint32_t WKUPCR;    /*!< PWR wakeup clear register,               Address offset: 0x20 */
     volatile uint32_t WKUPFR;    /*!< PWR wakeup flag register,                Address offset: 0x24 */
     volatile uint32_t WKUPEPR;   /*!< PWR wakeup enable and polarity register, Address offset: 0x28 */
-} PWR_TypeDef;
+} PWR_ST;
 
 /**
   * @brief Reset and Clock Control
@@ -1645,7 +1645,7 @@ typedef struct
     volatile uint32_t APB2LPENR;      /*!< RCC APB2 peripheral sleep clock  register,                               Address offset: 0x118 */
     volatile uint32_t APB4LPENR;      /*!< RCC APB4 peripheral sleep clock  register,                               Address offset: 0x11C */
              uint32_t RESERVED13[4];  /*!< Reserved, 0x120-0x12C                                                    Address offset: 0x120 */
-} RCC_TypeDef;
+} RCC_ST;
 
 typedef struct
 {
@@ -1671,7 +1671,7 @@ typedef struct
     volatile uint32_t APB4LPENR;    /*!< RCC APB4 peripheral sleep clock  register,                      Address offset: 0x5C */
              uint32_t RESERVED10[4];/*!< Reserved, 0x60-0x6C                                             Address offset: 0x60 */
 
-} RCC_Core_TypeDef;
+} RCC_Core_ST;
 
 /**
   * @brief Real-Time Clock
@@ -1730,7 +1730,7 @@ typedef struct
     volatile uint32_t BKP29R;     /*!< RTC backup register 29,                                    Address offset: 0xC4 */
     volatile uint32_t BKP30R;     /*!< RTC backup register 30,                                    Address offset: 0xC8 */
     volatile uint32_t BKP31R;     /*!< RTC backup register 31,                                    Address offset: 0xCC */
-} RTC_TypeDef;
+} RTC_ST;
 
 /**
   * @brief Serial Audio Interface
@@ -1741,7 +1741,7 @@ typedef struct
              uint32_t RESERVED0[16]; /*!< Reserved, 0x04 - 0x43                                   */
     volatile uint32_t PDMCR;         /*!< SAI PDM control register,          Address offset: 0x44 */
     volatile uint32_t PDMDLY;        /*!< SAI PDM delay register,            Address offset: 0x48 */
-} SAI_TypeDef;
+} SAI_ST;
 
 typedef struct
 {
@@ -1753,7 +1753,7 @@ typedef struct
     volatile uint32_t SR;       /*!< SAI block x status register,              Address offset: 0x18 */
     volatile uint32_t CLRFR;    /*!< SAI block x clear flag register,          Address offset: 0x1C */
     volatile uint32_t DR;       /*!< SAI block x data register,                Address offset: 0x20 */
-} SAI_Block_TypeDef;
+} SAI_Block_ST;
 
 /**
   * @brief SPDIF-RX Interface
@@ -1768,7 +1768,7 @@ typedef struct
     volatile uint32_t   CSR;          /*!< Channel Status register,            Address offset: 0x14 */
     volatile uint32_t   DIR;          /*!< Debug Information register,         Address offset: 0x18 */
              uint32_t   RESERVED2;    /*!< Reserved,  0x1A                                          */
-} SPDIFRX_TypeDef;
+} SPDIFRX_ST;
 
 /**
   * @brief Secure digital input/output Interface
@@ -1801,7 +1801,7 @@ typedef struct
     volatile       uint32_t FIFO;           /*!< SDMMC data FIFO register,                 Address offset: 0x80  */
                    uint32_t RESERVED2[222]; /*!< Reserved, 0x84-0x3F8                                            */
     volatile       uint32_t IPVR;           /*!< SDMMC data FIFO register,                 Address offset: 0x3FC */
-} SDMMC_TypeDef;
+} SDMMC_ST;
 
 
 /**
@@ -1811,7 +1811,7 @@ typedef struct
 {
     volatile uint32_t CR;          /*!< DELAY BLOCK control register,  Address offset: 0x00 */
     volatile uint32_t CFGR;        /*!< DELAY BLOCK configuration register,  Address offset: 0x04 */
-} DLYB_TypeDef;
+} DLYB_ST;
 
 /**
   * @brief HW Semaphore HSEM
@@ -1832,7 +1832,7 @@ typedef struct
     volatile uint32_t CR;         /*!< HSEM Semaphore clear register ,                Address offset: 140h      */
     volatile uint32_t KEYR;       /*!< HSEM Semaphore clear key register ,            Address offset: 144h      */
 
-} HSEM_TypeDef;
+} HSEM_ST;
 
 typedef struct
 {
@@ -1840,7 +1840,7 @@ typedef struct
     volatile uint32_t ICR;        /*!< HSEM interrupt clear register ,                 Address offset:   4h     */
     volatile uint32_t ISR;        /*!< HSEM interrupt status register ,                Address offset:   8h     */
     volatile uint32_t MISR;       /*!< HSEM masked interrupt status register ,         Address offset:   Ch     */
-} HSEM_Common_TypeDef;
+} HSEM_Common_ST;
 
 /**
   * @brief Serial Peripheral Interface
@@ -1865,7 +1865,7 @@ typedef struct
     volatile uint32_t UDRDR;         /*!< SPI Underrun data register,                      Address offset: 0x4C */
     volatile uint32_t I2SCFGR;       /*!< I2S Configuration register,                      Address offset: 0x50 */
 
-} SPI_TypeDef;
+} SPI_ST;
 /**
   * @brief QUAD Serial Peripheral Interface
   */
@@ -1884,7 +1884,7 @@ typedef struct
     volatile uint32_t PSMAR;    /*!< QUADSPI Polling Status Match register,              Address offset: 0x28 */
     volatile uint32_t PIR;      /*!< QUADSPI Polling Interval register,                  Address offset: 0x2C */
     volatile uint32_t LPTR;     /*!< QUADSPI Low Power Timeout register,                 Address offset: 0x30 */
-} QUADSPI_TypeDef;
+} QUADSPI_ST;
 
 /**
   * @brief TIM
@@ -1918,7 +1918,7 @@ typedef struct
     volatile uint32_t AF1;         /*!< TIM alternate function option register 1, Address offset: 0x60 */
     volatile uint32_t AF2;         /*!< TIM alternate function option register 2, Address offset: 0x64 */
     volatile uint32_t TISEL;       /*!< TIM Input Selection register,             Address offset: 0x68 */
-} TIM_TypeDef;
+} TIM_ST;
 
 /**
   * @brief LPTIMIMER
@@ -1935,7 +1935,7 @@ typedef struct
     volatile uint32_t CNT;      /*!< LPTIM Counter register,                      Address offset: 0x1C */
              uint32_t RESERVED1;    /*!< Reserved, 0x20                                                    */
     volatile uint32_t CFGR2;    /*!< LPTIM Configuration register,                Address offset: 0x24 */
-} LPTIM_TypeDef;
+} LPTIM_ST;
 
 /**
   * @brief Comparator
@@ -1945,17 +1945,17 @@ typedef struct
     volatile uint32_t SR;        /*!< Comparator status register,                    Address offset: 0x00 */
     volatile uint32_t ICFR;      /*!< Comparator interrupt clear flag register,       Address offset: 0x04 */
     volatile uint32_t OR;        /*!< Comparator option register,                  Address offset: 0x08 */
-} COMPOPT_TypeDef;
+} COMPOPT_ST;
 
 typedef struct
 {
     volatile uint32_t CFGR;      /*!< Comparator configuration register  ,           Address offset: 0x00 */
-} COMP_TypeDef;
+} COMP_ST;
 
 typedef struct
 {
     volatile uint32_t CFGR;       /*!< COMP control and status register, used for bits common to several COMP instances, Address offset: 0x00 */
-} COMP_Common_TypeDef;
+} COMP_Common_ST;
 
 /**
   * @brief Universal Synchronous Asynchronous Receiver Transmitter
@@ -1974,7 +1974,7 @@ typedef struct
     volatile uint32_t RDR;    /*!< USART Receive Data register,              Address offset: 0x24 */
     volatile uint32_t TDR;    /*!< USART Transmit Data register,             Address offset: 0x28 */
     volatile uint32_t PRESC;  /*!< USART clock Prescaler register,           Address offset: 0x2C */
-} USART_TypeDef;
+} USART_ST;
 
 /**
   * @brief Single Wire Protocol Master Interface SPWMI
@@ -1991,7 +1991,7 @@ typedef struct
     volatile uint32_t TDR;         /*!< SWPMI Transmit data register,             Address offset: 0x1C */
     volatile uint32_t RDR;         /*!< SWPMI Receive data register,              Address offset: 0x20 */
     volatile uint32_t OR;          /*!< SWPMI Option register,                    Address offset: 0x24 */
-} SWPMI_TypeDef;
+} SWPMI_ST;
 
 /**
   * @brief Window WATCHDOG
@@ -2002,7 +2002,7 @@ typedef struct
     volatile uint32_t CR;   /*!< WWDG Control register,       Address offset: 0x00 */
     volatile uint32_t CFR;  /*!< WWDG Configuration register, Address offset: 0x04 */
     volatile uint32_t SR;   /*!< WWDG Status register,        Address offset: 0x08 */
-} WWDG_TypeDef;
+} WWDG_ST;
 
 
 /**
@@ -2016,12 +2016,12 @@ typedef struct
     volatile uint32_t FDRL;         /*!< RAMECC monitor failing data low register       */
     volatile uint32_t FDRH;         /*!< RAMECC monitor failing data high register      */
     volatile uint32_t FECR;         /*!< RAMECC monitor failing ECC error code register */
-} RAMECC_MonitorTypeDef;
+} RAMECC_Monitor_ST;
 
 typedef struct
 {
     volatile uint32_t IER;          /*!< RAMECC interrupt enable register */
-} RAMECC_TypeDef;
+} RAMECC_ST;
 
 /**
   * @brief High resolution Timer (HRTIM)
@@ -2042,7 +2042,7 @@ typedef struct
     volatile uint32_t MCMP3R;         /*!< HRTIM Master Timer compare 3 register,                   Address offset: 0x28 */
     volatile uint32_t MCMP4R;         /*!< HRTIM Master Timer compare 4 register,                   Address offset: 0x2C */
              uint32_t RESERVED1[20];  /*!< Reserved,                                                          0x30..0x7C */
-}HRTIM_Master_TypeDef;
+}HRTIM_Master_ST;
 
 /* HRTIM Timer A to E registers definition */
 typedef struct
@@ -2075,7 +2075,7 @@ typedef struct
     volatile uint32_t OUTxR;      /*!< HRTIM Timerx Output register,                               Address offset: 0x64 */
     volatile uint32_t FLTxR;      /*!< HRTIM Timerx Fault register,                                Address offset: 0x68 */
              uint32_t RESERVED0[5];  /*!< Reserved,                                                          0x6C..0x7C */
-}HRTIM_Timerx_TypeDef;
+}HRTIM_Timerx_ST;
 
 /* HRTIM common register definition */
 typedef struct
@@ -2109,15 +2109,15 @@ typedef struct
     volatile uint32_t BDTDUPR;    /*!< HRTIM Burst DMA Timerx update register,                     Address offset: 0x68 */
     volatile uint32_t BDTEUPR;    /*!< HRTIM Burst DMA Timerx update register,                     Address offset: 0x6C */
     volatile uint32_t BDMADR;     /*!< HRTIM Burst DMA Master Data register,                       Address offset: 0x70 */
-}HRTIM_Common_TypeDef;
+}HRTIM_Common_ST;
 
 /* HRTIM  register definition */
 typedef struct {
-  HRTIM_Master_TypeDef sMasterRegs;
-  HRTIM_Timerx_TypeDef sTimerxRegs[5];
-              uint32_t RESERVED0[32];
-  HRTIM_Common_TypeDef sCommonRegs;
-}HRTIM_TypeDef;
+  HRTIM_Master_ST sMasterRegs;
+  HRTIM_Timerx_ST sTimerxRegs[5];
+         uint32_t RESERVED0[32];
+  HRTIM_Common_ST sCommonRegs;
+}HRTIM_ST;
 
 /**
   * @brief RNG
@@ -2127,7 +2127,7 @@ typedef struct
     volatile uint32_t CR;  /*!< RNG control register, Address offset: 0x00 */
     volatile uint32_t SR;  /*!< RNG status register,  Address offset: 0x04 */
     volatile uint32_t DR;  /*!< RNG data register,    Address offset: 0x08 */
-} RNG_TypeDef;
+} RNG_ST;
 
 /**
   * @brief MDIOS
@@ -2206,7 +2206,7 @@ typedef struct
     volatile uint32_t DOUTR29;
     volatile uint32_t DOUTR30;
     volatile uint32_t DOUTR31;
-} MDIOS_TypeDef;
+} MDIOS_ST;
 
 /**
   * @brief USB_OTG_Core_Registers
@@ -2240,7 +2240,7 @@ typedef struct
     uint32_t  Reserved43[39];               /*!< Reserved                                058h-0FFh */
     volatile uint32_t HPTXFSIZ;             /*!< Host Periodic Tx FIFO Size Reg               100h */
     volatile uint32_t DIEPTXF[0x0F];        /*!< dev Periodic Transmit FIFO */
-} USB_OTG_GlobalTypeDef;
+} USB_OTG_Global_ST;
 
 /**
   * @brief USB_OTG_device_Registers
@@ -2267,7 +2267,7 @@ typedef struct
     volatile uint32_t DINEP1MSK;       /*!< dedicated EP mask            844h */
              uint32_t Reserved44[15];  /*!< Reserved                 844-87Ch */
     volatile uint32_t DOUTEP1MSK;      /*!< dedicated EP msk             884h */
-} USB_OTG_DeviceTypeDef;
+} USB_OTG_Device_ST;
 
 
 /**
@@ -2283,7 +2283,7 @@ typedef struct
     volatile uint32_t DIEPDMA;           /*!< IN Endpoint DMA Address Reg    900h + (ep_num * 20h) + 14h */
     volatile uint32_t DTXFSTS;           /*!< IN Endpoint Tx FIFO Status Reg 900h + (ep_num * 20h) + 18h */
              uint32_t Reserved18;        /*!< Reserved  900h+(ep_num*20h)+1Ch-900h+ (ep_num * 20h) + 1Ch */
-} USB_OTG_INEndpointTypeDef;
+} USB_OTG_INEndpoint_ST;
 
 /**
   * @brief USB_OTG_OUT_Endpoint-Specific_Registers
@@ -2297,7 +2297,7 @@ typedef struct
     volatile uint32_t DOEPTSIZ;      /*!< dev OUT Endpoint Txfer Size            B00h + (ep_num * 20h) + 10h */
     volatile uint32_t DOEPDMA;       /*!< dev OUT Endpoint DMA Address           B00h + (ep_num * 20h) + 14h */
              uint32_t Reserved18[2]; /*!< Reserved B00h + (ep_num * 20h) + 18h - B00h + (ep_num * 20h) + 1Ch */
-} USB_OTG_OUTEndpointTypeDef;
+} USB_OTG_OUTEndpoint_ST;
 
 
 /**
@@ -2312,7 +2312,7 @@ typedef struct
     volatile uint32_t HPTXSTS;          /*!< Host Periodic Tx FIFO/ Queue Status  410h */
     volatile uint32_t HAINT;            /*!< Host All Channels Interrupt Register 414h */
     volatile uint32_t HAINTMSK;         /*!< Host All Channels Interrupt Mask     418h */
-} USB_OTG_HostTypeDef;
+} USB_OTG_Host_ST;
 
 /**
   * @brief USB_OTG_Host_Channel_Specific_Registers
@@ -2326,7 +2326,7 @@ typedef struct
     volatile uint32_t HCTSIZ;           /*!< Host Channel Transfer Size Register      510h */
     volatile uint32_t HCDMA;            /*!< Host Channel DMA Address Register        514h */
   uint32_t Reserved[2];           /*!< Reserved                                      */
-} USB_OTG_HostChannelTypeDef;
+} USB_OTG_HostChannel_ST;
 
 /**
   * @brief Global Programmer View
@@ -2412,299 +2412,299 @@ typedef struct
     volatile uint32_t AXI_INI7_READ_QOS;   /*!< AXI interconnect - INI 7 read QoS register,                                         Address offset: 0x48100         */
     volatile uint32_t AXI_INI7_WRITE_QOS;  /*!< AXI interconnect - INI 7 write QoS register,                                        Address offset: 0x48104         */
     volatile uint32_t AXI_INI7_FN_MOD;     /*!< AXI interconnect - INI 7 issuing functionality modification register,               Address offset: 0x48108         */
-} GPV_TypeDef;
+} GPV_ST;
 
 /* END of Peripheral registers structures */
 
 /* START of Peripheral declaration */
 
-#define TIM2                ((TIM_TypeDef *) TIM2_BASE)
-#define TIM3                ((TIM_TypeDef *) TIM3_BASE)
-#define TIM4                ((TIM_TypeDef *) TIM4_BASE)
-#define TIM5                ((TIM_TypeDef *) TIM5_BASE)
-#define TIM6                ((TIM_TypeDef *) TIM6_BASE)
-#define TIM7                ((TIM_TypeDef *) TIM7_BASE)
-#define TIM13               ((TIM_TypeDef *) TIM13_BASE)
-#define TIM14               ((TIM_TypeDef *) TIM14_BASE)
-#define VREFBUF             ((VREFBUF_TypeDef *) VREFBUF_BASE)
-#define RTC                 ((RTC_TypeDef *) RTC_BASE)
-#define WWDG1               ((WWDG_TypeDef *) WWDG1_BASE)
+#define TIM2                ((TIM_ST *) TIM2_BASE)
+#define TIM3                ((TIM_ST *) TIM3_BASE)
+#define TIM4                ((TIM_ST *) TIM4_BASE)
+#define TIM5                ((TIM_ST *) TIM5_BASE)
+#define TIM6                ((TIM_ST *) TIM6_BASE)
+#define TIM7                ((TIM_ST *) TIM7_BASE)
+#define TIM13               ((TIM_ST *) TIM13_BASE)
+#define TIM14               ((TIM_ST *) TIM14_BASE)
+#define VREFBUF             ((VREFBUF_ST *) VREFBUF_BASE)
+#define RTC                 ((RTC_ST *) RTC_BASE)
+#define WWDG1               ((WWDG_ST *) WWDG1_BASE)
 
-#define WWDG2               ((WWDG_TypeDef *) WWDG2_BASE)
-#define IWDG2               ((IWDG_TypeDef *) IWDG2_BASE)
+#define WWDG2               ((WWDG_ST *) WWDG2_BASE)
+#define IWDG2               ((IWDG_ST *) IWDG2_BASE)
 
-#define IWDG1               ((IWDG_TypeDef *) IWDG1_BASE)
-#define SPI2                ((SPI_TypeDef *) SPI2_BASE)
-#define SPI3                ((SPI_TypeDef *) SPI3_BASE)
-#define SPI4                ((SPI_TypeDef *) SPI4_BASE)
-#define SPI5                ((SPI_TypeDef *) SPI5_BASE)
-#define SPI6                ((SPI_TypeDef *) SPI6_BASE)
-#define USART2              ((USART_TypeDef *) USART2_BASE)
-#define USART3              ((USART_TypeDef *) USART3_BASE)
-#define USART6              ((USART_TypeDef *) USART6_BASE)
-#define UART7               ((USART_TypeDef *) UART7_BASE)
-#define UART8               ((USART_TypeDef *) UART8_BASE)
-#define CRS                 ((CRS_TypeDef *) CRS_BASE)
-#define UART4               ((USART_TypeDef *) UART4_BASE)
-#define UART5               ((USART_TypeDef *) UART5_BASE)
-#define I2C1                ((I2C_TypeDef *) I2C1_BASE)
-#define I2C2                ((I2C_TypeDef *) I2C2_BASE)
-#define I2C3                ((I2C_TypeDef *) I2C3_BASE)
-#define I2C4                ((I2C_TypeDef *) I2C4_BASE)
-#define FDCAN1              ((FDCAN_GlobalTypeDef *) FDCAN1_BASE)
-#define FDCAN2              ((FDCAN_GlobalTypeDef *) FDCAN2_BASE)
-#define FDCAN_CCU           ((FDCAN_ClockCalibrationUnit_TypeDef *) FDCAN_CCU_BASE)
-#define CEC                 ((CEC_TypeDef *) CEC_BASE)
-#define LPTIM1              ((LPTIM_TypeDef *) LPTIM1_BASE)
-#define PWR                 ((PWR_TypeDef *) PWR_BASE)
-#define DAC1                ((DAC_TypeDef *) DAC1_BASE)
-#define LPUART1             ((USART_TypeDef *) LPUART1_BASE)
-#define SWPMI1              ((SWPMI_TypeDef *) SWPMI1_BASE)
-#define LPTIM2              ((LPTIM_TypeDef *) LPTIM2_BASE)
-#define LPTIM3              ((LPTIM_TypeDef *) LPTIM3_BASE)
-#define LPTIM4              ((LPTIM_TypeDef *) LPTIM4_BASE)
-#define LPTIM5              ((LPTIM_TypeDef *) LPTIM5_BASE)
+#define IWDG1               ((IWDG_ST *) IWDG1_BASE)
+#define SPI2                ((SPI_ST *) SPI2_BASE)
+#define SPI3                ((SPI_ST *) SPI3_BASE)
+#define SPI4                ((SPI_ST *) SPI4_BASE)
+#define SPI5                ((SPI_ST *) SPI5_BASE)
+#define SPI6                ((SPI_ST *) SPI6_BASE)
+#define USART2              ((USART_ST *) USART2_BASE)
+#define USART3              ((USART_ST *) USART3_BASE)
+#define USART6              ((USART_ST *) USART6_BASE)
+#define UART7               ((USART_ST *) UART7_BASE)
+#define UART8               ((USART_ST *) UART8_BASE)
+#define CRS                 ((CRS_ST *) CRS_BASE)
+#define UART4               ((USART_ST *) UART4_BASE)
+#define UART5               ((USART_ST *) UART5_BASE)
+#define I2C1                ((I2C_ST *) I2C1_BASE)
+#define I2C2                ((I2C_ST *) I2C2_BASE)
+#define I2C3                ((I2C_ST *) I2C3_BASE)
+#define I2C4                ((I2C_ST *) I2C4_BASE)
+#define FDCAN1              ((FDCAN_Global_ST *) FDCAN1_BASE)
+#define FDCAN2              ((FDCAN_Global_ST *) FDCAN2_BASE)
+#define FDCAN_CCU           ((FDCAN_ClockCalibrationUnit_ST *) FDCAN_CCU_BASE)
+#define CEC                 ((CEC_ST *) CEC_BASE)
+#define LPTIM1              ((LPTIM_ST *) LPTIM1_BASE)
+#define PWR                 ((PWR_ST *) PWR_BASE)
+#define DAC1                ((DAC_ST *) DAC1_BASE)
+#define LPUART1             ((USART_ST *) LPUART1_BASE)
+#define SWPMI1              ((SWPMI_ST *) SWPMI1_BASE)
+#define LPTIM2              ((LPTIM_ST *) LPTIM2_BASE)
+#define LPTIM3              ((LPTIM_ST *) LPTIM3_BASE)
+#define LPTIM4              ((LPTIM_ST *) LPTIM4_BASE)
+#define LPTIM5              ((LPTIM_ST *) LPTIM5_BASE)
 
-#define SYSCFG              ((SYSCFG_TypeDef *) SYSCFG_BASE)
-#define COMP12              ((COMPOPT_TypeDef *) COMP12_BASE)
-#define COMP1               ((COMP_TypeDef *) COMP1_BASE)
-#define COMP2               ((COMP_TypeDef *) COMP2_BASE)
-#define COMP12_COMMON       ((COMP_Common_TypeDef *) COMP2_BASE)
-#define OPAMP               ((OPAMP_TypeDef *) OPAMP_BASE)
-#define OPAMP1              ((OPAMP_TypeDef *) OPAMP1_BASE)
-#define OPAMP2              ((OPAMP_TypeDef *) OPAMP2_BASE)
-
-
-#define EXTI                ((EXTI_TypeDef *) EXTI_BASE)
-#define EXTI_D1             ((EXTI_Core_TypeDef *) EXTI_D1_BASE)
-#define EXTI_D2             ((EXTI_Core_TypeDef *) EXTI_D2_BASE)
-#define TIM1                ((TIM_TypeDef *) TIM1_BASE)
-#define SPI1                ((SPI_TypeDef *) SPI1_BASE)
-#define TIM8                ((TIM_TypeDef *) TIM8_BASE)
-#define USART1              ((USART_TypeDef *) USART1_BASE)
-#define TIM12               ((TIM_TypeDef *) TIM12_BASE)
-#define TIM15               ((TIM_TypeDef *) TIM15_BASE)
-#define TIM16               ((TIM_TypeDef *) TIM16_BASE)
-#define TIM17               ((TIM_TypeDef *) TIM17_BASE)
-#define HRTIM1              ((HRTIM_TypeDef *) HRTIM1_BASE)
-#define HRTIM1_TIMA         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMA_BASE)
-#define HRTIM1_TIMB         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMB_BASE)
-#define HRTIM1_TIMC         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMC_BASE)
-#define HRTIM1_TIMD         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIMD_BASE)
-#define HRTIM1_TIME         ((HRTIM_Timerx_TypeDef *) HRTIM1_TIME_BASE)
-#define HRTIM1_COMMON       ((HRTIM_Common_TypeDef *) HRTIM1_COMMON_BASE)
-#define SAI1                ((SAI_TypeDef *) SAI1_BASE)
-#define SAI1_Block_A        ((SAI_Block_TypeDef *)SAI1_Block_A_BASE)
-#define SAI1_Block_B        ((SAI_Block_TypeDef *)SAI1_Block_B_BASE)
-#define SAI2                ((SAI_TypeDef *) SAI2_BASE)
-#define SAI2_Block_A        ((SAI_Block_TypeDef *)SAI2_Block_A_BASE)
-#define SAI2_Block_B        ((SAI_Block_TypeDef *)SAI2_Block_B_BASE)
-#define SAI3                ((SAI_TypeDef *) SAI3_BASE)
-#define SAI3_Block_A        ((SAI_Block_TypeDef *)SAI3_Block_A_BASE)
-#define SAI3_Block_B        ((SAI_Block_TypeDef *)SAI3_Block_B_BASE)
-#define SAI4                ((SAI_TypeDef *) SAI4_BASE)
-#define SAI4_Block_A        ((SAI_Block_TypeDef *)SAI4_Block_A_BASE)
-#define SAI4_Block_B        ((SAI_Block_TypeDef *)SAI4_Block_B_BASE)
-
-#define SPDIFRX             ((SPDIFRX_TypeDef *) SPDIFRX_BASE)
-#define DFSDM1_Channel0     ((DFSDM_Channel_TypeDef *) DFSDM1_Channel0_BASE)
-#define DFSDM1_Channel1     ((DFSDM_Channel_TypeDef *) DFSDM1_Channel1_BASE)
-#define DFSDM1_Channel2     ((DFSDM_Channel_TypeDef *) DFSDM1_Channel2_BASE)
-#define DFSDM1_Channel3     ((DFSDM_Channel_TypeDef *) DFSDM1_Channel3_BASE)
-#define DFSDM1_Channel4     ((DFSDM_Channel_TypeDef *) DFSDM1_Channel4_BASE)
-#define DFSDM1_Channel5     ((DFSDM_Channel_TypeDef *) DFSDM1_Channel5_BASE)
-#define DFSDM1_Channel6     ((DFSDM_Channel_TypeDef *) DFSDM1_Channel6_BASE)
-#define DFSDM1_Channel7     ((DFSDM_Channel_TypeDef *) DFSDM1_Channel7_BASE)
-#define DFSDM1_Filter0      ((DFSDM_Filter_TypeDef *) DFSDM1_Filter0_BASE)
-#define DFSDM1_Filter1      ((DFSDM_Filter_TypeDef *) DFSDM1_Filter1_BASE)
-#define DFSDM1_Filter2      ((DFSDM_Filter_TypeDef *) DFSDM1_Filter2_BASE)
-#define DFSDM1_Filter3      ((DFSDM_Filter_TypeDef *) DFSDM1_Filter3_BASE)
-#define DMA2D               ((DMA2D_TypeDef *) DMA2D_BASE)
-#define DCMI                ((DCMI_TypeDef *) DCMI_BASE)
-#define RCC                 ((RCC_TypeDef *) RCC_BASE)
-#define RCC_C1              ((RCC_Core_TypeDef *) RCC_C1_BASE)
-#define RCC_C2              ((RCC_Core_TypeDef *) RCC_C2_BASE)
-
-#define ART                 ((ART_TypeDef *)  ART_BASE)
-#define FLASH               ((FLASH_TypeDef *) FLASH_R_BASE)
-#define CRC                 ((CRC_TypeDef *) CRC_BASE)
-
-#define GPIOA               ((GPIO_TypeDef *) GPIOA_BASE)
-#define GPIOB               ((GPIO_TypeDef *) GPIOB_BASE)
-#define GPIOC               ((GPIO_TypeDef *) GPIOC_BASE)
-#define GPIOD               ((GPIO_TypeDef *) GPIOD_BASE)
-#define GPIOE               ((GPIO_TypeDef *) GPIOE_BASE)
-#define GPIOF               ((GPIO_TypeDef *) GPIOF_BASE)
-#define GPIOG               ((GPIO_TypeDef *) GPIOG_BASE)
-#define GPIOH               ((GPIO_TypeDef *) GPIOH_BASE)
-#define GPIOI               ((GPIO_TypeDef *) GPIOI_BASE)
-#define GPIOJ               ((GPIO_TypeDef *) GPIOJ_BASE)
-#define GPIOK               ((GPIO_TypeDef *) GPIOK_BASE)
-
-#define ADC1                ((ADC_TypeDef *) ADC1_BASE)
-#define ADC2                ((ADC_TypeDef *) ADC2_BASE)
-#define ADC3                ((ADC_TypeDef *) ADC3_BASE)
-#define ADC3_COMMON         ((ADC_Common_TypeDef *) ADC3_COMMON_BASE)
-#define ADC12_COMMON        ((ADC_Common_TypeDef *) ADC12_COMMON_BASE)
-
-#define RNG                 ((RNG_TypeDef *) RNG_BASE)
-#define SDMMC2              ((SDMMC_TypeDef *) SDMMC2_BASE)
-#define DLYB_SDMMC2         ((DLYB_TypeDef *) DLYB_SDMMC2_BASE)
-
-#define BDMA                ((BDMA_TypeDef *) BDMA_BASE)
-#define BDMA_Channel0       ((BDMA_Channel_TypeDef *) BDMA_Channel0_BASE)
-#define BDMA_Channel1       ((BDMA_Channel_TypeDef *) BDMA_Channel1_BASE)
-#define BDMA_Channel2       ((BDMA_Channel_TypeDef *) BDMA_Channel2_BASE)
-#define BDMA_Channel3       ((BDMA_Channel_TypeDef *) BDMA_Channel3_BASE)
-#define BDMA_Channel4       ((BDMA_Channel_TypeDef *) BDMA_Channel4_BASE)
-#define BDMA_Channel5       ((BDMA_Channel_TypeDef *) BDMA_Channel5_BASE)
-#define BDMA_Channel6       ((BDMA_Channel_TypeDef *) BDMA_Channel6_BASE)
-#define BDMA_Channel7       ((BDMA_Channel_TypeDef *) BDMA_Channel7_BASE)
-
-#define RAMECC1              ((RAMECC_TypeDef *)RAMECC1_BASE)
-#define RAMECC1_Monitor1     ((RAMECC_MonitorTypeDef *)RAMECC1_Monitor1_BASE)
-#define RAMECC1_Monitor2     ((RAMECC_MonitorTypeDef *)RAMECC1_Monitor2_BASE)
-#define RAMECC1_Monitor3     ((RAMECC_MonitorTypeDef *)RAMECC1_Monitor3_BASE)
-#define RAMECC1_Monitor4     ((RAMECC_MonitorTypeDef *)RAMECC1_Monitor4_BASE)
-#define RAMECC1_Monitor5     ((RAMECC_MonitorTypeDef *)RAMECC1_Monitor5_BASE)
-
-#define RAMECC2              ((RAMECC_TypeDef *)RAMECC2_BASE)
-#define RAMECC2_Monitor1     ((RAMECC_MonitorTypeDef *)RAMECC2_Monitor1_BASE)
-#define RAMECC2_Monitor2     ((RAMECC_MonitorTypeDef *)RAMECC2_Monitor2_BASE)
-#define RAMECC2_Monitor3     ((RAMECC_MonitorTypeDef *)RAMECC2_Monitor3_BASE)
-#define RAMECC2_Monitor4     ((RAMECC_MonitorTypeDef *)RAMECC2_Monitor4_BASE)
-#define RAMECC2_Monitor5     ((RAMECC_MonitorTypeDef *)RAMECC2_Monitor5_BASE)
-
-#define RAMECC3              ((RAMECC_TypeDef *)RAMECC3_BASE)
-#define RAMECC3_Monitor1     ((RAMECC_MonitorTypeDef *)RAMECC3_Monitor1_BASE)
-#define RAMECC3_Monitor2     ((RAMECC_MonitorTypeDef *)RAMECC3_Monitor2_BASE)
-
-#define DMAMUX2                ((DMAMUX_Channel_TypeDef *) DMAMUX2_BASE)
-#define DMAMUX2_Channel0       ((DMAMUX_Channel_TypeDef *) DMAMUX2_Channel0_BASE)
-#define DMAMUX2_Channel1       ((DMAMUX_Channel_TypeDef *) DMAMUX2_Channel1_BASE)
-#define DMAMUX2_Channel2       ((DMAMUX_Channel_TypeDef *) DMAMUX2_Channel2_BASE)
-#define DMAMUX2_Channel3       ((DMAMUX_Channel_TypeDef *) DMAMUX2_Channel3_BASE)
-#define DMAMUX2_Channel4       ((DMAMUX_Channel_TypeDef *) DMAMUX2_Channel4_BASE)
-#define DMAMUX2_Channel5       ((DMAMUX_Channel_TypeDef *) DMAMUX2_Channel5_BASE)
-#define DMAMUX2_Channel6       ((DMAMUX_Channel_TypeDef *) DMAMUX2_Channel6_BASE)
-#define DMAMUX2_Channel7       ((DMAMUX_Channel_TypeDef *) DMAMUX2_Channel7_BASE)
+#define SYSCFG              ((SYSCFG_ST *) SYSCFG_BASE)
+#define COMP12              ((COMPOPT_ST *) COMP12_BASE)
+#define COMP1               ((COMP_ST *) COMP1_BASE)
+#define COMP2               ((COMP_ST *) COMP2_BASE)
+#define COMP12_COMMON       ((COMP_Common_ST *) COMP2_BASE)
+#define OPAMP               ((OPAMP_ST *) OPAMP_BASE)
+#define OPAMP1              ((OPAMP_ST *) OPAMP1_BASE)
+#define OPAMP2              ((OPAMP_ST *) OPAMP2_BASE)
 
 
-#define DMAMUX2_RequestGenerator0  ((DMAMUX_RequestGen_TypeDef *) DMAMUX2_RequestGenerator0_BASE)
-#define DMAMUX2_RequestGenerator1  ((DMAMUX_RequestGen_TypeDef *) DMAMUX2_RequestGenerator1_BASE)
-#define DMAMUX2_RequestGenerator2  ((DMAMUX_RequestGen_TypeDef *) DMAMUX2_RequestGenerator2_BASE)
-#define DMAMUX2_RequestGenerator3  ((DMAMUX_RequestGen_TypeDef *) DMAMUX2_RequestGenerator3_BASE)
-#define DMAMUX2_RequestGenerator4  ((DMAMUX_RequestGen_TypeDef *) DMAMUX2_RequestGenerator4_BASE)
-#define DMAMUX2_RequestGenerator5  ((DMAMUX_RequestGen_TypeDef *) DMAMUX2_RequestGenerator5_BASE)
-#define DMAMUX2_RequestGenerator6  ((DMAMUX_RequestGen_TypeDef *) DMAMUX2_RequestGenerator6_BASE)
-#define DMAMUX2_RequestGenerator7  ((DMAMUX_RequestGen_TypeDef *) DMAMUX2_RequestGenerator7_BASE)
+#define EXTI                ((EXTI_ST *) EXTI_BASE)
+#define EXTI_D1             ((EXTI_Core_ST *) EXTI_D1_BASE)
+#define EXTI_D2             ((EXTI_Core_ST *) EXTI_D2_BASE)
+#define TIM1                ((TIM_ST *) TIM1_BASE)
+#define SPI1                ((SPI_ST *) SPI1_BASE)
+#define TIM8                ((TIM_ST *) TIM8_BASE)
+#define USART1              ((USART_ST *) USART1_BASE)
+#define TIM12               ((TIM_ST *) TIM12_BASE)
+#define TIM15               ((TIM_ST *) TIM15_BASE)
+#define TIM16               ((TIM_ST *) TIM16_BASE)
+#define TIM17               ((TIM_ST *) TIM17_BASE)
+#define HRTIM1              ((HRTIM_ST *) HRTIM1_BASE)
+#define HRTIM1_TIMA         ((HRTIM_Timerx_ST *) HRTIM1_TIMA_BASE)
+#define HRTIM1_TIMB         ((HRTIM_Timerx_ST *) HRTIM1_TIMB_BASE)
+#define HRTIM1_TIMC         ((HRTIM_Timerx_ST *) HRTIM1_TIMC_BASE)
+#define HRTIM1_TIMD         ((HRTIM_Timerx_ST *) HRTIM1_TIMD_BASE)
+#define HRTIM1_TIME         ((HRTIM_Timerx_ST *) HRTIM1_TIME_BASE)
+#define HRTIM1_COMMON       ((HRTIM_Common_ST *) HRTIM1_COMMON_BASE)
+#define SAI1                ((SAI_ST *) SAI1_BASE)
+#define SAI1_Block_A        ((SAI_Block_ST *)SAI1_Block_A_BASE)
+#define SAI1_Block_B        ((SAI_Block_ST *)SAI1_Block_B_BASE)
+#define SAI2                ((SAI_ST *) SAI2_BASE)
+#define SAI2_Block_A        ((SAI_Block_ST *)SAI2_Block_A_BASE)
+#define SAI2_Block_B        ((SAI_Block_ST *)SAI2_Block_B_BASE)
+#define SAI3                ((SAI_ST *) SAI3_BASE)
+#define SAI3_Block_A        ((SAI_Block_ST *)SAI3_Block_A_BASE)
+#define SAI3_Block_B        ((SAI_Block_ST *)SAI3_Block_B_BASE)
+#define SAI4                ((SAI_ST *) SAI4_BASE)
+#define SAI4_Block_A        ((SAI_Block_ST *)SAI4_Block_A_BASE)
+#define SAI4_Block_B        ((SAI_Block_ST *)SAI4_Block_B_BASE)
 
-#define DMAMUX2_ChannelStatus      ((DMAMUX_ChannelStatus_TypeDef *) DMAMUX2_ChannelStatus_BASE)
-#define DMAMUX2_RequestGenStatus   ((DMAMUX_RequestGenStatus_TypeDef *) DMAMUX2_RequestGenStatus_BASE)
+#define SPDIFRX             ((SPDIFRX_ST *) SPDIFRX_BASE)
+#define DFSDM1_Channel0     ((DFSDM_Channel_ST *) DFSDM1_Channel0_BASE)
+#define DFSDM1_Channel1     ((DFSDM_Channel_ST *) DFSDM1_Channel1_BASE)
+#define DFSDM1_Channel2     ((DFSDM_Channel_ST *) DFSDM1_Channel2_BASE)
+#define DFSDM1_Channel3     ((DFSDM_Channel_ST *) DFSDM1_Channel3_BASE)
+#define DFSDM1_Channel4     ((DFSDM_Channel_ST *) DFSDM1_Channel4_BASE)
+#define DFSDM1_Channel5     ((DFSDM_Channel_ST *) DFSDM1_Channel5_BASE)
+#define DFSDM1_Channel6     ((DFSDM_Channel_ST *) DFSDM1_Channel6_BASE)
+#define DFSDM1_Channel7     ((DFSDM_Channel_ST *) DFSDM1_Channel7_BASE)
+#define DFSDM1_Filter0      ((DFSDM_Filter_ST *) DFSDM1_Filter0_BASE)
+#define DFSDM1_Filter1      ((DFSDM_Filter_ST *) DFSDM1_Filter1_BASE)
+#define DFSDM1_Filter2      ((DFSDM_Filter_ST *) DFSDM1_Filter2_BASE)
+#define DFSDM1_Filter3      ((DFSDM_Filter_ST *) DFSDM1_Filter3_BASE)
+#define DMA2D               ((DMA2D_ST *) DMA2D_BASE)
+#define DCMI                ((DCMI_ST *) DCMI_BASE)
+#define RCC                 ((RCC_ST *) RCC_BASE)
+#define RCC_C1              ((RCC_Core_ST *) RCC_C1_BASE)
+#define RCC_C2              ((RCC_Core_ST *) RCC_C2_BASE)
 
-#define DMA2                ((DMA_TypeDef *) DMA2_BASE)
-#define DMA2_Stream0        ((DMA_Stream_TypeDef *) DMA2_Stream0_BASE)
-#define DMA2_Stream1        ((DMA_Stream_TypeDef *) DMA2_Stream1_BASE)
-#define DMA2_Stream2        ((DMA_Stream_TypeDef *) DMA2_Stream2_BASE)
-#define DMA2_Stream3        ((DMA_Stream_TypeDef *) DMA2_Stream3_BASE)
-#define DMA2_Stream4        ((DMA_Stream_TypeDef *) DMA2_Stream4_BASE)
-#define DMA2_Stream5        ((DMA_Stream_TypeDef *) DMA2_Stream5_BASE)
-#define DMA2_Stream6        ((DMA_Stream_TypeDef *) DMA2_Stream6_BASE)
-#define DMA2_Stream7        ((DMA_Stream_TypeDef *) DMA2_Stream7_BASE)
+#define ART                 ((ART_ST *)  ART_BASE)
+#define FLASH               ((FLASH_ST *) FLASH_R_BASE)
+#define CRC                 ((CRC_ST *) CRC_BASE)
 
-#define DMA1                ((DMA_TypeDef *) DMA1_BASE)
-#define DMA1_Stream0        ((DMA_Stream_TypeDef *) DMA1_Stream0_BASE)
-#define DMA1_Stream1        ((DMA_Stream_TypeDef *) DMA1_Stream1_BASE)
-#define DMA1_Stream2        ((DMA_Stream_TypeDef *) DMA1_Stream2_BASE)
-#define DMA1_Stream3        ((DMA_Stream_TypeDef *) DMA1_Stream3_BASE)
-#define DMA1_Stream4        ((DMA_Stream_TypeDef *) DMA1_Stream4_BASE)
-#define DMA1_Stream5        ((DMA_Stream_TypeDef *) DMA1_Stream5_BASE)
-#define DMA1_Stream6        ((DMA_Stream_TypeDef *) DMA1_Stream6_BASE)
-#define DMA1_Stream7        ((DMA_Stream_TypeDef *) DMA1_Stream7_BASE)
+#define GPIOA               ((GPIO_ST *) GPIOA_BASE)
+#define GPIOB               ((GPIO_ST *) GPIOB_BASE)
+#define GPIOC               ((GPIO_ST *) GPIOC_BASE)
+#define GPIOD               ((GPIO_ST *) GPIOD_BASE)
+#define GPIOE               ((GPIO_ST *) GPIOE_BASE)
+#define GPIOF               ((GPIO_ST *) GPIOF_BASE)
+#define GPIOG               ((GPIO_ST *) GPIOG_BASE)
+#define GPIOH               ((GPIO_ST *) GPIOH_BASE)
+#define GPIOI               ((GPIO_ST *) GPIOI_BASE)
+#define GPIOJ               ((GPIO_ST *) GPIOJ_BASE)
+#define GPIOK               ((GPIO_ST *) GPIOK_BASE)
+
+#define ADC1                ((ADC_ST *) ADC1_BASE)
+#define ADC2                ((ADC_ST *) ADC2_BASE)
+#define ADC3                ((ADC_ST *) ADC3_BASE)
+#define ADC3_COMMON         ((ADC_Common_ST *) ADC3_COMMON_BASE)
+#define ADC12_COMMON        ((ADC_Common_ST *) ADC12_COMMON_BASE)
+
+#define RNG                 ((RNG_ST *) RNG_BASE)
+#define SDMMC2              ((SDMMC_ST *) SDMMC2_BASE)
+#define DLYB_SDMMC2         ((DLYB_ST *) DLYB_SDMMC2_BASE)
+
+#define BDMA                ((BDMA_ST *) BDMA_BASE)
+#define BDMA_Channel0       ((BDMA_Channel_ST *) BDMA_Channel0_BASE)
+#define BDMA_Channel1       ((BDMA_Channel_ST *) BDMA_Channel1_BASE)
+#define BDMA_Channel2       ((BDMA_Channel_ST *) BDMA_Channel2_BASE)
+#define BDMA_Channel3       ((BDMA_Channel_ST *) BDMA_Channel3_BASE)
+#define BDMA_Channel4       ((BDMA_Channel_ST *) BDMA_Channel4_BASE)
+#define BDMA_Channel5       ((BDMA_Channel_ST *) BDMA_Channel5_BASE)
+#define BDMA_Channel6       ((BDMA_Channel_ST *) BDMA_Channel6_BASE)
+#define BDMA_Channel7       ((BDMA_Channel_ST *) BDMA_Channel7_BASE)
+
+#define RAMECC1              ((RAMECC_ST *)RAMECC1_BASE)
+#define RAMECC1_Monitor1     ((RAMECC_Monitor_ST *)RAMECC1_Monitor1_BASE)
+#define RAMECC1_Monitor2     ((RAMECC_Monitor_ST *)RAMECC1_Monitor2_BASE)
+#define RAMECC1_Monitor3     ((RAMECC_Monitor_ST *)RAMECC1_Monitor3_BASE)
+#define RAMECC1_Monitor4     ((RAMECC_Monitor_ST *)RAMECC1_Monitor4_BASE)
+#define RAMECC1_Monitor5     ((RAMECC_Monitor_ST *)RAMECC1_Monitor5_BASE)
+
+#define RAMECC2              ((RAMECC_ST *)RAMECC2_BASE)
+#define RAMECC2_Monitor1     ((RAMECC_Monitor_ST *)RAMECC2_Monitor1_BASE)
+#define RAMECC2_Monitor2     ((RAMECC_Monitor_ST *)RAMECC2_Monitor2_BASE)
+#define RAMECC2_Monitor3     ((RAMECC_Monitor_ST *)RAMECC2_Monitor3_BASE)
+#define RAMECC2_Monitor4     ((RAMECC_Monitor_ST *)RAMECC2_Monitor4_BASE)
+#define RAMECC2_Monitor5     ((RAMECC_Monitor_ST *)RAMECC2_Monitor5_BASE)
+
+#define RAMECC3              ((RAMECC_ST *)RAMECC3_BASE)
+#define RAMECC3_Monitor1     ((RAMECC_Monitor_ST *)RAMECC3_Monitor1_BASE)
+#define RAMECC3_Monitor2     ((RAMECC_Monitor_ST *)RAMECC3_Monitor2_BASE)
+
+#define DMAMUX2                ((DMAMUX_Channel_ST *) DMAMUX2_BASE)
+#define DMAMUX2_Channel0       ((DMAMUX_Channel_ST *) DMAMUX2_Channel0_BASE)
+#define DMAMUX2_Channel1       ((DMAMUX_Channel_ST *) DMAMUX2_Channel1_BASE)
+#define DMAMUX2_Channel2       ((DMAMUX_Channel_ST *) DMAMUX2_Channel2_BASE)
+#define DMAMUX2_Channel3       ((DMAMUX_Channel_ST *) DMAMUX2_Channel3_BASE)
+#define DMAMUX2_Channel4       ((DMAMUX_Channel_ST *) DMAMUX2_Channel4_BASE)
+#define DMAMUX2_Channel5       ((DMAMUX_Channel_ST *) DMAMUX2_Channel5_BASE)
+#define DMAMUX2_Channel6       ((DMAMUX_Channel_ST *) DMAMUX2_Channel6_BASE)
+#define DMAMUX2_Channel7       ((DMAMUX_Channel_ST *) DMAMUX2_Channel7_BASE)
 
 
-#define DMAMUX1              ((DMAMUX_Channel_TypeDef *) DMAMUX1_BASE)
-#define DMAMUX1_Channel0     ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel0_BASE)
-#define DMAMUX1_Channel1     ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel1_BASE)
-#define DMAMUX1_Channel2     ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel2_BASE)
-#define DMAMUX1_Channel3     ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel3_BASE)
-#define DMAMUX1_Channel4     ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel4_BASE)
-#define DMAMUX1_Channel5     ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel5_BASE)
-#define DMAMUX1_Channel6     ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel6_BASE)
-#define DMAMUX1_Channel7     ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel7_BASE)
-#define DMAMUX1_Channel8     ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel8_BASE)
-#define DMAMUX1_Channel9     ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel9_BASE)
-#define DMAMUX1_Channel10    ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel10_BASE)
-#define DMAMUX1_Channel11    ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel11_BASE)
-#define DMAMUX1_Channel12    ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel12_BASE)
-#define DMAMUX1_Channel13    ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel13_BASE)
-#define DMAMUX1_Channel14    ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel14_BASE)
-#define DMAMUX1_Channel15    ((DMAMUX_Channel_TypeDef *) DMAMUX1_Channel15_BASE)
+#define DMAMUX2_RequestGenerator0  ((DMAMUX_RequestGen_ST *) DMAMUX2_RequestGenerator0_BASE)
+#define DMAMUX2_RequestGenerator1  ((DMAMUX_RequestGen_ST *) DMAMUX2_RequestGenerator1_BASE)
+#define DMAMUX2_RequestGenerator2  ((DMAMUX_RequestGen_ST *) DMAMUX2_RequestGenerator2_BASE)
+#define DMAMUX2_RequestGenerator3  ((DMAMUX_RequestGen_ST *) DMAMUX2_RequestGenerator3_BASE)
+#define DMAMUX2_RequestGenerator4  ((DMAMUX_RequestGen_ST *) DMAMUX2_RequestGenerator4_BASE)
+#define DMAMUX2_RequestGenerator5  ((DMAMUX_RequestGen_ST *) DMAMUX2_RequestGenerator5_BASE)
+#define DMAMUX2_RequestGenerator6  ((DMAMUX_RequestGen_ST *) DMAMUX2_RequestGenerator6_BASE)
+#define DMAMUX2_RequestGenerator7  ((DMAMUX_RequestGen_ST *) DMAMUX2_RequestGenerator7_BASE)
 
-#define DMAMUX1_RequestGenerator0  ((DMAMUX_RequestGen_TypeDef *) DMAMUX1_RequestGenerator0_BASE)
-#define DMAMUX1_RequestGenerator1  ((DMAMUX_RequestGen_TypeDef *) DMAMUX1_RequestGenerator1_BASE)
-#define DMAMUX1_RequestGenerator2  ((DMAMUX_RequestGen_TypeDef *) DMAMUX1_RequestGenerator2_BASE)
-#define DMAMUX1_RequestGenerator3  ((DMAMUX_RequestGen_TypeDef *) DMAMUX1_RequestGenerator3_BASE)
-#define DMAMUX1_RequestGenerator4  ((DMAMUX_RequestGen_TypeDef *) DMAMUX1_RequestGenerator4_BASE)
-#define DMAMUX1_RequestGenerator5  ((DMAMUX_RequestGen_TypeDef *) DMAMUX1_RequestGenerator5_BASE)
-#define DMAMUX1_RequestGenerator6  ((DMAMUX_RequestGen_TypeDef *) DMAMUX1_RequestGenerator6_BASE)
-#define DMAMUX1_RequestGenerator7  ((DMAMUX_RequestGen_TypeDef *) DMAMUX1_RequestGenerator7_BASE)
+#define DMAMUX2_ChannelStatus      ((DMAMUX_ChannelStatus_ST *) DMAMUX2_ChannelStatus_BASE)
+#define DMAMUX2_RequestGenStatus   ((DMAMUX_RequestGenStatus_ST *) DMAMUX2_RequestGenStatus_BASE)
 
-#define DMAMUX1_ChannelStatus      ((DMAMUX_ChannelStatus_TypeDef *)    DMAMUX1_ChannelStatus_BASE)
-#define DMAMUX1_RequestGenStatus   ((DMAMUX_RequestGenStatus_TypeDef *) DMAMUX1_RequestGenStatus_BASE)
+#define DMA2                ((DMA_ST *) DMA2_BASE)
+#define DMA2_Stream0        ((DMA_Stream_ST *) DMA2_Stream0_BASE)
+#define DMA2_Stream1        ((DMA_Stream_ST *) DMA2_Stream1_BASE)
+#define DMA2_Stream2        ((DMA_Stream_ST *) DMA2_Stream2_BASE)
+#define DMA2_Stream3        ((DMA_Stream_ST *) DMA2_Stream3_BASE)
+#define DMA2_Stream4        ((DMA_Stream_ST *) DMA2_Stream4_BASE)
+#define DMA2_Stream5        ((DMA_Stream_ST *) DMA2_Stream5_BASE)
+#define DMA2_Stream6        ((DMA_Stream_ST *) DMA2_Stream6_BASE)
+#define DMA2_Stream7        ((DMA_Stream_ST *) DMA2_Stream7_BASE)
 
-
-#define FMC_Bank1_R           ((FMC_Bank1_TypeDef *) FMC_Bank1_R_BASE)
-#define FMC_Bank1E_R          ((FMC_Bank1E_TypeDef *) FMC_Bank1E_R_BASE)
-#define FMC_Bank2_R           ((FMC_Bank2_TypeDef *) FMC_Bank2_R_BASE)
-#define FMC_Bank3_R           ((FMC_Bank3_TypeDef *) FMC_Bank3_R_BASE)
-#define FMC_Bank5_6_R         ((FMC_Bank5_6_TypeDef *) FMC_Bank5_6_R_BASE)
+#define DMA1                ((DMA_ST *) DMA1_BASE)
+#define DMA1_Stream0        ((DMA_Stream_ST *) DMA1_Stream0_BASE)
+#define DMA1_Stream1        ((DMA_Stream_ST *) DMA1_Stream1_BASE)
+#define DMA1_Stream2        ((DMA_Stream_ST *) DMA1_Stream2_BASE)
+#define DMA1_Stream3        ((DMA_Stream_ST *) DMA1_Stream3_BASE)
+#define DMA1_Stream4        ((DMA_Stream_ST *) DMA1_Stream4_BASE)
+#define DMA1_Stream5        ((DMA_Stream_ST *) DMA1_Stream5_BASE)
+#define DMA1_Stream6        ((DMA_Stream_ST *) DMA1_Stream6_BASE)
+#define DMA1_Stream7        ((DMA_Stream_ST *) DMA1_Stream7_BASE)
 
 
-#define QUADSPI               ((QUADSPI_TypeDef *) QSPI_R_BASE)
-#define DLYB_QUADSPI          ((DLYB_TypeDef *) DLYB_QSPI_BASE)
-#define SDMMC1                ((SDMMC_TypeDef *) SDMMC1_BASE)
-#define DLYB_SDMMC1           ((DLYB_TypeDef *) DLYB_SDMMC1_BASE)
+#define DMAMUX1              ((DMAMUX_Channel_ST *) DMAMUX1_BASE)
+#define DMAMUX1_Channel0     ((DMAMUX_Channel_ST *) DMAMUX1_Channel0_BASE)
+#define DMAMUX1_Channel1     ((DMAMUX_Channel_ST *) DMAMUX1_Channel1_BASE)
+#define DMAMUX1_Channel2     ((DMAMUX_Channel_ST *) DMAMUX1_Channel2_BASE)
+#define DMAMUX1_Channel3     ((DMAMUX_Channel_ST *) DMAMUX1_Channel3_BASE)
+#define DMAMUX1_Channel4     ((DMAMUX_Channel_ST *) DMAMUX1_Channel4_BASE)
+#define DMAMUX1_Channel5     ((DMAMUX_Channel_ST *) DMAMUX1_Channel5_BASE)
+#define DMAMUX1_Channel6     ((DMAMUX_Channel_ST *) DMAMUX1_Channel6_BASE)
+#define DMAMUX1_Channel7     ((DMAMUX_Channel_ST *) DMAMUX1_Channel7_BASE)
+#define DMAMUX1_Channel8     ((DMAMUX_Channel_ST *) DMAMUX1_Channel8_BASE)
+#define DMAMUX1_Channel9     ((DMAMUX_Channel_ST *) DMAMUX1_Channel9_BASE)
+#define DMAMUX1_Channel10    ((DMAMUX_Channel_ST *) DMAMUX1_Channel10_BASE)
+#define DMAMUX1_Channel11    ((DMAMUX_Channel_ST *) DMAMUX1_Channel11_BASE)
+#define DMAMUX1_Channel12    ((DMAMUX_Channel_ST *) DMAMUX1_Channel12_BASE)
+#define DMAMUX1_Channel13    ((DMAMUX_Channel_ST *) DMAMUX1_Channel13_BASE)
+#define DMAMUX1_Channel14    ((DMAMUX_Channel_ST *) DMAMUX1_Channel14_BASE)
+#define DMAMUX1_Channel15    ((DMAMUX_Channel_ST *) DMAMUX1_Channel15_BASE)
 
-#define DBGMCU              ((DBGMCU_TypeDef *) DBGMCU_BASE)
+#define DMAMUX1_RequestGenerator0  ((DMAMUX_RequestGen_ST *) DMAMUX1_RequestGenerator0_BASE)
+#define DMAMUX1_RequestGenerator1  ((DMAMUX_RequestGen_ST *) DMAMUX1_RequestGenerator1_BASE)
+#define DMAMUX1_RequestGenerator2  ((DMAMUX_RequestGen_ST *) DMAMUX1_RequestGenerator2_BASE)
+#define DMAMUX1_RequestGenerator3  ((DMAMUX_RequestGen_ST *) DMAMUX1_RequestGenerator3_BASE)
+#define DMAMUX1_RequestGenerator4  ((DMAMUX_RequestGen_ST *) DMAMUX1_RequestGenerator4_BASE)
+#define DMAMUX1_RequestGenerator5  ((DMAMUX_RequestGen_ST *) DMAMUX1_RequestGenerator5_BASE)
+#define DMAMUX1_RequestGenerator6  ((DMAMUX_RequestGen_ST *) DMAMUX1_RequestGenerator6_BASE)
+#define DMAMUX1_RequestGenerator7  ((DMAMUX_RequestGen_ST *) DMAMUX1_RequestGenerator7_BASE)
 
-#define JPEG                ((JPEG_TypeDef *) JPGDEC_BASE)
-#define HSEM                ((HSEM_TypeDef *) HSEM_BASE)
+#define DMAMUX1_ChannelStatus      ((DMAMUX_ChannelStatus_ST *)    DMAMUX1_ChannelStatus_BASE)
+#define DMAMUX1_RequestGenStatus   ((DMAMUX_RequestGenStatus_ST *) DMAMUX1_RequestGenStatus_BASE)
+
+
+#define FMC_Bank1_R           ((FMC_Bank1_ST *) FMC_Bank1_R_BASE)
+#define FMC_Bank1E_R          ((FMC_Bank1E_ST *) FMC_Bank1E_R_BASE)
+#define FMC_Bank2_R           ((FMC_Bank2_ST *) FMC_Bank2_R_BASE)
+#define FMC_Bank3_R           ((FMC_Bank3_ST *) FMC_Bank3_R_BASE)
+#define FMC_Bank5_6_R         ((FMC_Bank5_6_ST *) FMC_Bank5_6_R_BASE)
+
+
+#define QUADSPI               ((QUADSPI_ST *) QSPI_R_BASE)
+#define DLYB_QUADSPI          ((DLYB_ST *) DLYB_QSPI_BASE)
+#define SDMMC1                ((SDMMC_ST *) SDMMC1_BASE)
+#define DLYB_SDMMC1           ((DLYB_ST *) DLYB_SDMMC1_BASE)
+
+#define DBGMCU              ((DBGMCU_ST *) DBGMCU_BASE)
+
+#define JPEG                ((JPEG_ST *) JPGDEC_BASE)
+#define HSEM                ((HSEM_ST *) HSEM_BASE)
 #if defined(CORE_CM4)
-#define HSEM_COMMON         ((HSEM_Common_TypeDef *) (HSEM_BASE + 0x110UL))
+#define HSEM_COMMON         ((HSEM_Common_ST *) (HSEM_BASE + 0x110UL))
 #else  /* CORE_CM7 */
-#define HSEM_COMMON         ((HSEM_Common_TypeDef *) (HSEM_BASE + 0x100UL))
+#define HSEM_COMMON         ((HSEM_Common_ST *) (HSEM_BASE + 0x100UL))
 #endif /* CORE_CM4 */
 
-#define LTDC                ((LTDC_TypeDef *)LTDC_BASE)
-#define LTDC_Layer1         ((LTDC_Layer_TypeDef *)LTDC_Layer1_BASE)
-#define LTDC_Layer2         ((LTDC_Layer_TypeDef *)LTDC_Layer2_BASE)
-#define DSI                 ((DSI_TypeDef *)DSI_BASE)
+#define LTDC                ((LTDC_ST *)LTDC_BASE)
+#define LTDC_Layer1         ((LTDC_Layer_ST *)LTDC_Layer1_BASE)
+#define LTDC_Layer2         ((LTDC_Layer_ST *)LTDC_Layer2_BASE)
+#define DSI                 ((DSI_ST *)DSI_BASE)
 
-#define MDIOS               ((MDIOS_TypeDef *) MDIOS_BASE)
+#define MDIOS               ((MDIOS_ST *) MDIOS_BASE)
 
-#define ETH                 ((ETH_TypeDef *)ETH_BASE)
-#define MDMA                ((MDMA_TypeDef *)MDMA_BASE)
-#define MDMA_Channel0       ((MDMA_Channel_TypeDef *)MDMA_Channel0_BASE)
-#define MDMA_Channel1       ((MDMA_Channel_TypeDef *)MDMA_Channel1_BASE)
-#define MDMA_Channel2       ((MDMA_Channel_TypeDef *)MDMA_Channel2_BASE)
-#define MDMA_Channel3       ((MDMA_Channel_TypeDef *)MDMA_Channel3_BASE)
-#define MDMA_Channel4       ((MDMA_Channel_TypeDef *)MDMA_Channel4_BASE)
-#define MDMA_Channel5       ((MDMA_Channel_TypeDef *)MDMA_Channel5_BASE)
-#define MDMA_Channel6       ((MDMA_Channel_TypeDef *)MDMA_Channel6_BASE)
-#define MDMA_Channel7       ((MDMA_Channel_TypeDef *)MDMA_Channel7_BASE)
-#define MDMA_Channel8       ((MDMA_Channel_TypeDef *)MDMA_Channel8_BASE)
-#define MDMA_Channel9       ((MDMA_Channel_TypeDef *)MDMA_Channel9_BASE)
-#define MDMA_Channel10      ((MDMA_Channel_TypeDef *)MDMA_Channel10_BASE)
-#define MDMA_Channel11      ((MDMA_Channel_TypeDef *)MDMA_Channel11_BASE)
-#define MDMA_Channel12      ((MDMA_Channel_TypeDef *)MDMA_Channel12_BASE)
-#define MDMA_Channel13      ((MDMA_Channel_TypeDef *)MDMA_Channel13_BASE)
-#define MDMA_Channel14      ((MDMA_Channel_TypeDef *)MDMA_Channel14_BASE)
-#define MDMA_Channel15      ((MDMA_Channel_TypeDef *)MDMA_Channel15_BASE)
+#define ETH                 ((ETH_ST *)ETH_BASE)
+#define MDMA                ((MDMA_ST *)MDMA_BASE)
+#define MDMA_Channel0       ((MDMA_Channel_ST *)MDMA_Channel0_BASE)
+#define MDMA_Channel1       ((MDMA_Channel_ST *)MDMA_Channel1_BASE)
+#define MDMA_Channel2       ((MDMA_Channel_ST *)MDMA_Channel2_BASE)
+#define MDMA_Channel3       ((MDMA_Channel_ST *)MDMA_Channel3_BASE)
+#define MDMA_Channel4       ((MDMA_Channel_ST *)MDMA_Channel4_BASE)
+#define MDMA_Channel5       ((MDMA_Channel_ST *)MDMA_Channel5_BASE)
+#define MDMA_Channel6       ((MDMA_Channel_ST *)MDMA_Channel6_BASE)
+#define MDMA_Channel7       ((MDMA_Channel_ST *)MDMA_Channel7_BASE)
+#define MDMA_Channel8       ((MDMA_Channel_ST *)MDMA_Channel8_BASE)
+#define MDMA_Channel9       ((MDMA_Channel_ST *)MDMA_Channel9_BASE)
+#define MDMA_Channel10      ((MDMA_Channel_ST *)MDMA_Channel10_BASE)
+#define MDMA_Channel11      ((MDMA_Channel_ST *)MDMA_Channel11_BASE)
+#define MDMA_Channel12      ((MDMA_Channel_ST *)MDMA_Channel12_BASE)
+#define MDMA_Channel13      ((MDMA_Channel_ST *)MDMA_Channel13_BASE)
+#define MDMA_Channel14      ((MDMA_Channel_ST *)MDMA_Channel14_BASE)
+#define MDMA_Channel15      ((MDMA_Channel_ST *)MDMA_Channel15_BASE)
 
 
-#define USB1_OTG_HS         ((USB_OTG_GlobalTypeDef *) USB1_OTG_HS_PERIPH_BASE)
-#define USB2_OTG_FS         ((USB_OTG_GlobalTypeDef *) USB2_OTG_FS_PERIPH_BASE)
+#define USB1_OTG_HS         ((USB_OTG_Global_ST *) USB1_OTG_HS_PERIPH_BASE)
+#define USB2_OTG_FS         ((USB_OTG_Global_ST *) USB2_OTG_FS_PERIPH_BASE)
 
 /* Legacy defines */
 #define USB_OTG_HS                   USB1_OTG_HS
@@ -2712,7 +2712,7 @@ typedef struct
 #define USB_OTG_FS                   USB2_OTG_FS
 #define USB_OTG_FS_PERIPH_BASE       USB2_OTG_FS_PERIPH_BASE
 
-#define GPV                ((GPV_TypeDef *) GPV_BASE)
+#define GPV                ((GPV_ST *) GPV_BASE)
 
 /**
   * @}

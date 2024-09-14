@@ -57,10 +57,10 @@ typedef enum {
 #define USART_DataBit_9         1   /**< 9 data bits in communication */
 
 /* USART Stop Bit Definitions */
-#define USART_TypeDefopBit_1         0   /**< 1 Stop bit */
-#define USART_TypeDefopBit_0_5       1   /**< 0.5 Stop bit */
-#define USART_TypeDefopBit_2         2   /**< 2 Stop bits */
-#define USART_TypeDefopBit_1_5       3   /**< 1.5 Stop bits */
+#define USART_STopBit_1         0   /**< 1 Stop bit */
+#define USART_STopBit_0_5       1   /**< 0.5 Stop bit */
+#define USART_STopBit_2         2   /**< 2 Stop bits */
+#define USART_STopBit_1_5       3   /**< 1.5 Stop bits */
 
 /* USART Parity Definitions */
 #define USART_Parity_None       2   /**< No Parity */
@@ -79,27 +79,27 @@ typedef enum {
 #define USART1_ClockSource      (1 << 4)  /**< USART1 Clock Source in RCC_APB2ENR */
 #define USART6_ClockSource      (1 << 5)  /**< USART6 Clock Source in RCC_APB2ENR */
 
-extern void USART_PIN_Config(GPIO_TypeDef *GPIOx, uint8_t GPIO_AFx, uint8_t USART_Rx_PIN, uint8_t USART_Tx_PIN);
-extern void USART_Config(USART_TypeDef *USARTx, uint32_t SysClock, uint32_t Baudrate, boolean OverSamplingMode, uint8_t DataLengthCode, uint8_t NumberOfStopBit, uint8_t ParityCheck);
-extern void USART_SetMode(USART_TypeDef *USARTx, USART_Mode Mode);
-extern USART_Mode USART_GetMode(USART_TypeDef *USARTx);
-extern void USART_EnableFIFO(USART_TypeDef *USARTx);
-extern void USART_DisableFIFO(USART_TypeDef *USARTx);
-extern boolean USART_IsFIFOEnabled(USART_TypeDef *USARTx);
-extern void USART_Enable_Interrupt(USART_TypeDef *USARTx, uint32_t Interrupt_Mode);
-extern boolean USART_Check_Interrupt_Flag(USART_TypeDef *USARTx, USART_Interrupt_Mode Interrupt_Mode);
-extern void USART_Clear_Interrupt_Flag(USART_TypeDef *USARTx, USART_Interrupt_Mode Interrupt_Mode);
-extern void USART_Enable_ClockSource(USART_TypeDef *USARTx);
-extern void USART_Enable(USART_TypeDef *USARTx);
-extern void USART_Disable(USART_TypeDef *USARTx);
-extern void USART_Transmit_Single_Data(USART_TypeDef *USARTx, uint16_t Data);
-extern void USART_Transmit(USART_TypeDef *USARTx, const char *str);
-extern uint16_t USART_Receive_Single_Data(USART_TypeDef *USARTx);
+extern void USART_PIN_Config(GPIO_ST *GPIOx, uint8_t GPIO_AFx, uint8_t USART_Rx_PIN, uint8_t USART_Tx_PIN);
+extern void USART_Config(USART_ST *USARTx, uint32_t SysClock, uint32_t Baudrate, boolean OverSamplingMode, uint8_t DataLengthCode, uint8_t NumberOfStopBit, uint8_t ParityCheck);
+extern void USART_SetMode(USART_ST *USARTx, USART_Mode Mode);
+extern USART_Mode USART_GetMode(USART_ST *USARTx);
+extern void USART_EnableFIFO(USART_ST *USARTx);
+extern void USART_DisableFIFO(USART_ST *USARTx);
+extern boolean USART_IsFIFOEnabled(USART_ST *USARTx);
+extern void USART_Enable_Interrupt(USART_ST *USARTx, uint32_t Interrupt_Mode);
+extern boolean USART_Check_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode);
+extern void USART_Clear_Interrupt_Flag(USART_ST *USARTx, USART_Interrupt_Mode Interrupt_Mode);
+extern void USART_Enable_ClockSource(USART_ST *USARTx);
+extern void USART_Enable(USART_ST *USARTx);
+extern void USART_Disable(USART_ST *USARTx);
+extern void USART_Transmit_Single_Data(USART_ST *USARTx, uint16_t Data);
+extern void USART_Transmit(USART_ST *USARTx, const char *str);
+extern uint16_t USART_Receive_Single_Data(USART_ST *USARTx);
 
-extern void USART_FlushReceiveData(USART_TypeDef *USARTx);
-extern void USART_FlushTransmitData(USART_TypeDef *USARTx);
-extern void USART_SendBreakRequest(USART_TypeDef *USARTx);
-extern void USART_EnterMuteMode(USART_TypeDef *USARTx);
-extern void USART_AutoBaudRateRequest(USART_TypeDef *USARTx);
+extern void USART_FlushReceiveData(USART_ST *USARTx);
+extern void USART_FlushTransmitData(USART_ST *USARTx);
+extern void USART_SendBreakRequest(USART_ST *USARTx);
+extern void USART_EnterMuteMode(USART_ST *USARTx);
+extern void USART_AutoBaudRateRequest(USART_ST *USARTx);
 
 #endif

@@ -47,12 +47,12 @@
 #define TIM13_CLKSRC (1 << 7)  /**< Bit 7: TIM13 clock source enable */
 #define TIM14_CLKSRC (1 << 8)  /**< Bit 8: TIM13 clock source enable */
 
-extern void TIM_Enable_ClockSource(TIM_TypeDef *TIMx);
-extern void TIM_Config(TIM_TypeDef *TIMx, uint32_t TIMx_PSC, uint32_t TIMx_ARR, boolean Counter_Direction);
-extern void TIM_DMA_Interrupt_Mode_Enable(TIM_TypeDef *TIMx, uint8_t DMA_Interrupt_Mode);
-extern void TIM_DMA_Interrupt_Mode_Disable(TIM_TypeDef *TIMx, uint8_t DMA_Interrupt_Mode);
-extern void TIM_DMA_Interrupt_Clear_Status(TIM_TypeDef *TIMx);
-extern boolean TIM_DMA_Interrupt_Check_Status(TIM_TypeDef *TIMx);
-extern void TIM_Enable(TIM_TypeDef *TIMx);
+extern void TIM_Enable_ClockSource(TIM_ST *TIMx);
+extern void TIM_Config(TIM_ST *TIMx, uint32_t TIMx_PSC, uint32_t TIMx_ARR, boolean Counter_Direction);
+extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
+extern void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
+extern void TIM_DMA_Interrupt_Clear_Status(TIM_ST *TIMx);
+extern boolean TIM_DMA_Interrupt_Check_Status(TIM_ST *TIMx);
+extern void TIM_Enable(TIM_ST *TIMx);
 
 #endif

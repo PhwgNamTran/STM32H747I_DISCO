@@ -4,16 +4,17 @@
 #include "STM32H747xx.h"
 
 /**
-  * @brief   GPIO Init structure definition
+  * @brief   GPIO structure definition
   */
 typedef struct
 {
-  GPIO_Pin_N                Pin;       /*!< Specifies the GPIO pins to be configured. */
-  GPIO_Mode_N               Mode;      /*!< Specifies the operating mode for the selected pins. */
-  GPIO_Pull_N               Pull;      /*!< Specifies the Pull-up or Pull-Down activation for the selected pins. */
-  GPIO_Speed_N              Speed;     /*!< Specifies the speed for the selected pins. */
-  GPIO_AlternateFunction_N  Alternate; /*!< Peripheral to be connected to the selected pins. */
-} GPIO_InitTypeDef;
+  GPIO_ST                   *Port;      /*!< GPIO registers base address */
+  GPIO_Pin_N                Pin;        /*!< Specifies the GPIO pins to be configured. */
+  GPIO_Mode_N               Mode;       /*!< Specifies the operating mode for the selected pins. */
+  GPIO_Pull_N               Pull;       /*!< Specifies the Pull-up or Pull-Down activation for the selected pins. */
+  GPIO_Speed_N              Speed;      /*!< Specifies the speed for the selected pins. */
+  GPIO_AlternateFunction_N  Alternate;  /*!< Peripheral to be connected to the selected pins. */
+} GPIO_Handle_ST;
 
 /**
   * @brief   Enum for GPIO Pins
@@ -121,14 +122,16 @@ typedef enum
     GPIO_Lock_N            /**< GPIO Locked */
 } GPIO_Lock_N;
 
+extern void GPIO_Init(GPIO_Handle_ST IO_Pin);
+
 extern void GPIO_Enable_ClockSource(uint16_t GPIOx_CLKSRC);
 extern void GPIO_Disable_ClockSource(uint16_t GPIOx_CLKSRC);
-extern void GPIO_Mode_Set(GPIO_TypeDef *GPIOx, uint8_t Pin, uint8_t Mode);
-extern void GPIO_Pull_Set(GPIO_TypeDef *GPIOx, uint8_t Pin, uint8_t Pull);
-extern void GPIO_OutputType_Set(GPIO_TypeDef *GPIOx, uint8_t Pin, boolean OutputType); 
-extern void GPIO_OutputData_Set(GPIO_TypeDef *GPIOx, uint8_t Pin);
-extern void GPIO_OutputData_Reset(GPIO_TypeDef *GPIOx, uint8_t Pin);
-extern void GPIO_OutputData_Toggle(GPIO_TypeDef *GPIOx, uint8_t Pin);
-extern void GPIO_Select_Alternate_Function(GPIO_TypeDef *GPIOx, uint8_t Pin, uint8_t AFx);
+extern void GPIO_Mode_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Mode);
+extern void GPIO_Pull_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Pull);
+extern void GPIO_OutputType_Set(GPIO_ST *GPIOx, uint8_t Pin, boolean OutputType); 
+extern void GPIO_OutputData_Set(GPIO_ST *GPIOx, uint8_t Pin);
+extern void GPIO_OutputData_Reset(GPIO_ST *GPIOx, uint8_t Pin);
+extern void GPIO_OutputData_Toggle(GPIO_ST *GPIOx, uint8_t Pin);
+extern void GPIO_Select_Alternate_Function(GPIO_ST *GPIOx, uint8_t Pin, uint8_t AFx);
 
 #endif
