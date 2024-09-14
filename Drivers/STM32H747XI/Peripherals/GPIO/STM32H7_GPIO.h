@@ -3,23 +3,40 @@
 
 #include "STM32H747xx.h"
 
-/* GPIO Pin Number Definitions */
-#define GPIO_PIN_0     0U  /**< GPIO Pin 0 */
-#define GPIO_PIN_1     1U  /**< GPIO Pin 1 */
-#define GPIO_PIN_2     2U  /**< GPIO Pin 2 */
-#define GPIO_PIN_3     3U  /**< GPIO Pin 3 */
-#define GPIO_PIN_4     4U  /**< GPIO Pin 4 */
-#define GPIO_PIN_5     5U  /**< GPIO Pin 5 */
-#define GPIO_PIN_6     6U  /**< GPIO Pin 6 */
-#define GPIO_PIN_7     7U  /**< GPIO Pin 7 */
-#define GPIO_PIN_8     8U  /**< GPIO Pin 8 */
-#define GPIO_PIN_9     9U  /**< GPIO Pin 9 */
-#define GPIO_PIN_10    10U /**< GPIO Pin 10 */
-#define GPIO_PIN_11    11U /**< GPIO Pin 11 */
-#define GPIO_PIN_12    12U /**< GPIO Pin 12 */
-#define GPIO_PIN_13    13U /**< GPIO Pin 13 */
-#define GPIO_PIN_14    14U /**< GPIO Pin 14 */
-#define GPIO_PIN_15    15U /**< GPIO Pin 15 */
+/**
+  * @brief   GPIO Init structure definition
+  */
+typedef struct
+{
+  uint32_t Pin;       /*!< Specifies the GPIO pins to be configured. */
+  uint32_t Mode;      /*!< Specifies the operating mode for the selected pins. */
+  uint32_t Pull;      /*!< Specifies the Pull-up or Pull-Down activation for the selected pins. */
+  uint32_t Speed;     /*!< Specifies the speed for the selected pins. */
+  uint32_t Alternate; /*!< Peripheral to be connected to the selected pins. */
+} GPIO_InitTypeDef;
+
+/**
+  * @brief   GPIO Pin structure definition
+  */
+typedef enum
+{
+    GPIO_PIN_0  = (uint16_t) 0x0001,  /**< GPIO Pin 0 */
+    GPIO_PIN_1  = (uint16_t) 0x0002,  /**< GPIO Pin 1 */
+    GPIO_PIN_2  = (uint16_t) 0x0004,  /**< GPIO Pin 2 */
+    GPIO_PIN_3  = (uint16_t) 0x0008,  /**< GPIO Pin 3 */
+    GPIO_PIN_4  = (uint16_t) 0x0010,  /**< GPIO Pin 4 */
+    GPIO_PIN_5  = (uint16_t) 0x0020,  /**< GPIO Pin 5 */
+    GPIO_PIN_6  = (uint16_t) 0x0040,  /**< GPIO Pin 6 */
+    GPIO_PIN_7  = (uint16_t) 0x0080,  /**< GPIO Pin 7 */
+    GPIO_PIN_8  = (uint16_t) 0x0100,  /**< GPIO Pin 8 */
+    GPIO_PIN_9  = (uint16_t) 0x0200,  /**< GPIO Pin 9 */
+    GPIO_PIN_10 = (uint16_t) 0x0400,  /**< GPIO Pin 10 */
+    GPIO_PIN_11 = (uint16_t) 0x0800,  /**< GPIO Pin 11 */
+    GPIO_PIN_12 = (uint16_t) 0x1000,  /**< GPIO Pin 12 */
+    GPIO_PIN_13 = (uint16_t) 0x2000,  /**< GPIO Pin 13 */
+    GPIO_PIN_14 = (uint16_t) 0x4000,  /**< GPIO Pin 14 */
+    GPIO_PIN_15 = (uint16_t) 0x8000   /**< GPIO Pin 15 */
+} GPIO_PinTypeDef;
 
 /* GPIO Alternate Functions number definitions */
 #define GPIO_AF_0      0U  /**< GPIO Alternate Function 0 */
@@ -39,11 +56,16 @@
 #define GPIO_AF_14     14U /**< GPIO Alternate Function 14 */
 #define GPIO_AF_15     15U /**< GPIO Alternate Function 15 */
 
-/* GPIO Mode Value */
-#define GPIO_Mode_Input                     0U  /**< GPIO Input Mode */
-#define GPIO_Mode_General_Purpose_Output    1U  /**< GPIO General Purpose Output Mode */
-#define GPIO_Mode_Alternate_Function        2U  /**< GPIO Alternate Function Mode */
-#define GPIO_Mode_Analog                    3U  /**< GPIO Analog Mode */
+/**
+  * @brief   GPIO Mode structure definition
+  */
+typedef enum
+{
+    GPIO_Mode_Input = 0U,                  /**< GPIO Input Mode */
+    GPIO_Mode_General_Purpose_Output = 1U, /**< GPIO General Purpose Output Mode */
+    GPIO_Mode_Alternate_Function = 2U,     /**< GPIO Alternate Function Mode */
+    GPIO_Mode_Analog = 3U                  /**< GPIO Analog Mode */
+} GPIO_ModeTypeDef;
 
 /* GPIO Register Pull Value */
 #define GPIO_No_Pull                        0U  /**< GPIO No Pull */
