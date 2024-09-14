@@ -61,6 +61,17 @@ typedef enum
 } GPIO_Pull_N;
 
 /**
+  * @brief   Enum for GPIO Speed settings
+  */
+typedef enum
+{
+    GPIO_Speed_Low_N = 0U,    /**< GPIO Speed Low */
+    GPIO_Speed_Medium_N,      /**< GPIO Speed Medium */
+    GPIO_Speed_High_N,        /**< GPIO Speed High */
+    GPIO_Speed_VeryHigh_N     /**< GPIO Speed Very High */
+} GPIO_Speed_N;
+
+/**
   * @brief   Enum for GPIO Alternate Functions
   */
 typedef enum
