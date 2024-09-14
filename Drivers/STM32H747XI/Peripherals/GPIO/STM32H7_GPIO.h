@@ -8,11 +8,11 @@
   */
 typedef struct
 {
-  uint32_t Pin;       /*!< Specifies the GPIO pins to be configured. */
-  uint32_t Mode;      /*!< Specifies the operating mode for the selected pins. */
-  uint32_t Pull;      /*!< Specifies the Pull-up or Pull-Down activation for the selected pins. */
-  uint32_t Speed;     /*!< Specifies the speed for the selected pins. */
-  uint32_t Alternate; /*!< Peripheral to be connected to the selected pins. */
+  GPIO_Pin_N Pin;                     /*!< Specifies the GPIO pins to be configured. */
+  GPIO_Mode_N Mode;                   /*!< Specifies the operating mode for the selected pins. */
+  GPIO_Pull_N Pull;                   /*!< Specifies the Pull-up or Pull-Down activation for the selected pins. */
+  GPIO_Speed_N Speed;                 /*!< Specifies the speed for the selected pins. */
+  GPIO_AlternateFunction_N Alternate; /*!< Peripheral to be connected to the selected pins. */
 } GPIO_InitTypeDef;
 
 /**
