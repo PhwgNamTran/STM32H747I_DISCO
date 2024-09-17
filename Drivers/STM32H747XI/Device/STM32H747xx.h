@@ -14649,54 +14649,8 @@ typedef struct
 #define GPIO_MODER_MODE_Size           (2U)
 
 /******************  Bits definition for GPIO_OTYPER register  ****************/
-#define GPIO_OTYPER_OT0_Pos            (0U)
-#define GPIO_OTYPER_OT0_Msk            (0x1UL << GPIO_OTYPER_OT0_Pos)          /*!< 0x00000001 */
-#define GPIO_OTYPER_OT0                GPIO_OTYPER_OT0_Msk
-#define GPIO_OTYPER_OT1_Pos            (1U)
-#define GPIO_OTYPER_OT1_Msk            (0x1UL << GPIO_OTYPER_OT1_Pos)          /*!< 0x00000002 */
-#define GPIO_OTYPER_OT1                GPIO_OTYPER_OT1_Msk
-#define GPIO_OTYPER_OT2_Pos            (2U)
-#define GPIO_OTYPER_OT2_Msk            (0x1UL << GPIO_OTYPER_OT2_Pos)          /*!< 0x00000004 */
-#define GPIO_OTYPER_OT2                GPIO_OTYPER_OT2_Msk
-#define GPIO_OTYPER_OT3_Pos            (3U)
-#define GPIO_OTYPER_OT3_Msk            (0x1UL << GPIO_OTYPER_OT3_Pos)          /*!< 0x00000008 */
-#define GPIO_OTYPER_OT3                GPIO_OTYPER_OT3_Msk
-#define GPIO_OTYPER_OT4_Pos            (4U)
-#define GPIO_OTYPER_OT4_Msk            (0x1UL << GPIO_OTYPER_OT4_Pos)          /*!< 0x00000010 */
-#define GPIO_OTYPER_OT4                GPIO_OTYPER_OT4_Msk
-#define GPIO_OTYPER_OT5_Pos            (5U)
-#define GPIO_OTYPER_OT5_Msk            (0x1UL << GPIO_OTYPER_OT5_Pos)          /*!< 0x00000020 */
-#define GPIO_OTYPER_OT5                GPIO_OTYPER_OT5_Msk
-#define GPIO_OTYPER_OT6_Pos            (6U)
-#define GPIO_OTYPER_OT6_Msk            (0x1UL << GPIO_OTYPER_OT6_Pos)          /*!< 0x00000040 */
-#define GPIO_OTYPER_OT6                GPIO_OTYPER_OT6_Msk
-#define GPIO_OTYPER_OT7_Pos            (7U)
-#define GPIO_OTYPER_OT7_Msk            (0x1UL << GPIO_OTYPER_OT7_Pos)          /*!< 0x00000080 */
-#define GPIO_OTYPER_OT7                GPIO_OTYPER_OT7_Msk
-#define GPIO_OTYPER_OT8_Pos            (8U)
-#define GPIO_OTYPER_OT8_Msk            (0x1UL << GPIO_OTYPER_OT8_Pos)          /*!< 0x00000100 */
-#define GPIO_OTYPER_OT8                GPIO_OTYPER_OT8_Msk
-#define GPIO_OTYPER_OT9_Pos            (9U)
-#define GPIO_OTYPER_OT9_Msk            (0x1UL << GPIO_OTYPER_OT9_Pos)          /*!< 0x00000200 */
-#define GPIO_OTYPER_OT9                GPIO_OTYPER_OT9_Msk
-#define GPIO_OTYPER_OT10_Pos           (10U)
-#define GPIO_OTYPER_OT10_Msk           (0x1UL << GPIO_OTYPER_OT10_Pos)         /*!< 0x00000400 */
-#define GPIO_OTYPER_OT10               GPIO_OTYPER_OT10_Msk
-#define GPIO_OTYPER_OT11_Pos           (11U)
-#define GPIO_OTYPER_OT11_Msk           (0x1UL << GPIO_OTYPER_OT11_Pos)         /*!< 0x00000800 */
-#define GPIO_OTYPER_OT11               GPIO_OTYPER_OT11_Msk
-#define GPIO_OTYPER_OT12_Pos           (12U)
-#define GPIO_OTYPER_OT12_Msk           (0x1UL << GPIO_OTYPER_OT12_Pos)         /*!< 0x00001000 */
-#define GPIO_OTYPER_OT12               GPIO_OTYPER_OT12_Msk
-#define GPIO_OTYPER_OT13_Pos           (13U)
-#define GPIO_OTYPER_OT13_Msk           (0x1UL << GPIO_OTYPER_OT13_Pos)         /*!< 0x00002000 */
-#define GPIO_OTYPER_OT13               GPIO_OTYPER_OT13_Msk
-#define GPIO_OTYPER_OT14_Pos           (14U)
-#define GPIO_OTYPER_OT14_Msk           (0x1UL << GPIO_OTYPER_OT14_Pos)         /*!< 0x00004000 */
-#define GPIO_OTYPER_OT14               GPIO_OTYPER_OT14_Msk
-#define GPIO_OTYPER_OT15_Pos           (15U)
-#define GPIO_OTYPER_OT15_Msk           (0x1UL << GPIO_OTYPER_OT15_Pos)         /*!< 0x00008000 */
-#define GPIO_OTYPER_OT15               GPIO_OTYPER_OT15_Msk
+#define GPIO_OTYPER_OT_Mask            (0x1UL)
+#define GPIO_OTYPER_OT_Size            (1U)
 
 /******************  Bits definition for GPIO_OSPEEDR register  ***************/
 #define GPIO_OSPEEDR_OSPEED0_Pos       (0U)

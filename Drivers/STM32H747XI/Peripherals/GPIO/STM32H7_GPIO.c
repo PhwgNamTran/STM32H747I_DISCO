@@ -22,20 +22,20 @@ void GPIO_Mode_Set(GPIO_ST *GPIOx, GPIO_Pin_N Pin, GPIO_Mode_N Mode)
     SET_BIT(GPIOx->MODER, ((Mode & GPIO_MODER_MODE_Mask) << (Pin * GPIO_MODER_MODE_Size)));
 }
 
+void GPIO_OutputType_Set(GPIO_ST *GPIOx, GPIO_Pin_N Pin, GPIO_OutputType_N OutputType)
+{
+    // Clear the output type register for the specified pin
+    CLEAR_BIT(GPIOx->OTYPER, (GPIO_OTYPER_OT_Mask << (Pin * GPIO_OTYPER_OT_Size)));
+    // Set the new output type for the specified pin
+    SET_BIT(GPIOx->OTYPER, ((OutputType & GPIO_OTYPER_OT_Mask) << (Pin * GPIO_OTYPER_OT_Size)));
+}
+
 void GPIO_Pull_Set(GPIO_ST *GPIOx, uint8_t Pin, uint8_t Pull)
 {
     // Clear the pull-up/pull-down register for the specified pin
     CLEAR_BIT(GPIOx->PUPDR, (0x3 << (Pin * 2)));
     // Set the new pull-up/pull-down configuration for the specified pin
     SET_BIT(GPIOx->PUPDR, ((Pull & 0x3) << (Pin * 2)));
-}
-
-void GPIO_OutputType_Set(GPIO_ST *GPIOx, uint8_t Pin, boolean OutputType)
-{
-    // Clear the output type register for the specified pin
-    CLEAR_BIT(GPIOx->OTYPER, (0x1 << Pin));
-    // Set the new output type for the specified pin
-    SET_BIT(GPIOx->OTYPER, (OutputType << Pin));
 }
 
 void GPIO_OutputData_Set(GPIO_ST *GPIOx, uint8_t Pin)
