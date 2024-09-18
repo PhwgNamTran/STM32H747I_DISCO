@@ -24,4 +24,5 @@ typedef bool ReturnType;
 /* Value definition for ReturnType */
 #define E_OK    false
 #define E_NOK   true
+
 #endif
