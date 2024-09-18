@@ -14645,41 +14645,41 @@ typedef struct
 /*                                                                            */
 /******************************************************************************/
 /******************  Bits definition for GPIO_MODER register  *****************/
-#define GPIO_MODER_MODEx_Mask           (0x3UL)
-#define GPIO_MODER_MODEx_Size           (2U)
+#define GPIO_MODER_MODEx_MASK           (0x3UL)
+#define GPIO_MODER_MODEx_SIZE           (2U)
 
 /******************  Bits definition for GPIO_OTYPER register  ****************/
-#define GPIO_OTYPER_OTx_Mask            (0x1UL)
-#define GPIO_OTYPER_OTx_Size            (1U)
+#define GPIO_OTYPER_OTx_MASK            (0x1UL)
+#define GPIO_OTYPER_OTx_SIZE            (1U)
 
 /******************  Bits definition for GPIO_OSPEEDR register  ***************/
-#define GPIO_OSPEEDR_OSPEEDx_Mask       (0x3UL)
-#define GPIO_OSPEEDR_OSPEEDx_Size       (2U)
+#define GPIO_OSPEEDR_OSPEEDx_MASK       (0x3UL)
+#define GPIO_OSPEEDR_OSPEEDx_SIZE       (2U)
 
 /******************  Bits definition for GPIO_PUPDR register  *****************/
-#define GPIO_PUPDR_PUPDx_Mask           (0x3UL)
-#define GPIO_PUPDR_PUPDx_Size           (2U)
+#define GPIO_PUPDR_PUPDx_MASK           (0x3UL)
+#define GPIO_PUPDR_PUPDx_SIZE           (2U)
 
 /******************  Bits definition for GPIO_IDR register  *******************/
-#define GPIO_IDR_IDx_Mask               (0x1UL)
-#define GPIO_IDR_IDx_Size               (1U)
+#define GPIO_IDR_IDx_MASK               (0x1UL)
+#define GPIO_IDR_IDx_SIZE               (1U)
 
 /******************  Bits definition for GPIO_ODR register  *******************/
-#define GPIO_ODR_ODx_Mask               (0x1UL)
-#define GPIO_ODR_ODx_Size               (1U)
+#define GPIO_ODR_ODx_MASK               (0x1UL)
+#define GPIO_ODR_ODx_SIZE               (1U)
 
 /******************  Bits definition for GPIO_BSRR register  ******************/
-#define GPIO_BSRR_IDx_Mask              (0x1UL)
-#define GPIO_BSRR_IDx_Size              (1U)
+#define GPIO_BSRR_IDx_MASK              (0x1UL)
+#define GPIO_BSRR_IDx_SIZE              (1U)
 
 /****************** Bit definition for GPIO_LCKR register *********************/
-#define GPIO_LCKR_LCKx_Mask             (0x1UL)
-#define GPIO_LCKR_LCKx_Size             (1U)
+#define GPIO_LCKR_LCKx_MASK             (0x1UL)
+#define GPIO_LCKR_LCKx_SIZE             (1U)
 
 /****************** Bit definition for GPIO_AFRL register  ********************/
-#define GPIO_AFRx_AFSELx_Mask           (0xFUL)
-#define GPIO_AFRx_AFSELx_Size           (4U)
-
+#define GPIO_AFRx_AFSELx_MASK           (0xFUL)
+#define GPIO_AFRx_AFSELx_SIZE           (4U)
+#define GPIO_AFRx_PINS_PER_REGISTER     (8U) 
 /******************************************************************************/
 /*                                                                            */
 /*                        HSEM HW Semaphore                                   */

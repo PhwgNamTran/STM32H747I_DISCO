@@ -5,6 +5,7 @@
 
 /* C Types */
 typedef bool boolean;
+typedef bool ReturnType;
 
 /* Macros for bit manipulation */
 #define SET_BIT(REG, BIT)     ((REG) |= (BIT))       /**< Set a bit in a register */
@@ -17,7 +18,9 @@ typedef bool boolean;
 #define MODIFY_REG(REG, CLEARMASK, SETMASK)  WRITE_REG((REG), (((READ_REG(REG)) & (~(CLEARMASK))) | (SETMASK))) /**< Modify a register */
 
 /* Standard ON and OFF definitions */
-#define STD_ON  1  /**< Standard ON */
-#define STD_OFF 0  /**< Standard OFF */
+#define STD_ON  true  /**< Standard ON */
+#define STD_OFF false  /**< Standard OFF */
 
+#define E_OK    false
+#define E_NOK   true
 #endif
