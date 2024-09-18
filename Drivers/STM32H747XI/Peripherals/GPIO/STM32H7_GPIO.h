@@ -113,7 +113,7 @@ extern ReturnType GPIO_Mode_Set(GPIO_ST *GPIOx, GPIO_Pin_N Pin, GPIO_Mode_N Mode
 extern ReturnType GPIO_OutputType_Set(GPIO_ST *GPIOx, GPIO_Pin_N Pin, GPIO_OutputType_N OutputType);
 extern ReturnType GPIO_Pull_Set(GPIO_ST *GPIOx, GPIO_Pin_N Pin, GPIO_Pull_N Pull);
 extern ReturnType GPIO_Alternate_Function_Set(GPIO_ST *GPIOx, GPIO_Pin_N Pin, GPIO_AlternateFunction_N AFx);
-extern boolean GPIO_OutputData_Get(GPIO_ST *GPIOx, GPIO_Pin_N Pin);
+extern boolean    GPIO_OutputData_Get(GPIO_ST *GPIOx, GPIO_Pin_N Pin);
 extern ReturnType GPIO_OutputData_Set(GPIO_ST *GPIOx, GPIO_Pin_N Pin);
 extern ReturnType GPIO_OutputData_Reset(GPIO_ST *GPIOx, GPIO_Pin_N Pin);
 extern ReturnType GPIO_OutputData_Toggle(GPIO_ST *GPIOx, GPIO_Pin_N Pin);
