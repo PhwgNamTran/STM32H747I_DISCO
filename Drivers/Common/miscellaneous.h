@@ -21,6 +21,7 @@ typedef bool ReturnType;
 #define STD_ON  true  /**< Standard ON */
 #define STD_OFF false  /**< Standard OFF */
 
+/* Value definition for ReturnType */
 #define E_OK    false
 #define E_NOK   true
 #endif
