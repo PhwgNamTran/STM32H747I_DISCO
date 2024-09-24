@@ -3,111 +3,142 @@
 
 #include "STM32H747xx.h"
 
+/**
+  * @brief   Enum for EXTI Event Input
+  */
 typedef enum
 {
-    Event_Input_EXTI_0                           = 0,
-    Event_Input_EXTI_1                           = 1,
-    Event_Input_EXTI_2                           = 2,
-    Event_Input_EXTI_3                           = 3,
-    Event_Input_EXTI_4                           = 4,
-    Event_Input_EXTI_5                           = 5,
-    Event_Input_EXTI_6                           = 6,
-    Event_Input_EXTI_7                           = 7,
-    Event_Input_EXTI_8                           = 8,
-    Event_Input_EXTI_9                           = 9,
-    Event_Input_EXTI_10                          = 10,
-    Event_Input_EXTI_11                          = 11,
-    Event_Input_EXTI_12                          = 12,
-    Event_Input_EXTI_13                          = 13,
-    Event_Input_EXTI_14                          = 14,
-    Event_Input_EXTI_15                          = 15,
-    Event_Input_PVD_AVD                          = 16,
-    Event_Input_RTC_Alarms                       = 17,
-    Event_Input_RTC_Tamper_Timestamp_LSECSS      = 18,
-    Event_Input_RTC_Wakeup_Timer                 = 19,
-    Event_Input_COMP1                            = 20,
-    Event_Input_COMP2                            = 21,
-    Event_Input_I2C1_Wakeup                      = 22,
-    Event_Input_I2C2_Wakeup                      = 23,
-    Event_Input_I2C3_Wakeup                      = 24,
-    Event_Input_I2C4_Wakeup                      = 25,
-    Event_Input_USART1_Wakeup                    = 26,
-    Event_Input_USART2_Wakeup                    = 27,
-    Event_Input_USART3_Wakeup                    = 28,
-    Event_Input_USART6_Wakeup                    = 29,
-    Event_Input_UART4_Wakeup                     = 30,
-    Event_Input_UART5_Wakeup                     = 31,
-    Event_Input_UART7_Wakeup                     = 32,
-    Event_Input_UART8_Wakeup                     = 33,
-    Event_Input_LPUART1_RX_Wakeup                = 34,
-    Event_Input_LPUART1_TX_Wakeup                = 35,
-    Event_Input_SPI1_Wakeup                      = 36,
-    Event_Input_SPI2_Wakeup                      = 37,
-    Event_Input_SPI3_Wakeup                      = 38,
-    Event_Input_SPI4_Wakeup                      = 39,
-    Event_Input_SPI5_Wakeup                      = 40,
-    Event_Input_SPI6_Wakeup                      = 41,
-    Event_Input_MDIO_Wakeup                      = 42,
-    Event_Input_USB1_Wakeup                      = 43,
-    Event_Input_USB2_Wakeup                      = 44,
-    Event_Input_DSI_Wakeup                       = 46,
-    Event_Input_LPTIM1_Wakeup                    = 47,
-    Event_Input_LPTIM2_Wakeup                    = 48,
-    Event_Input_LPTIM2_Output                    = 49,
-    Event_Input_LPTIM3_Wakeup                    = 50,
-    Event_Input_LPTIM3_Output                    = 51,
-    Event_Input_LPTIM4_Wakeup                    = 52,
-    Event_Input_LPTIM5_Wakeup                    = 53,
-    Event_Input_SWPMI_Wakeup                     = 54,
-    Event_Input_WKUP1                            = 55,
-    Event_Input_WKUP2                            = 56,
-    Event_Input_WKUP3                            = 57,
-    Event_Input_WKUP4                            = 58,
-    Event_Input_WKUP5                            = 59,
-    Event_Input_WKUP6                            = 60,
-    Event_Input_RCC_Interrupt                    = 61,
-    Event_Input_I2C4_Event_Interrupt             = 62,
-    Event_Input_I2C4_Error_Interrupt             = 63,
-    Event_Input_LPUART1_Global_Interrupt         = 64,
-    Event_Input_SPI6_Interrupt                   = 65,
-    Event_Input_BDMA_CH0_Interrupt               = 66,
-    Event_Input_BDMA_CH1_Interrupt               = 67,
-    Event_Input_BDMA_CH2_Interrupt               = 68,
-    Event_Input_BDMA_CH3_Interrupt               = 69,
-    Event_Input_BDMA_CH4_Interrupt               = 70,
-    Event_Input_BDMA_CH5_Interrupt               = 71,
-    Event_Input_BDMA_CH6_Interrupt               = 72,
-    Event_Input_BDMA_CH7_Interrupt               = 73,
-    Event_Input_DMAMUX2_Interrupt                = 74,
-    Event_Input_ADC3_Interrupt                   = 75,
-    Event_Input_SAI4_Interrupt                   = 76,
-    Event_Input_HSEM0_Interrupt                  = 77,
-    Event_Input_HSEM1_Interrupt                  = 78,
-    Event_Input_CortexM4_SEV_Interrupt           = 79,
-    Event_Input_CortexM7_SEV_Interrupt           = 80,
-    Event_Input_WWDG1_Reset                      = 82,
-    Event_Input_WWDG2_Reset                      = 84,
-    Event_Input_HDMI_CEC_Wakeup                  = 85,
-    Event_Input_ETHERNET_Wakeup                  = 86,
-    Event_Input_HSECSS_Interrupt                 = 87
-}Event_Input_N;
+    /*!< Standard External Interrupts */
+    EXTI_EventInput_EXTI_0_N                           = 0,    /*!< External Interrupt Line 0 */
+    EXTI_EventInput_EXTI_1_N                           = 1,    /*!< External Interrupt Line 1 */
+    EXTI_EventInput_EXTI_2_N                           = 2,    /*!< External Interrupt Line 2 */
+    EXTI_EventInput_EXTI_3_N                           = 3,    /*!< External Interrupt Line 3 */
+    EXTI_EventInput_EXTI_4_N                           = 4,    /*!< External Interrupt Line 4 */
+    EXTI_EventInput_EXTI_5_N                           = 5,    /*!< External Interrupt Line 5 */
+    EXTI_EventInput_EXTI_6_N                           = 6,    /*!< External Interrupt Line 6 */
+    EXTI_EventInput_EXTI_7_N                           = 7,    /*!< External Interrupt Line 7 */
+    EXTI_EventInput_EXTI_8_N                           = 8,    /*!< External Interrupt Line 8 */
+    EXTI_EventInput_EXTI_9_N                           = 9,    /*!< External Interrupt Line 9 */
+    EXTI_EventInput_EXTI_10_N                          = 10,   /*!< External Interrupt Line 10 */
+    EXTI_EventInput_EXTI_11_N                          = 11,   /*!< External Interrupt Line 11 */
+    EXTI_EventInput_EXTI_12_N                          = 12,   /*!< External Interrupt Line 12 */
+    EXTI_EventInput_EXTI_13_N                          = 13,   /*!< External Interrupt Line 13 */
+    EXTI_EventInput_EXTI_14_N                          = 14,   /*!< External Interrupt Line 14 */
+    EXTI_EventInput_EXTI_15_N                          = 15,   /*!< External Interrupt Line 15 */
 
-extern void EXTI_Enable_Event_Input_Interrupt_CPU1(Event_Input_N Event_Input);
-extern void EXTI_Enable_Event_Input_Interrupt_CPU2(Event_Input_N Event_Input);
+    /*!< Peripheral Events */
+    EXTI_EventInput_PVD_AVD_N                          = 16,   /*!< Voltage Detector (PVD) and Analog Voltage Detector (AVD) Interrupt */
+    EXTI_EventInput_RTC_Alarms_N                       = 17,   /*!< RTC Alarms Interrupt */
+    EXTI_EventInput_RTC_Tamper_Timestamp_LSECSS_N      = 18,   /*!< RTC Tamper and Timestamp Interrupt */
+    EXTI_EventInput_RTC_Wakeup_Timer_N                 = 19,   /*!< RTC Wakeup Timer Interrupt */
+    EXTI_EventInput_COMP1_N                            = 20,   /*!< Comparator 1 Interrupt */
+    EXTI_EventInput_COMP2_N                            = 21,   /*!< Comparator 2 Interrupt */
 
-extern void EXTI_Disable_Event_Input_Interrupt_CPU1(Event_Input_N Event_Input);
-extern void EXTI_Disable_Event_Input_Interrupt_CPU2(Event_Input_N Event_Input);
+    /*!< I2C Wakeup Events */
+    EXTI_EventInput_I2C1_Wakeup_N                      = 22,   /*!< I2C1 Wakeup Interrupt */
+    EXTI_EventInput_I2C2_Wakeup_N                      = 23,   /*!< I2C2 Wakeup Interrupt */
+    EXTI_EventInput_I2C3_Wakeup_N                      = 24,   /*!< I2C3 Wakeup Interrupt */
+    EXTI_EventInput_I2C4_Wakeup_N                      = 25,   /*!< I2C4 Wakeup Interrupt */
 
-extern void EXTI_Clear_Trigger_Request_Flag_CPU1(Event_Input_N Event_Input);
-extern void EXTI_Clear_Trigger_Request_Flag_CPU2(Event_Input_N Event_Input);
+    /*!< USART Wakeup Events */
+    EXTI_EventInput_USART1_Wakeup_N                    = 26,   /*!< USART1 Wakeup Interrupt */
+    EXTI_EventInput_USART2_Wakeup_N                    = 27,   /*!< USART2 Wakeup Interrupt */
+    EXTI_EventInput_USART3_Wakeup_N                    = 28,   /*!< USART3 Wakeup Interrupt */
+    EXTI_EventInput_USART6_Wakeup_N                    = 29,   /*!< USART6 Wakeup Interrupt */
+    EXTI_EventInput_UART4_Wakeup_N                     = 30,   /*!< UART4 Wakeup Interrupt */
+    EXTI_EventInput_UART5_Wakeup_N                     = 31,   /*!< UART5 Wakeup Interrupt */
+    EXTI_EventInput_UART7_Wakeup_N                     = 32,   /*!< UART7 Wakeup Interrupt */
+    EXTI_EventInput_UART8_Wakeup_N                     = 33,   /*!< UART8 Wakeup Interrupt */
 
-extern boolean EXTI_Trigger_Request_Occurred_CPU1_B(Event_Input_N Event_Input);
-extern boolean EXTI_Trigger_Request_Occurred_CPU2_B(Event_Input_N Event_Input);
+    /*!< Low-Power UART Events */
+    EXTI_EventInput_LPUART1_RX_Wakeup_N                = 34,   /*!< LPUART1 RX Wakeup Interrupt */
+    EXTI_EventInput_LPUART1_TX_Wakeup_N                = 35,   /*!< LPUART1 TX Wakeup Interrupt */
 
-extern void EXTI_Enable_Rising_Trigger(Event_Input_N Event_Input);
-extern void EXTI_Disable_Rising_Trigger(Event_Input_N Event_Input);
+    /*!< SPI Wakeup Events */
+    EXTI_EventInput_SPI1_Wakeup_N                      = 36,   /*!< SPI1 Wakeup Interrupt */
+    EXTI_EventInput_SPI2_Wakeup_N                      = 37,   /*!< SPI2 Wakeup Interrupt */
+    EXTI_EventInput_SPI3_Wakeup_N                      = 38,   /*!< SPI3 Wakeup Interrupt */
+    EXTI_EventInput_SPI4_Wakeup_N                      = 39,   /*!< SPI4 Wakeup Interrupt */
+    EXTI_EventInput_SPI5_Wakeup_N                      = 40,   /*!< SPI5 Wakeup Interrupt */
+    EXTI_EventInput_SPI6_Wakeup_N                      = 41,   /*!< SPI6 Wakeup Interrupt */
 
-extern void EXTI_Enable_Falling_Trigger(Event_Input_N Event_Input);
-extern void EXTI_Disable_Falling_Trigger(Event_Input_N Event_Input);
+    /*!< MDIO and USB Wakeup Events */
+    EXTI_EventInput_MDIO_Wakeup_N                      = 42,   /*!< MDIO Wakeup Interrupt */
+    EXTI_EventInput_USB1_Wakeup_N                      = 43,   /*!< USB1 Wakeup Interrupt */
+    EXTI_EventInput_USB2_Wakeup_N                      = 44,   /*!< USB2 Wakeup Interrupt */
+
+    /*!< Miscellaneous Wakeup and Interrupt Events */
+    EXTI_EventInput_DSI_Wakeup_N                       = 46,   /*!< DSI Wakeup Interrupt */
+    EXTI_EventInput_LPTIM1_Wakeup_N                    = 47,   /*!< LPTIM1 Wakeup Interrupt */
+    EXTI_EventInput_LPTIM2_Wakeup_N                    = 48,   /*!< LPTIM2 Wakeup Interrupt */
+    EXTI_EventInput_LPTIM2_Output_N                    = 49,   /*!< LPTIM2 Output Interrupt */
+    EXTI_EventInput_LPTIM3_Wakeup_N                    = 50,   /*!< LPTIM3 Wakeup Interrupt */
+    EXTI_EventInput_LPTIM3_Output_N                    = 51,   /*!< LPTIM3 Output Interrupt */
+    EXTI_EventInput_LPTIM4_Wakeup_N                    = 52,   /*!< LPTIM4 Wakeup Interrupt */
+    EXTI_EventInput_LPTIM5_Wakeup_N                    = 53,   /*!< LPTIM5 Wakeup Interrupt */
+    EXTI_EventInput_SWPMI_Wakeup_N                     = 54,   /*!< SWPMI Wakeup Interrupt */
+
+    /*!< Wakeup Interrupts */
+    EXTI_EventInput_WKUP1_N                            = 55,   /*!< WKUP1 Interrupt */
+    EXTI_EventInput_WKUP2_N                            = 56,   /*!< WKUP2 Interrupt */
+    EXTI_EventInput_WKUP3_N                            = 57,   /*!< WKUP3 Interrupt */
+    EXTI_EventInput_WKUP4_N                            = 58,   /*!< WKUP4 Interrupt */
+    EXTI_EventInput_WKUP5_N                            = 59,   /*!< WKUP5 Interrupt */
+    EXTI_EventInput_WKUP6_N                            = 60,   /*!< WKUP6 Interrupt */
+
+    /*!< RCC and I2C4 Interrupts */
+    EXTI_EventInput_RCC_Interrupt_N                    = 61,   /*!< RCC Interrupt */
+    EXTI_EventInput_I2C4_Event_Interrupt_N             = 62,   /*!< I2C4 Event Interrupt */
+    EXTI_EventInput_I2C4_Error_Interrupt_N             = 63,   /*!< I2C4 Error Interrupt */
+
+    /*!< Other Interrupts */
+    EXTI_EventInput_LPUART1_Global_Interrupt_N         = 64,   /*!< LPUART1 Global Interrupt */
+    EXTI_EventInput_SPI6_Interrupt_N                   = 65,   /*!< SPI6 Interrupt */
+    EXTI_EventInput_BDMA_CH0_Interrupt_N               = 66,   /*!< BDMA Channel 0 Interrupt */
+    EXTI_EventInput_BDMA_CH1_Interrupt_N               = 67,   /*!< BDMA Channel 1 Interrupt */
+    EXTI_EventInput_BDMA_CH2_Interrupt_N               = 68,   /*!< BDMA Channel 2 Interrupt */
+    EXTI_EventInput_BDMA_CH3_Interrupt_N               = 69,   /*!< BDMA Channel 3 Interrupt */
+    EXTI_EventInput_BDMA_CH4_Interrupt_N               = 70,   /*!< BDMA Channel 4 Interrupt */
+    EXTI_EventInput_BDMA_CH5_Interrupt_N               = 71,   /*!< BDMA Channel 5 Interrupt */
+    EXTI_EventInput_BDMA_CH6_Interrupt_N               = 72,   /*!< BDMA Channel 6 Interrupt */
+    EXTI_EventInput_BDMA_CH7_Interrupt_N               = 73,   /*!< BDMA Channel 7 Interrupt */
+    EXTI_EventInput_DMAMUX2_Interrupt_N                = 74,   /*!< DMAMUX2 Interrupt */
+    EXTI_EventInput_ADC3_Interrupt_N                   = 75,   /*!< ADC3 Interrupt */
+    EXTI_EventInput_SAI4_Interrupt_N                   = 76,   /*!< SAI4 Interrupt */
+    EXTI_EventInput_HSEM0_Interrupt_N                  = 77,   /*!< HSEM0 Interrupt */
+    EXTI_EventInput_HSEM1_Interrupt_N                  = 78,   /*!< HSEM1 Interrupt */
+
+    /*!< Cortex-M Specific Interrupts */
+    EXTI_EventInput_CortexM4_SEV_Interrupt_N           = 79,   /*!< Cortex-M4 SEV Interrupt */
+    EXTI_EventInput_CortexM7_SEV_Interrupt_N           = 80,   /*!< Cortex-M7 SEV Interrupt */
+
+    /*!< Window Watchdog Interrupts */
+    EXTI_EventInput_WWDG1_Reset_N                      = 82,   /*!< WWDG1 Reset Interrupt */
+    EXTI_EventInput_WWDG2_Reset_N                      = 84,   /*!< WWDG2 Reset Interrupt */
+
+    /*!< Other Wakeup Events */
+    EXTI_EventInput_HDMI_CEC_Wakeup_N                  = 85,   /*!< HDMI CEC Wakeup Interrupt */
+    EXTI_EventInput_ETHERNET_Wakeup_N                  = 86,   /*!< Ethernet Wakeup Interrupt */
+    EXTI_EventInput_HSECSS_Interrupt_N                 = 87    /*!< HSECSS Interrupt */
+} EXTI_EventInput_N;
+
+
+extern ReturnType EXTI_EventInput_Interrupt_Enable_CPU1(EXTI_EventInput_N EventInput);
+extern ReturnType EXTI_EventInput_Interrupt_Enable_CPU2(EXTI_EventInput_N EventInput);
+
+extern ReturnType EXTI_EventInput_Interrupt_Disable_CPU1(EXTI_EventInput_N EventInput);
+extern ReturnType EXTI_EventInput_Interrupt_Disable_CPU2(EXTI_EventInput_N EventInput);
+
+extern ReturnType EXTI_Clear_Trigger_Request_Flag_CPU1(EXTI_EventInput_N EventInput);
+extern ReturnType EXTI_Clear_Trigger_Request_Flag_CPU2(EXTI_EventInput_N EventInput);
+
+extern boolean    EXTI_Trigger_Request_Occurred_CPU1_B(EXTI_EventInput_N EventInput);
+extern boolean    EXTI_Trigger_Request_Occurred_CPU2_B(EXTI_EventInput_N EventInput);
+
+extern ReturnType EXTI_Rising_Trigger_Enable(EXTI_EventInput_N EventInput);
+extern ReturnType EXTI_Rising_Trigger_Disable(EXTI_EventInput_N EventInput);
+
+extern ReturnType EXTI_Falling_Trigger_Enable(EXTI_EventInput_N EventInput);
+extern ReturnType EXTI_Falling_Trigger_Disable(EXTI_EventInput_N EventInput);
 
 #endif
