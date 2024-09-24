@@ -1,106 +1,105 @@
 #include "STM32H7_SYSCFG.h"
 
 /*
- * Function: SYSCFG_Enable
- * ------------------------
- * Enables the SYSCFG clock in RCC's APB4ENR register.
+ * Function: SYSCFG_EXITx_GPIO_Config
+ * ----------------------------------
+ * Configures the EXTI (External Interrupt) for the specified GPIO pin and maps it to a GPIO port.
+ * If the pin belongs to GPIOK (pins 8-15), the configuration is not allowed, and the function will return an error.
  *
  * Parameters:
- *   None
+ *   GPIOx - Pointer to the GPIO port (e.g., GPIOA, GPIOB, etc.)
+ *   Pin   - GPIO pin number (GPIO_Pin_N)
  *
  * Returns:
- *   None
+ *   E_OK if the configuration is successful, E_NOT_OK otherwise.
  */
-void SYSCFG_Enable(void)
+ReturnType SYSCFG_EXITx_GPIO_Config(GPIO_ST *GPIOx, GPIO_Pin_N Pin)
 {
-    SET_BIT(RCC->APB4ENR, RCC_APB4ENR_SYSCFGEN); 
-}
-
-/*
- * Function: SYSCFG_EXITx_GPIO_Cfg
- * -------------------------------
- * Configures the specified GPIO pin to be used as an EXTI (External Interrupt) line.
- *
- * Parameters:
- *   GPIOx - Pointer to the GPIO peripheral instance. This parameter can be one of the following values:
- *           - GPIO_A
- *           - GPIO_B
- *           - GPIO_C
- *           - GPIO_D
- *           - GPIO_E
- *           - GPIO_F
- *           - GPIO_G
- *           - GPIO_H
- *           - GPIO_I
- *           - GPIO_J
- *           - GPIO_K
- *   GPIO_Pin - Specifies the GPIO pin to be configured for EXTI. This parameter must be a value between
- *              GPIO_PIN_0 and GPIO_PIN_15.
- *
- * Returns:
- *   None
- */
-void SYSCFG_EXITx_GPIO_Cfg(GPIO_ST *GPIOx, uint8_t GPIO_Pin)
-{
-    // Check if the GPIO port is GPIO_K and the pin is in the range 8 to 15
-    if((GPIOx == GPIOK)
-       && ((GPIO_PIN_8 <= GPIO_Pin)&&(GPIO_PIN_15 >= GPIO_Pin)))
+    // Return E_NOT_OK if the port is GPIOK and pin is between 8 and 15 (configuration not allowed)
+    if ((GPIOx == GPIOK) 
+       && ((GPIO_PIN_8_N <= Pin) && (GPIO_PIN_15_N >= Pin)))
     {
-        /* GPIO K Pin from 8 to 15 not supported for EXTI */
+        return E_NOT_OK;
     }
     else
     {
-        // Clear the previous EXTI configuration for the specified pin
-        CLEAR_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0xF << ((GPIO_Pin % 4) * 4)));
+        // Clear the current EXTI configuration for the pin
+        CLEAR_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                  (SYSCFG_EXTICR_EXTIx_MASK << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         
-        // Set the EXTI configuration based on the GPIO port
-        if(GPIOx == GPIOA)
+        // Set EXTI line to GPIOA
+        if (GPIOx == GPIOA)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x0 << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PA << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
-        else if(GPIOx == GPIOB)
+        // Set EXTI line to GPIOB
+        else if (GPIOx == GPIOB)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x1 << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PB << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
-        else if(GPIOx == GPIOC)
+        // Set EXTI line to GPIOC
+        else if (GPIOx == GPIOC)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x2 << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PC << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
-        else if(GPIOx == GPIOD)
+        // Set EXTI line to GPIOD
+        else if (GPIOx == GPIOD)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x3 << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PD << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
-        else if(GPIOx == GPIOE)
+        // Set EXTI line to GPIOE
+        else if (GPIOx == GPIOE)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x4 << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PE << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
-        else if(GPIOx == GPIOF)
+        // Set EXTI line to GPIOF
+        else if (GPIOx == GPIOF)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x5 << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PF << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
-        else if(GPIOx == GPIOG)
+        // Set EXTI line to GPIOG
+        else if (GPIOx == GPIOG)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x6 << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PG << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
-        else if(GPIOx == GPIOH)
+        // Set EXTI line to GPIOH
+        else if (GPIOx == GPIOH)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x7 << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PH << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
-        else if(GPIOx == GPIOI)
+        // Set EXTI line to GPIOI
+        else if (GPIOx == GPIOI)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x8 << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PI << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
-        else if(GPIOx == GPIOJ)
+        // Set EXTI line to GPIOJ
+        else if (GPIOx == GPIOJ)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0x9 << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PJ << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
-        else if(GPIOx == GPIOK)
+        // Set EXTI line to GPIOK
+        else if (GPIOx == GPIOK)
         {
-            SET_BIT(SYSCFG->EXTICR[GPIO_Pin / 4], (0xA << ((GPIO_Pin % 4) * 4)));
+            SET_BIT(SYSCFG->EXTICR[Pin / SYSCFG_EXTICR_EXTIs_PER_REGISTER], 
+                    (SYSCFG_EXTICR_EXTIx_PK << ((Pin % SYSCFG_EXTICR_EXTIs_PER_REGISTER) * SYSCFG_EXTICR_EXTIx_SIZE)));
         }
         else
         {
-            // Handle invalid GPIO port
+            // Return E_NOT_OK if no valid GPIO port is found
+            return E_NOT_OK;
         }
     }
+
+    // Return E_OK if configuration is successful
+    return E_OK;
 }

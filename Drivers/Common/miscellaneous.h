@@ -22,7 +22,7 @@ typedef bool ReturnType;
 #define STD_OFF false  /**< Standard OFF */
 
 /* Value definition for ReturnType */
-#define E_OK    false
-#define E_NOK   true
+#define E_OK        false
+#define E_NOT_OK    true
 
 #endif
