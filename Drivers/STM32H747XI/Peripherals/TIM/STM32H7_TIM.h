@@ -34,7 +34,25 @@ typedef enum
     TIM_COM_DMA_Request_N = 13U       /*!< Communication DMA request */
 } TIM_DMA_Request_N;
 
-extern void TIM_Config(TIM_ST *TIMx, uint32_t TIMx_PSC, uint32_t TIMx_ARR, boolean Counter_Direction);
+typedef enum {
+    TIM_Mode_TimeBase_N = 0U,         /*!< Timer operates in Time Base mode */
+    TIM_Mode_OutputCompare_N,         /*!< Timer operates in Output Compare mode */
+    TIM_Mode_PWM_N,                   /*!< Timer operates in PWM mode */
+    TIM_Mode_InputCapture_N,          /*!< Timer operates in Input Capture mode */
+    TIM_Mode_OnePulse_N,              /*!< Timer operates in One Pulse mode */
+    TIM_Mode_Encoder_N,               /*!< Timer operates in Encoder Interface mode */
+    TIM_Mode_Master_N,                /*!< Timer operates in Master mode */
+    TIM_Mode_Slave_N,                 /*!< Timer operates in Slave mode */
+    TIM_Mode_ForcedOutput_N           /*!< Timer operates in Forced Output mode */
+} TIM_Mode_N;
+
+typedef enum {
+    TIM_Channel_1_N = 1U,             /*!< Channel 1 */
+    TIM_Channel_2_N = 2U,             /*!< Channel 2 */
+    TIM_Channel_3_N = 3U,             /*!< Channel 3 */
+    TIM_Channel_4_N = 4U              /*!< Channel 4 */
+} TIM_Channel_N;
+
 extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
 extern void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
 extern void TIM_DMA_Interrupt_Clear_Status(TIM_ST *TIMx);

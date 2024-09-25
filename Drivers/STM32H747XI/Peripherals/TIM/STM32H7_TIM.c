@@ -57,18 +57,6 @@ boolean TIM_DMA_Interrupt_Check_Status(TIM_ST *TIMx)
     }
 }
 
-
-/*
- * Function: TIM_Enable
- * ------------------------
- * Enables the TIM peripheral by setting the CEN bit in the CR1 register.
- *
- * Parameters:
- *   TIMx - Pointer to the TIM peripheral.
- *
- * Returns:
- *   None
- */
 void TIM_Enable(TIM_ST *TIMx)
 {
     SET_BIT(TIMx->CR1, TIM_CR1_CEN); // Enable the TIM peripheral
