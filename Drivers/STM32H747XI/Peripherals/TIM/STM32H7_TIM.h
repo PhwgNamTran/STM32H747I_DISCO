@@ -4,54 +4,110 @@
 #include "STM32H747xx.h"
 #include "STM32H7_RCC.h"
 
-/* Refer to RM0399 Reference Manual from http://www.st.com and CMSIS Library */
+/**
+  * @brief  TIM Handle structures definition
+  */
+typedef struct
+{
+  TIM_ST                            *Instance;         /*!< Register base address                             */
+  TIM_Init_ST                       Init;              /*!< TIM Time Base required parameters                 */
+  TIM_ActiveChannel_N               Channel;           /*!< Active channel                                    */
+  volatile TIM_StateTypeDef         State;             /*!< TIM operation state                               */
+  volatile TIM_ChannelStateTypeDef  ChannelState[6];   /*!< TIM channel operation state                       */
+  volatile TIM_ChannelStateTypeDef  ChannelNState[4];  /*!< TIM complementary channel operation state         */
+  volatile TIM_DMABurstStateTypeDef DMABurstState;     /*!< DMA burst operation state                         */
+} TIM_Handle_ST;
 
+/**
+  * @brief  TIM Init structures definition
+  */
+typedef struct
+{
+  uint32_t Prescaler;
+  uint32_t CounterMode;
+  uint32_t Period;
+  uint32_t ClockDivision;
+  uint32_t AutoReloadPreload;
+} TIM_Init_ST;
+
+/**
+  * @brief  TIM Counter Mode structures definition
+  */
 typedef enum
 {
-    TIM_CounterMode_Up_N = 0,              /*!< Up counting mode */
-    TIM_CounterMode_Down_N,                /*!< Down counting mode */
-    TIM_CounterMode_EdgeAligned_N,         /*!< Edge-aligned mode */
-    TIM_CounterMode_CenterAligned_1_N,     /*!< Center-aligned mode 1 */
-    TIM_CounterMode_CenterAligned_2_N,     /*!< Center-aligned mode 2 */
-    TIM_CounterMode_CenterAligned_3_N      /*!< Center-aligned mode 3 */
+    TIM_COUNTERMODE_UP_N                = 0x0000U,     /*!< Up counting mode */
+    TIM_COUNTERMODE_DOWN_N              = 0x0010U,     /*!< Down counting mode */
+    TIM_COUNTERMODE_CENTERALIGNED1_N    = 0x0020U,     /*!< Center-aligned mode 1 */
+    TIM_COUNTERMODE_CENTERALIGNED2_N    = 0x0040U,     /*!< Center-aligned mode 2 */
+    TIM_COUNTERMODE_CENTERALIGNED3_N    = 0x0060U      /*!< Center-aligned mode 3 */
 } TIM_CounterMode_N;
 
 typedef enum
 {
-    TIM_CC1_Interrupt_N = 1U,         /*!< Capture/Compare 1 interrupt */
-    TIM_CC2_Interrupt_N = 2U,         /*!< Capture/Compare 2 interrupt */
-    TIM_CC3_Interrupt_N = 3U,         /*!< Capture/Compare 3 interrupt */
-    TIM_CC4_Interrupt_N = 4U,         /*!< Capture/Compare 4 interrupt */
-    TIM_COM_Interrupt_N = 5U          /*!< Communication interrupt */
+    TIM_CC1_INTERRUPT_N = 1U,         /*!< Capture/Compare 1 interrupt */
+    TIM_CC2_INTERRUPT_N = 2U,         /*!< Capture/Compare 2 interrupt */
+    TIM_CC3_INTERRUPT_N = 3U,         /*!< Capture/Compare 3 interrupt */
+    TIM_CC4_INTERRUPT_N = 4U,         /*!< Capture/Compare 4 interrupt */
+    TIM_COM_INTERRUPT_N = 5U          /*!< Communication interrupt */
 } TIM_Interrupt_N;
 
+/**
+  * @brief  TIM DMA Request structures definition
+  */
 typedef enum
 {
-    TIM_CC1_DMA_Request_N = 9U,       /*!< Capture/Compare 1 DMA request */
-    TIM_CC2_DMA_Request_N = 10U,      /*!< Capture/Compare 2 DMA request */
-    TIM_CC3_DMA_Request_N = 11U,      /*!< Capture/Compare 3 DMA request */
-    TIM_CC4_DMA_Request_N = 12U,      /*!< Capture/Compare 4 DMA request */
-    TIM_COM_DMA_Request_N = 13U       /*!< Communication DMA request */
+    TIM_CC1_DMA_REQUEST_N = 9U,       /*!< Capture/Compare 1 DMA request */
+    TIM_CC2_DMA_REQUEST_N = 10U,      /*!< Capture/Compare 2 DMA request */
+    TIM_CC3_DMA_REQUEST_N = 11U,      /*!< Capture/Compare 3 DMA request */
+    TIM_CC4_DMA_REQUEST_N = 12U,      /*!< Capture/Compare 4 DMA request */
+    TIM_COM_DMA_REQUEST_N = 13U       /*!< Communication DMA request */
 } TIM_DMA_Request_N;
 
-typedef enum {
-    TIM_Mode_TimeBase_N = 0U,         /*!< Timer operates in Time Base mode */
-    TIM_Mode_OutputCompare_N,         /*!< Timer operates in Output Compare mode */
-    TIM_Mode_PWM_N,                   /*!< Timer operates in PWM mode */
-    TIM_Mode_InputCapture_N,          /*!< Timer operates in Input Capture mode */
-    TIM_Mode_OnePulse_N,              /*!< Timer operates in One Pulse mode */
-    TIM_Mode_Encoder_N,               /*!< Timer operates in Encoder Interface mode */
-    TIM_Mode_Master_N,                /*!< Timer operates in Master mode */
-    TIM_Mode_Slave_N,                 /*!< Timer operates in Slave mode */
-    TIM_Mode_ForcedOutput_N           /*!< Timer operates in Forced Output mode */
-} TIM_Mode_N;
+/**
+  * @brief  TIM Active Channel structures definition
+  */
+typedef enum
+{
+  TIM_ACTIVE_CHANNEL_1        = 0x01U,    /*!< The active channel is 1     */
+  TIM_ACTIVE_CHANNEL_2        = 0x02U,    /*!< The active channel is 2     */
+  TIM_ACTIVE_CHANNEL_3        = 0x04U,    /*!< The active channel is 3     */
+  TIM_ACTIVE_CHANNEL_4        = 0x08U,    /*!< The active channel is 4     */
+  TIM_ACTIVE_CHANNEL_5        = 0x10U,    /*!< The active channel is 5     */
+  TIM_ACTIVE_CHANNEL_6        = 0x20U,    /*!< The active channel is 6     */
+  TIM_ACTIVE_CHANNEL_CLEARED  = 0x00U     /*!< All active channels cleared */
+} TIM_ActiveChannel_N;
 
-typedef enum {
-    TIM_Channel_1_N = 1U,             /*!< Channel 1 */
-    TIM_Channel_2_N = 2U,             /*!< Channel 2 */
-    TIM_Channel_3_N = 3U,             /*!< Channel 3 */
-    TIM_Channel_4_N = 4U              /*!< Channel 4 */
-} TIM_Channel_N;
+/**
+  * @brief  TIM State structures definition
+  */
+typedef enum
+{
+  TIM_STATE_RESET             = 0x00U,    /*!< Peripheral not yet initialized or disabled  */
+  TIM_STATE_READY             = 0x01U,    /*!< Peripheral Initialized and ready for use    */
+  TIM_STATE_BUSY              = 0x02U,    /*!< An internal process is ongoing              */
+  TIM_STATE_TIMEOUT           = 0x03U,    /*!< Timeout state                               */
+  TIM_STATE_ERROR             = 0x04U     /*!< Reception process is ongoing                */
+} TIM_StateTypeDef;
+
+/**
+  * @brief  TIM Channel States definition
+  */
+typedef enum
+{
+  TIM_CHANNEL_STATE_RESET     = 0x00U,    /*!< TIM Channel initial state                         */
+  TIM_CHANNEL_STATE_READY     = 0x01U,    /*!< TIM Channel ready for use                         */
+  TIM_CHANNEL_STATE_BUSY      = 0x02U     /*!< An internal process is ongoing on the TIM channel */
+} TIM_ChannelStateTypeDef;
+
+/**
+  * @brief  TIM DMA Burst States definition
+  */
+typedef enum
+{
+  DMA_BURST_STATE_RESET       = 0x00U,    /*!< DMA Burst initial state */
+  DMA_BURST_STATE_READY       = 0x01U,    /*!< DMA Burst ready for use */
+  DMA_BURST_STATE_BUSY        = 0x02U     /*!< Ongoing DMA Burst       */
+} TIM_DMABurstStateTypeDef;
 
 extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
 extern void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
