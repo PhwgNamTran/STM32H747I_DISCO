@@ -74,9 +74,31 @@ typedef enum
 typedef enum
 {
     TIM_CLOCKDIVISION_DIV1  = 0x00000000UL,     /*!< Clock division: tDTS=tCK_INT   */
-    TIM_CLOCKDIVISION_DIV2  = TIM_CR1_CKD_0,     /*!< Clock division: tDTS=2*tCK_INT */
-    TIM_CLOCKDIVISION_DIV4  = TIM_CR1_CKD_1      /*!< Clock division: tDTS=4*tCK_INT */
+    TIM_CLOCKDIVISION_DIV2  = TIM_CR1_CKD_0,    /*!< Clock division: tDTS=2*tCK_INT */
+    TIM_CLOCKDIVISION_DIV4  = TIM_CR1_CKD_1     /*!< Clock division: tDTS=4*tCK_INT */
 }TIM_ClockDivision_N;
+
+/**
+  * @brief  TIM FLAGS definition
+  */
+typedef enum {
+    TIM_FLAG_UPDATE_N       = TIM_SR_UIF,     /*!< Update interrupt flag         */
+    TIM_FLAG_CC1_N          = TIM_SR_CC1IF,   /*!< Capture/Compare 1 interrupt flag */
+    TIM_FLAG_CC2_N          = TIM_SR_CC2IF,   /*!< Capture/Compare 2 interrupt flag */
+    TIM_FLAG_CC3_N          = TIM_SR_CC3IF,   /*!< Capture/Compare 3 interrupt flag */
+    TIM_FLAG_CC4_N          = TIM_SR_CC4IF,   /*!< Capture/Compare 4 interrupt flag */
+    TIM_FLAG_CC5_N          = TIM_SR_CC5IF,   /*!< Capture/Compare 5 interrupt flag */
+    TIM_FLAG_CC6_N          = TIM_SR_CC6IF,   /*!< Capture/Compare 6 interrupt flag */
+    TIM_FLAG_COM_N          = TIM_SR_COMIF,   /*!< Commutation interrupt flag    */
+    TIM_FLAG_TRIGGER_N      = TIM_SR_TIF,     /*!< Trigger interrupt flag        */
+    TIM_FLAG_BREAK_N        = TIM_SR_BIF,     /*!< Break interrupt flag          */
+    TIM_FLAG_BREAK2_N       = TIM_SR_B2IF,    /*!< Break 2 interrupt flag        */
+    TIM_FLAG_SYSTEM_BREAK_N = TIM_SR_SBIF,    /*!< System Break interrupt flag   */
+    TIM_FLAG_CC1OF_N        = TIM_SR_CC1OF,   /*!< Capture 1 overcapture flag    */
+    TIM_FLAG_CC2OF_N        = TIM_SR_CC2OF,   /*!< Capture 2 overcapture flag    */
+    TIM_FLAG_CC3OF_N        = TIM_SR_CC3OF,   /*!< Capture 3 overcapture flag    */
+    TIM_FLAG_CC4OF_N        = TIM_SR_CC4OF    /*!< Capture 4 overcapture flag    */
+} TIM_FLAG_N;
 
 /**
   * @brief  TIM Active Channel structures definition
