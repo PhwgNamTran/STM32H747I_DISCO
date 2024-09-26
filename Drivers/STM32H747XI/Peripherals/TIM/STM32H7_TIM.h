@@ -35,20 +35,23 @@ typedef struct
   */
 typedef enum
 {
-    TIM_COUNTERMODE_UP_N                = 0x00000000UL,     /*!< Up counting mode */
-    TIM_COUNTERMODE_DOWN_N              = 0x00000010UL,     /*!< Down counting mode */
-    TIM_COUNTERMODE_CENTERALIGNED1_N    = 0x00000020UL,     /*!< Center-aligned mode 1 */
-    TIM_COUNTERMODE_CENTERALIGNED2_N    = 0x00000040UL,     /*!< Center-aligned mode 2 */
-    TIM_COUNTERMODE_CENTERALIGNED3_N    = 0x00000060UL      /*!< Center-aligned mode 3 */
+    TIM_COUNTERMODE_UP_N                = 0x00000000UL,    /*!< Up counting mode */
+    TIM_COUNTERMODE_DOWN_N              = TIM_CR1_DIR,     /*!< Down counting mode */
+    TIM_COUNTERMODE_CENTERALIGNED1_N    = TIM_CR1_CMS_0,   /*!< Center-aligned mode 1 */
+    TIM_COUNTERMODE_CENTERALIGNED2_N    = TIM_CR1_CMS_1,   /*!< Center-aligned mode 2 */
+    TIM_COUNTERMODE_CENTERALIGNED3_N    = TIM_CR1_CMS      /*!< Center-aligned mode 3 */
 } TIM_CounterMode_N;
 
 typedef enum
 {
-    TIM_CC1_INTERRUPT_N = 1U,         /*!< Capture/Compare 1 interrupt */
-    TIM_CC2_INTERRUPT_N = 2U,         /*!< Capture/Compare 2 interrupt */
-    TIM_CC3_INTERRUPT_N = 3U,         /*!< Capture/Compare 3 interrupt */
-    TIM_CC4_INTERRUPT_N = 4U,         /*!< Capture/Compare 4 interrupt */
-    TIM_COM_INTERRUPT_N = 5U          /*!< Communication interrupt */
+    TIM_UPDATE_INTERRUPT_N  = TIM_DIER_UIE,     /*!< Update interrupt            */
+    TIM_CC1_INTERRUPT_N     = TIM_DIER_CC1IE,   /*!< Capture/Compare 1 interrupt */
+    TIM_CC2_INTERRUPT_N     = TIM_DIER_CC2IE,   /*!< Capture/Compare 2 interrupt */
+    TIM_CC3_INTERRUPT_N     = TIM_DIER_CC3IE,   /*!< Capture/Compare 3 interrupt */
+    TIM_CC4_INTERRUPT_N     = TIM_DIER_CC4IE,   /*!< Capture/Compare 4 interrupt */
+    TIM_COM_INTERRUPT_N     = TIM_DIER_COMIE,   /*!< Communication interrupt     */
+    TIM_TRIGGER_INTERRUPT_N = TIM_DIER_TIE,     /*!< Trigger interrupt           */
+    TIM_BREAK_INTERRUPT_N   = TIM_DIER_BIE      /*!< Break interrupt             */
 } TIM_Interrupt_N;
 
 /**
@@ -56,12 +59,24 @@ typedef enum
   */
 typedef enum
 {
-    TIM_CC1_DMA_REQUEST_N = 9U,       /*!< Capture/Compare 1 DMA request */
-    TIM_CC2_DMA_REQUEST_N = 10U,      /*!< Capture/Compare 2 DMA request */
-    TIM_CC3_DMA_REQUEST_N = 11U,      /*!< Capture/Compare 3 DMA request */
-    TIM_CC4_DMA_REQUEST_N = 12U,      /*!< Capture/Compare 4 DMA request */
-    TIM_COM_DMA_REQUEST_N = 13U       /*!< Communication DMA request */
+    TIM_UPDATE_DMA_REQUEST_N    = TIM_DIER_UDE,        /*!< DMA request is triggered by the update event */
+    TIM_CC1_DMA_REQUEST_N       = TIM_DIER_CC1DE,      /*!< Capture/Compare 1 DMA request */
+    TIM_CC2_DMA_REQUEST_N       = TIM_DIER_CC2DE,      /*!< Capture/Compare 2 DMA request */
+    TIM_CC3_DMA_REQUEST_N       = TIM_DIER_CC3DE,      /*!< Capture/Compare 3 DMA request */
+    TIM_CC4_DMA_REQUEST_N       = TIM_DIER_CC4DE,      /*!< Capture/Compare 4 DMA request */
+    TIM_COM_DMA_REQUEST_N       = TIM_DIER_COMDE,      /*!< Communication DMA request */
+    TIM_TRIGGERED_DMA_REQUEST_N = TIM_DIER_TDE         /*!< DMA request is triggered by the trigger event */
 } TIM_DMA_Request_N;
+
+/**
+  * @brief  TIM CLock Division definition
+  */
+typedef enum
+{
+    TIM_CLOCKDIVISION_DIV1  = 0x00000000UL,     /*!< Clock division: tDTS=tCK_INT   */
+    TIM_CLOCKDIVISION_DIV2  = TIM_CR1_CKD_0,     /*!< Clock division: tDTS=2*tCK_INT */
+    TIM_CLOCKDIVISION_DIV4  = TIM_CR1_CKD_1      /*!< Clock division: tDTS=4*tCK_INT */
+}TIM_ClockDivision_N;
 
 /**
   * @brief  TIM Active Channel structures definition
@@ -108,16 +123,6 @@ typedef enum
   DMA_BURST_STATE_READY       = 0x01U,    /*!< DMA Burst ready for use */
   DMA_BURST_STATE_BUSY        = 0x02U     /*!< Ongoing DMA Burst       */
 } TIM_DMABurstState_N;
-
-/**
-  * @brief  TIM CLock Division definition
-  */
-typedef enum
-{
-    TIM_CLOCKDIVISION_DIV1  = 0x00000000UL,     /*!< Clock division: tDTS=tCK_INT   */
-    TIM_CLOCKDIVISION_DIV2  = 0x00000100UL,     /*!< Clock division: tDTS=2*tCK_INT */
-    TIM_CLOCKDIVISION_DIV4  = 0x00000200UL      /*!< Clock division: tDTS=4*tCK_INT */
-}TIM_ClockDivision_N;
 
 extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
 extern void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
