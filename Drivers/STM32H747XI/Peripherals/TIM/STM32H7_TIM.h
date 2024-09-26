@@ -35,11 +35,11 @@ typedef struct
   */
 typedef enum
 {
-    TIM_COUNTERMODE_UP_N                = 0x0000U,     /*!< Up counting mode */
-    TIM_COUNTERMODE_DOWN_N              = 0x0010U,     /*!< Down counting mode */
-    TIM_COUNTERMODE_CENTERALIGNED1_N    = 0x0020U,     /*!< Center-aligned mode 1 */
-    TIM_COUNTERMODE_CENTERALIGNED2_N    = 0x0040U,     /*!< Center-aligned mode 2 */
-    TIM_COUNTERMODE_CENTERALIGNED3_N    = 0x0060U      /*!< Center-aligned mode 3 */
+    TIM_COUNTERMODE_UP_N                = 0x00000000UL,     /*!< Up counting mode */
+    TIM_COUNTERMODE_DOWN_N              = 0x00000010UL,     /*!< Down counting mode */
+    TIM_COUNTERMODE_CENTERALIGNED1_N    = 0x00000020UL,     /*!< Center-aligned mode 1 */
+    TIM_COUNTERMODE_CENTERALIGNED2_N    = 0x00000040UL,     /*!< Center-aligned mode 2 */
+    TIM_COUNTERMODE_CENTERALIGNED3_N    = 0x00000060UL      /*!< Center-aligned mode 3 */
 } TIM_CounterMode_N;
 
 typedef enum
@@ -114,9 +114,9 @@ typedef enum
   */
 typedef enum
 {
-    TIM_CLOCKDIVISION_DIV1  = 0x0000U, /*!< Clock division: tDTS=tCK_INT   */
-    TIM_CLOCKDIVISION_DIV2  = 0x0100U,     /*!< Clock division: tDTS=2*tCK_INT */
-    TIM_CLOCKDIVISION_DIV4  = 0x0200U      /*!< Clock division: tDTS=4*tCK_INT */
+    TIM_CLOCKDIVISION_DIV1  = 0x00000000UL,     /*!< Clock division: tDTS=tCK_INT   */
+    TIM_CLOCKDIVISION_DIV2  = 0x00000100UL,     /*!< Clock division: tDTS=2*tCK_INT */
+    TIM_CLOCKDIVISION_DIV4  = 0x00000200UL      /*!< Clock division: tDTS=4*tCK_INT */
 }TIM_ClockDivision_N;
 
 extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
