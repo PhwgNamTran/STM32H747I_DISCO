@@ -9,13 +9,13 @@
   */
 typedef struct
 {
-  TIM_ST                            *Instance;         /*!< Register base address                             */
-  TIM_Init_ST                       Init;              /*!< TIM Time Base required parameters                 */
-  TIM_ActiveChannel_N               Channel;           /*!< Active channel                                    */
-  volatile TIM_StateTypeDef         State;             /*!< TIM operation state                               */
-  volatile TIM_ChannelStateTypeDef  ChannelState[6];   /*!< TIM channel operation state                       */
-  volatile TIM_ChannelStateTypeDef  ChannelNState[4];  /*!< TIM complementary channel operation state         */
-  volatile TIM_DMABurstStateTypeDef DMABurstState;     /*!< DMA burst operation state                         */
+  TIM_ST                       *Instance;         /*!< Register base address                             */
+  TIM_Init_ST                  Init;              /*!< TIM Time Base required parameters                 */
+  TIM_ActiveChannel_N          Channel;           /*!< Active channel                                    */
+  volatile TIM_State_N         State;             /*!< TIM operation state                               */
+  volatile TIM_ChannelState_N  ChannelState[6];   /*!< TIM channel operation state                       */
+  volatile TIM_ChannelState_N  ChannelNState[4];  /*!< TIM complementary channel operation state         */
+  volatile TIM_DMABurstState_N DMABurstState;     /*!< DMA burst operation state                         */
 } TIM_Handle_ST;
 
 /**
@@ -87,7 +87,7 @@ typedef enum
   TIM_STATE_BUSY              = 0x02U,    /*!< An internal process is ongoing              */
   TIM_STATE_TIMEOUT           = 0x03U,    /*!< Timeout state                               */
   TIM_STATE_ERROR             = 0x04U     /*!< Reception process is ongoing                */
-} TIM_StateTypeDef;
+} TIM_State_N;
 
 /**
   * @brief  TIM Channel States definition
@@ -97,7 +97,7 @@ typedef enum
   TIM_CHANNEL_STATE_RESET     = 0x00U,    /*!< TIM Channel initial state                         */
   TIM_CHANNEL_STATE_READY     = 0x01U,    /*!< TIM Channel ready for use                         */
   TIM_CHANNEL_STATE_BUSY      = 0x02U     /*!< An internal process is ongoing on the TIM channel */
-} TIM_ChannelStateTypeDef;
+} TIM_ChannelState_N;
 
 /**
   * @brief  TIM DMA Burst States definition
@@ -107,7 +107,7 @@ typedef enum
   DMA_BURST_STATE_RESET       = 0x00U,    /*!< DMA Burst initial state */
   DMA_BURST_STATE_READY       = 0x01U,    /*!< DMA Burst ready for use */
   DMA_BURST_STATE_BUSY        = 0x02U     /*!< Ongoing DMA Burst       */
-} TIM_DMABurstStateTypeDef;
+} TIM_DMABurstState_N;
 
 /**
   * @brief  TIM CLock Division definition
