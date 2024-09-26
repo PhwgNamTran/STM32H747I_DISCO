@@ -23,11 +23,11 @@ typedef struct
   */
 typedef struct
 {
-  uint32_t Prescaler;
-  uint32_t CounterMode;
-  uint32_t Period;
-  uint32_t ClockDivision;
-  uint32_t AutoReloadPreload;
+  uint32_t            Prescaler;
+  uint32_t            CounterMode;
+  uint32_t            Period;
+  TIM_ClockDivision_N ClockDivision;
+  uint32_t            AutoReloadPreload;
 } TIM_Init_ST;
 
 /**
@@ -108,6 +108,16 @@ typedef enum
   DMA_BURST_STATE_READY       = 0x01U,    /*!< DMA Burst ready for use */
   DMA_BURST_STATE_BUSY        = 0x02U     /*!< Ongoing DMA Burst       */
 } TIM_DMABurstStateTypeDef;
+
+/**
+  * @brief  TIM CLock Division definition
+  */
+typedef enum
+{
+    TIM_CLOCKDIVISION_DIV1  = 0x0000U, /*!< Clock division: tDTS=tCK_INT   */
+    TIM_CLOCKDIVISION_DIV2  = 0x0100U,     /*!< Clock division: tDTS=2*tCK_INT */
+    TIM_CLOCKDIVISION_DIV4  = 0x0200U      /*!< Clock division: tDTS=4*tCK_INT */
+}TIM_ClockDivision_N;
 
 extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
 extern void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
