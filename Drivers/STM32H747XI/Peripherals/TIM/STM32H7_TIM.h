@@ -101,17 +101,31 @@ typedef enum {
 } TIM_FLAG_N;
 
 /**
+  * @brief  TIM Channel structures definition
+  */
+typedef enum
+{
+  TIM_CHANNEL_1   = 0x00000000UL,    /*!< The channel 1 */
+  TIM_CHANNEL_2   = 0x00000004UL,    /*!< The channel 2 */
+  TIM_CHANNEL_3   = 0x00000008UL,    /*!< The channel 3 */
+  TIM_CHANNEL_4   = 0x0000000CUL,    /*!< The channel 4 */
+  TIM_CHANNEL_5   = 0x00000010UL,    /*!< The channel 5 */
+  TIM_CHANNEL_6   = 0x00000014UL,    /*!< The channel 6 */
+  TIM_CHANNEL_ALL = 0x0000003CUL     /*!< All channels  */
+} TIM_Channel_N;
+
+/**
   * @brief  TIM Active Channel structures definition
   */
 typedef enum
 {
-  TIM_ACTIVE_CHANNEL_1        = 0x01U,    /*!< The active channel is 1     */
-  TIM_ACTIVE_CHANNEL_2        = 0x02U,    /*!< The active channel is 2     */
-  TIM_ACTIVE_CHANNEL_3        = 0x04U,    /*!< The active channel is 3     */
-  TIM_ACTIVE_CHANNEL_4        = 0x08U,    /*!< The active channel is 4     */
-  TIM_ACTIVE_CHANNEL_5        = 0x10U,    /*!< The active channel is 5     */
-  TIM_ACTIVE_CHANNEL_6        = 0x20U,    /*!< The active channel is 6     */
-  TIM_ACTIVE_CHANNEL_CLEARED  = 0x00U     /*!< All active channels cleared */
+  TIM_ACTIVE_CHANNEL_1        = 0x00000001UL,    /*!< The active channel is 1     */
+  TIM_ACTIVE_CHANNEL_2        = 0x00000002UL,    /*!< The active channel is 2     */
+  TIM_ACTIVE_CHANNEL_3        = 0x00000004UL,    /*!< The active channel is 3     */
+  TIM_ACTIVE_CHANNEL_4        = 0x00000008UL,    /*!< The active channel is 4     */
+  TIM_ACTIVE_CHANNEL_5        = 0x00000010UL,    /*!< The active channel is 5     */
+  TIM_ACTIVE_CHANNEL_6        = 0x00000020UL,    /*!< The active channel is 6     */
+  TIM_ACTIVE_CHANNEL_CLEARED  = 0x00000000UL     /*!< All active channels cleared */
 } TIM_ActiveChannel_N;
 
 /**
