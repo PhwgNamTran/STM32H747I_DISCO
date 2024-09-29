@@ -35,11 +35,11 @@ typedef struct
   */
 typedef enum
 {
-    TIM_COUNTERMODE_UP_N                = 0x00000000UL,    /*!< Up counting mode */
-    TIM_COUNTERMODE_DOWN_N              = TIM_CR1_DIR,     /*!< Down counting mode */
-    TIM_COUNTERMODE_CENTERALIGNED1_N    = TIM_CR1_CMS_0,   /*!< Center-aligned mode 1 */
-    TIM_COUNTERMODE_CENTERALIGNED2_N    = TIM_CR1_CMS_1,   /*!< Center-aligned mode 2 */
-    TIM_COUNTERMODE_CENTERALIGNED3_N    = TIM_CR1_CMS      /*!< Center-aligned mode 3 */
+    TIM_COUNTERMODE_UP_N             = 0x00000000UL,    /*!< Up counting mode */
+    TIM_COUNTERMODE_DOWN_N           = TIM_CR1_DIR,     /*!< Down counting mode */
+    TIM_COUNTERMODE_CENTERALIGNED1_N = TIM_CR1_CMS_0,   /*!< Center-aligned mode 1 */
+    TIM_COUNTERMODE_CENTERALIGNED2_N = TIM_CR1_CMS_1,   /*!< Center-aligned mode 2 */
+    TIM_COUNTERMODE_CENTERALIGNED3_N = TIM_CR1_CMS      /*!< Center-aligned mode 3 */
 } TIM_CounterMode_N;
 
 typedef enum
@@ -73,9 +73,9 @@ typedef enum
   */
 typedef enum
 {
-    TIM_CLOCKDIVISION_DIV1  = 0x00000000UL,     /*!< Clock division: tDTS=tCK_INT   */
-    TIM_CLOCKDIVISION_DIV2  = TIM_CR1_CKD_0,    /*!< Clock division: tDTS=2*tCK_INT */
-    TIM_CLOCKDIVISION_DIV4  = TIM_CR1_CKD_1     /*!< Clock division: tDTS=4*tCK_INT */
+    TIM_CLOCKDIVISION_DIV1 = 0x00000000UL,     /*!< Clock division: tDTS=tCK_INT   */
+    TIM_CLOCKDIVISION_DIV2 = TIM_CR1_CKD_0,    /*!< Clock division: tDTS=2*tCK_INT */
+    TIM_CLOCKDIVISION_DIV4 = TIM_CR1_CKD_1     /*!< Clock division: tDTS=4*tCK_INT */
 }TIM_ClockDivision_N;
 
 /**
@@ -119,13 +119,13 @@ typedef enum
   */
 typedef enum
 {
-  TIM_ACTIVE_CHANNEL_1        = 0x00000001UL,    /*!< The active channel is 1     */
-  TIM_ACTIVE_CHANNEL_2        = 0x00000002UL,    /*!< The active channel is 2     */
-  TIM_ACTIVE_CHANNEL_3        = 0x00000004UL,    /*!< The active channel is 3     */
-  TIM_ACTIVE_CHANNEL_4        = 0x00000008UL,    /*!< The active channel is 4     */
-  TIM_ACTIVE_CHANNEL_5        = 0x00000010UL,    /*!< The active channel is 5     */
-  TIM_ACTIVE_CHANNEL_6        = 0x00000020UL,    /*!< The active channel is 6     */
-  TIM_ACTIVE_CHANNEL_CLEARED  = 0x00000000UL     /*!< All active channels cleared */
+  TIM_ACTIVE_CHANNEL_1       = 0x00000001UL,    /*!< The active channel is 1     */
+  TIM_ACTIVE_CHANNEL_2       = 0x00000002UL,    /*!< The active channel is 2     */
+  TIM_ACTIVE_CHANNEL_3       = 0x00000004UL,    /*!< The active channel is 3     */
+  TIM_ACTIVE_CHANNEL_4       = 0x00000008UL,    /*!< The active channel is 4     */
+  TIM_ACTIVE_CHANNEL_5       = 0x00000010UL,    /*!< The active channel is 5     */
+  TIM_ACTIVE_CHANNEL_6       = 0x00000020UL,    /*!< The active channel is 6     */
+  TIM_ACTIVE_CHANNEL_CLEARED = 0x00000000UL     /*!< All active channels cleared */
 } TIM_ActiveChannel_N;
 
 /**
@@ -133,11 +133,11 @@ typedef enum
   */
 typedef enum
 {
-  TIM_STATE_RESET             = 0x00U,    /*!< Peripheral not yet initialized or disabled  */
-  TIM_STATE_READY             = 0x01U,    /*!< Peripheral Initialized and ready for use    */
-  TIM_STATE_BUSY              = 0x02U,    /*!< An internal process is ongoing              */
-  TIM_STATE_TIMEOUT           = 0x03U,    /*!< Timeout state                               */
-  TIM_STATE_ERROR             = 0x04U     /*!< Reception process is ongoing                */
+  TIM_STATE_RESET   = 0x00U,    /*!< Peripheral not yet initialized or disabled  */
+  TIM_STATE_READY   = 0x01U,    /*!< Peripheral Initialized and ready for use    */
+  TIM_STATE_BUSY    = 0x02U,    /*!< An internal process is ongoing              */
+  TIM_STATE_TIMEOUT = 0x03U,    /*!< Timeout state                               */
+  TIM_STATE_ERROR   = 0x04U     /*!< Reception process is ongoing                */
 } TIM_State_N;
 
 /**
@@ -145,9 +145,9 @@ typedef enum
   */
 typedef enum
 {
-  TIM_CHANNEL_STATE_RESET     = 0x00U,    /*!< TIM Channel initial state                         */
-  TIM_CHANNEL_STATE_READY     = 0x01U,    /*!< TIM Channel ready for use                         */
-  TIM_CHANNEL_STATE_BUSY      = 0x02U     /*!< An internal process is ongoing on the TIM channel */
+  TIM_CHANNEL_STATE_RESET = 0x00U,    /*!< TIM Channel initial state                         */
+  TIM_CHANNEL_STATE_READY = 0x01U,    /*!< TIM Channel ready for use                         */
+  TIM_CHANNEL_STATE_BUSY  = 0x02U     /*!< An internal process is ongoing on the TIM channel */
 } TIM_ChannelState_N;
 
 /**
@@ -155,9 +155,9 @@ typedef enum
   */
 typedef enum
 {
-  DMA_BURST_STATE_RESET       = 0x00U,    /*!< DMA Burst initial state */
-  DMA_BURST_STATE_READY       = 0x01U,    /*!< DMA Burst ready for use */
-  DMA_BURST_STATE_BUSY        = 0x02U     /*!< Ongoing DMA Burst       */
+  DMA_BURST_STATE_RESET = 0x00U,    /*!< DMA Burst initial state */
+  DMA_BURST_STATE_READY = 0x01U,    /*!< DMA Burst ready for use */
+  DMA_BURST_STATE_BUSY  = 0x02U     /*!< Ongoing DMA Burst       */
 } TIM_DMABurstState_N;
 
 extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
