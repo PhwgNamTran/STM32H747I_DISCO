@@ -9,13 +9,13 @@
   */
 typedef struct
 {
-  TIM_ST                       *Instance;         /*!< Register base address                             */
-  TIM_Init_ST                  Init;              /*!< TIM Time Base required parameters                 */
-  TIM_ActiveChannel_N          Channel;           /*!< Active channel                                    */
-  volatile TIM_State_N         State;             /*!< TIM operation state                               */
-  volatile TIM_ChannelState_N  ChannelState[6];   /*!< TIM channel operation state                       */
-  volatile TIM_ChannelState_N  ChannelNState[4];  /*!< TIM complementary channel operation state         */
-  volatile TIM_DMABurstState_N DMABurstState;     /*!< DMA burst operation state                         */
+  TIM_ST                       *Instance;           /*!< Register base address                             */
+  TIM_Init_ST                  Init;                /*!< TIM Time Base required parameters                 */
+  TIM_ActiveChannel_N          Channel;             /*!< Active channel                                    */
+  volatile TIM_State_N         State;               /*!< TIM operation state                               */
+  volatile TIM_ChannelState_N  ChannelState[6];     /*!< TIM channel operation state                       */
+  volatile TIM_ChannelState_N  ChannelNState[4];    /*!< TIM complementary channel operation state         */
+  volatile TIM_DMABurstState_N DMABurstState;       /*!< DMA burst operation state                         */
 } TIM_Handle_ST;
 
 /**
@@ -35,23 +35,23 @@ typedef struct
   */
 typedef enum
 {
-    TIM_COUNTERMODE_UP_N             = 0x00000000UL,    /*!< Up counting mode */
-    TIM_COUNTERMODE_DOWN_N           = TIM_CR1_DIR,     /*!< Down counting mode */
-    TIM_COUNTERMODE_CENTERALIGNED1_N = TIM_CR1_CMS_0,   /*!< Center-aligned mode 1 */
-    TIM_COUNTERMODE_CENTERALIGNED2_N = TIM_CR1_CMS_1,   /*!< Center-aligned mode 2 */
-    TIM_COUNTERMODE_CENTERALIGNED3_N = TIM_CR1_CMS      /*!< Center-aligned mode 3 */
+    TIM_COUNTERMODE_UP_N             = 0x00000000UL,     /*!< Up counting mode      */
+    TIM_COUNTERMODE_DOWN_N           = TIM_CR1_DIR,      /*!< Down counting mode    */
+    TIM_COUNTERMODE_CENTERALIGNED1_N = TIM_CR1_CMS_0,    /*!< Center-aligned mode 1 */
+    TIM_COUNTERMODE_CENTERALIGNED2_N = TIM_CR1_CMS_1,    /*!< Center-aligned mode 2 */
+    TIM_COUNTERMODE_CENTERALIGNED3_N = TIM_CR1_CMS       /*!< Center-aligned mode 3 */
 } TIM_CounterMode_N;
 
 typedef enum
 {
-    TIM_UPDATE_INTERRUPT_N  = TIM_DIER_UIE,     /*!< Update interrupt            */
-    TIM_CC1_INTERRUPT_N     = TIM_DIER_CC1IE,   /*!< Capture/Compare 1 interrupt */
-    TIM_CC2_INTERRUPT_N     = TIM_DIER_CC2IE,   /*!< Capture/Compare 2 interrupt */
-    TIM_CC3_INTERRUPT_N     = TIM_DIER_CC3IE,   /*!< Capture/Compare 3 interrupt */
-    TIM_CC4_INTERRUPT_N     = TIM_DIER_CC4IE,   /*!< Capture/Compare 4 interrupt */
-    TIM_COM_INTERRUPT_N     = TIM_DIER_COMIE,   /*!< Communication interrupt     */
-    TIM_TRIGGER_INTERRUPT_N = TIM_DIER_TIE,     /*!< Trigger interrupt           */
-    TIM_BREAK_INTERRUPT_N   = TIM_DIER_BIE      /*!< Break interrupt             */
+    TIM_UPDATE_INTERRUPT_N  = TIM_DIER_UIE,      /*!< Update interrupt            */
+    TIM_CC1_INTERRUPT_N     = TIM_DIER_CC1IE,    /*!< Capture/Compare 1 interrupt */
+    TIM_CC2_INTERRUPT_N     = TIM_DIER_CC2IE,    /*!< Capture/Compare 2 interrupt */
+    TIM_CC3_INTERRUPT_N     = TIM_DIER_CC3IE,    /*!< Capture/Compare 3 interrupt */
+    TIM_CC4_INTERRUPT_N     = TIM_DIER_CC4IE,    /*!< Capture/Compare 4 interrupt */
+    TIM_COM_INTERRUPT_N     = TIM_DIER_COMIE,    /*!< Communication interrupt     */
+    TIM_TRIGGER_INTERRUPT_N = TIM_DIER_TIE,      /*!< Trigger interrupt           */
+    TIM_BREAK_INTERRUPT_N   = TIM_DIER_BIE       /*!< Break interrupt             */
 } TIM_Interrupt_N;
 
 /**
@@ -59,13 +59,13 @@ typedef enum
   */
 typedef enum
 {
-    TIM_UPDATE_DMA_REQUEST_N    = TIM_DIER_UDE,        /*!< DMA request is triggered by the update event */
-    TIM_CC1_DMA_REQUEST_N       = TIM_DIER_CC1DE,      /*!< Capture/Compare 1 DMA request */
-    TIM_CC2_DMA_REQUEST_N       = TIM_DIER_CC2DE,      /*!< Capture/Compare 2 DMA request */
-    TIM_CC3_DMA_REQUEST_N       = TIM_DIER_CC3DE,      /*!< Capture/Compare 3 DMA request */
-    TIM_CC4_DMA_REQUEST_N       = TIM_DIER_CC4DE,      /*!< Capture/Compare 4 DMA request */
-    TIM_COM_DMA_REQUEST_N       = TIM_DIER_COMDE,      /*!< Communication DMA request */
-    TIM_TRIGGERED_DMA_REQUEST_N = TIM_DIER_TDE         /*!< DMA request is triggered by the trigger event */
+    TIM_UPDATE_DMA_REQUEST_N    = TIM_DIER_UDE,      /*!< DMA request is triggered by the update event  */
+    TIM_CC1_DMA_REQUEST_N       = TIM_DIER_CC1DE,    /*!< Capture/Compare 1 DMA request                 */
+    TIM_CC2_DMA_REQUEST_N       = TIM_DIER_CC2DE,    /*!< Capture/Compare 2 DMA request                 */
+    TIM_CC3_DMA_REQUEST_N       = TIM_DIER_CC3DE,    /*!< Capture/Compare 3 DMA request                 */
+    TIM_CC4_DMA_REQUEST_N       = TIM_DIER_CC4DE,    /*!< Capture/Compare 4 DMA request                 */
+    TIM_COM_DMA_REQUEST_N       = TIM_DIER_COMDE,    /*!< Communication DMA request                     */
+    TIM_TRIGGERED_DMA_REQUEST_N = TIM_DIER_TDE       /*!< DMA request is triggered by the trigger event */
 } TIM_DMA_Request_N;
 
 /**
@@ -82,22 +82,22 @@ typedef enum
   * @brief  TIM FLAGS definition
   */
 typedef enum {
-    TIM_FLAG_UPDATE_N       = TIM_SR_UIF,     /*!< Update interrupt flag         */
-    TIM_FLAG_CC1_N          = TIM_SR_CC1IF,   /*!< Capture/Compare 1 interrupt flag */
-    TIM_FLAG_CC2_N          = TIM_SR_CC2IF,   /*!< Capture/Compare 2 interrupt flag */
-    TIM_FLAG_CC3_N          = TIM_SR_CC3IF,   /*!< Capture/Compare 3 interrupt flag */
-    TIM_FLAG_CC4_N          = TIM_SR_CC4IF,   /*!< Capture/Compare 4 interrupt flag */
-    TIM_FLAG_CC5_N          = TIM_SR_CC5IF,   /*!< Capture/Compare 5 interrupt flag */
-    TIM_FLAG_CC6_N          = TIM_SR_CC6IF,   /*!< Capture/Compare 6 interrupt flag */
-    TIM_FLAG_COM_N          = TIM_SR_COMIF,   /*!< Commutation interrupt flag    */
-    TIM_FLAG_TRIGGER_N      = TIM_SR_TIF,     /*!< Trigger interrupt flag        */
-    TIM_FLAG_BREAK_N        = TIM_SR_BIF,     /*!< Break interrupt flag          */
-    TIM_FLAG_BREAK2_N       = TIM_SR_B2IF,    /*!< Break 2 interrupt flag        */
-    TIM_FLAG_SYSTEM_BREAK_N = TIM_SR_SBIF,    /*!< System Break interrupt flag   */
-    TIM_FLAG_CC1OF_N        = TIM_SR_CC1OF,   /*!< Capture 1 overcapture flag    */
-    TIM_FLAG_CC2OF_N        = TIM_SR_CC2OF,   /*!< Capture 2 overcapture flag    */
-    TIM_FLAG_CC3OF_N        = TIM_SR_CC3OF,   /*!< Capture 3 overcapture flag    */
-    TIM_FLAG_CC4OF_N        = TIM_SR_CC4OF    /*!< Capture 4 overcapture flag    */
+    TIM_FLAG_UPDATE_N       = TIM_SR_UIF,      /*!< Update interrupt flag            */
+    TIM_FLAG_CC1_N          = TIM_SR_CC1IF,    /*!< Capture/Compare 1 interrupt flag */
+    TIM_FLAG_CC2_N          = TIM_SR_CC2IF,    /*!< Capture/Compare 2 interrupt flag */
+    TIM_FLAG_CC3_N          = TIM_SR_CC3IF,    /*!< Capture/Compare 3 interrupt flag */
+    TIM_FLAG_CC4_N          = TIM_SR_CC4IF,    /*!< Capture/Compare 4 interrupt flag */
+    TIM_FLAG_CC5_N          = TIM_SR_CC5IF,    /*!< Capture/Compare 5 interrupt flag */
+    TIM_FLAG_CC6_N          = TIM_SR_CC6IF,    /*!< Capture/Compare 6 interrupt flag */
+    TIM_FLAG_COM_N          = TIM_SR_COMIF,    /*!< Commutation interrupt flag       */
+    TIM_FLAG_TRIGGER_N      = TIM_SR_TIF,      /*!< Trigger interrupt flag           */
+    TIM_FLAG_BREAK_N        = TIM_SR_BIF,      /*!< Break interrupt flag             */
+    TIM_FLAG_BREAK2_N       = TIM_SR_B2IF,     /*!< Break 2 interrupt flag           */
+    TIM_FLAG_SYSTEM_BREAK_N = TIM_SR_SBIF,     /*!< System Break interrupt flag      */
+    TIM_FLAG_CC1OF_N        = TIM_SR_CC1OF,    /*!< Capture 1 overcapture flag       */
+    TIM_FLAG_CC2OF_N        = TIM_SR_CC2OF,    /*!< Capture 2 overcapture flag       */
+    TIM_FLAG_CC3OF_N        = TIM_SR_CC3OF,    /*!< Capture 3 overcapture flag       */
+    TIM_FLAG_CC4OF_N        = TIM_SR_CC4OF     /*!< Capture 4 overcapture flag       */
 } TIM_FLAG_N;
 
 /**
