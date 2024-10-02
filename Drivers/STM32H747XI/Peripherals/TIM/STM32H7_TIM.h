@@ -81,7 +81,8 @@ typedef enum
 /**
   * @brief  TIM FLAGS definition
   */
-typedef enum {
+typedef enum 
+{
     TIM_FLAG_UPDATE_N       = TIM_SR_UIF,      /*!< Update interrupt flag            */
     TIM_FLAG_CC1_N          = TIM_SR_CC1IF,    /*!< Capture/Compare 1 interrupt flag */
     TIM_FLAG_CC2_N          = TIM_SR_CC2IF,    /*!< Capture/Compare 2 interrupt flag */
