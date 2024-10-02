@@ -161,6 +161,6 @@ typedef enum
   DMA_BURST_STATE_BUSY  = 0x02U     /*!< Ongoing DMA Burst       */
 } TIM_DMABurstState_N;
 
-extern void TIM_Config(TIM_ST *Timx);
+extern ReturnType TIM_Config(TIM_ST *Timx);
 
 #endif

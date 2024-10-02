@@ -1,7 +1,7 @@
 #include "STM32H7_TIM.h"
 
 
-void TIM_Config(TIM_ST *TIMx)
+ReturnType TIM_Config(TIM_ST *TIMx)
 {
-
+    return E_OK;
 }
