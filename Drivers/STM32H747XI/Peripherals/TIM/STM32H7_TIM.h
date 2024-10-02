@@ -24,7 +24,7 @@ typedef struct
 typedef struct
 {
   uint32_t            Prescaler;
-  uint32_t            CounterMode;
+  TIM_CounterMode_N   CounterMode;
   uint32_t            Period;
   TIM_ClockDivision_N ClockDivision;
   uint32_t            AutoReloadPreload;
