@@ -160,10 +160,6 @@ typedef enum
   DMA_BURST_STATE_BUSY  = 0x02U     /*!< Ongoing DMA Burst       */
 } TIM_DMABurstState_N;
 
-extern void TIM_DMA_Interrupt_Mode_Enable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
-extern void TIM_DMA_Interrupt_Mode_Disable(TIM_ST *TIMx, uint8_t DMA_Interrupt_Mode);
-extern void TIM_DMA_Interrupt_Clear_Status(TIM_ST *TIMx);
-extern boolean TIM_DMA_Interrupt_Check_Status(TIM_ST *TIMx);
-extern void TIM_Enable(TIM_ST *TIMx);
+extern void TIM_Config(TIM_ST *Timx);
 
 #endif
